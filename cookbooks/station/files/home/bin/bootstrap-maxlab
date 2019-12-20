@@ -1,0 +1,83 @@
+#!/bin/bash
+# THIS FILE DEPLOYED VIA CHEF 'station' cookbook
+
+#
+# Bootstrap a node in my maxlab home lab
+#
+
+function usage {
+  echo "bootstrap-maxlab"
+  echo
+  echo "Bootstrap a node in the maxlab home lab."
+  echo
+}
+
+NODE=${1:-"_null"}
+if [[ $NODE == "_null" ]]
+then
+  usage
+  exit 1
+elif [[ $1 == "-h" || $1 == "help" || $1 == "--help" || $1 == "-help" ]]
+then
+  usage
+  exit 0
+else
+
+  # My personal lab key
+  SSH_KEY="/home/maxwell/.ssh/maxwell-lab"
+
+  # Lock to a specific version to avoid newer releases which I haven't validated
+  # 2019-12 version
+  CHEF_VERSION_PIN="15.4"
+
+  # Set new node to this Chef environment
+  DEFAULT_ENVIRONMENT="maxlab"
+
+  # Initial runlist to execute after node has Chef deployed
+  DEFAULT_RUNLIST='role[base_maxlab_vmlab]'
+
+  # Resolve IP of this FQDN if possible
+  HOST_IP=$(host $NODE | awk '{print $4}')
+  if [[ $? -gt 0 ]]
+  then
+    echo "Error: Can't resolve $NODE to an IP address"
+    exit 1
+  else
+
+    # Remove existing SSH keys for this node's IP (created before VM was rebuilt)
+    if [[ ! -z ${HOST_IP} ]]
+    then
+      sed -i 's/^.*'"${HOST_IP}"'.*$//g' $HOME/.ssh/known_hosts
+      sed -i '/^$/d' $HOME/.ssh/known_hosts
+    fi
+
+    NODE_SHOW_TEST=$(knife node show ${NODE} > /dev/null 2>&1)
+    RESULT=$?
+    if [[ $RESULT == 0 ]]
+    then
+
+      # Delete existing node and client objects,
+      # remove existing SSH key from $HOME/known_hosts file
+      read -p "Would you like to erase ${NODE} first?" ERASE_YESNO
+      if [[ $ERASE_YESNO == "y" || $ERASE_YESNO == "yes" ]]
+      then
+        knife node delete ${NODE} --yes
+        knife client delete ${NODE} --yes
+      fi
+    fi
+
+    # Deploy personal SSH key
+    ssh-copy-id -i $SSH_KEY root@${NODE}
+
+    # If the key was deployed OK, bootstrap it
+    if [[ $? == 0 ]]
+    then
+      # Bootstrap with Chef
+      knife bootstrap blue.maxlab --connection-user root --ssh-identity-file $SSH_KEY \
+        --node-name blue.maxlab \
+        --bootstrap-version "$CHEF_VERSION_PIN" \
+        --environment "$DEFAULT_ENVIRONMENT" \
+        --run-list "$DEFAULT_RUNLIST"
+    fi
+  fi
+fi

@@ -1,0 +1,13 @@
+# THIS FILE DEPLOYED VIA CHEF 'station' cookbook
+[user]
+	name = Maxwell Spangler
+	email = maxwell@maxwellspangler.com
+	username = maxwax
+[core]
+	editor = vim
+[web]
+	browser = google-chrome
+#[core]
+#	excludesfile = /home/maxwell/.gitignore_global
+[diff]
+	external = /home/maxwell/bin/git-run-meld

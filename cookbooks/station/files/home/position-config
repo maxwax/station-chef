@@ -1,0 +1,90 @@
+# THIS FILE DEPLOYED VIA CHEF 'station' cookbook
+#
+# Configuration file for position script
+#
+# 2019-10-29 maxwell@maxwellspangler.com
+
+# 1:
+# Define monitor configurations like this:
+# monitor-config: <rule-group>: "<resolution>"
+# monitor-config: display-home-office: "3120x1920"
+# 2:
+# Then define one or more rules for that monitor config name
+# <rule-group>: "<wmctrl -r parameter>"
+# display-home-office: "'Evolution' -e 0,535,0,1385,1020"
+
+#
+# Monitor configurations
+#
+
+# Home office, two Dell 24" monitors, one landscape, one portrait
+monitor-config: display-home-office: "3120x1920"
+
+# Work office, one Dell 24" 1200 line monitor, one Dell 1080 line monitor
+monitor-config: display-work-office: "3840x1200"
+
+# Laptop native display, a single low res display
+monitor-config: display-laptop: "1366x768"
+
+# Presenting on a single large display, with local laptop screen
+monitor-config: display-laptop-plus-hdtv: "3286x1080"
+
+# Presenting on a single large display
+monitor-config: display-hdtv: "1920x1080"
+
+#
+# Positioning Rules
+#
+
+# Office uses a primary 1920x1200 monitor in landscape and a 1920x1080 monitor
+# in portrait mode to the right.
+# Place email on the primary display and put other programs on the aux display
+# Make KeePassX and Slack sticky so they're always visible regardless of desktop
+display-work-office: "'Evolution' -e 0,535,0,1385,1020"
+display-work-office: "'Thunderbird' -e 0,535,0,1385,1020"
+display-work-office: "'Mozilla Thunderbird' -e 0,535,0,1385,1020"
+display-work-office: "'Buddy List' -e 0,2800,760,228,1160"
+display-work-office: "'Slack' -e 1,2161,388,839,1572"
+display-work-office: "'KeePassX' -e 0,1921,1652,684,300"
+display-work-office: "'Slack' -b add,sticky"
+display-work-office: "'KeePassX' -b add,sticky"
+
+# Home office uses a primary 1920x1200 monitor in landscape and a 1920x1200
+# monitor in portrait mode to the right.
+# Place email on the primary display and put other programs on the aux display
+# Make KeePassX and Slack sticky so they're always visible regardless of desktop
+display-home-office: "'Evolution' -e 0,535,0,1385,1020"
+display-home-office: "'Thunderbird' -e 0,535,0,1385,1020"
+display-home-office: "'Mozilla Thunderbird' -e 0,535,0,1385,1020"
+display-home-office: "'Buddy List' -e 0,2800,760,228,1160"
+display-home-office: "'Slack' -e 1,2281,388,839,1572"
+display-home-office: "'KeePassX' -e 0,1921,1652,684,300"
+display-home-office: "'Slack' -b add,sticky"
+display-home-office: "'KeePassX' -b add,sticky"
+
+# Laptop is a Toshiba Z40 with a limited 1366x768 display, so we give email
+# most of the display and place other programs on the right hand side
+display-laptop: "'Evolution' -e 0,0,0,1366,704"
+display-laptop: "'Thunderbird' -e 0,0,0,1366,704"
+display-laptop: "'Mozilla Thunderbird' -e 0,0,0,1366,704"
+display-laptop: "'Buddy List' -e 0,516,0,228,565"
+display-laptop: "'Slack' -e 0,516,0,850,704"
+display-laptop: "'KeePassX' -e 0,685,235,681,533"
+
+# A typical office 40/50/60" HDTV is 1920x1080 so we give email a good size
+# window and place support programs on the right hand side
+display-laptop-plus-hdtv: "'Evolution' -e 0,0,0,1366,704"
+display-laptop-plus-hdtv: "'Thunderbird' -e 0,0,0,1366,704"
+display-laptop-plus-hdtv: "'Mozilla Thunderbird' -e 0,0,0,1366,704"
+display-laptop-plus-hdtv: "'Buddy List' -e 0,516,0,228,565"
+display-laptop-plus-hdtv: "'Slack' -e 0,516,0,850,704"
+display-laptop-plus-hdtv: "'KeePassX' -e 0,685,235,681,533"
+
+# A typical office 40/50/60" HDTV is 1920x1080 so we give email a good size
+# window and place support programs on the right hand side
+display-hdtv: "'Evolution' -e 0,535,0,1385,1020"
+display-hdtv: "'Thunderbird' -e 0,535,0,1385,1020"
+display-hdtv: "'Mozilla Thunderbird' -e 0,535,0,1385,1020"
+display-hdtv: "'Buddy List' -e 0,516,0,228,565"
+display-hdtv: "'Slack' -e 0,1070,0,850,1016"
+display-hdtv: "'KeePassX' -e 0,1239,523,681,533"

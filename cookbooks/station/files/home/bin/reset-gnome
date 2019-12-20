@@ -1,0 +1,4 @@
+#!/bin/bash
+# THIS FILE DEPLOYED VIA CHEF 'station' cookbook
+
+killall -1 -u maxhome gnome-shell

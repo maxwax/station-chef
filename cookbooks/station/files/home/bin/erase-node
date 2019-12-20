@@ -1,0 +1,36 @@
+#!/bin/bash
+# THIS FILE DEPLOYED VIA CHEF 'station' cookbook
+
+#
+# Destructively remove objects related to an existing Chef node
+#
+
+TMPFILE=~/.ssh/known_hosts.erase.bkup
+
+NODE=${1:-"_null"}
+if [[ $NODE == "_null" ]]
+then
+  echo "Error: No parameters specified. Please specify a hostname FQDN"
+  exit 1
+else
+
+  HOST_IP=$(host $NODE | awk '{print $4}')
+  if [[ $? -gt 0 ]]
+  then
+    echo "Error: Host $NODE is unknown to DNS"
+    exit 1
+  else
+
+    knife node delete ${NODE}
+
+    knife client delete ${NODE}
+
+    if [[ ! -z ${HOST_IP} ]]
+    then
+      cp ~/.ssh/known_hosts $TMPFILE
+      grep -v ${HOST_IP} $TMPFILE > ~/.ssh/known_hosts
+      rm $TMPFILE
+    fi
+
+  fi
+fi

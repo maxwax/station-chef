@@ -1,0 +1,17 @@
+#!/bin/bash
+# THIS FILE DEPLOYED VIA CHEF 'station' cookbook
+
+#
+# UNLIMITED HISTORY, UNLIMITED HISTORY FILE SIZE
+#
+
+# When exiting a shell, append the exiting shell's history to the history file
+shopt -s histappend
+
+# Unlimited history stored in memory
+export HISTSIZE=
+
+# Unlimited history stored in .history file
+export HISTFILESIZE=
+
+# Investigate HSTCONTROL="erasedups"

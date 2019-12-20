@@ -1,0 +1,10 @@
+#!/bin/bash
+# THIS FILE DEPLOYED VIA CHEF 'station' cookbook
+
+#
+# Kill Evolution Backend Processes so it can return to healthy operation
+#
+
+#sudo killall -9 --user maxhome evolution-alarm-notify evolution-calendar-factory evolution-addressbook-factory evolution-calendar-factory-subprocess evolution-addressbook-factory-subprocess evolution-source-registry evolution
+
+sudo killall -9 --user maxwell evolution-alarm-notify evolution-calendar-factory evolution-addressbook-factory evolution-calendar-factory-subprocess evolution-addressbook-factory-subprocess evolution-source-registry evolution

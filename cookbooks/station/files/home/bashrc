@@ -1,0 +1,37 @@
+# .bashrc
+# THIS FILE DEPLOYED VIA CHEF 'station' cookbook
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+# Uncomment the following line if you don't like systemctl's auto-paging feature:
+# export SYSTEMD_PAGER=
+
+# User specific aliases and functions
+
+# CUSTOM PATH
+PATH=$PATH:/home/maxwell/.gem/bin
+
+# Basic settings
+. /usr/local/etc/shell-basics
+
+# History related
+. /usr/local/etc/shell-history
+
+# Prompt related
+. /usr/local/etc/shell-prompt-powerline
+
+alias gitproj="cd /home/maxwell/projects/github/maxwax"
+
+alias maxlab="cd /home/maxwell/projects/chef/maxlab"
+alias maxbooks="cd /home/maxwell/projects/chef/maxlab/cookbooks"
+alias maxroles="cd /home/maxwell/projects/chef/maxlab/roles"
+alias maxbags="cd /home/maxwell/projects/chef/maxlab/data_bags"
+alias maxenv="cd /home/maxwell/projects/chef/maxlab/environments"
+
+alias atlab="cd /home/maxwell/projects/chef/atlab"
+alias station="cd /home/maxwell/projects/chef/station"
+
+export EDITOR="vim"

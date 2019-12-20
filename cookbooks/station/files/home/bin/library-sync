@@ -1,0 +1,8 @@
+#!/bin/bash
+# THIS FILE DEPLOYED VIA CHEF 'station' cookbook
+
+# Sync the /home/library directory on the toshi laptop with the primary
+# archive of it on the NFS mounted filer server
+
+rsync -avhi --progress /home/library/ /net/filerdata/library/
+rsync -avhi --progress /home/library/ /net/auxdata/library/

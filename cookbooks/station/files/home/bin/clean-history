@@ -1,0 +1,14 @@
+#!/bin/bash
+# THIS FILE DEPLOYED VIA CHEF 'station' cookbook
+
+TMPFILE=~/.bash_clean
+
+egrep -v "^exit" ~/.bash_history | egrep -v "^clear" | egrep -v "^sudo -i" | egrep -v "^ls" | egrep -v "^df -h" | egrep -v "^df" | egrep -v "^ls -l" | egrep -v "^pwd" | egrep -v "^cd .." | egrep -v "^du -sh" > $TMPFILE
+
+if [[ $? -eq 0 ]]
+then
+  echo "Cleaning"
+  mv $TMPFILE ~/.bash_history
+else
+  echo "Error $? occured while cleaning file"
+fi

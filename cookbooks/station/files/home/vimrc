@@ -1,0 +1,11 @@
+"" THIS FILE DEPLOYED VIA CHEF 'station' cookbook
+set tabstop=2
+set shiftwidth=2
+set expandtab
+syntax on
+set number
+set  rtp+=/usr/share/powerline/vim/
+set laststatus=2
+set t_Co=256
+" execute pathogen#infect()
+" .filetype plugin indent on

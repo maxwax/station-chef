@@ -1,0 +1,42 @@
+#!/bin/bash
+# THIS FILE DEPLOYED VIA CHEF 'station' cookbook
+
+set -x
+VERSION="2014.0914.01"
+
+OS_FILES="$HOME/local/atari/os"
+
+function usage {
+
+	echo "goatari, version $VERSION"
+	echo
+	echo "Syntax: goatari <rom-file>"
+	echo
+
+}
+
+ROM_FILE=${1:-"null"}
+
+if [[ $ROM_FILE == "null" ]]
+then
+	usage
+	exit 1
+else
+
+  if [[ ! -f $ROM_FILE ]]
+  then
+    echo "Error: That file doesn't exist"
+    exit 1
+  else
+
+    atari800 \
+      -sound -dsprate 48000 \
+      -vsync \
+      -xe \
+      -osb_rom $OS_FILES/800os.rom -xlxe_rom $OS_FILES/xeos.rom \
+      -windowed -win-width 1024 -win-height 768 \
+      "$ROM_FILE"
+
+  fi
+
+fi

@@ -1,0 +1,13 @@
+# THIS FILE DEPLOYED VIA CHEF 'station' cookbook
+#
+# Configuration file for santoku, a Chef 'knife' wrapper
+#
+
+[maxlab]
+description="Maxlab via maxwell"
+knife_config=/home/maxwell/projects/chef/knife-configs/maxwell/knife.rb
+knife_ssh_user=maxwell
+pass_key=maxlab/chef-maxwell
+confirm=yes
+proxychains=no
+[end]

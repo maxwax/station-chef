@@ -1,0 +1,19 @@
+#!/bin/bash
+# THIS FILE DEPLOYED VIA CHEF 'station' cookbook
+
+#
+# Basic changes used in all my environments
+#
+
+# Legacy variations of ls that I've used for 20+ years
+alias l="ls -l"
+alias lf="ls -CF"
+
+# Use vim in enhanced 'vim' mode, not basic 'vi' mode
+alias vi="vim"
+
+# Use vi style command line editing
+set -o vi
+
+# Edit SSH file to adjust key changes
+alias known="vi ~/.ssh/known_hosts"
