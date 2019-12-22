@@ -24,7 +24,9 @@ echo
 read -p "Type 'go' when ready to proceed:"
 echo
 
-sudo dnf -y install ./chef-workstation*rpm
+sudo dnf -y install $HOME/Downloads/chef-workstation*rpm
+
+cd $HOME/Downloads/station
 
 # First run creates the chef-zero node object
 sudo chef-client -z
