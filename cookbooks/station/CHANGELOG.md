@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.2.3
+
+* Using 'yum_repository' to deploy repo for VirtualBox. Removed some manual code to do the same.
+
 # 0.2.2
 
 * Re-introduce deployment of Virtualbox
