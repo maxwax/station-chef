@@ -21,7 +21,7 @@ echo
 echo
 echo "Manually download the latest Chef Workstation via Firefox"
 echo
-read -p "Type 'go' when ready to proceed:"
+read -p "Press 'ENTER' when ready to proceed:"
 echo
 
 sudo dnf -y install $HOME/Downloads/chef-workstation*rpm
