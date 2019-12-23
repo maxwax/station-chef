@@ -33,3 +33,10 @@ end
 package node['station']['virtualbox']['package_name'] do
  action :install
 end
+
+group 'vboxusers' do
+  append true
+  members my['username']
+
+  action :modify
+end
