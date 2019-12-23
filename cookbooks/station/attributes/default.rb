@@ -21,6 +21,7 @@ node.default['station']['user'] = {
     "gitconfig",
     "position-config",
     "santoku-config",
+    "coding-config",
     "vimrc"
   ],
   "firewall": {

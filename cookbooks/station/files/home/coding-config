@@ -1,0 +1,104 @@
+#
+# Configuration file for 'coding' script
+#
+# 2019-12-22 maxcode@maxwellspangler.com
+
+# 1:
+# Define monitor configurations like this:
+# monitor-config: <rule-group>: "<resolution>"
+# monitor-config: display-home-office: "3120x1920"
+#
+# 2:
+# Then define one or more rules for that monitor config name
+# <rule-group>: "geometry-parameter"
+
+#
+# Monitor configurations
+#
+
+# Home office, two Dell 24" monitors, one landscape, one portrait
+monitor-config: display-home-office: "3120x1920"
+
+# Work office, one Dell 24" 1200 line monitor, one Dell 1080 line monitor
+monitor-config: display-work-office: "3840x1200"
+
+# Laptop native display, a single low res display
+monitor-config: display-laptop: "1366x768"
+
+# Presenting on a single large display, with local laptop screen
+monitor-config: display-laptop-plus-hdtv: "3286x1080"
+
+# Presenting on a single large display
+monitor-config: display-hdtv: "1920x1080"
+
+#
+# Positioning Rules
+#
+
+# Office uses a primary 1920x1200 monitor in landscape and a 1920x1080 monitor
+# in portrait mode to the right.
+# 2019-12-22 untested, not in this office anymore
+display-work-office: "right"          "--geometry 85x37+1139+27"
+display-work-office: "mid"            "--geometry 85x37+358+27"
+display-work-office: "left"           "--geometry 85x37+0+27"
+display-work-office: "east"           "--geometry 85x24+1184+1102"
+display-work-office: "center"         "--geometry 85x24+358+1102"
+display-work-office: "west"           "--geometry 85x24+0+935"
+display-work-office: "test"           "--geometry 85x72+1921+132"
+display-work-office: "far"            "--geometry 85x72+2219+132"
+display-work-office: "sideleft"       "--geometry 85x24+1920+893"
+display-work-office: "sideright"      "--geometry 85x24+2221+893"
+display-work-office: "bastionprod"    "--geometry 85x7+0+1224"
+display-work-office: "bastionstaging" "--geometry 85x7+0+780"
+	
+# Home office uses a primary 1920x1200 monitor in landscape and a 1920x1200 
+# monitor in portrait mode to the right.
+# 2019-12-22 tested
+display-home-office: "right"          "--geometry 85x37+1139+27"
+display-home-office: "mid"            "--geometry 85x37+358+27"
+display-home-office: "left"           "--geometry 85x37+0+27"
+display-home-office: "east"           "--geometry 85x24+1184+1102"
+display-home-office: "center"         "--geometry 85x24+358+1102"
+display-home-office: "west"           "--geometry 85x24+0+935"
+display-home-office: "test"           "--geometry 85x72+1921+0"
+display-home-office: "far"            "--geometry 85x72+2700+0"
+display-home-office: "sideleft"       "--geometry 85x24+1920+893"
+display-home-office: "sideright"      "--geometry 85x24+2700+893"
+display-home-office: "bastionprod"    "--geometry 85x7+0+1024"
+display-home-office: "bastionstaging" "--geometry 85x7+0+1200"
+
+# Laptop is a Toshiba Z40 with a limited 1366x768 display
+display-work-laptop: "right"          "--geometry 85x37+1139+27"
+display-work-laptop: "mid"            "--geometry 85x37+358+27"
+display-work-laptop: "left"           "--geometry 85x37+0+27"
+display-work-laptop: "east"           "--geometry 85x24+1184+1102"
+display-work-laptop: "center"         "--geometry 85x24+358+1102"
+display-work-laptop: "west"           "--geometry 85x24+0+935"
+display-work-laptop: "bastionprod"    "--geometry 85x7+0+636"
+display-work-laptop: "bastionstaging" "--geometry 85x7+0+932"
+
+# A typical office 40/50/60" HDTV is 1920x1080
+display-laptop-plus-hdtv: "mid"            "--geometry 85x37+358+27"
+display-laptop-plus-hdtv: "left"           "--geometry 85x37+0+27"
+display-laptop-plus-hdtv: "east"           "--geometry 85x24+1184+1102"
+display-laptop-plus-hdtv: "center"         "--geometry 85x24+358+1102"
+display-laptop-plus-hdtv: "west"           "--geometry 85x24+0+935"
+display-laptop-plus-hdtv: "test"           "--geometry 85x37+1921+0"
+display-laptop-plus-hdtv: "far"            "--geometry 85x37+2700+0"
+display-laptop-plus-hdtv: "sideleft"       "--geometry 85x24+1920+893"
+display-laptop-plus-hdtv: "sideright"      "--geometry 85x24+2700+893"
+display-laptop-plus-hdtv: "bastionprod"    "--geometry 85x7+0+636"
+display-laptop-plus-hdtv: "bastionstaging" "--geometry 85x7+0+932"
+
+# A typical office 40/50/60" HDTV is 1920x1080 
+display-hdtv: "mid"            "--geometry 85x37+358+27"
+display-hdtv: "left"           "--geometry 85x37+0+27"
+display-hdtv: "east"           "--geometry 85x24+1184+1102"
+display-hdtv: "center"         "--geometry 85x24+358+1102"
+display-hdtv: "west"           "--geometry 85x24+0+935"
+display-hdtv: "test"           "--geometry 85x37+1921+0"
+display-hdtv: "far"            "--geometry 85x37+2700+0"
+display-hdtv: "sideleft"       "--geometry 85x24+1920+893"
+display-hdtv: "sideright"      "--geometry 85x24+2700+893"
+display-hdtv: "bastionprod"    "--geometry 85x7+0+636"
+display-hdtv: "bastionstaging" "--geometry 85x7+0+932"
