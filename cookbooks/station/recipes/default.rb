@@ -29,7 +29,7 @@ include_recipe 'station::firewall'
 include_recipe 'station::google-chrome'
 
 # Install VirtualBox
-#include_recipe 'station::virtualbox'
+include_recipe 'station::virtualbox'
 
 # Install VirtualBox
 include_recipe 'station::atom'

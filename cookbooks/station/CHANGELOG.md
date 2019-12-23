@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.2.2
+
+* Re-introduce deployment of Virtualbox
+
 # 0.2.1
 
 * In atom recipe, install the atom rpm, not the virtualbox rpm. A bug due to copy & pasting the virtualbox code and re-using it for Atom.
