@@ -20,7 +20,7 @@ remote_file "atom-rpm" do
   not_if { node['packages'].key?('atom') }
 end
 
-package node['station']['virtualbox']['package_name'] do
+package node['station']['atom']['package_name'] do
   source "/home/#{my['username']}/Downloads/#{node['station']['atom']['package_name']}"
   action :install
 
