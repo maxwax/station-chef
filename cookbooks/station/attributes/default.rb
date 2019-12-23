@@ -18,6 +18,7 @@ node.default['station']['user'] = {
   ],
   "personal_dot_files": [
     "bashrc",
+    "bash_profile",
     "gitconfig",
     "position-config",
     "santoku-config",
