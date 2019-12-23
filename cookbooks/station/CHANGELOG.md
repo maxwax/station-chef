@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.2.4
+
+* Removing ports 5000/tcp and 5000/udp from firewall attribute.  This was for development and testing purposes only.
+
 # 0.2.3
 
 * Using 'yum_repository' to deploy repo for VirtualBox. Removed some manual code to do the same.

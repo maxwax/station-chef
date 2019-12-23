@@ -34,8 +34,6 @@ node.default['station']['user'] = {
       "mdns"
     ],
     "ports_allowed": [
-      "5000/tcp",
-      "5000/udp"
     ]
   }
 }
