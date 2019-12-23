@@ -31,5 +31,8 @@ include_recipe 'station::google-chrome'
 # Install VirtualBox
 include_recipe 'station::virtualbox'
 
-# Install VirtualBox
+# Install Atom editor
 include_recipe 'station::atom'
+
+# Enable SSH Server
+include_recipe 'station::sshd'

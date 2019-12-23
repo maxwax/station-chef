@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.3.0
+
+* Enable SSH Server (sshd)
+
 # 0.2.4
 
 * Removing ports 5000/tcp and 5000/udp from firewall attribute.  This was for development and testing purposes only.
