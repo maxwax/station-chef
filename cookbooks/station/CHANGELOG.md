@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.4.1
+
+* Typo in gpgkey of VirtualBox yum_repository resource.  Copy & paste error found upon testing.
+
 # 0.4.0
 
 * Added amule and atari++ packages
