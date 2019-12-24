@@ -75,6 +75,8 @@ case plat_vers
 
     # List of default packages to be installed for this Platform+Version
     node.default['station']['install_packages'] = [
+        "amule",
+        "atari++",
         "autodownloader",
         "banshee",
         "bonnie++",

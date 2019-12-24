@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.4.0
+
+* Added amule and atari++ packages
+
 # 0.3.0
 
 * Enable SSH Server (sshd)
