@@ -48,13 +48,17 @@ node['station']['usr_local']['bin']['remote_scripts'].each do |script_name, scri
     when 'tgz'
       execute "untar-#{script_name}" do
         command "tar xf #{download_filename}"
-        cwd "/tmp/#{script_name}-#{script_info['version']}"
+        cwd "/tmp"
       end
     end
 
   execute "install-#{script_name}" do
     command "/tmp/#{script_name}-#{script_info['version']}/#{script_info['install_script']}"
     cwd "/tmp/#{script_name}-#{script_info['version']}"
+  end
+
+  file download_filename do
+    action :delete
   end
 
 end

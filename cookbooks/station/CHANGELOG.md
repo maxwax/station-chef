@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.4.4
+
+* Bug fix: When untarring a remote script for /usr/local/bin, cwd should be /tmp not /tmp/coding, etc.
+
 # 0.4.3
 
 * Adding deployment of 'position' script from github as a /usr/local/bin script.
