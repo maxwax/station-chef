@@ -38,6 +38,38 @@ node.default['station']['user'] = {
   }
 }
 
+node.default['station']['usr_local'] = {
+  "bin": {
+    "cookbook_scripts": [
+    ],
+    "remote_scripts": {
+      "coding": {
+        "source": "https://github.com/maxwax/coding/archive",
+        "filename": "v0.1.1.tar.gz",
+        "version": "0.1.1",
+        "file_type": "tgz",
+        "install_script": "install.sh"
+      },
+      "position": {
+        "source": "https://github.com/maxwax/position/archive",
+        "filename": "v0.1.0.tar.gz",
+        "version": "0.1.0",
+        "file_type": "tgz",
+        "install_script": "install.sh"
+      }
+    }
+  },
+  "etc": {
+    "cookbook_scripts": [
+      "shell-basics",
+      "shell-history",
+      "shell-prompt-powerline"
+    ],
+    "remote_scripts": {
+    }
+  }
+}
+
 node.default['station']['virtualbox'] = {
   "version": "6.1",
   "package_name": "VirtualBox-6.1",

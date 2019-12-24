@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.4.3
+
+* Adding deployment of 'position' script from github as a /usr/local/bin script.
+
 # 0.4.2
 
 * Fixing gnome-terminal postiions and sizes for Feodra 31.
