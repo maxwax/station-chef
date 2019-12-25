@@ -85,22 +85,22 @@ node.default['station']['usr_local'] = {
     "sbin": {
       "nas": {
         "source": "https://github.com/maxwax/nas/archive",
-        "filename": "v1.0.0.tar.gz",
-        "version": "1.0.0",
+        "filename": "v1.1.0.tar.gz",
+        "version": "1.1.0",
         "file_type": "tgz",
         "install_script": "install.sh"
       },
       "safe": {
         "source": "https://github.com/maxwax/safe/archive",
-        "filename": "v1.0.0.tar.gz",
-        "version": "1.0.0",
+        "filename": "v2.0.0.tar.gz",
+        "version": "2.0.0",
         "file_type": "tgz",
         "install_script": "install.sh"
       },
       "vital-backup": {
         "source": "https://github.com/maxwax/vital-backup/archive",
-        "filename": "v1.0.0.tar.gz",
-        "version": "1.0.0",
+        "filename": "v1.1.0.tar.gz",
+        "version": "1.1.0",
         "file_type": "tgz",
         "install_script": "install.sh"
       }

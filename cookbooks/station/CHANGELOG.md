@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.8.0
+
+* Pull down newly written safe 2.0.0.  Updated attributes to do this.
+
 # 0.7.1
 
 * Cleaned up NAS config file.
