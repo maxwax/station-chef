@@ -4,6 +4,7 @@
 
 * Cleaned up NAS config file.
 * Using NFSv4 by default on Fedora 31. Firewall appears to block NFSv3
+* Add additional NFS mount point shares via attribute list
 
 # 0.7.0
 
