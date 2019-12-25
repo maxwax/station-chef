@@ -22,6 +22,9 @@ include_recipe 'station::usr_local'
 # Install personal files for primary user
 include_recipe 'station::user'
 
+# Install personal files for root user
+include_recipe 'station::root'
+
 # Configure firewall for personal workstation use
 include_recipe 'station::firewall'
 

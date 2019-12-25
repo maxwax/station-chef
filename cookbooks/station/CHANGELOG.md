@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.6.0
+
+* Deploying dot files for root user in /root
+
 # 0.5.0
 
 * Adding support to create NFS mount directories. Actual mounting performed by 'nas' script'

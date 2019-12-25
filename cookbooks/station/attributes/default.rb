@@ -38,6 +38,16 @@ node.default['station']['user'] = {
   }
 }
 
+node.default['station']['root'] = {
+  "username": "root",
+  'personal_bin_scripts': [
+  ],
+  "personal_dot_files": [
+    "bashrc",
+    "vimrc"
+  ]
+}
+
 node.default['station']['usr_local'] = {
   "cookbook_scripts": {
     "bin": [

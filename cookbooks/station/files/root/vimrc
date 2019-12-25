@@ -1,0 +1,10 @@
+set tabstop=2
+set shiftwidth=2
+set expandtab
+syntax on
+set number
+colorscheme default
+set  rtp+=/usr/share/powerline/vim/
+set laststatus=2
+set t_Co=256
+
