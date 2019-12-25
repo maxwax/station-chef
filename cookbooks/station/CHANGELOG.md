@@ -1,5 +1,10 @@
 # station CHANGELOG
 
+# 0.7.1
+
+* Cleaned up NAS config file.
+* Using NFSv4 by default on Fedora 31. Firewall appears to block NFSv3
+
 # 0.7.0
 
 * Deploy custom script config files in /etc for system wide use

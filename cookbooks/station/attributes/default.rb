@@ -115,7 +115,11 @@ node.default['station']['mount_points'] = {
     "auxroot",
     "audiovideo",
     "avarchive",
-    "offsite4tb",
+    "laptopnas",
+    "teragreen",
+    "filer-offsite4tb",
+    "aux-offsite4tb",
+    "laptop-auxdata",
     "xfiles"
   ],
   "/mnt": [
