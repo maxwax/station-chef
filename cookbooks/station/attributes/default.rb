@@ -39,10 +39,19 @@ node.default['station']['user'] = {
 }
 
 node.default['station']['usr_local'] = {
-  "bin": {
-    "cookbook_scripts": [
+  "cookbook_scripts": {
+    "bin": [
     ],
-    "remote_scripts": {
+    "etc": [
+      "shell-basics",
+      "shell-history",
+      "shell-prompt-powerline"
+    ],
+    "sbin": [
+    ]
+  },
+  "remote_scripts": {
+    "bin": {
       "coding": {
         "source": "https://github.com/maxwax/coding/archive",
         "filename": "v0.1.1.tar.gz",
@@ -57,17 +66,47 @@ node.default['station']['usr_local'] = {
         "file_type": "tgz",
         "install_script": "install.sh"
       }
-    }
-  },
-  "etc": {
-    "cookbook_scripts": [
-      "shell-basics",
-      "shell-history",
-      "shell-prompt-powerline"
-    ],
-    "remote_scripts": {
+    },
+    "sbin": {
+      "nas": {
+        "source": "https://github.com/maxwax/nas/archive",
+        "filename": "v1.0.0.tar.gz",
+        "version": "1.0.0",
+        "file_type": "tgz",
+        "install_script": "install.sh"
+      },
+      "safe": {
+        "source": "https://github.com/maxwax/safe/archive",
+        "filename": "v1.0.0.tar.gz",
+        "version": "1.0.0",
+        "file_type": "tgz",
+        "install_script": "install.sh"
+      },
+      "vital-backup": {
+        "source": "https://github.com/maxwax/vital-backup/archive",
+        "filename": "v1.0.0.tar.gz",
+        "version": "1.0.0",
+        "file_type": "tgz",
+        "install_script": "install.sh"
+      }
     }
   }
+}
+
+node.default['station']['mount_points'] = {
+  "/net": [
+    "auxdata",
+    "filerdata",
+    "auxroot",
+    "audiovideo",
+    "avarchive",
+    "offsite4tb",
+    "xfiles"
+  ],
+  "/mnt": [
+    "usb",
+    "secure"
+  ]
 }
 
 node.default['station']['virtualbox'] = {

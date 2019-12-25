@@ -36,3 +36,6 @@ include_recipe 'station::atom'
 
 # Enable SSH Server
 include_recipe 'station::sshd'
+
+# Enable SSH Server
+include_recipe 'station::mount_points'

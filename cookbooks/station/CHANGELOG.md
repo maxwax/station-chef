@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.5.0
+
+* Adding support to create NFS mount directories. Actual mounting performed by 'nas' script'
+
 # 0.4.4
 
 * Bug fix: When untarring a remote script for /usr/local/bin, cwd should be /tmp not /tmp/coding, etc.
