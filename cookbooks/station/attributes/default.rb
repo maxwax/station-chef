@@ -48,6 +48,11 @@ node.default['station']['root'] = {
   ]
 }
 
+node.default['station']['etc_config'] = [
+  "nas.conf",
+  "vital-backup.conf"
+]
+
 node.default['station']['usr_local'] = {
   "cookbook_scripts": {
     "bin": [

@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.7.0
+
+* Deploy custom script config files in /etc for system wide use
+
 # 0.6.0
 
 * Deploying dot files for root user in /root

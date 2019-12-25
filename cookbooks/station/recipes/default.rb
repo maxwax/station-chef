@@ -42,3 +42,6 @@ include_recipe 'station::sshd'
 
 # Enable SSH Server
 include_recipe 'station::mount_points'
+
+# Deploy system config files for my custom scripts
+include_recipe 'station::etc_config'
