@@ -1,6 +1,6 @@
 #
 # Cookbook:: station
-# Recipe:: user
+# Recipe:: root
 #
 # Copyright:: 2019, The Authors, All Rights Reserved.
 
