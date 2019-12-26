@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.8.1
+
+* Changing nfs mount points from filer-offsite4tb to offsite4tb-filer.
+
 # 0.8.0
 
 * Pull down newly written safe 2.0.0.  Updated attributes to do this.

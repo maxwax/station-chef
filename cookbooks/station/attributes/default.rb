@@ -117,8 +117,8 @@ node.default['station']['mount_points'] = {
     "avarchive",
     "laptopnas",
     "teragreen",
-    "filer-offsite4tb",
-    "aux-offsite4tb",
+    "offsite4tb-filer",
+    "offsite4tb-aux",
     "laptop-auxdata",
     "xfiles"
   ],
