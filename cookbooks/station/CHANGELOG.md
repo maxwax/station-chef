@@ -1,5 +1,10 @@
 # station CHANGELOG
 
+# 0.8.2
+
+Atom removed the final newline on the final config line of /etc/nas.conf and broke the script. Adding it back.
+
+
 # 0.8.1
 
 * Changing nfs mount points from filer-offsite4tb to offsite4tb-filer.
@@ -81,4 +86,3 @@
 Initial Development Version
 
 - Working on test laptop
-
