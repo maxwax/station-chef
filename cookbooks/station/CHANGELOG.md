@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.8.3
+
+* Install nas v1.1.1
+
 # 0.8.2
 
 Atom removed the final newline on the final config line of /etc/nas.conf and broke the script. Adding it back.
