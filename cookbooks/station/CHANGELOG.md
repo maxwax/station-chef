@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.9.0
+
+* Add recipe 'fstrim' to activate periodic TRIM actions on SSD drives.
+
 # 0.8.3
 
 * Install nas v1.1.1
