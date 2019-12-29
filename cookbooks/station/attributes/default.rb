@@ -92,8 +92,8 @@ node.default['station']['usr_local'] = {
       },
       "safe": {
         "source": "https://github.com/maxwax/safe/archive",
-        "filename": "v2.0.0.tar.gz",
-        "version": "2.0.0",
+        "filename": "v2.0.1.tar.gz",
+        "version": "2.0.1",
         "file_type": "tgz",
         "install_script": "install.sh"
       },
