@@ -33,6 +33,6 @@ alias maxenv="cd /home/maxwell/projects/chef/maxlab/environments"
 
 alias atlab="cd /home/maxwell/projects/chef/atlab"
 alias station="cd /home/maxwell/projects/chef/station"
-alias update_workstation="station; sudo chef-client -z"
+alias update-workstation="station; sudo chef-client -z"
 
 export EDITOR="vim"
