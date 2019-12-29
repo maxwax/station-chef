@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.10.0
+
+* Deploy 'santoku' wrapper script for Chef knife command.
+
 # 0.9.0
 
 * Add recipe 'fstrim' to activate periodic TRIM actions on SSD drives.

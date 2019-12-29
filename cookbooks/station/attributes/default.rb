@@ -21,7 +21,7 @@ node.default['station']['user'] = {
     "bash_profile",
     "gitconfig",
     "position-config",
-    "santoku-config",
+    "santoku.conf",
     "coding-config",
     "vimrc"
   ],
@@ -94,6 +94,13 @@ node.default['station']['usr_local'] = {
         "source": "https://github.com/maxwax/safe/archive",
         "filename": "v2.0.1.tar.gz",
         "version": "2.0.1",
+        "file_type": "tgz",
+        "install_script": "install.sh"
+      },
+      "santoku": {
+        "source": "https://github.com/maxwax/santoku/archive",
+        "filename": "v1.1.0.tar.gz",
+        "version": "1.1.0",
         "file_type": "tgz",
         "install_script": "install.sh"
       },
