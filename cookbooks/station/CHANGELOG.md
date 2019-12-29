@@ -1,5 +1,10 @@
 # station CHANGELOG
 
+# 0.10.1
+
+* Deploy upated versions of 'coding' and 'position' from github
+* Deploy config files for coding (.coding.conf) and position (.position.conf) using new .conf names.
+
 # 0.10.0
 
 * Deploy 'santoku' wrapper script for Chef knife command.

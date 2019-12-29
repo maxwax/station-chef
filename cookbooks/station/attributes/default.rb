@@ -20,9 +20,9 @@ node.default['station']['user'] = {
     "bashrc",
     "bash_profile",
     "gitconfig",
-    "position-config",
+    "position.conf",
     "santoku.conf",
-    "coding-config",
+    "coding.conf",
     "vimrc"
   ],
   "firewall": {
@@ -69,15 +69,15 @@ node.default['station']['usr_local'] = {
     "bin": {
       "coding": {
         "source": "https://github.com/maxwax/coding/archive",
-        "filename": "v0.1.1.tar.gz",
-        "version": "0.1.1",
+        "filename": "v1.0.0.tar.gz",
+        "version": "1.0.0",
         "file_type": "tgz",
         "install_script": "install.sh"
       },
       "position": {
         "source": "https://github.com/maxwax/position/archive",
-        "filename": "v0.1.0.tar.gz",
-        "version": "0.1.0",
+        "filename": "v1.0.0.tar.gz",
+        "version": "1.0.0",
         "file_type": "tgz",
         "install_script": "install.sh"
       }
