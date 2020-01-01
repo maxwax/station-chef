@@ -73,8 +73,8 @@ else
     if [[ $? == 0 ]]
     then
       # Bootstrap with Chef
-      knife bootstrap blue.maxlab --connection-user root --ssh-identity-file $SSH_KEY \
-        --node-name blue.maxlab \
+      knife bootstrap ${NODE}.maxlab --connection-user root --ssh-identity-file $SSH_KEY \
+        --node-name ${NODE}.maxlab \
         --bootstrap-version "$CHEF_VERSION_PIN" \
         --environment "$DEFAULT_ENVIRONMENT" \
         --run-list "$DEFAULT_RUNLIST"
