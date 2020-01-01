@@ -3,6 +3,7 @@
 # 0.10.4
 
 * Replaced 'knife X' command with 'santoku maxlab X' commands in my personal bootstrap-maxlab command.  This ensures the knife commands required only execute against the maxlab environment and not whatever active $HOME/.chef/knife.rb file is set to use.
+* Added a variety of echo statements to let users know what the script is doing. It's rather slow, so this helps be much more user friendly as users wait.
 
 # 0.10.3
 
