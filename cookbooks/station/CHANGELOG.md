@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.10.3
+
+* Whoops.. Replace blue.maxlab hard coding with ${NODE} not ${NODE}.maxlab.  I'm running to fast, but testing caught this quickly.
+
 # 0.10.2
 
 * Fix bug in 'bootstrap-maxlab' script where hard coded node name blue.maxlab was used instead of ${NODE} parameter
