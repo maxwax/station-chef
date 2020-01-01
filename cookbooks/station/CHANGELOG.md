@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.10.4
+
+* Replaced 'knife X' command with 'santoku maxlab X' commands in my personal bootstrap-maxlab command.  This ensures the knife commands required only execute against the maxlab environment and not whatever active $HOME/.chef/knife.rb file is set to use.
+
 # 0.10.3
 
 * Whoops.. Replace blue.maxlab hard coding with ${NODE} not ${NODE}.maxlab.  I'm running to fast, but testing caught this quickly.
