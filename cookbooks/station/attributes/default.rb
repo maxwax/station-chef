@@ -48,6 +48,17 @@ node.default['station']['root'] = {
   ]
 }
 
+node.default['station']['other_groups'] = {
+  "plex": {
+    "gid": 1200,
+    "members": [ "maxwell" ]
+  },
+  "xcode": {
+    "gid": 1300,
+    "members": [ ]
+  }
+}
+
 node.default['station']['etc_config'] = [
   "nas.conf",
   "vital-backup.conf"

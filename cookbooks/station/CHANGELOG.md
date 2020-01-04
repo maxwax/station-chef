@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.12.0
+
+* Added recipe other_groups to add additional groups to the system related to other resources in my environment
+
 # 0.11.0
 
 * Deploy smartpcap script to capture storage devices S.M.A.R.T. health values
