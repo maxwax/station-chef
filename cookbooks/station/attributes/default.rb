@@ -106,8 +106,8 @@ node.default['station']['usr_local'] = {
       },
       "smartcap": {
         "source": "https://github.com/maxwax/smartcap/archive",
-        "filename": "v1.0.2.tar.gz",
-        "version": "1.0.2",
+        "filename": "v1.0.3.tar.gz",
+        "version": "1.0.3",
         "file_type": "tgz",
         "install_script": "install.sh"
       },
