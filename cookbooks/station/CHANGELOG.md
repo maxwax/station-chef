@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.11.0
+
+* Deploy smartpcap script to capture storage devices S.M.A.R.T. health values
+
 # 0.10.5
 
 Updated coding.conf positioning for home office after experiencing terminal position and size issues on Fedora 31.  Might be Fedora 31 problems, might be using a non-standard GNOME theme. This helps me get work done.
