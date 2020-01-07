@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.13.0
+
+* Remove some automatically install font rpms that I don't use.
+
 # 0.12.0
 
 * Added recipe other_groups to add additional groups to the system related to other resources in my environment

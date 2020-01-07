@@ -358,6 +358,22 @@ case plat_vers
 
     # List of packages to be removed for this Package+Version
     node.default['station']['remove_packages'] = [
+        "khmeros-base-fonts",
+        "khmeros-fonts-common",
+        "jomolhari-fonts",
+        "lohit-assamese-fonts",
+        "lohit-bengali-fonts",
+        "lohit-devanagari-fonts",
+        "lohit-gujarati-fonts",
+        "lohit-kannada-fonts",
+        "lohit-odia-fonts",
+        "lohit-tamil-fonts",
+        "lohit-telugu-fonts",
+        "paktype-naskh-basic-fonts",
+        "thai-scalable-fonts-common",
+        "thai-scalable-waree-fonts",
+        "aajohan-comfortaa-fonts",
+        "gdouros-symobola-fonts"
       ]
 
 end
