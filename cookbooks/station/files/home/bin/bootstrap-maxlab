@@ -5,23 +5,113 @@
 # Bootstrap a node in my maxlab home lab
 #
 
+VERSION="1.1.0"
+VERSION_DATE="2020-01-07"
+
+# List of valid names to the --base parameter
+VALID_BASE_NAMES="vmlab, nas, proxmox"
+
 function usage {
-  echo "bootstrap-maxlab"
+  echo "bootstrap-maxlab - Bootstrap a node in the maxlab home lab."
   echo
-  echo "Bootstrap a node in the maxlab home lab."
+  echo "Syntax: bootstrap-maxlab --base <base_name> <HOSTNAME>"
+  echo
+  echo "Valid base names are $VALID_BASE_NAMES"
   echo
 }
+
+function host_check {
+  # Resolve IP of this FQDN if possible
+  HOST_IP=$(host $1 | awk '{print $4}')
+  if [[ $? -gt 0 ]]
+  then
+    echo "Error: Can't resolve $NODE to an IP address"
+    exit 1
+  fi
+}
+
+# Global scope variables
+
+BASE_DEFINED=false
+
+#
+HOST_IP=""
 
 NODE=${1:-"_null"}
 if [[ $NODE == "_null" ]]
 then
   usage
   exit 1
-elif [[ $1 == "-h" || $1 == "help" || $1 == "--help" || $1 == "-help" ]]
-then
-  usage
-  exit 0
 else
+
+  while [[ $# -gt 0 ]]
+  do
+    case "$1" in
+
+      "-h"|"-help"|"--help")
+        usage
+        exit 0
+      ;;
+
+      "--base")
+        BASE_NAME=${2:-"_null"}
+        if [[ $BASE_NAME == "_null" ]]
+        then
+          echo "Error: you must supply a valid base name with this parameter"
+        fi
+        shift;
+        shift;
+      ;;
+
+      # Last parameter is host name
+      *)
+        HOST_CHECK=$(host $1 > /dev/null 2>&1)
+        if [[ $? != 0 ]]
+        then
+          echo "Error: $1 does not appear to be a recognized FQDN"
+          exit 1
+        else
+          NODE="$1"
+          shift
+        fi
+      ;;
+
+    esac
+  done
+
+  case $BASE_NAME in
+
+    "vmlab")
+      # Initial runlist to execute after node has Chef deployed
+      DEFAULT_RUNLIST='role[base_maxlab_vmlab]'
+      BASE_DEFINED=true
+    ;;
+
+    "nas")
+      # Initial runlist to execute after node has Chef deployed
+      DEFAULT_RUNLIST='role[base_maxlab_nas]'
+      BASE_DEFINED=true
+    ;;
+
+    "proxmox")
+      # Initial runlist to execute after node has Chef deployed
+      DEFAULT_RUNLIST='role[base_maxlab_proxmox]'
+      BASE_DEFINED=true
+    ;;
+
+    *)
+      echo "Error: Unknown base name $BASE_NAME specified."
+      usage
+      exit 1
+
+  esac
+
+  if [[ $BASE_DEFINED == false ]]
+  then
+    echo "Error: You need to specify a type of node with the --base parameter"
+    usage
+    exit 1
+  fi
 
   # My personal lab key
   SSH_KEY="/home/maxwell/.ssh/maxwell-lab"
@@ -33,16 +123,16 @@ else
   # Set new node to this Chef environment
   DEFAULT_ENVIRONMENT="maxlab"
 
-  # Initial runlist to execute after node has Chef deployed
-  DEFAULT_RUNLIST='role[base_maxlab_vmlab]'
+  # # Resolve IP of this FQDN if possible
+  # HOST_IP=$(host $NODE | awk '{print $4}')
+  # if [[ $? -gt 0 ]]
+  # then
+  #   echo "Error: Can't resolve $NODE to an IP address"
+  #   exit 1
+  # else
 
-  # Resolve IP of this FQDN if possible
-  HOST_IP=$(host $NODE | awk '{print $4}')
-  if [[ $? -gt 0 ]]
-  then
-    echo "Error: Can't resolve $NODE to an IP address"
-    exit 1
-  else
+    # This will set HOST_IP or exit if an IP address can't be found
+    host_check $NODE
 
     # Remove existing SSH keys for this node's IP (created before VM was rebuilt)
     if [[ ! -z ${HOST_IP} ]]
