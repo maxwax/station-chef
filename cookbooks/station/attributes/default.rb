@@ -133,6 +133,13 @@ node.default['station']['usr_local'] = {
   }
 }
 
+node.default['station']['typefaces'] = {
+  "tarfiles": [
+    "my-adobe",
+    "microsoft-tt-core"
+  ]
+}
+
 node.default['station']['mount_points'] = {
   "/net": [
     "auxdata",

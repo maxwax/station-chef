@@ -51,3 +51,6 @@ include_recipe 'station::fstrim'
 
 # Add additional groups to the system
 include_recipe 'station::other_groups'
+
+# Add optional typefaces from a local maxlab typeface repo
+include_recipe 'station::typefaces'

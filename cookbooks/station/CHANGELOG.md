@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.14.0
+
+* Deploy additional typefaces from local repo.maxlab file server
+
 # 0.13.0
 
 * Remove some automatically install font rpms that I don't use.
