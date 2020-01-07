@@ -131,49 +131,48 @@ else
   #   exit 1
   # else
 
-    # This will set HOST_IP or exit if an IP address can't be found
-    host_check $NODE
+  # This will set HOST_IP or exit if an IP address can't be found
+  host_check $NODE
 
-    # Remove existing SSH keys for this node's IP (created before VM was rebuilt)
-    if [[ ! -z ${HOST_IP} ]]
+  # Remove existing SSH keys for this node's IP (created before VM was rebuilt)
+  if [[ ! -z ${HOST_IP} ]]
+  then
+    echo "Removing old entries for this host in $HOME/.ssh/known_hosts"
+    sed -i 's/^.*'"${HOST_IP}"'.*$//g' $HOME/.ssh/known_hosts
+    sed -i '/^$/d' $HOME/.ssh/known_hosts
+  fi
+
+  echo "Checking for old Chef server node object"
+  NODE_SHOW_TEST=$(santoku maxlab node show ${NODE} > /dev/null 2>&1)
+  RESULT=$?
+  if [[ $RESULT == 0 ]]
+  then
+
+    # Delete existing node and client objects,
+    # remove existing SSH key from $HOME/known_hosts file
+    read -p "Would you like to erase ${NODE} first?" ERASE_YESNO
+    if [[ $ERASE_YESNO == "y" || $ERASE_YESNO == "yes" ]]
     then
-      echo "Removing old entries for this host in $HOME/.ssh/known_hosts"
-      sed -i 's/^.*'"${HOST_IP}"'.*$//g' $HOME/.ssh/known_hosts
-      sed -i '/^$/d' $HOME/.ssh/known_hosts
+      echo "Deleting old Chef server node object for ${NODE}"
+      santoku maxlab node delete ${NODE} --yes
+      echo "Deleting old Chef server client object for ${NODE}"
+      santoku maxlab client delete ${NODE} --yes
     fi
+  fi
 
-    echo "Checking for old Chef server node object"
-    NODE_SHOW_TEST=$(santoku maxlab node show ${NODE} > /dev/null 2>&1)
-    RESULT=$?
-    if [[ $RESULT == 0 ]]
-    then
+  # Deploy personal SSH key
+  ssh-copy-id -i $SSH_KEY root@${NODE}
 
-      # Delete existing node and client objects,
-      # remove existing SSH key from $HOME/known_hosts file
-      read -p "Would you like to erase ${NODE} first?" ERASE_YESNO
-      if [[ $ERASE_YESNO == "y" || $ERASE_YESNO == "yes" ]]
-      then
-        echo "Deleting old Chef server node object for ${NODE}"
-        santoku maxlab node delete ${NODE} --yes
-        echo "Deleting old Chef server client object for ${NODE}"
-        santoku maxlab client delete ${NODE} --yes
-      fi
-    fi
-
-    # Deploy personal SSH key
-    ssh-copy-id -i $SSH_KEY root@${NODE}
-
-    # If the key was deployed OK, bootstrap it
-    if [[ $? == 0 ]]
-    then
-      # Bootstrap with Chef using santoku to point to a specific config file
-      santoku maxlab bootstrap ${NODE} \
-        --connection-user root \
-        --ssh-identity-file $SSH_KEY \
-        --node-name ${NODE} \
-        --bootstrap-version "$CHEF_VERSION_PIN" \
-        --environment "$DEFAULT_ENVIRONMENT" \
-        --run-list "$DEFAULT_RUNLIST"
-    fi
+  # If the key was deployed OK, bootstrap it
+  if [[ $? == 0 ]]
+  then
+    # Bootstrap with Chef using santoku to point to a specific config file
+    santoku maxlab bootstrap ${NODE} \
+      --connection-user root \
+      --ssh-identity-file $SSH_KEY \
+      --node-name ${NODE} \
+      --bootstrap-version "$CHEF_VERSION_PIN" \
+      --environment "$DEFAULT_ENVIRONMENT" \
+      --run-list "$DEFAULT_RUNLIST"
   fi
 fi
