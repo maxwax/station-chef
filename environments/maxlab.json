@@ -1,0 +1,26 @@
+{
+  "name": "maxlab",
+  "description": "Maxlab Environment ",
+  "cookbook_versions": {
+  },
+  "json_class": "Chef::Environment",
+  "chef_type": "environment",
+  "default_attributes": {
+    "global": {
+      "repo_url": "http://repo.maxlab",
+      "dist_url": "http://repo.maxlab/dist",
+      "iso_url": "http://repo.maxlab/iso",
+      "files_url": "http://repo.maxlab/files",
+      "typefaces_url": "http://repo.maxlab/files/typefaces",
+      "chef_url": "https://chef.maxlab/organizations/maxlab",
+      "tftp_url": "http://repo.maxlab",
+      "upstream_ntp": "2.centos.pool.ntp.org",
+      "metric_submit_vip": "http://metric_submit.maxlab",
+      "metric_query_vip": "http://metric_query.maxlab",
+      "graphite_vip": "http://graphite.maxlab",
+      "graphite_vip": "http://grafana.maxlab"
+    }
+  },
+  "override_attributes": {
+  }
+}
