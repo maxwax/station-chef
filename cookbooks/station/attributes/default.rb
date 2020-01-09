@@ -25,6 +25,19 @@ node.default['station']['user'] = {
     "coding.conf",
     "vimrc"
   ],
+  "roxterm": {
+    "deploy_dir": ".config/roxterm.sourceforge.net",
+    "source_dir": "home/config/roxterm.sourceforge.net",
+    "config_files": {
+      "Colours": [
+        "solarized-dark",
+        "solarized-light"
+      ],
+      "Profiles": [
+        "maxlab"
+      ]
+    }
+  },
   "firewall": {
     "default_zone": "public",
     "services_allowed": [

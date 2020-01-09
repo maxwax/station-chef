@@ -54,3 +54,6 @@ include_recipe 'station::other_groups'
 
 # Add optional typefaces from a local maxlab typeface repo
 include_recipe 'station::typefaces'
+
+# Install and configure roxterm
+include_recipe 'station::roxterm'
