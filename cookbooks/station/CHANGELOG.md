@@ -1,5 +1,12 @@
 # station CHANGELOG
 
+# 0.14.3
+
+* Bug fix: Don't check for connection to maxlab home network by checking for node['domain']. Since the FQDN on this workstation is set statically, it will always return 'maxlab' even if connected elsewhere.
+* Instead: Just check gateway for now and we'll come back to this later.  Noted near the code that this is not an ideal way to do this.
+* Had two untar actions while installing typefaces.  Removed the redundant, unused one where we untarred to an untar directory then were going to move the files to /usr/share/fonts.  Now just untar with a cwd in /usr/share/fonts.
+* Changed variable name untar_dir to download_dir to reflect the change above.
+
 # 0.14.2
 
 * Bug fix: Create config directories for roxterm such as Colors and Profiles

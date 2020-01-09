@@ -13,10 +13,11 @@ Install optional typefaces via tar files from a local, private repository
 # Create a directory where all downloaded tar files will be unpacked.
 # This way we can delete this directory to clean up untarred files regardless
 # of the subdirectories created by the tar file extractionj
-untar_dir = "/tmp/untar"
+download_dir = "/tmp/typefaces"
 
 # We must be on the maxlab private network to access the typefaces repo
-if node['domain'] == "maxlab"
+# This is a REALLY LAME way to do this, but it'll work for right now
+if node['network']['default_gateway'] == "192.168.9.2"
 
   #
   # These are scripts I've published on github
@@ -26,14 +27,14 @@ if node['domain'] == "maxlab"
 
     # usr_local_dir expected to be bin, etc, sbin, etc
 
-    directory untar_dir do
+    directory download_dir do
       owner 'root'
       group 'root'
       mode 0755
       action :create
     end
 
-    download_filename = "#{untar_dir}/#{typeface_file}.tgz"
+    download_filename = "#{download_dir}/#{typeface_file}.tgz"
 
     remote_file download_filename do
       source "#{node['global']['typefaces_url']}/#{typeface_file}.tgz"
@@ -43,18 +44,13 @@ if node['domain'] == "maxlab"
       action :create
     end
 
-    execute "untar-#{typeface_file}" do
-      command "tar xf #{download_filename}"
-      cwd "#{untar_dir}"
-    end
-
     # Deploy fonts system-wide. Another option would be $HOME/.local/share/fonts
     execute "install-#{typeface_file}" do
-      command "tar xvf #{untar_dir}/#{typeface_file}.tgz"
+      command "tar xf #{download_dir}/#{typeface_file}.tgz"
       cwd "/usr/share/fonts"
     end
 
-    directory untar_dir do
+    directory download_dir do
       owner 'root'
       group 'root'
       mode 0755
