@@ -1,9 +1,14 @@
 # station CHANGELOG
 
+# 0.14.2
+
+* Bug fix: Create config directories for roxterm such as Colors and Profiles
+
 # 0.14.1
 
 * Deploy typefaces using .tgz not .tar suffix
 * Add maxwell-fonts-atari to typefaces list
+* Deploy roxterm and configure it
 
 # 0.14.0
 
