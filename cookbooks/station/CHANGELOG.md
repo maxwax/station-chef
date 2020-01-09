@@ -1,5 +1,10 @@
 # station CHANGELOG
 
+# 0.14.1
+
+* Deploy typefaces using .tgz not .tar suffix
+* Add maxwell-fonts-atari to typefaces list
+
 # 0.14.0
 
 * Deploy additional typefaces from local repo.maxlab file server

@@ -33,10 +33,10 @@ if node['domain'] == "maxlab"
       action :create
     end
 
-    download_filename = "#{untar_dir}/#{typeface_file}.tar"
+    download_filename = "#{untar_dir}/#{typeface_file}.tgz"
 
     remote_file download_filename do
-      source "#{node['global']['typefaces_url']}/#{typeface_file}.tar"
+      source "#{node['global']['typefaces_url']}/#{typeface_file}.tgz"
       owner 'root'
       group 'root'
       mode '0644'
@@ -50,7 +50,7 @@ if node['domain'] == "maxlab"
 
     # Deploy fonts system-wide. Another option would be $HOME/.local/share/fonts
     execute "install-#{typeface_file}" do
-      command "tar xvf #{untar_dir}/#{typeface_file}.tar"
+      command "tar xvf #{untar_dir}/#{typeface_file}.tgz"
       cwd "/usr/share/fonts"
     end
 
