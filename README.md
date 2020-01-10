@@ -45,12 +45,6 @@ Station performs the following actions:
 
 * Configures a small number of customizations for root user
 
-## Things Remaining to Automate:
-
-* Install [Slack](https://slack.com/downloads/instructions/fedora) which doesn't offer static rpm locations
-
-* Install [VirtualBox Extension Pack](https://www.virtualbox.org/wiki/Downloads) which is tied to the specific version of VirtualBox installed
-
 ## Step-by-Step Rebuild Procedure
 
 ### Install new Fedora Linux OS
@@ -101,8 +95,6 @@ This procedure is available when the previous home directory was kept on a non-r
   1. Logout and back in to start using restored home directory.
   1. *Be on the lookout for problems with upgraded programs using old config files or settings*
 
-
-
 ### Provision the node
 
 1. Clone this git repo
@@ -133,3 +125,76 @@ The bootstrap script simply performs the following tasks. It's good to know them
   cd station
   sudo chef-client -z
   ```
+
+### Manual Application Installs
+
+* Install the most recent version of [Slack](https://slack.com/downloads/instructions/fedora)
+
+* Download and install [VirtualBox Extension Pack](https://www.virtualbox.org/wiki/Downloads). This appears to require a manual process.
+
+### Manual Configuration Tasks
+
+* Consider setting a static hostname.
+```bash
+sudo hostnamectl set-hostname mynode.maxlab
+```
+
+* Verify the timezone in use. Make sure its correct
+```timedatectl
+timedatectl
+               Local time: Thu 2020-01-09 22:44:18 MST
+           Universal time: Fri 2020-01-10 05:44:18 UTC
+                 RTC time: Fri 2020-01-10 05:44:18
+                Time zone: America/Denver (MST, -0700)
+System clock synchronized: yes
+              NTP service: active
+          RTC in local TZ: no
+```
+
+### Gnome Tweak Tool Configurations
+
+After restoring my home directory most of these should already be restored, so verify that these are set as required.
+
+* General
+  * Suspend lid on laptop close - disabled
+* Top Bar
+  * Show Weekday - enabled
+  * Show Date - enabled
+  * Show Battery Percentage - enabled (Maybe?)
+* Windows
+  * Attach Model Dialogs - enabled
+  * Edge Tiling - enabled
+  * Window Focus - Focus on Hover (Mousefocus)
+* Window Titlebars
+  * Double Click Titlebar Action - Toggle Maximize Vertically
+  * Show Minimize - enabled
+  * Show Maximize - enabled
+* Workspaces
+  * Static Workspaces - enabled
+  * Number of Workspaces - 5
+
+### Gnome Shell Extensions
+
+These are in addition to the extensions installed by default in Fedora or by the Chef provisioning script.
+
+* Visit [extensions.gnome.org](https://extensions.gnome.org/) and install the following extensions:
+
+  * [Freon](https://extensions.gnome.org/extension/841/freon/) - Gnome temperature sensors applet
+
+  * [gTile](https://extensions.gnome.org/extension/28/gtile/) - Window tiling, sizing and positioning
+
+  * [Launch New Instance](https://extensions.gnome.org/extension/600/launch-new-instance/) - Always launch a new instance even if an application is already running
+
+  * [Multi-Monitors Add-On](https://extensions.gnome.org/extension/921/multi-monitors-add-on/) - Modifies GNOME desktop to use more than one monitor for virtual desktops
+
+  * [OpenWeather](https://extensions.gnome.org/extension/750/openweather/) - Weather conditions applet for Gnome title bar
+
+  * [Recent Items](https://extensions.gnome.org/extension/977/recent-items/) - Track recently opened files and add drop down applet to make re-opening them very easy
+
+  * [https://extensions.gnome.org/extension/906/sound-output-device-chooser/](https://extensions.gnome.org/extension/906/sound-output-device-chooser/) - Select active speakers and microphone. Very useful after docking/undocking laptops from desk to roaming.
+
+  * [Tweaks in System Menu](https://extensions.gnome.org/extension/1653/tweaks-in-system-menu/) - Custommization to put Gnome Tweaks Tool launch icon in system menu near control panel icon for natural accessibility.
+
+### Control Panel customizations
+
+* Keyboard Shortcuts - 'Lower window below other windows - Menu (key)'
