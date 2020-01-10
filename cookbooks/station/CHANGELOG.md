@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.14.4
+
+* Update vital-backup to deploy v1.2.0
+
 # 0.14.3
 
 * Bug fix: Don't check for connection to maxlab home network by checking for node['domain']. Since the FQDN on this workstation is set statically, it will always return 'maxlab' even if connected elsewhere.
