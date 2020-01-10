@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=East Shell
+Comment=gnome-terminal positioned in the bottom right (east side) of the primary display [maxdesktop]
+Keywords=east
+TryExec=gnome-terminal
+Exec=coding east
+Icon=utilities-terminal
+Type=Application
+Categories=GNOME;GTK;System;TerminalEmulator;
+StartupNotify=true

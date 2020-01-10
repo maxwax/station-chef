@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Far Shell
+Comment=gnome-terminal positioned in the far right of the secondary display [maxdesktop]
+Comment=Use the command line
+Keywords=far
+TryExec=gnome-terminal
+Exec=coding far
+Icon=utilities-terminal
+Type=Application
+Categories=GNOME;GTK;System;TerminalEmulator;
+StartupNotify=true

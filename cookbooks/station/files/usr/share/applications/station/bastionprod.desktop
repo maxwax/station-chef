@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Bastion Prod Shell
+Comment=gnome-terminal for bastion (production) access positioned in the bottom left of the primary display [maxdesktop]
+Keywords=bastion,prod
+TryExec=gnome-terminal
+Exec=coding bastionprod
+Icon=utilities-terminal
+Type=Application
+Categories=GNOME;GTK;System;TerminalEmulator;
+StartupNotify=true

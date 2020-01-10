@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Mid Shell
+Comment=gnome-terminal positioned in the top middle of the primary display [maxdesktop]
+Comment=Use the command line
+Keywords=mid
+TryExec=gnome-terminal
+Exec=coding mid
+Icon=utilities-terminal
+Type=Application
+Categories=GNOME;GTK;System;TerminalEmulator;
+StartupNotify=true

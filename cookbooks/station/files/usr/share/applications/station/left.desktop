@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Left Shell
+Comment=gnome-terminal positioned in the top left of the primary display [maxdesktop]
+Keywords=left
+TryExec=gnome-terminal
+Exec=coding left
+Icon=utilities-terminal
+Type=Application
+Categories=GNOME;GTK;System;TerminalEmulator;
+StartupNotify=true

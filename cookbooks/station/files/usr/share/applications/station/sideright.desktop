@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Sideright Shell
+Comment=gnome-terminal positioned in the middle right of the secondary display [maxdesktop]
+Comment=Use the command line
+Keywords=sideright
+TryExec=gnome-terminal
+Exec=coding sideright
+Icon=utilities-terminal
+Type=Application
+Categories=GNOME;GTK;System;TerminalEmulator;
+StartupNotify=true

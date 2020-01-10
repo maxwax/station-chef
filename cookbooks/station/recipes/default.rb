@@ -19,6 +19,9 @@ include_recipe 'station::packages'
 # Install and Remove standard sets of wanted/unwanted packages
 include_recipe 'station::usr_local'
 
+# Install and configure GNOME desktop shortcuts
+include_recipe 'station::shortcuts'
+
 # Install personal files for primary user
 include_recipe 'station::user'
 

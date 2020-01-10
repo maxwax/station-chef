@@ -61,6 +61,26 @@ node.default['station']['root'] = {
   ]
 }
 
+node.default['station']['shortcuts'] = {
+  "dir": "/usr/share/applications/station",
+  "files": [
+    "left",
+    "right",
+    "mid",
+    "west",
+    "east",
+    "center",
+    "test",
+    "far",
+    "sideleft",
+    "sideright",
+    "work",
+    "bastionprod",
+    "bastionstaging",
+    "new"
+  ]
+}
+
 node.default['station']['other_groups'] = {
   "plex": {
     "gid": 1200,

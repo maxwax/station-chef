@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Right Shell
+Comment=gnome-terminal positioned in the top right of the primary display [maxdesktop]
+Keywords=right
+TryExec=gnome-terminal
+Exec=coding right
+Icon=utilities-terminal
+Type=Application
+Categories=GNOME;GTK;System;TerminalEmulator;
+StartupNotify=true

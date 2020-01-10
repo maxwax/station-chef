@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Position Work Windows
+Comment=Use the command line [maxdesktop]
+Keywords=shell;prompt;command;commandline;work
+TryExec=gnome-terminal
+Exec=/usr/local/bin/position
+Icon=utilities-terminal
+Type=Application
+Categories=GNOME;GTK;System;TerminalEmulator;
+StartupNotify=true

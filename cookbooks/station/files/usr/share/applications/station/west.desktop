@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=West Shell
+Comment=gnome-terminal positioned in the bottom left (west side) of the primary display [maxdesktop]
+Keywords=west
+TryExec=gnome-terminal
+Exec=coding west
+Icon=utilities-terminal
+Type=Application
+Categories=GNOME;GTK;System;TerminalEmulator;
+StartupNotify=true

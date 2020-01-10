@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Bastion Staging Shell
+Comment=gnome-terminal for bastion (staging) access positioned in the bottom left of the primary display [maxdesktop]
+Keywords=bastion,staging
+TryExec=gnome-terminal
+Exec=coding bastionstaging
+Icon=utilities-terminal
+Type=Application
+Categories=GNOME;GTK;System;TerminalEmulator;
+StartupNotify=true

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Center Shell
+Comment=gnome-terminal positioned in the bottom middle (center) of the primary display [maxdesktop]
+Keywords=center
+TryExec=gnome-terminal
+Exec=coding center
+Icon=utilities-terminal
+Type=Application
+Categories=GNOME;GTK;System;TerminalEmulator;
+StartupNotify=true

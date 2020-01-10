@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Test Shell
+Comment=gnome-terminal positioned in the top left of the secondary display [maxdesktop]
+Comment=Use the command line
+Keywords=test
+TryExec=gnome-terminal
+Exec=coding test
+Icon=utilities-terminal
+Type=Application
+Categories=GNOME;GTK;System;TerminalEmulator;
+StartupNotify=true
