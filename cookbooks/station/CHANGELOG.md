@@ -1,5 +1,14 @@
 # station CHANGELOG
 
+# 0.14.6
+
+* Remove work.desktop files. Let 'position' remote script deploy this as position.desktop
+
+# 0.14.5
+
+* Deploy GNOME .desktop files to enable launcher shortcuts.
+* Added static shortcut .desktop files to this cookbook
+
 # 0.14.4
 
 * Update vital-backup to deploy v1.2.0
