@@ -74,7 +74,6 @@ node.default['station']['shortcuts'] = {
     "far",
     "sideleft",
     "sideright",
-    "work",
     "bastionprod",
     "bastionstaging",
     "new"
