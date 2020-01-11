@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.16.0
+
+* Trying out a method to use node['station']['remote_scripts']['install_scripts'] to track the scripts that have been downloaded, untarred and installed via shell script.  If not seen as installed, install it and store the script name and version in a normal level node attribute.  Next chef run, see this and don't attempt to re-install the same version.  Worth a try.
+
 # 0.15.0
 
 * Moved firewall configuration from under user config attributes to higher level node['station']['firewall'].  Things under node['station']['user'] should be specific to my user while top level items should be system wide configuration -- like firewall settings.
