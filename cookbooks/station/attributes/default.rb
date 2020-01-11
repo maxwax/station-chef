@@ -37,18 +37,20 @@ node.default['station']['user'] = {
         "maxlab"
       ]
     }
-  },
-  "firewall": {
-    "default_zone": "public",
-    "services_allowed": [
-      "ssh",
-      "samba-client",
-      "dhcpv6-client",
-      "mdns"
-    ],
-    "ports_allowed": [
-    ]
   }
+}
+
+node.default['station']['firewall'] =
+{
+  "default_zone": "public",
+  "services_allowed": [
+    "ssh",
+    "samba-client",
+    "dhcpv6-client",
+    "mdns"
+  ],
+  "ports_allowed": [
+  ]
 }
 
 node.default['station']['root'] = {

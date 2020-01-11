@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.15.0
+
+* Moved firewall configuration from under user config attributes to higher level node['station']['firewall'].  Things under node['station']['user'] should be specific to my user while top level items should be system wide configuration -- like firewall settings.
+
 # 0.14.6
 
 * Remove work.desktop files. Let 'position' remote script deploy this as position.desktop

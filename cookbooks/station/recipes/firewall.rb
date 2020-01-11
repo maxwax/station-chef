@@ -10,24 +10,22 @@ Set default firewalld zone and allow some services
 #>
 =end
 
-my = node['station']['user']
-
 # Set the default zone
 execute "set-default-zone" do
-  command "firewall-cmd --set-default-zone=#{my['firewall']['default_zone']}"
+  command "firewall-cmd --set-default-zone=#{node['station']['firewall']['default_zone']}"
 end
 
 # Open each allowed service
-my['firewall']['services_allowed'].each do |service_name|
+node['station']['firewall']['services_allowed'].each do |service_name|
   execute "add-service #{service_name}" do
-    command "firewall-cmd --zone=#{my['firewall']['default_zone']} --add-service=#{service_name} --permanent"
+    command "firewall-cmd --zone=#{node['station']['firewall']['default_zone']} --add-service=#{service_name} --permanent"
   end
 end
 
 # Open each allowed port
-my['firewall']['ports_allowed'].each do |port_name|
+node['station']['firewall']['ports_allowed'].each do |port_name|
   execute "--add-port #{port_name}" do
-    command "firewall-cmd --zone=#{my['firewall']['default_zone']} --add-port=#{port_name} --permanent"
+    command "firewall-cmd --zone=#{node['station']['firewall']['default_zone']} --add-port=#{port_name} --permanent"
   end
 end
 
