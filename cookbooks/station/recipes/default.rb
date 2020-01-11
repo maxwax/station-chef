@@ -60,3 +60,6 @@ include_recipe 'station::typefaces'
 
 # Install and configure roxterm
 include_recipe 'station::roxterm'
+
+# Tag this node as managed by the station cookbook
+tag('station-managed')

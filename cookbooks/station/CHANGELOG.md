@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.17.0
+
+* At the end of the Chef run using station to provision this node, tag it with 'station-managed' as a way of marking that this is in fact managed by station.  This was a first test of adding tags within a recipe.
+
 # 0.16.0
 
 * Trying out a method to use node['station']['remote_scripts']['install_scripts'] to track the scripts that have been downloaded, untarred and installed via shell script.  If not seen as installed, install it and store the script name and version in a normal level node attribute.  Next chef run, see this and don't attempt to re-install the same version.  Worth a try.
