@@ -172,26 +172,35 @@ After restoring my home directory most of these should already be restored, so v
 * Workspaces
   * Static Workspaces - enabled
   * Number of Workspaces - 5
+  * Display Handling - Workspaces Span Displays
 
 ### Gnome Shell Extensions
+
+To make these installable via Chrome, visit [GNOME Shell Integration Extension for Chrome] and click "Add to Chrome"
 
 These are in addition to the extensions installed by default in Fedora or by the Chef provisioning script.
 
 * Visit [extensions.gnome.org](https://extensions.gnome.org/) and install the following extensions:
 
-  * [Freon](https://extensions.gnome.org/extension/841/freon/) - Gnome temperature sensors applet
+  * [Freon by UshakovVasili](https://extensions.gnome.org/extension/841/freon/) - Gnome temperature sensors applet
 
   * [gTile](https://extensions.gnome.org/extension/28/gtile/) - Window tiling, sizing and positioning
+    * Customize this extension with details
 
   * [Launch New Instance](https://extensions.gnome.org/extension/600/launch-new-instance/) - Always launch a new instance even if an application is already running
 
-  * [Multi-Monitors Add-On](https://extensions.gnome.org/extension/921/multi-monitors-add-on/) - Modifies GNOME desktop to use more than one monitor for virtual desktops
+  * [Multi-Monitors Add-On by spin83](https://extensions.gnome.org/extension/921/multi-monitors-add-on/) - Modifies GNOME desktop to use more than one monitor for virtual desktops
 
   * [OpenWeather](https://extensions.gnome.org/extension/750/openweather/) - Weather conditions applet for Gnome title bar
 
-  * [Recent Items](https://extensions.gnome.org/extension/977/recent-items/) - Track recently opened files and add drop down applet to make re-opening them very easy
+  * [Recent Items by leonardo.bartoli](https://extensions.gnome.org/extension/977/recent-items/) - Track recently opened files and add drop down applet to make re-opening them very easy
+    * Customize this extension with details
+    * Display File Full Path - disabled
+    * Number of Items - 64
+    * Display Indicator Arrow - disabled
+    * Case Sensitive Search - disabled
 
-  * [https://extensions.gnome.org/extension/906/sound-output-device-chooser/](https://extensions.gnome.org/extension/906/sound-output-device-chooser/) - Select active speakers and microphone. Very useful after docking/undocking laptops from desk to roaming.
+  * [Sound Input & Output Chooser by kgshank](https://extensions.gnome.org/extension/906/sound-output-device-chooser/) - Select active speakers and microphone. Very useful after docking/undocking laptops from desk to roaming.
 
   * [Tweaks in System Menu](https://extensions.gnome.org/extension/1653/tweaks-in-system-menu/) - Custommization to put Gnome Tweaks Tool launch icon in system menu near control panel icon for natural accessibility.
 
