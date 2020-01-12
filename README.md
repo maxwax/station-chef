@@ -186,12 +186,20 @@ These are in addition to the extensions installed by default in Fedora or by the
 
   * [gTile](https://extensions.gnome.org/extension/28/gtile/) - Window tiling, sizing and positioning
     * Customize this extension with details
+    * Show Icon - disabled
+    * Grid Sizes - Customize
+    * Resize Presets - See screenshot elsewhere
+    * Margins - 0 for all
 
   * [Launch New Instance](https://extensions.gnome.org/extension/600/launch-new-instance/) - Always launch a new instance even if an application is already running
 
   * [Multi-Monitors Add-On by spin83](https://extensions.gnome.org/extension/921/multi-monitors-add-on/) - Modifies GNOME desktop to use more than one monitor for virtual desktops
+    * Customize this extension with details
+    * Show Multi Monitors indicator on Top Panel - disabled
 
   * [OpenWeather](https://extensions.gnome.org/extension/750/openweather/) - Weather conditions applet for Gnome title bar
+    * Customize this extension with details
+    * Set location - Denver, CO
 
   * [Recent Items by leonardo.bartoli](https://extensions.gnome.org/extension/977/recent-items/) - Track recently opened files and add drop down applet to make re-opening them very easy
     * Customize this extension with details
