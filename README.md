@@ -130,7 +130,9 @@ The bootstrap script simply performs the following tasks. It's good to know them
 
 * Install the most recent version of [Slack](https://slack.com/downloads/instructions/fedora)
 
-* Download and install [VirtualBox Extension Pack](https://www.virtualbox.org/wiki/Downloads). This appears to require a manual process.
+* Install [VirtualBox Extension Pack](https://www.virtualbox.org/wiki/Downloads). This appears to require a manual process.
+
+* Install most recent [draw.io rpm for Linux](https://github.com/jgraph/drawio-desktop/releases)
 
 ### Manual Configuration Tasks
 
