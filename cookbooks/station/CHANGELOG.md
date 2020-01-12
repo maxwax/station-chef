@@ -1,5 +1,12 @@
 # station CHANGELOG
 
+# 0.18.0
+
+* Add documentation to list of packages to be installed by converting it from an array to a hash.  Add summary of each package in the attributes file.  Modify the recipe to construct an array of package names and then call the package resource once to install everything.  This will help me understand why I have things installed
+* Adding new packages:
+  * gdbm-devel - to resolve issues with building ruby gems dbm and gdbm
+  * ruby-devel - to resolve issues updating and building ruby gems
+
 # 0.17.0
 
 * At the end of the Chef run using station to provision this node, tag it with 'station-managed' as a way of marking that this is in fact managed by station.  This was a first test of adding tags within a recipe.
