@@ -21,6 +21,7 @@ function usage {
 
 CB=${1-:"_null"}
 if [[ $CB == "_null" ]]
+then
   echo "Error: No cookbook name supplied"
   usage
   exit 1
@@ -30,6 +31,7 @@ else
   santoku maxlab cookbook upload maxlab_${CB} \
     -o /home/maxwell/projects/chef/maxlab/cookbooks
 
+  echo "Uploading data bags in config_${CB}"
   for EACHF in /home/maxwell/projects/chef/maxlab/data_bags/config_${CB}/*
   do
     santoku maxlab data bag from file config_${CB} $EACHF

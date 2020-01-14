@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.19.1
+
+* Fixed bug in script update-maxlab-chef, and added a second status statement within it.
+
 # 0.19.0
 
 * Added 'update-maxlab-chef' script for deployment to $HOME/bin.
