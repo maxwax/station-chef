@@ -14,7 +14,8 @@ node.default['station']['user'] = {
     "goatari",
     "library-sync",
     "reset-evolution",
-    "reset-gnome"
+    "reset-gnome",
+    "update-maxlab-chef"
   ],
   "personal_dot_files": [
     "bashrc",

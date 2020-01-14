@@ -3,7 +3,7 @@ maintainer 'Maxwell Spangler'
 maintainer_email 'maxcode@maxwellspangler.com'
 license 'All Rights Reserved'
 description 'Installs/Configures station'
-version '0.18.0'
+version '0.19.0'
 chef_version '>= 14.0'
 
 # The `issues_url` points to the location where issues for this cookbook are
@@ -17,3 +17,5 @@ chef_version '>= 14.0'
 # a Supermarket.
 #
 # source_url 'https://github.com/<insert_org_here>/station'
+
+supports 'fedora', '>= 31.0'

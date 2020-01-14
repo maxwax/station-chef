@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.19.0
+
+* Added 'update-maxlab-chef' script for deployment to $HOME/bin.
+
 # 0.18.0
 
 * Add documentation to list of packages to be installed by converting it from an array to a hash.  Add summary of each package in the attributes file.  Modify the recipe to construct an array of package names and then call the package resource once to install everything.  This will help me understand why I have things installed

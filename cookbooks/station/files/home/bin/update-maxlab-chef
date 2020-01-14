@@ -1,0 +1,38 @@
+#!/bin/bash
+
+#
+# Simple, very personal script to push local files to maxlab Chef server for testing/development/use.
+#
+# Home lab, personal use ONLY.
+#
+
+VERSION="1.0.0"
+VERSION_DATE="2020-01-13"
+
+function usage {
+  echo "update-maxlab-chef  $VERSION  $VERSION_DATE"
+  echo
+  echo "Syntax: update-maxlab-chef <COOKBOOK1>"
+  echo
+  echo "Example: update-maxlab-chef bind"
+  echo "         ^ upload maxlab_bind and any config_bind data bags"
+  echo
+}
+
+CB=${1-:"_null"}
+if [[ $CB == "_null" ]]
+  echo "Error: No cookbook name supplied"
+  usage
+  exit 1
+else
+
+  echo "Uploading cookbook maxlab_${CB}"
+  santoku maxlab cookbook upload maxlab_${CB} \
+    -o /home/maxwell/projects/chef/maxlab/cookbooks
+
+  for EACHF in /home/maxwell/projects/chef/maxlab/data_bags/config_${CB}/*
+  do
+    santoku maxlab data bag from file config_${CB} $EACHF
+  done
+
+fi
