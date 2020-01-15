@@ -54,9 +54,6 @@ node['station']['usr_local']['remote_scripts'].each do |usr_local_dir, script_de
 
   script_details.each do |script_name, script_info|
 
-    puts "CHECK TO SEE IF REMOTE SCRIPT AND VERSION IS ALREADY INSTALLED"
-    pp node['station']['remote_scripts']
-
     # If we have never tracked installing this script before, install it
     # OR
     # We've installed the script, but how about *this* version of it?
