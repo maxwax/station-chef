@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.20.0
+
+* Adding package dependencies for VirtualBox-6.1
+
 # 0.19.2
 
 * More fixes and such to update-maxlab-chef script. Script now works in a wildcard fashion so I can submit multiple phrases and any cookbooks or data bags which meet those phrases will be uploaded to my local Chef server for testing.

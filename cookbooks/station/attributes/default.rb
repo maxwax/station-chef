@@ -233,6 +233,17 @@ case plat_vers
 
     # List of default packages to be installed for this Platform+Version
     node.default['station']['install_packages'] = {
+      "binutils": "for VirtualBox-6.1 kernel modules",
+      "gcc": "for VirtualBox-6.1 kernel modules",
+      "make": "for VirtualBox-6.1 kernel modules",
+      "libgomp": "for VirtualBox-6.1 kernel modules",
+      "glibc-headers": "for VirtualBox-6.1 kernel modules",
+      "glibc-devel": "for VirtualBox-6.1 kernel modules",
+      "kernel-headers": "for VirtualBox-6.1 kernel modules",
+      "kernel-devel": "for VirtualBox-6.1 kernel modules",
+      "qt5-qtx11extras": "for VirtualBox-6.1 kernel modules",
+      "libxkbcommon": "for VirtualBox-6.1 kernel modules",
+
       "amule": "File sharing client compatible with eDonkey (rpmfusion-free)",
       "atari++": "Unix based emulator of the Atari eight bit computers (fedora)",
       "autodownloader": "GUI-tool to automate the download of certain files (updates)",
