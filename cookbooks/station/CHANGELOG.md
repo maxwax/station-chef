@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.19.2
+
+* More fixes and such to update-maxlab-chef script. Script now works in a wildcard fashion so I can submit multiple phrases and any cookbooks or data bags which meet those phrases will be uploaded to my local Chef server for testing.
+
 # 0.19.1
 
 * Fixed bug in script update-maxlab-chef, and added a second status statement within it.

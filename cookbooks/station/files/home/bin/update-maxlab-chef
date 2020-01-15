@@ -12,7 +12,7 @@ VERSION_DATE="2020-01-13"
 function usage {
   echo "update-maxlab-chef  $VERSION  $VERSION_DATE"
   echo
-  echo "Syntax: update-maxlab-chef <COOKBOOK1>"
+  echo "Syntax: update-maxlab-chef <COOKBOOK1> <COOKBOOK2>"
   echo
   echo "Example: update-maxlab-chef bind"
   echo "         ^ upload maxlab_bind and any config_bind data bags"
@@ -27,14 +27,52 @@ then
   exit 1
 else
 
-  echo "Uploading cookbook maxlab_${CB}"
-  santoku maxlab cookbook upload maxlab_${CB} \
-    -o /home/maxwell/projects/chef/maxlab/cookbooks
-
-  echo "Uploading data bags in config_${CB}"
-  for EACHF in /home/maxwell/projects/chef/maxlab/data_bags/config_${CB}/*
+  while [[ $# -gt 0 ]]
   do
-    santoku maxlab data bag from file config_${CB} $EACHF
-  done
+    CB=${1-:"_null"}
 
+    echo "COOKBOOKS: Uploading cookbooks for phrase ${CB}"
+    COOK_COUNT=$(ls -1 /home/maxwell/projects/chef/maxlab/cookbooks/*${CB}* 2>/dev/null | grep -v 'not found' | wc -l )
+
+    if [[ $COOK_COUNT -gt 0 ]]
+    then
+      for EACHCOOK in /home/maxwell/projects/chef/maxlab/cookbooks/*${CB}*
+      do
+        BASECOOK=$(basename $EACHCOOK)
+        echo "    Uploading cookbook $BASECOOK"
+        santoku maxlab cookbook upload ${BASECOOK} \
+          -o /home/maxwell/projects/chef/maxlab/cookbooks
+      done
+    else
+      echo "    No cookbooks were found for phrase ${CB}"
+    fi
+
+    echo
+
+    echo "DATA BAGS: Uploading data bags for phrase ${CB}"
+    BAG_COUNT=$(ls -1 /home/maxwell/projects/chef/maxlab/data_bags/*${CB}* 2>/dev/null | grep -v 'not found' | wc -l )
+
+    if [[ $BAG_COUNT -gt 0 ]]
+    then
+      for EACHBAG in /home/maxwell/projects/chef/maxlab/data_bags/*${CB}*
+      do
+        BASEBAG=$(basename $EACHBAG)
+        echo "    Uploading data bags within $BASEBAG"
+
+        for EACHF in /home/maxwell/projects/chef/maxlab/data_bags/${BASEBAG}/*.json
+        do
+          echo "    Uploading data bag $EACHF"
+          santoku maxlab data bag from file ${BASEBAG} $EACHF
+        done
+
+      done
+    else
+      echo "    No data bags were found for phrase ${CB}"
+    fi
+
+    echo
+
+    # Next CLI parameter, please
+    shift
+  done
 fi
