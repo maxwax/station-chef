@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.20.1
+
+* Downgrading auto install of VirtulBox from 6.1 to 6.0. Vagrant doesn't support 6.1 yet.
+
 # 0.20.0
 
 * Adding package dependencies for VirtualBox-6.1

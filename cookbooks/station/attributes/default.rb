@@ -197,8 +197,8 @@ node.default['station']['mount_points'] = {
 }
 
 node.default['station']['virtualbox'] = {
-  "version": "6.1",
-  "package_name": "VirtualBox-6.1",
+  "version": "6.0",
+  "package_name": "VirtualBox-6.0",
   "repo_source": "https://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo",
   "source": "https://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo",
   "signing_key_source": "https://www.virtualbox.org/download/oracle_vbox.asc",
