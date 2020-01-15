@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.20.2
+
+* Back to VirtualBox-6.1 because Oracle's Virtualbox repos have a bad build for VirtualBox-6.0 that won't compile anymore.
+
 # 0.20.1
 
 * Downgrading auto install of VirtulBox from 6.1 to 6.0. Vagrant doesn't support 6.1 yet.
