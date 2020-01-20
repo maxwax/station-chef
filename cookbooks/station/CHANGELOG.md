@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.21.1
+
+* Deploy nas 1.2.0 script.
+
 # 0.21.0
 
 * Added fedora-media-writer and livecd-to-mediums packages.
