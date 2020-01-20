@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.21.0
+
+* Added fedora-media-writer and livecd-to-mediums packages.
+
 # 0.20.2
 
 * Back to VirtualBox-6.1 because Oracle's Virtualbox repos have a bad build for VirtualBox-6.0 that won't compile anymore.

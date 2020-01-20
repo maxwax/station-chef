@@ -243,7 +243,8 @@ case plat_vers
       "kernel-devel": "for VirtualBox-6.1 kernel modules",
       "qt5-qtx11extras": "for VirtualBox-6.1 kernel modules",
       "libxkbcommon": "for VirtualBox-6.1 kernel modules",
-
+      "mediawriter": "Fedora Media Writer for creating USB boot drives",
+      "livecd-iso-to-mediums": "Scripts for creating custom USB boot drives",
       "amule": "File sharing client compatible with eDonkey (rpmfusion-free)",
       "atari++": "Unix based emulator of the Atari eight bit computers (fedora)",
       "autodownloader": "GUI-tool to automate the download of certain files (updates)",
