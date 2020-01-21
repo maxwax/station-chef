@@ -1,5 +1,11 @@
 # station CHANGELOG
 
+# 0.21.2
+
+* Alias for bc that uses -q to suppress warranty warning
+* Moved my auxillary monitor from right side of main display to left, so updated position.conf and coding.conf to position and size well used apps and terminal windows.
+* Deployed updated position script from github.
+
 # 0.21.1
 
 * Deploy nas 1.2.0 script.

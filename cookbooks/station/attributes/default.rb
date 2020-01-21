@@ -122,8 +122,8 @@ node.default['station']['usr_local'] = {
       },
       "position": {
         "source": "https://github.com/maxwax/position/archive",
-        "filename": "v1.1.0.tar.gz",
-        "version": "1.1.0",
+        "filename": "v1.1.1.tar.gz",
+        "version": "1.1.1",
         "file_type": "tgz",
         "install_script": "install.sh"
       }
