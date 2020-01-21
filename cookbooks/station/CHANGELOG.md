@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.21.2
+
+* Alias for bc that uses -q to suppress warranty warning
+
 # 0.21.1
 
 * Deploy nas 1.2.0 script.
