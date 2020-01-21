@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.21.3
+
+* Deploy coding v1.1.0
+
 # 0.21.2
 
 * Alias for bc that uses -q to suppress warranty warning

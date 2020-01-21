@@ -115,8 +115,8 @@ node.default['station']['usr_local'] = {
     "bin": {
       "coding": {
         "source": "https://github.com/maxwax/coding/archive",
-        "filename": "v1.0.1.tar.gz",
-        "version": "1.0.1",
+        "filename": "v1.1.0.tar.gz",
+        "version": "1.1.0",
         "file_type": "tgz",
         "install_script": "install.sh"
       },
