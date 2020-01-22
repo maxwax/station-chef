@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.21.4
+
+* Screen real estate mgmt: Updated coding.conf config file to load sideleft and sideright windows below test and far.
+
 # 0.21.3
 
 * Deploy coding v1.1.0
