@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.22.0
+
+* Used 'chef shell-init bash' to generate some Chef oriented bash settings and drop them in $HOME/.bashrc
+
 # 0.21.4
 
 * Screen real estate mgmt: Updated coding.conf config file to load sideleft and sideright windows below test and far.
