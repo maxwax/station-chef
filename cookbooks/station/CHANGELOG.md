@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.22.1
+
+* Added thunar file manager to gain a tree capable file manager.
+
 # 0.22.0
 
 * Used 'chef shell-init bash' to generate some Chef oriented bash settings and drop them in $HOME/.bashrc

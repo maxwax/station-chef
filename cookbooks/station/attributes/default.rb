@@ -233,6 +233,7 @@ case plat_vers
 
     # List of default packages to be installed for this Platform+Version
     node.default['station']['install_packages'] = {
+      "thunar": "Tree based file manager",
       "binutils": "for VirtualBox-6.1 kernel modules",
       "gcc": "for VirtualBox-6.1 kernel modules",
       "make": "for VirtualBox-6.1 kernel modules",
