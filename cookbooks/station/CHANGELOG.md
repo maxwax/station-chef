@@ -1,6 +1,14 @@
 
 # station CHANGELOG
 
+# 0.22.1 Adjust $PATH in $HOME/.bashrc
+
+* $HOME/.bashrc: Remove some redundancy between Chef Workstation ruby + gems and system ruby + gems
+* $HOME/.bashrc: Add two functions that set ruby to chef workstation or system. (Experimental)
+* bootstrap.sh: knife node command to set environment was broken because of an extra 'run_list' within it. Removed this and it should now work.
+* station/README.md: Removed redundant text from cookbook docs
+* README.md: Documentation update for steps performed by bootstrap.sh
+
 # 0.22.1
 
 * Added thunar file manager to gain a tree capable file manager.

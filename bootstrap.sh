@@ -7,6 +7,7 @@
 # to automate provisioning of my personal workstation
 #
 # 2019-12-20 Initial WIP
+# 2020-02-04Bug fix on knife node environment set.. 
 
 cd $HOME/Downloads
 
@@ -38,7 +39,7 @@ sudo chown -R $USER:$USER nodes
 sudo knife node run_list add $(hostname -f) 'recipe[station]' -z
 
 # Set the new node to the 'maxlab' environment
-sudo knife node run_list environment set $(hostname -f) 'maxlab' -z
+sudo knife node environment set $(hostname -f) 'maxlab' -z
 
 # Now run chef-client again with the station run list
 sudo chef-client -z

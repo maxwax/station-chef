@@ -114,13 +114,13 @@ cd station
 
 The bootstrap script simply performs the following tasks. It's good to know them in case something goes wrong and you need to overcome any obstacles:
 
-1. Launch Firefox to download [latest Chef Workstation for Red Hat Linux 8](https://downloads.chef.io/chef-workstation/)
-1. Install Chef workstation with ```sudo dnf install chef-workstation*rpm```
-1. Run ```sudo chef-client -z``` to create a node object for this workstation
-1. Change the ownership of the newly created Chef node object to be owned by your user.
-1. Set this node's environment to 'maxlab'
-1. Append 'recipe[station]' to this node's run_list
-1. Now run `sudo chef-client -z` again to provision system
+1. It will: Launch Firefox to download [latest Chef Workstation for Red Hat Linux 8](https://downloads.chef.io/chef-workstation/)
+1. It will: Install Chef workstation with ```sudo dnf install chef-workstation*rpm```
+1. It will: Run ```sudo chef-client -z``` to create a node object for this workstation
+1. It will: change the ownership of the newly created Chef node object to be owned by your user.
+1. It will: Set this node's environment to 'maxlab'
+1. It will: Append 'recipe[station]' to this node's run_list
+1. It will: Now run `sudo chef-client -z` again to provision system
   ```bash
   cd station
   sudo chef-client -z
@@ -217,3 +217,9 @@ These are in addition to the extensions installed by default in Fedora or by the
 ### Control Panel customizations
 
 * Keyboard Shortcuts - 'Lower window below other windows - Menu (key)'
+
+### Work-Arounds Required
+
+As of Winter 2020, three modifications are required to ensure that VirtualBox 6.1 and Vagrant are allowed to work with each other:
+* [Vagrant 2.2.6 doesn't work with VirtualBox 6.1.0 #178
+](https://github.com/oracle/vagrant-boxes/issues/178)
