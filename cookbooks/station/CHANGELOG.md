@@ -1,6 +1,15 @@
 
 # station CHANGELOG
 
+# 0.23.0 Updated boostrap-maxlab script
+
+* Adding support to bootstrap nodes with specified policy-group and policy-names
+* Adding support to bootstrap nodes without policyfiles or an environment (so they can be set manually later)
+* Removed package podman-manfiles from install list
+* Added package podman-compose to be installed
+* Experimental support for using Test Kitchen with this cookbook.. Fails due to differences between my Fedora install and bento/fedora-31. Will resolve later. This is optional.
+
+
 # 0.22.1 Adjust $PATH in $HOME/.bashrc
 
 * $HOME/.bashrc: Remove some redundancy between Chef Workstation ruby + gems and system ruby + gems

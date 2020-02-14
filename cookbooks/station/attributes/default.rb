@@ -349,7 +349,7 @@ case plat_vers
       "pidgin-sipe": "Pidgin protocol plugin to connect to MS Office Communicator (updates)",
       "pitivi": "Non-linear video editor (fedora)",
       "podman": "Manage Pods, Containers and Container Images (anaconda)",
-      "podman-manpages": "Man pages for the podman commands (anaconda)",
+      "podman-compose": "Docker Copose replacement (anaconda)",
       "powerline": "The ultimate status-line/prompt utility (fedora)",
       "powerline-fonts": "Powerline Fonts (fedora)",
       "powertop": "Power consumption monitor (updates)",

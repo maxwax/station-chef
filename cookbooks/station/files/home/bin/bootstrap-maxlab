@@ -5,8 +5,8 @@
 # Bootstrap a node in my maxlab home lab
 #
 
-VERSION="1.1.0"
-VERSION_DATE="2020-01-07"
+VERSION="1.2.0"
+VERSION_DATE="2020-02-11"
 
 # List of valid names to the --base parameter
 VALID_BASE_NAMES="vmlab, nas, proxmox"
@@ -33,9 +33,14 @@ function host_check {
 # Global scope variables
 
 BASE_DEFINED=false
+POLICY_GROUP_DEFINED=false
+POLICY_NAME_DEFINED=false
 
 #
 HOST_IP=""
+BASE_NAME=""
+POLICY_GROUP_NAME=""
+POLICY_NAME=""
 
 NODE=${1:-"_null"}
 if [[ $NODE == "_null" ]]
@@ -63,6 +68,37 @@ else
         shift;
       ;;
 
+      "--environment"|"--env")
+        ENVIRONMENT_NAME=${2:-"_null"}
+        if [[ $ENVIRONMENT_NAME == "_null" ]]
+        then
+          echo "Error: you must supply a valid environment with this parameter."
+        fi
+        shift;
+        shift;
+      ;;
+
+
+      "--policy-group"|"--policygroup")
+        POLICY_GROUP_NAME=${2:-"_null"}
+        if [[ $POLICY_GROUP_NAME == "_null" ]]
+        then
+          echo "Error: you must supply a valid policy group name with this parameter."
+        fi
+        shift;
+        shift;
+      ;;
+
+      "--policy-name"|"--policyname")
+        POLICY_NAME=${2:-"_null"}
+        if [[ $POLICY_NAME == "_null" ]]
+        then
+          echo "Error: you must supply a valid policy name with this parameter."
+        fi
+        shift;
+        shift;
+      ;;
+
       # Last parameter is host name
       *)
         HOST_CHECK=$(host $1 > /dev/null 2>&1)
@@ -79,39 +115,46 @@ else
     esac
   done
 
-  case $BASE_NAME in
-
-    "vmlab")
-      # Initial runlist to execute after node has Chef deployed
-      DEFAULT_RUNLIST='role[base_maxlab_vmlab]'
-      BASE_DEFINED=true
-    ;;
-
-    "nas")
-      # Initial runlist to execute after node has Chef deployed
-      DEFAULT_RUNLIST='role[base_maxlab_nas]'
-      BASE_DEFINED=true
-    ;;
-
-    "proxmox")
-      # Initial runlist to execute after node has Chef deployed
-      DEFAULT_RUNLIST='role[base_maxlab_proxmox]'
-      BASE_DEFINED=true
-    ;;
-
-    *)
-      echo "Error: Unknown base name $BASE_NAME specified."
-      usage
-      exit 1
-
-  esac
-
-  if [[ $BASE_DEFINED == false ]]
+  if [[ $BASE_NAME != "" ]]
   then
-    echo "Error: You need to specify a type of node with the --base parameter"
-    usage
-    exit 1
+    case $BASE_NAME in
+
+      "vmlab")
+        # Initial runlist to execute after node has Chef deployed
+        DEFAULT_RUNLIST='role[base_maxlab_vmlab]'
+        BASE_DEFINED=true
+      ;;
+
+      "nas")
+        # Initial runlist to execute after node has Chef deployed
+        DEFAULT_RUNLIST='role[base_maxlab_nas]'
+        BASE_DEFINED=true
+      ;;
+
+      "proxmox")
+        # Initial runlist to execute after node has Chef deployed
+        DEFAULT_RUNLIST='role[base_maxlab_proxmox]'
+        BASE_DEFINED=true
+      ;;
+
+      *)
+        echo "Error: Unknown base name $BASE_NAME specified."
+        usage
+        exit 1
+    esac
   fi
+
+  if [[ $POLICY_GROUP_NAME != "" ]]
+  then
+    POLICY_GROUP_DEFINED=true
+  fi
+
+  # if [[ $BASE_DEFINED == false ]]
+  # then
+  #   echo "Error: You need to specify a type of node with the --base parameter"
+  #   usage
+  #   exit 1
+  # fi
 
   # My personal lab key
   SSH_KEY="/home/maxwell/.ssh/maxwell-lab"
@@ -122,14 +165,6 @@ else
 
   # Set new node to this Chef environment
   DEFAULT_ENVIRONMENT="maxlab"
-
-  # # Resolve IP of this FQDN if possible
-  # HOST_IP=$(host $NODE | awk '{print $4}')
-  # if [[ $? -gt 0 ]]
-  # then
-  #   echo "Error: Can't resolve $NODE to an IP address"
-  #   exit 1
-  # else
 
   # This will set HOST_IP or exit if an IP address can't be found
   host_check $NODE
@@ -163,16 +198,42 @@ else
   # Deploy personal SSH key
   ssh-copy-id -i $SSH_KEY root@${NODE}
 
+  RESULT_CODE=$?
+
   # If the key was deployed OK, bootstrap it
-  if [[ $? == 0 ]]
+  if [[ $RESULT_CODE == 0 ]]
   then
-    # Bootstrap with Chef using santoku to point to a specific config file
-    santoku maxlab bootstrap ${NODE} \
-      --connection-user root \
-      --ssh-identity-file $SSH_KEY \
-      --node-name ${NODE} \
-      --bootstrap-version "$CHEF_VERSION_PIN" \
-      --environment "$DEFAULT_ENVIRONMENT" \
-      --run-list "$DEFAULT_RUNLIST"
+
+    if [[ $BASE_NAME_DEFINED == true ]]
+    then
+      # Bootstrap using traditional, non-policyfile method
+      # with a predefined role and an environment set
+      santoku maxlab bootstrap ${NODE} \
+        --connection-user root \
+        --ssh-identity-file $SSH_KEY \
+        --node-name ${NODE} \
+        --bootstrap-version "$CHEF_VERSION_PIN" \
+        --environment "$DEFAULT_ENVIRONMENT" \
+        --run-list "$DEFAULT_RUNLIST"
+
+    elif [[ $POLICY_GROUP_NAME_DEFINED == true ]]
+    then
+      # Bootstrap using policy-group and policy-name
+      santoku maxlab bootstrap ${NODE} \
+        --connection-user root \
+        --ssh-identity-file $SSH_KEY \
+        --node-name ${NODE} \
+        --bootstrap-version "$CHEF_VERSION_PIN" \
+        --policy-group "$POLICY_GROUP_NAME" \
+        --policy-name "$POLICY_NAME"
+    else
+      # Bootstrap without environment or policy group.
+      # I'm assuming one of these will be set later.
+      santoku maxlab bootstrap ${NODE} \
+        --connection-user root \
+        --ssh-identity-file $SSH_KEY \
+        --node-name ${NODE} \
+        --bootstrap-version "$CHEF_VERSION_PIN"
+    fi
   fi
 fi
