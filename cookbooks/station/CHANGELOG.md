@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.23.1
+
+* Updated .santoku.conf to use config.rb instead of legacy knife.rb config file.
+
 # 0.23.0 Updated boostrap-maxlab script
 
 * Adding support to bootstrap nodes with specified policy-group and policy-names
