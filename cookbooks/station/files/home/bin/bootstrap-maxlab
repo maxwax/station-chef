@@ -161,7 +161,7 @@ else
 
   # Lock to a specific version to avoid newer releases which I haven't validated
   # 2019-12 version
-  CHEF_VERSION_PIN="15.4"
+  CHEF_VERSION_PIN="15.8"
 
   # Set new node to this Chef environment
   DEFAULT_ENVIRONMENT="maxlab"

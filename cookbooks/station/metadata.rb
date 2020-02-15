@@ -3,7 +3,7 @@ maintainer 'Maxwell Spangler'
 maintainer_email 'maxcode@maxwellspangler.com'
 license 'All Rights Reserved'
 description 'Installs/Configures station'
-version '0.23.1'
+version '0.23.2'
 chef_version '>= 14.0'
 
 # The `issues_url` points to the location where issues for this cookbook are

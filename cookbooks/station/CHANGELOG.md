@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.23.2
+
+* Bump pinned version of chef infra from 15.4 to 15.8.
+
 # 0.23.1
 
 * Updated .santoku.conf to use config.rb instead of legacy knife.rb config file.
