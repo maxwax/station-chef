@@ -23,21 +23,37 @@ PATH=$PATH:/home/maxwell/.gem/bin
 # Prompt related
 . /usr/local/etc/shell-prompt-powerline
 
-alias gitproj="cd /home/maxwell/projects/github/maxwax"
+export DIR_GITPROJ="/home/maxwell/projects/github/maxwax"
+alias gitproj="cd $DIR_GITPROJ"
 
-alias maxlab="cd /home/maxwell/projects/chef/maxlab"
-alias maxbooks="cd /home/maxwell/projects/chef/maxlab/cookbooks"
-alias maxroles="cd /home/maxwell/projects/chef/maxlab/roles"
-alias maxbags="cd /home/maxwell/projects/chef/maxlab/data_bags"
-alias maxenv="cd /home/maxwell/projects/chef/maxlab/environments"
+# Directory for Maxlab homelab project
+export DIR_MAXLAB="/home/maxwell/projects/chef/maxlab"
+export DIR_MAXBOOKS="/home/maxwell/projects/chef/maxlab/cookbooks"
+export DIR_MAXROLES="/home/maxwell/projects/chef/maxlab/roles"
+export DIR_MAXBAGS="/home/maxwell/projects/chef/maxlab/data_bags"
+export DIR_MAXENV="/home/maxwell/projects/chef/maxlab/environments"
+export DIR_MAXPOL="/home/maxwell/projects/chef/maxlab/policyfiles"
 
-alias atlab="cd /home/maxwell/projects/chef/atlab"
-alias station="cd /home/maxwell/projects/chef/station"
+# Directory for Station chef-repo to configure Linux workstation
+export DIR_STATION="/home/maxwell/projects/chef/station"
+
+# Aliases to take me to specific directories
+alias maxlab="cd $DIR_MAXLAB"
+alias maxbooks="cd $DIR_MAXBOOKS"
+alias maxroles="cd $DIR_MAXROLES"
+alias maxbags="cd $DIR_MAXBAGS"
+alias maxenv="cd $DIR_MAXENV"
+alias maxpol="cd $DIR_MAXPOL"
+alias station="cd $DIR_STATION"
+
 alias update-workstation="station; sudo chef-client -z"
 
+# Don't show warranty warning when running bc
+# Set bc scale to two decimal points in $HOME/.bcrc
 alias bc="bc -q"
 export BC_ENV_ARGS=$HOME/.bcrc
 
+# This is critical for use by Chef knife and other commands
 export EDITOR="vim"
 
 # Remove chef workstation from path to use system resources only

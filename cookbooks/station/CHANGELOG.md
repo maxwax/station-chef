@@ -1,6 +1,12 @@
 
 # station CHANGELOG
 
+# 0.23.3
+
+* Minor changes to $HOME/.bashrc to put various directories in exported variables then use aliases that use the variable.
+* Minor documentation on $HOME/.bashrc
+* Added maxpol alias to take me to maxlab policyfiles dir
+
 # 0.23.2
 
 * Bump pinned version of chef infra from 15.4 to 15.8.
