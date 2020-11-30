@@ -61,7 +61,7 @@ Rough guide to go from fresh Fedora Linux install to working DevOps workstation 
     1. Exit Firefox
     1. Press ENTER in the bootstrap script so it will continue
 
-  1. The boostrap script expects to find a Chef Workstation rpm in $HOME/Downloads
+  1. The bootstrap script expects to find a Chef Workstation rpm in $HOME/Downloads
     - If found, it will install Chef Workstation
     - It will prompt you to accept Chef licenses - say 'yes'
     - It will run Chef Zero once on the node to make a node object
