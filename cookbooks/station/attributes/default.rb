@@ -213,20 +213,20 @@ node.default['station']['atom'] = {
 plat_vers = "#{node['platform']}_#{node['platform_version']}"
 
 case plat_vers
-  when 'fedora_31'
+  when 'fedora_33'
     # List of repositories that should be installed by
     # downloading and installing packages
     node.default['station']['repo_packages'] = {
       "rpmfusion": {
         "free": {
           "pkg_name": "rpmfusion-free-release",
-          "path": "rpmfusion-free-release-31.noarch.rpm",
-          "source": "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-31.noarch.rpm"
+          "path": "rpmfusion-free-release-33.noarch.rpm",
+          "source": "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-33.noarch.rpm"
         },
         "nonfree": {
           "pkg_name": "rpmfusion-nonfree-release",
-          "path": "rpmfusion-nonfree-release-31.noarch.rpm",
-          "source": "https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-31.noarch.rpm"
+          "path": "rpmfusion-nonfree-release-33.noarch.rpm",
+          "source": "https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-33.noarch.rpm"
         }
       }
     }
@@ -268,8 +268,8 @@ case plat_vers
       "f29-backgrounds-gnome": "Fedora 29 default wallpaper for Gnome and Cinnamon (fedora)",
       "f30-backgrounds-base": "Base images for Fedora 30 default background (fedora)",
       "f30-backgrounds-gnome": "Fedora 30 default wallpaper for Gnome and Cinnamon (fedora)",
-      "f31-backgrounds-base": "Base images for Fedora 31 default background (updates)",
-      "f31-backgrounds-gnome": "Fedora 31 default wallpaper for Gnome and Cinnamon (updates)",
+      "f33-backgrounds-base": "Base images for Fedora 33 default background (updates)",
+      "f33-backgrounds-gnome": "Fedora 33 default wallpaper for Gnome and Cinnamon (updates)",
       "faac": "Encoder and encoding library for MPEG2/4 AAC (rpmfusion-nonfree)",
       "faad2-libs": "Shared libraries of the FAAD 2 AAC decoder (rpmfusion-free)",
       "ffmpeg": "Digital VCR and streaming server (rpmfusion-free-updates)",
