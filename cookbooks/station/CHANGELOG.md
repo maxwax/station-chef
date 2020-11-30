@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.24.4
+
+* Added packages: gthumb (Image viewer), smem (CLI memory stats reporter), Darkplaces Quake (Old FPS game)
+
 # 0.24.3
 
 * Updated documentation with fixes and updates for Fedora 33 experience
