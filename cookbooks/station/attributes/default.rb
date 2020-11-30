@@ -233,6 +233,9 @@ case plat_vers
 
     # List of default packages to be installed for this Platform+Version
     node.default['station']['install_packages'] = {
+      "gthumb": "Image Viewer",
+      "smem": "CLI memory utility for reporting per memory stats",
+      "darkplaces-quake": "Classic first person shooter, I play once a year",
       "thunar": "Tree based file manager",
       "binutils": "for VirtualBox-6.1 kernel modules",
       "gcc": "for VirtualBox-6.1 kernel modules",
