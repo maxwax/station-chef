@@ -300,7 +300,6 @@ case plat_vers
       "gparted": "Gnome Partition Editor (fedora)",
       "GraphicsMagick": "An ImageMagick fork, offering faster image generation and better quality (fedora)",
       "grip": "Front-end for CD rippers and Ogg Vorbis encoders (updates)",
-      "grizzly": "Java NIO Server Framework (updates)",
       "grubby": "Command line tool for updating bootloader configs (fedora)",
       "gstreamer1": "GStreamer streaming media framework runtime (anaconda)",
       "gstreamer1-libav": "GStreamer 1.0 libav-based plug-ins (rpmfusion-free)",

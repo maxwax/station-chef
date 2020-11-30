@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.24.1
+
+* Removing package 'grizzly' not available for Fedora 33.
+
 # 0.24.0
 
 * Enabling support for Fedora 33 by replacing support for Fedora 31.  Won't be going back and no need to include support for any previous Fedora versions.
