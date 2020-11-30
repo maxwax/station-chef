@@ -1,6 +1,11 @@
 
 # station CHANGELOG
 
+# 0.24.2
+
+* Install 'VirtualBox' package not 'VirtualBox-6.1'
+* Note VirtualBox is available via rpmfusion-free and there is not currently an Oracle fedora-33 repo available, it seems.
+
 # 0.24.1
 
 * Removing package 'grizzly' not available for Fedora 33.
