@@ -27,11 +27,13 @@ Station performs the following actions:
 
 * Configure [roxterm](http://roxterm.sourceforge.net/) (alternative to gnome-terminal) and configure it with solarized color scheme and config options
 
-* Enable service to apply TRIM feature periodically for SSD dicarded blocks maintenance
+* Enable service to apply TRIM feature periodically for SSD discarded blocks maintenance
 
 * Deploy optional typefaces from personal repositories
 
 * Configure expected mount points for local NFS servers
+
+* Install a variety of scripts that I've written for personal use
 
 ## User Focused Actions
 
@@ -46,6 +48,18 @@ Station performs the following actions:
 * Configures a small number of customizations for root user
 
 ## Step-by-Step Rebuild Procedure
+
+### Enable support for a new version of fedora
+
+These steps are required when using this cookbook on a newly released version of Fedora:
+
+- [ ] Update attributes/default.rb case statement to replace the currently supported Fedora version identifier with a new version identifier. (ex: 'fedora_32' -> 'fedora_33')
+
+- [ ] Remove any previously defined packages that are not available for the new version of Fedora
+
+- [ ] Add any packages manually installed that were not included in the cookbook yet.
+
+- [ ] Update the README.md docs with any new accommodations for the new version of Fedora
 
 ### Install new Fedora Linux OS
 
@@ -63,6 +77,7 @@ Station performs the following actions:
   ```bash
   sudo dnf -y update
   ```
+1. Reboot into new kernel, library, packages, etc
 
 ### Restore files
 
@@ -178,7 +193,7 @@ After restoring my home directory most of these should already be restored, so v
 
 ### Gnome Shell Extensions
 
-To make these installable via Chrome, visit [GNOME Shell Integration Extension for Chrome] and click "Add to Chrome"
+Use Firefox to install these:
 
 These are in addition to the extensions installed by default in Fedora or by the Chef provisioning script.
 
@@ -212,7 +227,9 @@ These are in addition to the extensions installed by default in Fedora or by the
 
   * [Sound Input & Output Chooser by kgshank](https://extensions.gnome.org/extension/906/sound-output-device-chooser/) - Select active speakers and microphone. Very useful after docking/undocking laptops from desk to roaming.
 
-  * [Tweaks in System Menu](https://extensions.gnome.org/extension/1653/tweaks-in-system-menu/) - Custommization to put Gnome Tweaks Tool launch icon in system menu near control panel icon for natural accessibility.
+  * [Timezones extension](https://extensions.gnome.org/extension/2657/timezones-extension/) - Display multiple timezones on the top bar. Helps with keeping track of co-workers in PST, EST and UTC.
+
+  * [Tweaks in System Menu](https://extensions.gnome.org/extension/1653/tweaks-in-system-menu/) - Customization to put Gnome Tweaks Tool launch icon in system menu near control panel icon for natural accessibility.
 
 ### Control Panel customizations
 
@@ -223,3 +240,40 @@ These are in addition to the extensions installed by default in Fedora or by the
 As of Winter 2020, three modifications are required to ensure that VirtualBox 6.1 and Vagrant are allowed to work with each other:
 * [Vagrant 2.2.6 doesn't work with VirtualBox 6.1.0 #178
 ](https://github.com/oracle/vagrant-boxes/issues/178)
+
+### QA Checklist
+
+Execute these when testing a new deployment (especially a new Fedora version)
+
+Network
+- [ ] Hostname is set to host.domain
+- [ ] DNS works on local home lab network to resolve other nodes
+- [ ] SSH allows incoming connections
+
+Browsers
+- [ ] Firefox is installed and sync'd with my account
+- [ ] Google Chrome is installed and sync'd with my account
+
+Virtualization
+- [ ] VirtualBox is installed, Extension pack installed
+- [ ] vagrant works with Virtual box
+- [ ] Chef Test Kitchen works with Vagrant and VirtualBox
+
+Shell
+- [ ] Terminals come up using Solarized low contrast color scheme
+- [ ] CLI prompt is provided via Powerline with custom Fonts
+- [ ] vim keys work with Shell history in bash
+
+Gnome UI
+- [ ] Top bar has day name, date and time in 24 hour format
+- [ ] Top bar has UTC time
+- [ ] Openweather knows Denver location
+- [ ] Recent files drop down shows recent files
+- [ ] Mousefocus switches windows
+- [ ] Right menu key lowers windows
+
+Applications
+- [ ] Draw.io allows diagramming
+- [ ] LibreOffice installed and working
+- [ ] Slack runs and is signed in
+- [ ] Atom editor works

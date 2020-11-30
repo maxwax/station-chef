@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.24.3
+
+* Updated documentation with fixes and updates for Fedora 33 experience
+
 # 0.24.2
 
 * Install 'VirtualBox' package not 'VirtualBox-6.1'
