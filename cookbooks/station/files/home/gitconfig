@@ -11,3 +11,5 @@
 #	excludesfile = /home/maxwell/.gitignore_global
 [diff]
 	external = /home/maxwell/bin/git-run-meld
+[init]
+  defaultBranch = main
