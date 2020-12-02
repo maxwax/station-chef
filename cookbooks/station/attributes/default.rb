@@ -96,7 +96,8 @@ node.default['station']['other_groups'] = {
 
 node.default['station']['etc_config'] = [
   "nas.conf",
-  "vital-backup.conf"
+  "vital-backup.conf",
+  "proxychains.conf"
 ]
 
 node.default['station']['usr_local'] = {

@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.24.7
+
+* Deploy /etc/proxychains.conf for tunneling local CLI clients to my AWS VPC
+
 # 0.24.6
 
 * Disable deployment of Oracle VirtualBox repo because it doesn't [yet] exist for Fedora 33
