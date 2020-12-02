@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.24.5
+
+* Bug fix: NFS mount point 'auxroot' should be 'auxrootdata' to match the NFS share.
+
 # 0.24.4
 
 * Added packages: gthumb (Image viewer), smem (CLI memory stats reporter), Darkplaces Quake (Old FPS game)
