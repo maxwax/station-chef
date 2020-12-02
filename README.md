@@ -160,6 +160,22 @@ It will:
 1. Append 'recipe[station]' to the node's run_list
 1. Perform a second run of chef-client -z execute the station cookbook in order to provision the system
 
+### Step 8 - Configure X.org instead of Wayland
+
+Make two changes to /etc/gdm/custom.conf in order to replace the Wayland graphics system with classic X.Org based X11.
+
+This allows me to size and position gnome-terminals upon launch, something not supported under Wayland.
+
+Modify `/etc/gdm/custom.conf` to look like this:
+
+```[daemon]
+# Uncomment the line below to force the login screen to use Xorg
+WaylandEnable=false
+DefaultSession=gnome-xorg.desktop
+```
+
+Upon next boot you *should* be in X11.
+
 ### Step 8 - Final Reboot
 
 With the provisioning complete, the majority of major software deployments and configurations is complete.
