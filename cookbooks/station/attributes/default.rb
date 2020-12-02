@@ -180,7 +180,7 @@ node.default['station']['mount_points'] = {
   "/net": [
     "auxdata",
     "filerdata",
-    "auxroot",
+    "auxrootdata",
     "audiovideo",
     "avarchive",
     "laptopnas",
