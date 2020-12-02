@@ -12,15 +12,7 @@ Install the Atom text editor
 
 my = node['station']['user']
 
-cookbook_file "/etc/yum.repos.d/atom.repo" do
-  source "etc/yum.repos.d/atom.repo"
-  owner 'root'
-  group 'root'
-  mode 0644
-  action :create
-
-  not_if { File.exists?("/etc/yum.repos.d/atom.repo")}
-end
+# WARNING: Order matters: Import the key IF NO REPO, THEN make the repo.
 
 remote_file "atom-gpgkey" do
   path "/home/#{my['username']}/Downloads/atom-gpgkey"
@@ -32,6 +24,16 @@ end
 
 execute 'import-atom-gpgkey' do
   command "rpm --import https://packagecloud.io/AtomEditor/atom/gpgkey"
+
+  not_if { File.exists?("/etc/yum.repos.d/atom.repo")}
+end
+
+cookbook_file "/etc/yum.repos.d/atom.repo" do
+  source "etc/yum.repos.d/atom.repo"
+  owner 'root'
+  group 'root'
+  mode 0644
+  action :create
 
   not_if { File.exists?("/etc/yum.repos.d/atom.repo")}
 end

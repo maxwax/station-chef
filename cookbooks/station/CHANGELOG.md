@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.24.23
+
+* Re-ordering deployment of repos and repo keys. Keys first, only if repos don't exist, then repos.
+
 # 0.24.22
 
 * Changing Atom deployment from package source (broken) to Atom repo

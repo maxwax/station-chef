@@ -12,15 +12,7 @@ Install Google Chrome
 
 my = node['station']['user']
 
-cookbook_file "/etc/yum.repos.d/google-chrome.repo" do
-  source "etc/yum.repos.d/google-chrome.repo"
-  owner 'root'
-  group 'root'
-  mode 0644
-  action :create
-
-  not_if { File.exists?("/etc/yum.repos.d/google-chrome.repo")}
-end
+# WARNING: Order matters: Import the key IF NO REPO, THEN make the repo.
 
 remote_file "google-signing-key" do
   path "/home/#{my['username']}/Downloads/linux_signing_key.pub"
@@ -32,6 +24,16 @@ end
 
 execute 'install-google-key' do
   command "rpm --import /home/#{my['username']}/Downloads/linux_signing_key.pub"
+
+  not_if { File.exists?("/etc/yum.repos.d/google-chrome.repo")}
+end
+
+cookbook_file "/etc/yum.repos.d/google-chrome.repo" do
+  source "etc/yum.repos.d/google-chrome.repo"
+  owner 'root'
+  group 'root'
+  mode 0644
+  action :create
 
   not_if { File.exists?("/etc/yum.repos.d/google-chrome.repo")}
 end
