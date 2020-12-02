@@ -267,7 +267,7 @@ These are in addition to the extensions installed by default in Fedora or by the
 
   * [Launch New Instance](https://extensions.gnome.org/extension/600/launch-new-instance/) - Always launch a new instance even if an application is already running
 
-  * [Multi-Monitors Add-On by spin83](https://extensions.gnome.org/extension/921/multi-monitors-add-on/) - Modifies GNOME desktop to use more than one monitor for virtual desktops
+  * DEC 2020 - SKIP THIS - CRASHES GNOME [Multi-Monitors Add-On by spin83](https://extensions.gnome.org/extension/921/multi-monitors-add-on/) - Modifies GNOME desktop to use more than one monitor for virtual desktops
     * Customize this extension with details
     * Show Multi Monitors indicator on Top Panel - disabled
 
