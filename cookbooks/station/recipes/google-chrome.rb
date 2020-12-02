@@ -16,7 +16,7 @@ cookbook_file "/etc/yum.repos.d/google-chrome.repo" do
   source "etc/yum.repos.d/google-chrome.repo"
   owner 'root'
   group 'root'
-  mode 0755
+  mode 0644
   action :create
 
   not_if { File.exists?("/etc/yum.repos.d/google-chrome.repo")}

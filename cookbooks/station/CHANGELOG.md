@@ -1,6 +1,11 @@
 
 # station CHANGELOG
 
+# 0.24.22
+
+* Changing Atom deployment from package source (broken) to Atom repo
+* Change mode on deployed repo files from 755 to 644. Repos don't need to be executable.
+
 # 0.24.21
 
 * Fixing deploy of Atom editor
