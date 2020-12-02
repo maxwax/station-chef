@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.24.9
+
+* Deploy Skype via repo and package
+
 # 0.24.8
 
 Updating /etc/nas.conf with current operating config (manual changes made)

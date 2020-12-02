@@ -21,6 +21,8 @@ Station performs the following actions:
 
 * Installs [VirtualBox](https://www.virtualbox.org/wiki/Linux_Downloads) hypervisor for Linux
 
+* Installs [Skype](https://repo.skype.com/rpm/stable/)
+
 * Enable [sshd](https://www.ssh.com/ssh) for inbound network access
 
 * Configure [firewalld](https://firewalld.org/) for limited inbound services
