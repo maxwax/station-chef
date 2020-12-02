@@ -4,6 +4,8 @@ set shiftwidth=2
 set expandtab
 syntax on
 set number
+set background=dark
+colorscheme solarized
 set  rtp+=/usr/share/powerline/vim/
 set laststatus=2
 set t_Co=256

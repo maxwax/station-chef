@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.24.10
+
+* Update $HOME/.vimrc with solarized dark instructions
+
 # 0.24.9
 
 * Deploy Skype via repo and package
