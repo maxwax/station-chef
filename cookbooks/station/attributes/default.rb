@@ -213,8 +213,7 @@ node.default['station']['skype'] = {
 }
 
 node.default['station']['atom'] = {
-  "package_name": "atom.x86_64.rpm",
-  "rpm_source": "https://atom-installer.github.com"
+  "package_name": "atom"
 }
 
 node.default['station']['zoom'] = {
