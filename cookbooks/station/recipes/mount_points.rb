@@ -21,6 +21,8 @@ node['station']['mount_points'].each do |parent_dir, subdir|
     mode 0755
 
     action :create
+
+    not_if { ::File.directory?("#{parent_dir}") }
   end
 
   # Make NFS mount points within parent directory
@@ -31,6 +33,9 @@ node['station']['mount_points'].each do |parent_dir, subdir|
       mode 0755
 
       action :create
+
+      not_if { ::File.directory?("#{dirname}") }
+
     end
   end
 
