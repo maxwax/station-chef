@@ -1,6 +1,11 @@
 
 # station CHANGELOG
 
+# 0.24.6
+
+* Disable deployment of Oracle VirtualBox repo because it doesn't [yet] exist for Fedora 33
+* Deploy VirtualBox via FreshRPMs instead
+
 # 0.24.5
 
 * Bug fix: NFS mount point 'auxroot' should be 'auxrootdata' to match the NFS share.
