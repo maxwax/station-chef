@@ -14,7 +14,7 @@ my = node['station']['user']
 
 remote_file "zoom-rpm" do
   path "/home/#{my['username']}/Downloads/#{node['station']['zoom']['package_name']}"
-  source node['station']['zoom']['rpm_source']
+  source "#{node['station']['zoom']['rpm_source']}/#{node['station']['zoom']['package_name']}"
   action :create
 
   not_if { node['packages'].key?('zoom') }

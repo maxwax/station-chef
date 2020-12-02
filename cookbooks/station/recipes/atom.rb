@@ -14,7 +14,7 @@ my = node['station']['user']
 
 remote_file "atom-rpm" do
   path "/home/#{my['username']}/Downloads/#{node['station']['atom']['package_name']}"
-  source node['station']['atom']['rpm_source']
+  source "#{node['station']['atom']['rpm_source']}/#{node['station']['atom']['package_name']}"
   action :create
 
   not_if { node['packages'].key?('atom') }

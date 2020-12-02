@@ -1,6 +1,11 @@
 
 # station CHANGELOG
 
+# 0.24.18
+
+* Fixing install of Zoom
+* Fixing install of Atom
+
 # 0.24.17
 
 * Deploy AWS CLI
