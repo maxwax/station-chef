@@ -12,12 +12,12 @@ Install the Atom text editor
 
 my = node['station']['user']
 
-remote_file "atom-rpm" do
+remote_file "#{node['station']['atom']['package_name']}" do
   path "/home/#{my['username']}/Downloads/#{node['station']['atom']['package_name']}"
-  source "#{node['station']['atom']['rpm_source']}/#{node['station']['atom']['package_name']}"
+  source "#{node['station']['atom']['rpm_source']}"
   action :create
 
-  not_if { node['packages'].key?('atom') }
+  #not_if { node['packages'].key?('atom') }
 end
 
 package node['station']['atom']['package_name'] do

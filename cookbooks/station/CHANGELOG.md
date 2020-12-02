@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.24.21
+
+* Fixing deploy of Atom editor
+
 # 0.24.20
 
 * Deploy studywin desktop shortcut to 'position cloudstudy'

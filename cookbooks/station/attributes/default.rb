@@ -209,14 +209,12 @@ node.default['station']['virtualbox'] = {
 
 node.default['station']['skype'] = {
   "repo_filename": "skype-stable.repo",
-  "repo_source": "https://repo.skype.com/rpm/stable",
-  "package_name": "atom.x86_64.rpm",
-  "rpm_source": "https://atom.io/download/rpm"
+  "repo_source": "https://repo.skype.com/rpm/stable"
 }
 
 node.default['station']['atom'] = {
   "package_name": "atom.x86_64.rpm",
-  "rpm_source": "https://atom.io/download/rpm"
+  "rpm_source": "https://atom-installer.github.com"
 }
 
 node.default['station']['zoom'] = {
