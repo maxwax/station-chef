@@ -79,6 +79,7 @@ node.default['station']['shortcuts'] = {
     "sideright",
     "bastionprod",
     "bastionstaging",
+    "studywin",
     "new"
   ]
 }

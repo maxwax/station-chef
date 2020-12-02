@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.24.20
+
+* Deploy studywin desktop shortcut to 'position cloudstudy'
+
 # 0.24.19
 
 * Deploy Skype by deploying repo then package from repo

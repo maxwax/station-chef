@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=studywin
+Comment=Position specific windows for AWS study work
+Keywords=studywin
+TryExec=gnome-terminal
+Exec=/usr/local/bin/position cloudstudy
+Icon=utilities-terminal
+Type=Application
+Categories=GNOME;GTK;System;TerminalEmulator;
+StartupNotify=true
