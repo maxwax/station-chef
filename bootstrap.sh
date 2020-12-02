@@ -7,9 +7,18 @@
 # to automate provisioning of my personal workstation
 #
 # 2019-12-20 Initial WIP
-# 2020-02-04Bug fix on knife node environment set.. 
+# 2020-02-04Bug fix on knife node environment set..
+# 2020-12-02 Various improvements
 
-cd $HOME/Downloads
+# Ensure that the user runs this script (and the embedded
+# chef-client -z command from within the 'station' directory
+# this will ensure that chef zero creates a persistent 'nodes' directory
+# alongside the chef code.
+if [[ ! -f ./bootstrap.sh ]]
+then
+  echo "Please run this script from the 'station' directory'"
+  exit 1
+fi
 
 # I'd like to automate this, but it needs a "Download <last stable version"
 # link on Chef's download page in order to do so.  Until then, take the user
@@ -26,8 +35,6 @@ read -p "Press 'ENTER' when ready to proceed:"
 echo
 
 sudo dnf -y install $HOME/Downloads/chef-workstation*rpm
-
-cd $HOME/Downloads/station
 
 # First run creates the chef-zero node object
 sudo chef-client -z
