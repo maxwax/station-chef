@@ -114,3 +114,5 @@ function use_system_ruby {
 }
 
 use_chef_ruby --quiet
+
+complete -C '/usr/local/bin/aws_completer' aws

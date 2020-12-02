@@ -1,6 +1,11 @@
 
 # station CHANGELOG
 
+# 0.24.13
+
+* To $HOME/.bashrc add AWS CLI tool completer for smoother tab completion.
+
+
 # 0.24.12
 
 * Update .gitconfig to use maxcode not maxwell
