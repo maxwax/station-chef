@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.24.17
+
+* Deploy AWS CLI
+
 # 0.24.16
 
 * Update $HOME/.position.conf to have special-rules items for organizing special windows.

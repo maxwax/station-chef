@@ -40,7 +40,7 @@ include_recipe 'station::virtualbox'
 # Install Atom editor
 include_recipe 'station::atom'
 
-# Install Zoom editor
+# Install Zoom
 include_recipe 'station::zoom'
 
 # Enable SSH Server
@@ -63,6 +63,12 @@ include_recipe 'station::typefaces'
 
 # Install and configure roxterm
 include_recipe 'station::roxterm'
+
+# Install Skype
+#include_recipe 'station::skype'
+
+# Install the AWS CLI
+include_recipe 'station::aws_cli'
 
 # Tag this node as managed by the station cookbook
 tag('station-managed')

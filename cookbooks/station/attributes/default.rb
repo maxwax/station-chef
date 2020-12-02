@@ -216,6 +216,11 @@ node.default['station']['zoom'] = {
   "rpm_source": "https://zoom.us/client/latest"
 }
 
+node.default['station']['aws_cli'] = {
+  "package_name": "awscli-exe-linux-x86_64.zip",
+  "rpm_source": "https://awscli.amazonaws.com"
+}
+
 plat_vers = "#{node['platform']}_#{node['platform_version']}"
 
 case plat_vers
