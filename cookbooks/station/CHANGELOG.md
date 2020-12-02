@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.24.11
+
+* Deploy Zoom
+
 # 0.24.10
 
 * Update $HOME/.vimrc with solarized dark instructions

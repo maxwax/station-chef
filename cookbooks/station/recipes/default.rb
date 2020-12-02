@@ -40,6 +40,9 @@ include_recipe 'station::virtualbox'
 # Install Atom editor
 include_recipe 'station::atom'
 
+# Install Zoom editor
+include_recipe 'station::zoom'
+
 # Enable SSH Server
 include_recipe 'station::sshd'
 

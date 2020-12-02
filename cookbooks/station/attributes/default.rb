@@ -211,6 +211,11 @@ node.default['station']['atom'] = {
   "rpm_source": "https://atom.io/download/rpm"
 }
 
+node.default['station']['zoom'] = {
+  "package_name": "zoom_x86_64.rpm",
+  "rpm_source": "https://zoom.us/client/latest"
+}
+
 plat_vers = "#{node['platform']}_#{node['platform_version']}"
 
 case plat_vers
