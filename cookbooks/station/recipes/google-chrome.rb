@@ -39,5 +39,7 @@ end
 package 'google-chrome-stable' do
   action :install
 
+  flush_cache [ :before ]
+
   not_if { node['packages'].key?('google-chrome-stable')}
 end

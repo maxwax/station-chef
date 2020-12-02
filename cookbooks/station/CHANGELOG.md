@@ -1,6 +1,12 @@
 
 # station CHANGELOG
 
+# 0.24.19
+
+* Deploy Skype by deploying repo then package from repo
+* Adding flush_cache to Skype and Google Chrome installs. Both install repos before installing packages, so flushing the cache makes contents of the repo avilable for chef to see.
+* Removing skype repo file stored in cookbook. Now downloading from remote site.
+
 # 0.24.18
 
 * Fixing install of Zoom

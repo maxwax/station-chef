@@ -206,6 +206,13 @@ node.default['station']['virtualbox'] = {
   "signing_key_fname": "oracle_vbox.asc"
 }
 
+node.default['station']['skype'] = {
+  "repo_filename": "skype-stable.repo",
+  "repo_source": "https://repo.skype.com/rpm/stable",
+  "package_name": "atom.x86_64.rpm",
+  "rpm_source": "https://atom.io/download/rpm"
+}
+
 node.default['station']['atom'] = {
   "package_name": "atom.x86_64.rpm",
   "rpm_source": "https://atom.io/download/rpm"

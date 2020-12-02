@@ -65,7 +65,7 @@ include_recipe 'station::typefaces'
 include_recipe 'station::roxterm'
 
 # Install Skype
-#include_recipe 'station::skype'
+include_recipe 'station::skype'
 
 # Install the AWS CLI
 include_recipe 'station::aws_cli'
