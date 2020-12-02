@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.24.8
+
+Updating /etc/nas.conf with current operating config (manual changes made)
+
 # 0.24.7
 
 * Deploy /etc/proxychains.conf for tunneling local CLI clients to my AWS VPC
