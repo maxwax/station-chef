@@ -45,103 +45,134 @@ Station performs the following actions:
 
 * Installs & Configures [powerline](https://github.com/powerline/powerline) prompt
 
-* Configures a small number of customizations for root user
+* Configures a small number of changes for root user
 
 ## Step-by-Step Rebuild Procedure
 
-### Enable support for a new version of fedora
+### High Level Summary
 
-These steps are required when using this cookbook on a newly released version of Fedora:
+1. Update this cookbook for a new version of Fedora (if required)
+1. Backup the old Fedora Installation
+1. Install Fedora
+1. Update all system packages
+1. Reboot into the updated system
+1. Restore the old home directory
+1. Execute this cookbook to deploy and configure the environment
+1. Reboot one final time to test a clean boot and clean login
+1. Debug the surprise problems that always present themselves.
+1. Manual Application Installs
+1. Manual Configuration Tasks
+1. Gnome Tweak Tool Configuration
+1. Gnome Shell Extensions
+1. Control Panel Customiations
+1. Work-Rounds Accommodations
+1. QA Checklist
 
-- [ ] Update attributes/default.rb case statement to replace the currently supported Fedora version identifier with a new version identifier. (ex: 'fedora_32' -> 'fedora_33')
+### Step 1 - Enable support for a new version of fedora
+
+Complete the following actions to enable cookbook support for a new version of Fedora:
+
+- [ ] Update cookbooks/station/attributes/default.rb case statement to replace the currently supported Fedora version identifier with a new version identifier. (ex: 'fedora_32' -> 'fedora_33')
 
 - [ ] Remove any previously defined packages that are not available for the new version of Fedora
 
-- [ ] Add any packages manually installed that were not included in the cookbook yet.
+- [ ] Add any packages manually installed to the current Fedora installation that were not included in the cookbook yet.
 
 - [ ] Update the README.md docs with any new accommodations for the new version of Fedora
 
-### Install new Fedora Linux OS
+### Step 2 - Backup existing Fedora Installation
 
-1. Backup existing system to external storage (USB drive, NFS mount)
-1. Options for preserving /home/maxwell
-  1. Reformat /home and restore from back up later (Slow)
-  1. *Move /home/maxwell to /home/maxwell.fedora.old, let the installer create a fresh /home/maxwell and selectively restore contents to new /home/maxwell (Preferred)*
-  1. Keep /home/maxwell in place, don't reformat /home and let the installer use the existing file base.
-1. Install new version of Fedora Linux
-1. Boot newly installed Fedora
-1. Connect to WIFI
-1. Create primary user (this will be system admin / sudo user)
-1. Login, start a shell
+1. Backup the existing Fedora installation to external media such as an NFS mount or USB storage.  Make two copies of this on two different media.
+
+    ```bash
+    cp -prv /boot /etc /home /opt /root /usr /var /net/filerdata/backups/sarko/$(date +%Y.%m%d)
+    ```
+
+### Step 3 - Installation Procedure for Fedora Linux Workstation
+
+1. Reboot into Fedora Linux into Live mode using a bootable USB Image
+2. Start a terminal and relocate the /home/maxwell directory on existing /home filesystem for later use.
+    ```bash
+    mv /home/maxwell /home/maxwell.old
+    ```
+3. Run the installer program and install Fedora Linux. Reformat all filesystems except /home
+4. Reboot into the new Fedora Linux installation
+5. Connect to the WIFI network (optional)
+6. Create a primary user (this will be system admin / sudo user)
+7. Login, start a shell
+8. Set the static hostname with
+    ```bash
+    hostnamectl set-hostname <hostname>
+    ```
+
+### Step 4 - Restore files from backup
+
 1. Update all packages - There are always updates.
-  ```bash
-  sudo dnf -y update
-  ```
+    ```bash
+    dnf -y update
+    ```
+
+### Step 5 - Reboot into updated Fedora Linux
+
 1. Reboot into new kernel, library, packages, etc
 
-### Restore files
+### Step 6 - Restore files from backup
 
-This procedure is for when /home was reformatted:
+1. After booting the system, don't login on the GUI!
+2. Switch to a virtual console and login as maxwell
+3. Relocate the new, empty /home/maxwell out of the way
+    ```bash
+    mv /home/maxwell /home/maxwell.fedora.new
+    ```
+4. Relocate the old, populated /home/maxwell.old into place
+    ```bash
+    mv /home/maxwell.old /home/maxwell
+    ```
+5. Now login on the GUI as maxwell to continue normal operation
 
-1. Login as user
-1. Option 1: scp
-```bash
-scp -prv user@nasserver.maxlab:/backups/fedora.old /home/fedora.old
-```
-1. Option 2: NFS mount
-```bash
-mount -t nfs nasfiler.maxlab:/backups /net/filer/backups
-cp -prv /net/filer/backups/fedora.old /home/fedora.old
-```
-1. Option 3: USB drive mount
-  1. Mount the drive
-  2. Copy directly
-  ```bash
-  cp -prv /mnt/usb/backlup/fedora.old /home/fedora.old
-  ```
+### Step 7 - Provision the node with this cookbook
 
-This procedure is available when the previous home directory was kept on a non-reformatted /home filesystem
-
-1. Login on alternate console (ALT-F3) as maxwell and swap home directories
-  ```bash
-  mv /home/maxwell /home/maxwell.fedora.new
-  mv /home/maxwell.fedora.old /home/maxwell
-  ```
-  1. Logout and back in to start using restored home directory.
-  1. *Be on the lookout for problems with upgraded programs using old config files or settings*
-
-### Provision the node
-
-1. Clone this git repo
-```bash
-git clone https://github.com/maxwax/station
-```
-1. Change to the repo directory
-```bash
-cd station
-```
-1. Run the bootstrap.sh script
-```bash
-./bootstrap.sh
-```
+1. Login as maxwell into a clean, empty /home/maxwell
+2. Clone this git repo
+    ```bash
+    git clone https://github.com/maxwax/station
+    ```
+3. Change to the repo directory
+    ```bash
+    cd station
+    ```
+4. Run the bootstrap.sh script
+    ```bash
+    ./bootstrap.sh
+    ```
 
 #### Bootstrap.sh Documentation
 
 The bootstrap script simply performs the following tasks. It's good to know them in case something goes wrong and you need to overcome any obstacles:
 
-1. It will: Launch Firefox to download [latest Chef Workstation for Red Hat Linux 8](https://downloads.chef.io/chef-workstation/)
-1. It will: Install Chef workstation with ```sudo dnf install chef-workstation*rpm```
-1. It will: Run ```sudo chef-client -z``` to create a node object for this workstation
-1. It will: change the ownership of the newly created Chef node object to be owned by your user.
-1. It will: Set this node's environment to 'maxlab'
-1. It will: Append 'recipe[station]' to this node's run_list
-1. It will: Now run `sudo chef-client -z` again to provision system
-  ```bash
-  cd station
-  sudo chef-client -z
-  ```
+It will:
 
-### Manual Application Installs
+1. Launch Firefox and prompt you to download [latest Chef Workstation rpm for Red Hat Linux 8](https://downloads.chef.io/chef-workstation/)
+1. Install the downloaded Chef Workstation rpm
+1. Perform a first run of chef-client -z to create a Chef *node* object for this workstation.
+1. Modify the ownership of the Chef node object to be owned by your user.
+1. Modify the node's environment to 'maxlab'
+1. Append 'recipe[station]' to the node's run_list
+1. Perform a second run of chef-client -z execute the station cookbook in order to provision the system
+
+### Step 8 - Final Reboot
+
+With the provisioning complete, the majority of major software deployments and configurations is complete.
+
+Now is a good time to reboot the system and login.
+
+### Step 9 - Debug the Surprises
+
+Along the way, look for problems, errors and obvious things that are broken. Debug them and resolve them before moving on.
+
+### Step 10 - Manual Application Installs
+
+At this point the system is stable, so we can manual install some applications whose installation is difficult to reliably automate.
 
 * Install the most recent version of [Slack](https://slack.com/downloads/instructions/fedora)
 
@@ -149,12 +180,18 @@ The bootstrap script simply performs the following tasks. It's good to know them
 
 * Install most recent [draw.io rpm for Linux](https://github.com/jgraph/drawio-desktop/releases)
 
-### Manual Configuration Tasks
+* Install most recent (Zoom for Linux rpm)[https://zoom.us/download?os=linux]
 
-* Consider setting a static hostname.
-```bash
-sudo hostnamectl set-hostname mynode.maxlab
-```
+* Install most recent (Skype for Linux rpm)[https://repo.skype.com/rpm/stable/]
+
+### Step 11 - Manual Configuration Tasks
+
+Here, perform any manual configuration steps that aren't included in the provisioning cookbook.  These are often accommodations to new changes introduced by Fedora.
+
+* Consider setting a static hostname (if not done earlier)
+      ```bash
+      sudo hostnamectl set-hostname mynode.maxlab
+      ```
 
 * Verify the timezone in use. Make sure its correct
 ```timedatectl
@@ -168,7 +205,9 @@ System clock synchronized: yes
           RTC in local TZ: no
 ```
 
-### Gnome Tweak Tool Configurations
+### Step 12 - Gnome Tweak Tool Configurations
+
+The Gnome tweaks have a strong impact on the look and feel operation of the GUI, so verify that the expected settings are in place.
 
 After restoring my home directory most of these should already be restored, so verify that these are set as required.
 
@@ -191,7 +230,9 @@ After restoring my home directory most of these should already be restored, so v
   * Number of Workspaces - 5
   * Display Handling - Workspaces Span Displays
 
-### Gnome Shell Extensions
+### Step 13 - Gnome Shell Extensions
+
+These extensions modify the Gnome GUI environment in ways that make it significantly more comfortable so install them now:
 
 Use Firefox to install these:
 
@@ -231,19 +272,21 @@ These are in addition to the extensions installed by default in Fedora or by the
 
   * [Tweaks in System Menu](https://extensions.gnome.org/extension/1653/tweaks-in-system-menu/) - Customization to put Gnome Tweaks Tool launch icon in system menu near control panel icon for natural accessibility.
 
-### Control Panel customizations
+### Step 14 - Control Panel customizations
 
 * Keyboard Shortcuts - 'Lower window below other windows - Menu (key)'
 
-### Work-Arounds Required
+### Step 15 - Work Around Accommodations
+
+Record any known work arounds to issues here so they can be easily performed on a new deployment.
 
 As of Winter 2020, three modifications are required to ensure that VirtualBox 6.1 and Vagrant are allowed to work with each other:
 * [Vagrant 2.2.6 doesn't work with VirtualBox 6.1.0 #178
 ](https://github.com/oracle/vagrant-boxes/issues/178)
 
-### QA Checklist
+### Step 16 - QA Checklist
 
-Execute these when testing a new deployment (especially a new Fedora version)
+Verify the items on this checklist immediately after installation of Fedora in order to identify and resolve problems now and not 5 minutes before a collaboration with others where you need them.  This list is expected to grow.
 
 Network
 - [ ] Hostname is set to host.domain
@@ -273,7 +316,19 @@ Gnome UI
 - [ ] Right menu key lowers windows
 
 Applications
+- [ ] KeepassX can load a password safe
 - [ ] Draw.io allows diagramming
 - [ ] LibreOffice installed and working
-- [ ] Slack runs and is signed in
 - [ ] Atom editor works
+- [ ] You can get to Google Drive from the Nautilus File Manager
+- [ ] Firefox is logged in and syncing bookmarks
+- [ ] Chrome is logged in and syncing bookmarks
+- [ ] Slack runs and is signed in
+- [ ] Zoom runs, is signed in, can use microphone and webcams
+- [ ] Google Meets runs, is signed in, can use microphone and webcams
+- [ ] Skype Meets runs, is signed in, can use microphone and webcams
+
+CLI Tools
+- [ ] The 'safe' command can open a LUKS safe file
+- [ ] You can ssh to an AWS Bastion node for tunneling
+- [ ] You can ssh through an AWS Bastion node for a private tunnel
