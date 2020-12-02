@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.24.16
+
+* Update $HOME/.position.conf to have special-rules items for organizing special windows.
+
 # 0.24.15
 
 * Don't create or modify NFS mount points if they already exist.  You don't want Chef messing with MOUNTED NFS shares at the mount points.
