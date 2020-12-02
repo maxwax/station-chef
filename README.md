@@ -21,6 +21,8 @@ Station performs the following actions:
 
 * Installs [VirtualBox](https://www.virtualbox.org/wiki/Linux_Downloads) hypervisor for Linux
 
+* Installs [Zoom](https://zoom.us/download?os=linux)
+
 * Installs [Skype](https://repo.skype.com/rpm/stable/)
 
 * Enable [sshd](https://www.ssh.com/ssh) for inbound network access
@@ -197,10 +199,6 @@ At this point the system is stable, so we can manual install some applications w
 * Install [VirtualBox Extension Pack](https://www.virtualbox.org/wiki/Downloads). This appears to require a manual process.
 
 * Install most recent [draw.io rpm for Linux](https://github.com/jgraph/drawio-desktop/releases)
-
-* Install most recent (Zoom for Linux rpm)[https://zoom.us/download?os=linux]
-
-* Install most recent (Skype for Linux rpm)[https://repo.skype.com/rpm/stable/]
 
 ### Step 11 - Manual Configuration Tasks
 
