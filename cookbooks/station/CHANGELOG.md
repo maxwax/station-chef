@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.24.12
+
+* Update .gitconfig to use maxcode not maxwell
+
 # 0.24.11
 
 * Deploy Zoom

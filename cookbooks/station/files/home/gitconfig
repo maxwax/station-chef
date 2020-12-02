@@ -1,7 +1,7 @@
 # THIS FILE DEPLOYED VIA CHEF 'station' cookbook
 [user]
 	name = Maxwell Spangler
-	email = maxwell@maxwellspangler.com
+	email = maxcode@maxwellspangler.com
 	username = maxwax
 [core]
 	editor = vim
