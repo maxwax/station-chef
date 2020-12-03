@@ -68,7 +68,8 @@ Station performs the following actions:
 1. Manual Configuration Tasks
 1. Gnome Tweak Tool Configuration
 1. Gnome Shell Extensions
-1. Control Panel Customiations
+1. Control Panel Configurations
+1. Solarize gnome-shell and vim
 1. Work-Rounds Accommodations
 1. QA Checklist
 
@@ -288,11 +289,30 @@ These are in addition to the extensions installed by default in Fedora or by the
 
   * [Tweaks in System Menu](https://extensions.gnome.org/extension/1653/tweaks-in-system-menu/) - Customization to put Gnome Tweaks Tool launch icon in system menu near control panel icon for natural accessibility.
 
-### Step 14 - Control Panel customizations
+### Step 14 - Control Panel configurations
 
-* Keyboard Shortcuts - 'Lower window below other windows - Menu (key)'
+* Configure WIFI: You may need to reconfigure access to known access points
 
-### Step 15 - Work Around Accommodations
+* Configure Power: to not 'Automatic Suspend' after idle use
+* Configure Power: to show battery Percentage
+* Configure Power: Power Button Behavior does 'Nothing'
+
+* Configure Keyboard Shortcuts: 'Lower window below other windows' via 'Menu' (key)
+
+* Configure Printers: Re-configure any known printers as needed
+
+* Configure Default Apps: Set Mail to 'Evolution'
+
+* Configure Date & Time: Enable both 'Automati Date & Time' and 'Automatic Time Zone'
+* Configure Date & Time: Time format 24-hour
+
+### Step 15 - Solarize gnome-shell and vim
+
+Apply a low contrast color palette to gnome-shell windows using [this guide on if-not-true-then-false.com](https://www.if-not-true-then-false.com/2012/solarized-linux/#solarized-gnome-terminal
+
+Apply the same to vim using [this guide](https://www.if-not-true-then-false.com/2012/solarized-linux/#solarized-vim)
+
+### Step 16 - Work Around Accommodations
 
 Record any known work arounds to issues here so they can be easily performed on a new deployment.
 
@@ -300,7 +320,7 @@ As of Winter 2020, three modifications are required to ensure that VirtualBox 6.
 * [Vagrant 2.2.6 doesn't work with VirtualBox 6.1.0 #178
 ](https://github.com/oracle/vagrant-boxes/issues/178)
 
-### Step 16 - QA Checklist
+### Step 17 - QA Checklist
 
 Verify the items on this checklist immediately after installation of Fedora in order to identify and resolve problems now and not 5 minutes before a collaboration with others where you need them.  This list is expected to grow.
 
