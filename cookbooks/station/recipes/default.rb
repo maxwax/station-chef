@@ -16,11 +16,14 @@ include_recipe 'station::repo_packages'
 # Install and Remove standard sets of wanted/unwanted packages
 include_recipe 'station::packages'
 
-# Install and Remove standard sets of wanted/unwanted packages
+# Install scripts to /usr/local from cookbook and github
 include_recipe 'station::usr_local'
 
 # Install and configure GNOME desktop shortcuts
 include_recipe 'station::shortcuts'
+
+# Install mime file helping Firefox display markdown via an extension
+include_recipe 'station::firefox-markdown'
 
 # Install personal files for primary user
 include_recipe 'station::user'
@@ -46,7 +49,7 @@ include_recipe 'station::zoom'
 # Enable SSH Server
 include_recipe 'station::sshd'
 
-# Enable SSH Server
+# Create standard NFS mounts for NAS shares
 include_recipe 'station::mount_points'
 
 # Deploy system config files for my custom scripts

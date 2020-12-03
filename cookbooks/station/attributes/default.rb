@@ -84,6 +84,12 @@ node.default['station']['shortcuts'] = {
   ]
 }
 
+node.default['station']['firefox-markdown'] = {
+  "dir": ".local/share/mime/packages",
+  "filename": "text-markdown.xml"
+}
+
+
 node.default['station']['other_groups'] = {
   "plex": {
     "gid": 1200,

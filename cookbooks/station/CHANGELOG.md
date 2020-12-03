@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.24.26
+
+* Deploy xml file to aide Firefox in supporting markdown text via extension
+
 # 0.24.25
 
 * Deploy 'shutter' screen capture utility
