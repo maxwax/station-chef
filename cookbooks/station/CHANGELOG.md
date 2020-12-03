@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.24.24
+
+* Deploy position v1.2.0
+
 # 0.24.23
 
 * Re-ordering deployment of repos and repo keys. Keys first, only if repos don't exist, then repos.
