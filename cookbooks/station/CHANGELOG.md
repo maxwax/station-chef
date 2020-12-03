@@ -1,6 +1,12 @@
 
 # station CHANGELOG
 
+# 0.24.25
+
+* Deploy 'shutter' screen capture utility
+* Deploy wavemon WIFI signal monitoring
+* Deploy xsane, xsane-gimp, simple-scan for scanner hardware use
+
 # 0.24.24
 
 * Deploy position v1.2.0
