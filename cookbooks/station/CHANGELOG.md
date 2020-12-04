@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.24.27
+
+* Deploy 'position' v1.2.1 to bring in a bug fix on window positioning.
+
 # 0.24.26
 
 * Deploy xml file to aide Firefox in supporting markdown text via extension
