@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.24.28
+
+* Deploy proxychains.conf in $HOME/.proxychains not /etc/proxychains.conf. It's a better fit to for personal use not system wide use (even if I am the only expected user).
+
 # 0.24.27
 
 * Deploy 'position' v1.2.1 to bring in a bug fix on window positioning.
