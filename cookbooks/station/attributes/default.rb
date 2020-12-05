@@ -24,7 +24,8 @@ node.default['station']['user'] = {
     "position.conf",
     "santoku.conf",
     "coding.conf",
-    "vimrc"
+    "vimrc",
+    "proxychains.conf"
   ],
   "roxterm": {
     "deploy_dir": ".config/roxterm.sourceforge.net",
@@ -103,8 +104,7 @@ node.default['station']['other_groups'] = {
 
 node.default['station']['etc_config'] = [
   "nas.conf",
-  "vital-backup.conf",
-  "proxychains.conf"
+  "vital-backup.conf"
 ]
 
 node.default['station']['usr_local'] = {
