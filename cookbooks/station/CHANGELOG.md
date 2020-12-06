@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.24.30
+
+* Minor rules changes to position.conf
+
 # 0.24.29
 
 * Deploy 'sshcloud' and 'tuncloud' scripts from cookbook. They're not generalized so no point in posting them on github.
