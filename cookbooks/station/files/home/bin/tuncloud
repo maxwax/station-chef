@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Quick and dirty tunnel to AWS Ohio private nodes via specific Ohio bastion
+
+# Needs to be rewritten for long term use
+
+# 2020-10-25
+
+TARGET=${1:-"_null"}
+if [[ $TARGET != "_null" ]]
+then
+
+ssh -i ~/.ssh/aws-maxwaxcloud-ohio.pem \
+    -o IdentitiesOnly=yes \
+    -o Compression=no \
+    -o ProxyCommand="ncat --proxy-type="socks4" --proxy localhost:9998 %h %p" \
+    ec2-user@${TARGET}
+
+else
+
+  echo "You must supply a target IP address or FQDN"
+
+fi

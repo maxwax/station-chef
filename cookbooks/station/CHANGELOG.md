@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.24.29
+
+* Deploy 'sshcloud' and 'tuncloud' scripts from cookbook. They're not generalized so no point in posting them on github.
+
 # 0.24.28
 
 * Deploy proxychains.conf in $HOME/.proxychains not /etc/proxychains.conf. It's a better fit to for personal use not system wide use (even if I am the only expected user).

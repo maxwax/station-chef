@@ -1,0 +1,87 @@
+#!/bin/bash
+
+# Global variables
+REGION=""
+RESOLVE_FQDN=""
+
+# Attempt a reverse lookup on what is likely a public IP address
+# If possible, set RESOLVE_FQDN variable
+# call set_region to identify REGION
+function resolve_fqdn {
+  # $1 is an IP address
+
+  PARAM=${1:-"__null"}
+  if [[ $PARAM != "__null" ]]
+  then
+    # Reverse lookup the IP
+    RESOLVE_FQDN=$(host $1 | awk '{print $5}')
+
+    CMDERR=$?
+    # Check for error resolving the IP
+    if [[ $CMDERR -gt 0 ]]
+    then
+      echo "Cannot reverse lookup $1"
+    else
+      echo "resolve_fqdn() Resolved |$RESOLVE_FQDN|"
+      # Now with a FQDN, try to identify and set the AWS region
+      set_region $RESOLVE_FQDN
+    fi
+  fi
+}
+
+# Identify the AWS region from a FQDN hostname
+# Set global variable REGION
+function set_region {
+  # $1 is the SSH target host
+
+  # todo: rework this as an array to handle larger sets in the future
+
+  PARAM=${1:-"__null"}
+  if [[ $PARAM != "__null" ]]
+  then
+    # N.Virginia, Ohio, Sydney
+    if [[ $1 == *"us-east-1"* ]]
+    then
+      REGION="us-east-1"
+    elif [[ $1 == *"us-east-2"* ]]
+    then
+      REGION="us-east-2"
+    elif [[ $1 == *"ap-southeast-2"* ]]
+    then
+      REGION="us-east-1"
+    else
+      echo "set_region() Trying reserve_fqdn() on |$1|"
+      resolve_fqdn $1
+    fi
+  fi
+}
+
+FQDN=${1:-"_null"}
+if [[ $1 == "_null" ]]
+then
+  echo "You must supply a valid FQDN of your cloud instance"
+  exit 1
+else
+
+  set_region $FQDN
+
+  case "$REGION" in
+
+    # Northern Virginia
+    *"us-east-1"*|*"compute-1"*)
+      ssh -o IdentitiesOnly=yes -i ~/.ssh/aws-maxwaxcloud-nvirginia.pem ec2-user@${FQDN}
+    ;;
+
+    # Ohio
+    *"us-east-2"*)
+      ssh -o IdentitiesOnly=yes -i ~/.ssh/aws-maxwaxcloud-ohio.pem ec2-user@${FQDN}
+    ;;
+
+    # Sydney
+    *"ap-southeast-2"*)
+      ssh -o IdentitiesOnly=yes -i ~/.ssh/aws-maxwaxcloud-sydney.pem ec2-user@${FQDN}
+    ;;
+
+  esac
+
+fi

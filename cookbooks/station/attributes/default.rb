@@ -15,7 +15,9 @@ node.default['station']['user'] = {
     "library-sync",
     "reset-evolution",
     "reset-gnome",
-    "update-maxlab-chef"
+    "update-maxlab-chef",
+    "tuncloud",
+    "sshcloud",
   ],
   "personal_dot_files": [
     "bashrc",
