@@ -257,6 +257,8 @@ case plat_vers
 
     # List of default packages to be installed for this Platform+Version
     node.default['station']['install_packages'] = {
+      "ddrescue": "dd command that can read damaged media and recover data",
+      "atop": "Better version of top",
       "wavemon": "WIFI Signal Monitor",
       "xsane": "Scanner utility",
       "xsane-gimp": "Scanner frontend for GIMP",

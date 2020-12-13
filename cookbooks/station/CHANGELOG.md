@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.24.31
+
+* Deploy atop and ddrescue CLI commands
+
 # 0.24.30
 
 * Minor rules changes to position.conf
