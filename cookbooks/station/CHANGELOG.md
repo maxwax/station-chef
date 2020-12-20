@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.24.32
+
+* Deploy bpytop, an even better top. Very modern looking.
+
 # 0.24.31
 
 * Deploy atop and ddrescue CLI commands
