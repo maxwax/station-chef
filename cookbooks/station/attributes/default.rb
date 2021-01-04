@@ -128,14 +128,16 @@ node.default['station']['usr_local'] = {
         "filename": "v1.1.0.tar.gz",
         "version": "1.1.0",
         "file_type": "tgz",
-        "install_script": "install.sh"
+        "install_script": "install.sh",
+        "condition_file": "/usr/local/bin/coding"
       },
       "position": {
         "source": "https://github.com/maxwax/position/archive",
         "filename": "v1.2.1.tar.gz",
         "version": "1.2.1",
         "file_type": "tgz",
-        "install_script": "install.sh"
+        "install_script": "install.sh",
+        "condition_file": "/usr/local/bin/position"
       }
     },
     "sbin": {
@@ -144,35 +146,40 @@ node.default['station']['usr_local'] = {
         "filename": "v1.2.0.tar.gz",
         "version": "1.2.0",
         "file_type": "tgz",
-        "install_script": "install.sh"
+        "install_script": "install.sh",
+        "condition_file": "/usr/local/sbin/nas"
       },
       "safe": {
         "source": "https://github.com/maxwax/safe/archive",
         "filename": "v2.0.1.tar.gz",
         "version": "2.0.1",
         "file_type": "tgz",
-        "install_script": "install.sh"
+        "install_script": "install.sh",
+        "condition_file": "/usr/local/sbin/safe"
       },
       "santoku": {
         "source": "https://github.com/maxwax/santoku/archive",
         "filename": "v1.1.0.tar.gz",
         "version": "1.1.0",
         "file_type": "tgz",
-        "install_script": "install.sh"
+        "install_script": "install.sh",
+        "condition_file": "/usr/local/bin/santoku"
       },
       "smartcap": {
         "source": "https://github.com/maxwax/smartcap/archive",
         "filename": "v1.0.4.tar.gz",
         "version": "1.0.4",
         "file_type": "tgz",
-        "install_script": "install.sh"
+        "install_script": "install.sh",
+        "condition_file": "/usr/local/sbin/smartcap"
       },
       "vital-backup": {
         "source": "https://github.com/maxwax/vital-backup/archive",
         "filename": "v1.2.0.tar.gz",
         "version": "1.2.0",
         "file_type": "tgz",
-        "install_script": "install.sh"
+        "install_script": "install.sh",
+        "condition_file": "/usr/local/sbin/vital-backup"
       }
     }
   }

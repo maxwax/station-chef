@@ -191,7 +191,11 @@ Now is a good time to reboot the system and login.
 
 Along the way, look for problems, errors and obvious things that are broken. Debug them and resolve them before moving on.
 
-### Step 10 - Manual Application Installs
+### Step 10 - Sign into Firefox Sync
+
+Run Firefox, sign in then wait for synced bookmarks and extensions to appear.
+
+### Step 11 - Manual Application Installs
 
 At this point the system is stable, so we can manual install some applications whose installation is difficult to reliably automate.
 
@@ -201,7 +205,7 @@ At this point the system is stable, so we can manual install some applications w
 
 * Install most recent [draw.io rpm for Linux](https://github.com/jgraph/drawio-desktop/releases)
 
-### Step 11 - Manual Configuration Tasks
+### Step 12 - Manual Configuration Tasks
 
 Here, perform any manual configuration steps that aren't included in the provisioning cookbook.  These are often accommodations to new changes introduced by Fedora.
 
@@ -222,7 +226,7 @@ System clock synchronized: yes
           RTC in local TZ: no
 ```
 
-### Step 12 - Gnome Tweak Tool Configurations
+### Step 13 - Gnome Tweak Tool Configurations
 
 The Gnome tweaks have a strong impact on the look and feel operation of the GUI, so verify that the expected settings are in place.
 
@@ -230,10 +234,12 @@ After restoring my home directory most of these should already be restored, so v
 
 * General
   * Suspend lid on laptop close - disabled
+* Keyboard & Mouse
+  * Mouse Click Emulation: Area (to use touchpad areas, not 2-finger gestures)
 * Top Bar
   * Show Weekday - enabled
   * Show Date - enabled
-  * Show Battery Percentage - enabled (Maybe?)
+  * Show Battery Percentage - enabled
 * Windows
   * Attach Model Dialogs - enabled
   * Edge Tiling - enabled
@@ -247,7 +253,7 @@ After restoring my home directory most of these should already be restored, so v
   * Number of Workspaces - 5
   * Display Handling - Workspaces Span Displays
 
-### Step 13 - Gnome Shell Extensions
+### Step 14 - Gnome Shell Extensions
 
 These extensions modify the Gnome GUI environment in ways that make it significantly more comfortable so install them now:
 
@@ -256,6 +262,8 @@ Use Firefox to install these:
 These are in addition to the extensions installed by default in Fedora or by the Chef provisioning script.
 
 * Visit [extensions.gnome.org](https://extensions.gnome.org/) and install the following extensions:
+
+  * Install the **Firefox Gnome-Shell-Extension** using the banner at the top of the Gnome Shell Extensions website.
 
   * [Freon by UshakovVasili](https://extensions.gnome.org/extension/841/freon/) - Gnome temperature sensors applet
 
@@ -268,9 +276,18 @@ These are in addition to the extensions installed by default in Fedora or by the
 
   * [Launch New Instance](https://extensions.gnome.org/extension/600/launch-new-instance/) - Always launch a new instance even if an application is already running
 
-  * DEC 2020 - SKIP THIS - CRASHES GNOME [Multi-Monitors Add-On by spin83](https://extensions.gnome.org/extension/921/multi-monitors-add-on/) - Modifies GNOME desktop to use more than one monitor for virtual desktops
+  * MANUAL INSTALL [Multi-Monitors Add-On by spin83](https://extensions.gnome.org/extension/921/multi-monitors-add-on/) - Modifies GNOME desktop to use more than one monitor for virtual desktops
     * Customize this extension with details
     * Show Multi Monitors indicator on Top Panel - disabled
+    * Fedora 33 requires version 22.1 of this or it crashes the gui
+    * Workaround:
+```
+cd ~/.local/share/gnome-shell/extensions
+
+git clone https://github.com/spin83/multi-monitors-add-on
+
+# Re-Launch Tweak Tools and enable manually
+```
 
   * [OpenWeather](https://extensions.gnome.org/extension/750/openweather/) - Weather conditions applet for Gnome title bar
     * Customize this extension with details
@@ -285,11 +302,13 @@ These are in addition to the extensions installed by default in Fedora or by the
 
   * [Sound Input & Output Chooser by kgshank](https://extensions.gnome.org/extension/906/sound-output-device-chooser/) - Select active speakers and microphone. Very useful after docking/undocking laptops from desk to roaming.
 
-  * [Timezones extension](https://extensions.gnome.org/extension/2657/timezones-extension/) - Display multiple timezones on the top bar. Helps with keeping track of co-workers in PST, EST and UTC.
-
   * [Tweaks in System Menu](https://extensions.gnome.org/extension/1653/tweaks-in-system-menu/) - Customization to put Gnome Tweaks Tool launch icon in system menu near control panel icon for natural accessibility.
 
-### Step 14 - Control Panel configurations
+### Step 15 - Control Panel configurations
+
+* Configure Top Bar Clock with World Clock Eastern and UTC Time zones.
+
+* Configure OpenWeather app for Denver weather, remove Tuvalu
 
 * Configure WIFI: You may need to reconfigure access to known access points
 
@@ -306,13 +325,13 @@ These are in addition to the extensions installed by default in Fedora or by the
 * Configure Date & Time: Enable both 'Automati Date & Time' and 'Automatic Time Zone'
 * Configure Date & Time: Time format 24-hour
 
-### Step 15 - Solarize gnome-shell and vim
+### Step 16 - Solarize gnome-shell and vim
 
 Apply a low contrast color palette to gnome-shell windows using [this guide on if-not-true-then-false.com](https://www.if-not-true-then-false.com/2012/solarized-linux/#solarized-gnome-terminal
 
 Apply the same to vim using [this guide](https://www.if-not-true-then-false.com/2012/solarized-linux/#solarized-vim)
 
-### Step 16 - Work Around Accommodations
+### Step 17 - Work Around Accommodations
 
 Record any known work arounds to issues here so they can be easily performed on a new deployment.
 
@@ -320,7 +339,7 @@ As of Winter 2020, three modifications are required to ensure that VirtualBox 6.
 * [Vagrant 2.2.6 doesn't work with VirtualBox 6.1.0 #178
 ](https://github.com/oracle/vagrant-boxes/issues/178)
 
-### Step 17 - QA Checklist
+### Step 18 - QA Checklist
 
 Verify the items on this checklist immediately after installation of Fedora in order to identify and resolve problems now and not 5 minutes before a collaboration with others where you need them.  This list is expected to grow.
 

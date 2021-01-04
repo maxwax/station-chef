@@ -54,13 +54,32 @@ node['station']['usr_local']['remote_scripts'].each do |usr_local_dir, script_de
 
   script_details.each do |script_name, script_info|
 
-    # If we have never tracked installing this script before, install it
-    # OR
-    # We've installed the script, but how about *this* version of it?
-    if not node['station']['remote_scripts']['installed_scripts'].key?(script_name) or
-      node['station']['remote_scripts']['installed_scripts'][script_name] != script_info['version']
+    # I can skip the use of deploy_script and do a conditional like this:
+    # If (not A) OR (not B OR not C)
+    # But it looks visually confusing in my editor on six wrapped lines
+    # So while this is slower, it's more legibile
 
-      puts "INSTALLING #{script_name}"
+    # Default to false so we don't re-deploy a script already deployed
+    deploy_script = false
+
+    # If we don't have the file we expect, then do [re-]deploy it.
+    if (not ::File.exist?(script_info['condition_file']))
+      deploy_script = true
+    end
+
+    # If we previously deployed, we tracked its version in an attribute
+    if not node['station']['remote_scripts']['installed_scripts'].key?(script_name)
+      deploy_script = true
+    elsif
+      previous_deploy_version = node['station']['remote_scripts']['installed_scripts'][script_name]
+
+      # Compare the attributes, did we deploy 1.0 but we want 1.1 now?
+      if previous_deploy_version != script_info['version']
+        deploy_script = true
+      end
+    end
+
+    if deploy_script == true
 
       directory untar_dir do
         owner 'root'
