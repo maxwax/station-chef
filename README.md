@@ -339,6 +339,19 @@ As of Winter 2020, three modifications are required to ensure that VirtualBox 6.
 * [Vagrant 2.2.6 doesn't work with VirtualBox 6.1.0 #178
 ](https://github.com/oracle/vagrant-boxes/issues/178)
 
+#### Disable suspend when lid is closed
+
+I used to have a Gnome Shell extension that would do this, but that appears lost.
+
+So edit /etc/systemd/logind.conf to change three lines to this:
+
+```
+HandleLidSwitch=ignore
+HandleLidSwitchExternalPower=ignore
+HandleLidSwitchDocked=ignore
+```
+Without this, once the docked computer with lid closed is booted it immediately goes into suspend mode.
+
 ### Step 18 - QA Checklist
 
 Verify the items on this checklist immediately after installation of Fedora in order to identify and resolve problems now and not 5 minutes before a collaboration with others where you need them.  This list is expected to grow.
