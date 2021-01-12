@@ -1,13 +1,17 @@
 
 # station CHANGELOG
 
+# 0.24.34
+
+* Updated .coding.conf in home directory to ensure 'right' and 'east' windows don't overlap.
+
 # 0.24.33
 
 * Updated README.md for cookbook as part of another re-install and experience observed
 * Modified code to determine if remote scripts should be redeployed. It was broken and scripts weren't deployed.
 * Re-worked the condition logic for remote script deployment to be legibile even if its slightly slower. When it doesn't look good, it leads to faults as I just experienced with this re-install.
 * Introduced condition_file to define where each remote script is deployed locally so we can check to see if the file exists or not.
-* I should just package my personal scripts as rpms and avoid all this, but.. 
+* I should just package my personal scripts as rpms and avoid all this, but..
 
 # 0.24.32
 
