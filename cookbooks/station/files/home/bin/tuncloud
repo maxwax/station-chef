@@ -4,20 +4,60 @@
 
 # Needs to be rewritten for long term use
 
-# 2020-10-25
+# 2020-1025
+# 2021-0527
+
+function syntax {
+
+  echo
+  echo "tuncloud <hostname> [key region]"
+  echo
+  echo "Ex: SSH to EC2 node in Ohio (default region for maxwell)"
+  echo
+  echo "tuncloud ec2-13-59-85-240.us-east-2.compute.amazonaws.com"
+  echo
+  echo "Ex: SSH to EC2 node in Oregon - specify the region"
+  echo
+  echo "tuncloud ec2-52-13-125-169.us-west-2.compute.amazonaws.com oregon"
+  echo
+  echo "The SSH key used is $HOME/ssh-maxwaxcloud-<$REGION>.pem"
+  echo "'ohio' is used if no Region specified."
+  echo
+}
 
 TARGET=${1:-"_null"}
 if [[ $TARGET != "_null" ]]
 then
 
-ssh -i ~/.ssh/aws-maxwaxcloud-ohio.pem \
-    -o IdentitiesOnly=yes \
-    -o Compression=no \
-    -o ProxyCommand="ncat --proxy-type="socks4" --proxy localhost:9998 %h %p" \
-    ec2-user@${TARGET}
+  KEY_FILENAME_PREFIX="aws-maxwaxcloud-"
+  KEY_FILENAME_SUFFIX=".pem"
+
+  SSH_KEY=${2:-"_null"}
+  if [[ $SSH_KEY == "_null" ]]
+  then
+    SSH_KEY="ohio"
+  fi
+
+  SSH_FILENAME="$HOME/.ssh/${KEY_FILENAME_PREFIX}${SSH_KEY}${KEY_FILENAME_SUFFIX}"
+  if [[ ! -f "$SSH_FILENAME" ]]
+  then
+    echo "Error: I can't read an SSH key file for $SSH_FILENAME"
+    syntax
+    exit 1
+  else
+
+    #ssh -i ~/.ssh/aws-maxwaxcloud-ohio.pem \
+    ssh -i $SSH_FILENAME \
+      -o IdentitiesOnly=yes \
+      -o Compression=no \
+      -o ProxyCommand="ncat --proxy-type=\"socks4\" --proxy localhost:9998 %h %p" \
+      ec2-user@${TARGET}
+
+  fi
 
 else
 
   echo "You must supply a target IP address or FQDN"
+  syntax
 
 fi

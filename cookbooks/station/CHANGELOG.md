@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.25.3
+
+* New version of 'tuncloud' script with recent dev work.
+
 # 0.25.2
 
 * Update santoku config file with pass key 'maxwell' instead of 'chef-maxwell' (reflects current key name, discards lost key)
