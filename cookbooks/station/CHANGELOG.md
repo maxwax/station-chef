@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.25.5
+
+* Updating NFS mounts in /etc/nas.conf
+
 # 0.25.4
 
 * Updating NFS mount directories
