@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.25.4
+
+* Updating NFS mount directories
+
 # 0.25.3
 
 * New version of 'tuncloud' script with recent dev work.

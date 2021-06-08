@@ -195,17 +195,16 @@ node.default['station']['typefaces'] = {
 
 node.default['station']['mount_points'] = {
   "/net": [
-    "auxdata",
-    "filerdata",
-    "auxrootdata",
     "audiovideo",
+    "auxdata",
     "avarchive",
-    "laptopnas",
-    "teragreen",
-    "offsite4tb-filer",
+    "centraldata",
+    "filerdata",
+    "mediadata",
     "offsite4tb-aux",
-    "laptop-auxdata",
-    "xfiles"
+    "offsite4tb-filer",
+    "teraxfiles",
+    "tv320"
   ],
   "/mnt": [
     "usb",
