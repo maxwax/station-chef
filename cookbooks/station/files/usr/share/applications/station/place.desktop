@@ -1,7 +1,7 @@
 [Desktop Entry]
-Name=Position Work Windows
+Name=Place Core Set of Windows
 Comment=Use the command line [maxdesktop]
-Keywords=shell;prompt;command;commandline;work
+Keywords=shell;prompt;command;commandline;place
 TryExec=gnome-terminal
 Exec=/usr/local/bin/position
 Icon=utilities-terminal
