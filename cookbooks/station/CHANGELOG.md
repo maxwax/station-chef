@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.25.9
+
+* Download typefaces from my website instead of maxlab file repo. Experimental.
+
 # 0.25.8
 
 * Typefaces install: create /tmp/typesfaces only once, not multiple times.
