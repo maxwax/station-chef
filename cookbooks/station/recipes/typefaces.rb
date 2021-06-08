@@ -24,7 +24,7 @@ end
 
 # We must be on the maxlab private network to access the typefaces repo
 # This is a REALLY LAME way to do this, but it'll work for right now
-if node['network']['default_gateway'] == "192.168.9.2"
+#if node['network']['default_gateway'] == "192.168.9.2"
 
   #
   # These are scripts I've published on github
@@ -63,4 +63,14 @@ if node['network']['default_gateway'] == "192.168.9.2"
     end
 
   end
-end
+
+  # Careful - make sure you delete only the typefaces directory!!
+  directory download_dir do
+    owner 'root'
+    group 'root'
+    mode 0755
+    recursive true
+    action :delete
+  end
+
+#end

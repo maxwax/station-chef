@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.25.10
+
+* Delete /tmp/typefaces after downloaded files contents have been extracted.
+
 # 0.25.9
 
 * Download typefaces from my website instead of maxlab file repo. Experimental.
