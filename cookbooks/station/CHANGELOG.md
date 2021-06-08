@@ -1,6 +1,12 @@
 
 # station CHANGELOG
 
+# 0.25.11
+
+* Cleanup of typefaces.rb recipe
+* Only run fc-cache once, after all new typefaces installed
+* Removed previous obsolete comments
+
 # 0.25.10
 
 * Delete /tmp/typefaces after downloaded files contents have been extracted.
