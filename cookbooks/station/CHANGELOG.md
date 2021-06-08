@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.25.2
+
+* Update santoku config file with pass key 'maxwell' instead of 'chef-maxwell' (reflects current key name, discards lost key)
+
 # 0.25.1
 
 * Update powerline config with manual changes
