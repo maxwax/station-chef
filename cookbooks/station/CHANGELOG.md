@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.25.7
+
+* Disable install of Skype
+
 # 0.25.6
 
 * Updating vital-backup config with recent manual changes after NAS storage rebuild and re-org
