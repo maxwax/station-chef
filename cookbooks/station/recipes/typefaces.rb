@@ -15,6 +15,13 @@ Install optional typefaces via tar files from a local, private repository
 # of the subdirectories created by the tar file extractionj
 download_dir = "/tmp/typefaces"
 
+directory download_dir do
+  owner 'root'
+  group 'root'
+  mode 0755
+  action :create
+end
+
 # We must be on the maxlab private network to access the typefaces repo
 # This is a REALLY LAME way to do this, but it'll work for right now
 if node['network']['default_gateway'] == "192.168.9.2"
@@ -26,13 +33,6 @@ if node['network']['default_gateway'] == "192.168.9.2"
   node['station']['typefaces']['tarfiles'].each do |typeface_file|
 
     # usr_local_dir expected to be bin, etc, sbin, etc
-
-    directory download_dir do
-      owner 'root'
-      group 'root'
-      mode 0755
-      action :create
-    end
 
     download_filename = "#{download_dir}/#{typeface_file}.tgz"
 
@@ -50,13 +50,13 @@ if node['network']['default_gateway'] == "192.168.9.2"
       cwd "/usr/share/fonts"
     end
 
-    directory download_dir do
-      owner 'root'
-      group 'root'
-      mode 0755
-      recursive true
-      action :delete
-    end
+    # directory download_dir do
+    #   owner 'root'
+    #   group 'root'
+    #   mode 0755
+    #   recursive true
+    #   action :delete
+    # end
 
     execute "update-font-cache" do
       command "fc-cache"

@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.25.8
+
+* Typefaces install: create /tmp/typesfaces only once, not multiple times.
+
 # 0.25.7
 
 * Disable install of Skype
