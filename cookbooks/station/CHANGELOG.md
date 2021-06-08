@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.25.1
+
+* Update powerline config with manual changes
+
 # 0.24.34
 
 * Updated .coding.conf in home directory to ensure 'right' and 'east' windows don't overlap.
