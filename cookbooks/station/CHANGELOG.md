@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.25.12
+
+* Deploy place.desktop file instead of position.desktop file.
+
 # 0.25.11
 
 * Cleanup of typefaces.rb recipe

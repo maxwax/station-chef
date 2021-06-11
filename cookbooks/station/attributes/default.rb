@@ -77,6 +77,7 @@ node.default['station']['shortcuts'] = {
     "east",
     "center",
     "test",
+    "place",
     "far",
     "sideleft",
     "sideright",
