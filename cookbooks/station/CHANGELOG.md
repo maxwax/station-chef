@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.25.13
+
+* Removed 'compression=no' from tuncloud script.
+
 # 0.25.12
 
 * Deploy place.desktop file instead of position.desktop file.

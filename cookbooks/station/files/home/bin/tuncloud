@@ -6,6 +6,7 @@
 
 # 2020-1025
 # 2021-0527
+# 2021-0615 removed compression=no
 
 function syntax {
 
@@ -46,10 +47,8 @@ then
     exit 1
   else
 
-    #ssh -i ~/.ssh/aws-maxwaxcloud-ohio.pem \
     ssh -i $SSH_FILENAME \
       -o IdentitiesOnly=yes \
-      -o Compression=no \
       -o ProxyCommand="ncat --proxy-type=\"socks4\" --proxy localhost:9998 %h %p" \
       ec2-user@${TARGET}
 
