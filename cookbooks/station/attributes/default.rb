@@ -26,9 +26,17 @@ node.default['station']['user'] = {
     "position.conf",
     "santoku.conf",
     "coding.conf",
-    "vimrc",
-    "proxychains.conf"
+    "vimrc"
   ],
+  "proxychains-ng": {
+    "config_dir": ".proxychains",
+    "symlink_source": "proxychains.conf",
+    "symlink_dest": "proxychains-tunnel1.conf",
+    "config_files": [
+    "proxychains-tunnel1.conf",
+    "proxychains-tunnel2.conf"
+    ]
+  },
   "roxterm": {
     "deploy_dir": ".config/roxterm.sourceforge.net",
     "source_dir": "home/config/roxterm.sourceforge.net",

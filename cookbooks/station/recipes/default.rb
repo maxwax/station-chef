@@ -73,5 +73,8 @@ include_recipe 'station::roxterm'
 # Install the AWS CLI
 include_recipe 'station::aws_cli'
 
+# Install config files for proxychains
+include_recipe 'station::proxychains'
+
 # Tag this node as managed by the station cookbook
 tag('station-managed')
