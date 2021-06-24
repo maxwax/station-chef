@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.25.14
+
+* Improving handling of shutter window positioning so it positions shutter window not others with 'Shutter' in the title bar
+
 # 0.25.13
 
 * Removed 'compression=no' from tuncloud script.
