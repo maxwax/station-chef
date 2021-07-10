@@ -71,7 +71,8 @@ node.default['station']['root'] = {
   ],
   "personal_dot_files": [
     "bashrc",
-    "vimrc"
+    "vimrc",
+    "hot-tub-timemachine.conf"
   ]
 }
 
@@ -121,6 +122,7 @@ node.default['station']['etc_config'] = [
 node.default['station']['usr_local'] = {
   "cookbook_scripts": {
     "bin": [
+      "hot-tub-timemachine"
     ],
     "etc": [
       "shell-basics",

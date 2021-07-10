@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.25.15
+
+* Adding hot-tub-timemachine and config file deployment
+
 # 0.25.14
 
 * Improving handling of shutter window positioning so it positions shutter window not others with 'Shutter' in the title bar

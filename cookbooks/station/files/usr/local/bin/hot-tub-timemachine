@@ -1,0 +1,261 @@
+#!/bin/bash
+
+# Read a config file and use it to drive calling external timemachine
+# backup script to perform Apple timemachine-like backups using rsync
+# 2021-07 maxcode@maxwellspangler.com
+
+# Verify we're root so we can backup all files
+if [[ $(id -u) -ne "0" ]]
+then
+  echo "You must run this program as root or via sudo, please."
+  exit 1
+fi
+
+# Global Scope variables for bash functions
+MOUNT_CHECK_RESULTS=false
+DIR_CHECK_RESULTS=false
+
+DEBUG=false
+
+# Config file location
+CONFIG_FILE=$HOME/.hot-tub-timemachine.conf
+
+if [[ ! -r "$CONFIG_FILE" ]]
+then
+  echo "Error: No config file at $CONFIG_FILE"
+  exit 1
+fi
+
+function usage {
+  echo "hot-tub-timemachine"
+  echo
+  echo "Calls the timemachine script to perform an Apple timemachine style"
+  echo "incremental backup of files using rsync and hardlinks"
+  echo
+  echo "Configuration entries in $HOME/.hot-tub-timemachine.conf"
+  echo
+}
+
+# A list of timemachine backup configs defined in the config file
+declare -a CONFIGS_ARRAY
+
+# The type of timemachine config: local drive, nas drive, or usb drive
+declare -A HASH_CFG_TYPE
+# The source directory to be backed up using timemachine
+declare -A HASH_CFG_SOURCE
+# The mount point that is checked to see if the target may be ready
+declare -A HASH_CFG_MOUNT
+# The target directory where timemachine will store backup files
+declare -A HASH_CFG_TARGET
+
+# Using a specific line in the config file get a list of TM configurations
+function get_list_of_configs {
+  if [[ $DEBUG == true ]]
+  then
+    echo "get_list_of_configs()"
+  fi
+  TM_CONFIGS=$(egrep '^time_machine_configs:' $CONFIG_FILE | sed 's/time_machine_configs: //g')
+
+  TM_CONFIG_ERROR=$?
+  if [[ $TM_CONFIG_ERROR -gt 0 ]]
+  then
+    echo "Error $TM_CONFIG_ERROR reading time_machine_configs: line from $HOME/$CONFIG_FILE"
+    exit 1
+  else
+    CONFIGS_ARRAY=($TM_CONFIGS)
+  fi
+}
+
+# Parse a line in the config file prefixed with a configuration identifier
+function read_config {
+  if [[ $DEBUG == true ]]
+  then
+    echo "read_configs()"
+    echo "  Reading config for $1"
+  fi
+# $1 is the name of a defined config in $HOME/.hot-tub-timemachine.conf
+
+  read CFG_NAME TM_TYPE TM_SOURCE TM_MOUNT TM_TARGET <<< $(egrep  "^$1" $CONFIG_FILE)
+
+  READ_ERROR=$?
+  if [[ $READ_ERROR -gt 0 ]]
+  then
+    echo "Error: Couldn't read config line for $1 via read_config()"
+    exit 1
+  else
+    HASH_CFG_TYPE[$1]="$TM_TYPE"
+    HASH_CFG_SOURCE[$1]="$TM_SOURCE"
+    HASH_CFG_MOUNT[$1]="$TM_MOUNT"
+    HASH_CFG_TARGET[$1]="$TM_TARGET"
+  fi
+}
+
+# For each configuration identifier, load its config parameters into hashes
+function load_configs {
+  if [[ $DEBUG == true ]]
+  then
+    echo "load_configs()"
+  fi
+
+  for EACH_CONFIG in $TM_CONFIGS
+  do
+    read_config "$EACH_CONFIG"
+  done
+
+  if [[ $DEBUG == true ]]
+  then
+    echo ${HASH_CFG_TYPE[*]}
+    echo ${HASH_CFG_SOURCE[*]}
+    echo ${HASH_CFG_MOUNT[*]}
+    echo ${HASH_CFG_TARGET[*]}
+  fi
+}
+
+# Verify that an expected external filesystem is mounted
+function mount_check {
+  if [[ $DEBUG == true ]]
+  then
+    echo "mount_check($1)"
+  fi
+  MOUNT_CHECK_RESULTS=false
+  if [[ $DEBUG == true ]]
+  then
+    mount | fgrep "${1}"
+    mount | fgrep "${1}" | wc -l
+  fi
+  MC=$(mount | fgrep "${1}" | wc -l)
+
+  if [[ $MC == 1 ]]
+  then
+    MOUNT_CHECK_RESULTS=true
+  else
+    echo "Error: Cannot find mounted filesystem ${1}"
+  fi
+
+}
+
+# Verify that a target directory for backups is writeable
+function dir_check {
+  if [[ $DEBUG == true ]]
+  then
+    echo "dir_check($1)"
+  fi
+  DIR_CHECK_RESULTS=false
+  if [[ -w ${1} ]]
+  then
+    DIR_CHECK_RESULTS=true
+  else
+    echo "Error: Cannot write to directory ${1}"
+  fi
+}
+
+# Loop through each config and call timemachine to perform a backup
+function backup_each_config {
+  if [[ $DEBUG == true ]]
+  then
+    echo "backup_each_config()"
+  fi
+  for EACH_CONFIG in ${CONFIGS_ARRAY[*]}
+  do
+    echo "Timemachine backup for $EACH_CONFIG"
+
+    if [[ $DEBUG == true ]]
+    then
+      echo "local check" "|${HASH_CFG_TYPE[$EACH_CONFIG]}|"
+    fi
+
+    if [[ ${HASH_CFG_TYPE[$EACH_CONFIG]} != "local" ]]
+    then
+      mount_check "${HASH_CFG_MOUNT[$EACH_CONFIG]}"
+    else
+      MOUNT_CHECK_RESULTS=true
+    fi
+
+    if [[ $MOUNT_CHECK_RESULTS == true ]]
+    then
+      dir_check ${HASH_CFG_TARGET[$EACH_CONFIG]}
+      if [[ $DIR_CHECK_RESULTS == true ]]
+      then
+        timemachine -v "${HASH_CFG_SOURCE[$EACH_CONFIG]}" "${HASH_CFG_TARGET[$EACH_CONFIG]}" --verbose
+      fi
+    fi
+  done
+}
+
+#
+# main
+#
+
+# Parameter handling
+while [[ $# -gt 0 ]]
+do
+  case "$1" in
+
+    "-h"|"-help"|"--help")
+      usage
+      exit 0
+    ;;
+
+    "--debug"|"-d")
+      DEBUG=true
+      shift;
+    ;;
+
+    # Last parameter is host name
+    *)
+      echo "Error: I don't recognize parameter $1"
+      exit 1
+    ;;
+
+  esac
+done
+
+# Read list of config identifiers from config file
+get_list_of_configs
+
+# Load each config identifier line into hashes
+load_configs
+
+# Loop over each config and call timemachine to perform a backup
+backup_each_config
+
+exit 0
+
+dir_check "/home/backups/linux-timemachine/home/maxwell"
+if [[ $DIR_CHECK_RESULTS == true ]]
+then
+
+echo
+set -x
+  #timemachine -v /home/maxwell /home/backups/linux-timemachine/home/maxwell
+  echo timemachine -v /home/maxwell "${LOCAL_DIR}" --verbose
+set +x
+fi
+
+mount_check $NAS_MOUNT
+if [[ $MOUNT_CHECK_RESULTS == true ]]
+then
+  dir_check "$NAS_DIR"
+  if [[ $DIR_CHECK_RESULTS == true ]]
+  then
+#
+#
+# SLACK AFTER HOME MAXWELL
+#
+set -x
+    timemachine -v /home/maxwell/ "${NAS_DIR}" --verbose
+set +x
+  fi
+fi
+
+mount_check $USB_MOUNT
+if [[ $MOUNT_CHECK_RESULTS == true ]]
+then
+  dir_check "$USB_DIR"
+  if [[ $DIR_CHECK_RESULTS == true ]]
+  then
+set -x
+    timemachine -v /home/maxwell/ "${USB_DIR}" --verbose
+set +x
+  fi
+fi
