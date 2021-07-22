@@ -149,6 +149,14 @@ node.default['station']['usr_local'] = {
         "file_type": "tgz",
         "install_script": "install.sh",
         "condition_file": "/usr/local/bin/position"
+      },
+      "open-tunnel": {
+        "source": "https://github.com/maxwax/open-tunnel/archive",
+        "filename": "v0.2.tar.gz",
+        "version": "0.2",
+        "file_type": "tgz",
+        "install_script": "install.sh",
+        "condition_file": "/usr/local/bin/open-tunnel"
       }
     },
     "sbin": {

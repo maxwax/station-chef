@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.25.16
+
+* Added deployment of open-tunnel script from github
+
 # 0.25.15
 
 * Adding hot-tub-timemachine and config file deployment
