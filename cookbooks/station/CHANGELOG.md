@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+* 0.25.17
+
+* Deploy SF Pro typeface
+
 # 0.25.16
 
 * Added deployment of open-tunnel script from github

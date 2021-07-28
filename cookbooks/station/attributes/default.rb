@@ -208,7 +208,8 @@ node.default['station']['typefaces'] = {
   "tarfiles": [
     "my-adobe",
     "microsoft-tt-core",
-    "maxwell-fonts-atari"
+    "maxwell-fonts-atari",
+    "sfpro"
   ]
 }
 
