@@ -34,7 +34,19 @@ echo
 read -p "Press 'ENTER' when ready to proceed:"
 echo
 
-sudo dnf -y install $HOME/Downloads/chef*rpm
+ls -l $HOME/Downloads/chef*rpm
+CHEF_COUNT=$(ls -l $HOME/Downloads/chef*rpm | wc -l)
+if [[ $CHEF_COUNT -eq 1 ]]
+then
+  sudo dnf -y install $HOME/Downloads/chef*rpm
+elif [[ $CHEF_COUNT -gt 1 ]]
+  echo "Error: I see more than one chef*rpm file in $HOME/Downloads"
+  echo "I don't know which one to install."
+  exit 1
+else
+  echo "Error: I can't find a $HOME/Downloads/chef*rpm file to install"
+  exit 1
+fi
 
 # First run creates the chef-zero node object
 sudo chef-client -z
