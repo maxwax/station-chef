@@ -1,7 +1,12 @@
 
 # station CHANGELOG
 
-* 0.25.17
+# 0.25.18
+
+* Add support for Fedora 34
+* Install chef rpm as $HOME/Downloads/chef*rpm not chef*workstation*rpm
+
+# 0.25.17
 
 * Deploy SF Pro typeface
 
