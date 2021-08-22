@@ -34,17 +34,19 @@ echo
 read -p "Press 'ENTER' when ready to proceed:"
 echo
 
-ls -l $HOME/Downloads/chef*rpm
-CHEF_COUNT=$(ls -l $HOME/Downloads/chef*rpm | wc -l)
+DL=/home/$USERNAME/Downloads
+
+ls -l $DL/chef*rpm
+CHEF_COUNT=$(ls -l $DL/chef*rpm | wc -l)
 if [[ $CHEF_COUNT -eq 1 ]]
 then
-  sudo dnf -y install $HOME/Downloads/chef*rpm
+  sudo dnf -y install $DL/chef*rpm
 elif [[ $CHEF_COUNT -gt 1 ]]
-  echo "Error: I see more than one chef*rpm file in $HOME/Downloads"
+  echo "Error: I see more than one chef*rpm file in $DL"
   echo "I don't know which one to install."
   exit 1
 else
-  echo "Error: I can't find a $HOME/Downloads/chef*rpm file to install"
+  echo "Error: I can't find a $DL/chef*rpm file to install"
   exit 1
 fi
 
