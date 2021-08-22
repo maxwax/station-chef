@@ -34,7 +34,7 @@ echo
 read -p "Press 'ENTER' when ready to proceed:"
 echo
 
-sudo dnf -y install $HOME/Downloads/chef-workstation*rpm
+sudo dnf -y install $HOME/Downloads/chef*rpm
 
 # First run creates the chef-zero node object
 sudo chef-client -z
