@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.25.19
+
+* Install Python IDE "Spyder"
+
 # 0.25.18
 
 * Add support for Fedora 34
