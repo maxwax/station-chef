@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.25.20
+
+* Modify bootstrap to skip chef install if already installed
+
 # 0.25.19
 
 * Install Python IDE "Spyder"
