@@ -27,7 +27,7 @@ end
 
 execute 'import-atom-gpgkey' do
   #command "rpm --import https://packagecloud.io/AtomEditor/atom/gpgkey"
-  command "rpm --import #{keyfile}"
+  command "rpm --import #{key_file}"
 
   not_if { File.exists?("/etc/yum.repos.d/atom.repo")}
 end
