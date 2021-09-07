@@ -95,6 +95,8 @@ Complete the following actions to enable cookbook support for a new version of F
 
 ### Step 3 - Installation Procedure for Fedora Linux Workstation
 
+** You must use Chef *Workstation* not Chef Infra client. This process requires the 'knife' command which as of (Sep 2021) is not installed correctly with Chef Infra Client. (Dangling Symlink from /usr/bin/knife to /opt/chef/bin/knife)
+
 1. Reboot into Fedora Linux into Live mode using a bootable USB Image
 2. Start a terminal and relocate the /home/maxwell directory on existing /home filesystem for later use.
     ```bash
