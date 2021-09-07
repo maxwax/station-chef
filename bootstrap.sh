@@ -13,7 +13,7 @@
 CHEF_SEEN=false
 function check_chef {
 
-  rpm -q chef > /dev/null 2>&1
+  rpm -q chef-workstation > /dev/null 2>&1
   if [[ $? == 0 ]]
   then
     CHEF_SEEN=true
