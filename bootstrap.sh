@@ -15,6 +15,7 @@ function check_chef {
 
   rpm -q chef > /dev/null 2>&1
   if [[ $? == 0 ]]
+  then
     CHEF_SEEN=true
   else
     CHEF_SEEN=false
