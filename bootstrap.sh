@@ -58,6 +58,7 @@ then
   then
     sudo dnf -y install $DL/chef*rpm
   elif [[ $CHEF_COUNT -gt 1 ]]
+  then
     echo "Error: I see more than one chef*rpm file in $DL"
     echo "I don't know which one to install."
     exit 1
