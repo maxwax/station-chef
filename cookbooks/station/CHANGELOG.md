@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.25.21
+
+* Install Atom gpg key from downloaded file not URL
+
 # 0.25.20
 
 * Modify bootstrap to skip chef install if already installed
