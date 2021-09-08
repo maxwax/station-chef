@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.25.22
+
+* Deploy $HOME/.vim/colors/solarized.vim for Solarized VIM color scheme
+
 # 0.25.21
 
 * Install Atom gpg key from downloaded file not URL

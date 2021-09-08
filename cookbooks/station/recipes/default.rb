@@ -70,6 +70,9 @@ include_recipe 'station::roxterm'
 # Install Skype
 #include_recipe 'station::skype'
 
+# Configure Solarzied Color Scheme
+include_recipe 'station::solarized'
+
 # Install the AWS CLI
 include_recipe 'station::aws_cli'
 
