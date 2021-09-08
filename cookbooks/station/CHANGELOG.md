@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.25.23
+
+* Enable vim in gnome-terminal to use solarized color scheme even when not using solarized colors in bash. Minor $HOME/.vimrc config option added.
+
 # 0.25.22
 
 * Deploy $HOME/.vim/colors/solarized.vim for Solarized VIM color scheme

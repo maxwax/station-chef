@@ -4,6 +4,7 @@ set shiftwidth=2
 set expandtab
 syntax on
 set number
+set termguicolors
 set background=dark
 colorscheme solarized
 set  rtp+=/usr/share/powerline/vim/
