@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.25.24
+
+* Deploy bpytop performance monitor
+
 # 0.25.23
 
 * Enable vim in gnome-terminal to use solarized color scheme even when not using solarized colors in bash. Minor $HOME/.vimrc config option added.

@@ -283,6 +283,7 @@ case plat_vers
 
     # List of default packages to be installed for this Platform+Version
     node.default['station']['install_packages'] = {
+      "bpytop": "Modern system performance monitor",
       "python3-spyder": "Python IDE",
       "bpytop": "An enhanced top command, very modern.",
       "ddrescue": "dd command that can read damaged media and recover data",
