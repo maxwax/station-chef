@@ -723,13 +723,13 @@ case plat_vers
           "rpmfusion": {
             "free": {
               "pkg_name": "rpmfusion-free-release",
-              "path": "rpmfusion-free-release-34.noarch.rpm",
-              "source": "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-34.noarch.rpm"
+              "path": "rpmfusion-free-release-35.noarch.rpm",
+              "source": "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-35.noarch.rpm"
             },
             "nonfree": {
               "pkg_name": "rpmfusion-nonfree-release",
-              "path": "rpmfusion-nonfree-release-34.noarch.rpm",
-              "source": "https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-34.noarch.rpm"
+              "path": "rpmfusion-nonfree-release-35.noarch.rpm",
+              "source": "https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-35.noarch.rpm"
             }
           }
         }
