@@ -285,7 +285,6 @@ case plat_vers
     node.default['station']['install_packages'] = {
       "bpytop": "Modern system performance monitor",
       "python3-spyder": "Python IDE",
-      "bpytop": "An enhanced top command, very modern.",
       "ddrescue": "dd command that can read damaged media and recover data",
       "atop": "Better version of top",
       "wavemon": "WIFI Signal Monitor",
