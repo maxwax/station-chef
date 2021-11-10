@@ -19,13 +19,13 @@ remote_file "google-signing-key" do
   source "https://dl.google.com/linux/linux_signing_key.pub"
   action :create
 
-  not_if { File.exists?("/etc/yum.repos.d/google-chrome.repo")}
+  not_if 'fgrep "enabled=1" /etc/yum.repos.d/google-chrome.repo'
 end
 
 execute 'install-google-key' do
   command "rpm --import /home/#{my['username']}/Downloads/linux_signing_key.pub"
 
-  not_if { File.exists?("/etc/yum.repos.d/google-chrome.repo")}
+  not_if 'fgrep "enabled=1" /etc/yum.repos.d/google-chrome.repo'
 end
 
 cookbook_file "/etc/yum.repos.d/google-chrome.repo" do
@@ -35,7 +35,7 @@ cookbook_file "/etc/yum.repos.d/google-chrome.repo" do
   mode 0644
   action :create
 
-  not_if { File.exists?("/etc/yum.repos.d/google-chrome.repo")}
+  not_if 'fgrep "enabled=1" /etc/yum.repos.d/google-chrome.repo'
 end
 
 package 'google-chrome-stable' do
