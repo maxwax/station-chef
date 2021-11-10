@@ -906,6 +906,7 @@ case plat_vers
           "wireshark": "Network traffic analyzer (updates)",
           "wmctrl": "Command line tool to interact with an X Window Manager (fedora)",
           "wodim": "A command line CD/DVD recording program (fedora)",
+          "xdpyinfo": "X Display Utilities",
           "xsane-gimp": "Scanner frontend for GIMP",
           "xsane": "Scanner utility"
         }

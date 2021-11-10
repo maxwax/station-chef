@@ -1,6 +1,17 @@
 
 # station CHANGELOG
 
+# 0.25.25
+
+* Fedora 35 support
+* Add xdpyinfo
+* Packages list for Fedora 35 now sorted alphabetically
+* Configure powerline via config file in $HOME/.config/powerline/themes/shell/default_leftonly_maxwell.json
+* Deploy Google Chrome repo if not deployed AND enabled
+* Import Atom repo GPGkey if not already installed (WIP)
+* Remove pidgin-logviewer package from Fedora 35 set
+* Removed duplicate request for bpytop
+
 # 0.25.24
 
 * Deploy bpytop performance monitor
