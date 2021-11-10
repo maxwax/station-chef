@@ -24,7 +24,7 @@ Rough guide to go from fresh Fedora Linux install to working DevOps workstation 
     Filesystem | Type | Size | Volume
     ---------- | ---- | ---- | ------
     `/boot`      | ext3 | 1G | n/a
-    `/boot/efi`  | fat16 | 200G | n/a
+    `/boot/efi`  | fat16 | 200MB | n/a
     `swap`       | swap | 2G | n/a
     `/`          | ext4 | 24G | vg_sysname
     `/home`      | ext4 | Remaining | vg_sysname
