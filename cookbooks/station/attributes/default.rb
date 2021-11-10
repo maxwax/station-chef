@@ -788,6 +788,7 @@ case plat_vers
           "gitg-libs": "Backend Library for gitg (fedora)",
           "glibc-devel": "for VirtualBox-6.1 kernel modules",
           "glibc-headers": "for VirtualBox-6.1 kernel modules",
+          "gnome-extensions-app": "Gnome app to enable/disable Gnome Shell extensions",
           "gnome-shell-extension-freon": "GNOME Shell extension to display system temperature, voltage, and fan speed (fedora)",
           "gnome-shell-extension-launch-new-instance": "Always launch a new application instance for GNOME Shell (updates)",
           "gnome-shell-extension-openweather": "Display weather information from many locations in the world (fedora)",

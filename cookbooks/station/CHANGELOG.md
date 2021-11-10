@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.25.28
+
+* Install gnome-extensions-app to replace functionality removed from TweakUI app
+
 # 0.25.27
 
 * Replace KeepassX with KeepassXC
