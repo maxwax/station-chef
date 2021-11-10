@@ -67,6 +67,9 @@ include_recipe 'station::typefaces'
 # Install and configure roxterm
 include_recipe 'station::roxterm'
 
+# Install and configure powerline
+include_recipe 'station::powerline'
+
 # Install Skype
 #include_recipe 'station::skype'
 
