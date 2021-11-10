@@ -17,7 +17,6 @@ my = node['station']['user']
 key_file = "/home/#{my['username']}/Downloads/atom-gpgkey"
 
 remote_file "atom-gpgkey" do
-  #path "/home/#{my['username']}/Downloads/atom-gpgkey"
   path key_file
   source "https://packagecloud.io/AtomEditor/atom/gpgkey"
   action :create
@@ -26,10 +25,9 @@ remote_file "atom-gpgkey" do
 end
 
 execute 'import-atom-gpgkey' do
-  #command "rpm --import https://packagecloud.io/AtomEditor/atom/gpgkey"
   command "rpm --import #{key_file}"
 
-  not_if { File.exists?("/etc/yum.repos.d/atom.repo")}
+  not_if 'rpm -qa --qf "%{VERSION}-%{RELEASE} %{SUMMARY}\n" gpg-pubkey* | grep AtomEditor'
 end
 
 cookbook_file "/etc/yum.repos.d/atom.repo" do
