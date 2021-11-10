@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.25.27
+
+* Replace KeepassX with KeepassXC
+
 # 0.25.26
 
 * OK, ok, install telnet by default

@@ -819,7 +819,7 @@ case plat_vers
           "jq": "Command-line JSON processor (fedora)",
           "kde-cli-tools": "Tools based on KDE Frameworks 5 to better interact with the system (updates)",
           "kdenlive": "Non-linear video editor (rpmfusion-free-updates)",
-          "keepassx": "Cross-platform password manager (fedora)",
+          "keepassxc": "Cross-platform password manager (fedora)",
           "kernel-devel": "for VirtualBox-6.1 kernel modules",
           "kernel-headers": "for VirtualBox-6.1 kernel modules",
           "lame": "Free MP3 audio compressor (fedora)",
