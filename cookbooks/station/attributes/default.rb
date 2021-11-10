@@ -880,6 +880,7 @@ case plat_vers
           "strace": "Tracks and displays system calls associated with a running process (fedora)",
           "sysstat": "Collection of performance monitoring tools for Linux (fedora)",
           "telepathy-glib": "GLib bindings for Telepathy (fedora)",
+          "telnet": "Telnet client",
           "terminator": "Store and run multiple GNOME terminals in one window (fedora)",
           "thunar": "Tree based file manager",
           "thunderbird": "Mozilla Thunderbird mail/newsgroup client (updates)",

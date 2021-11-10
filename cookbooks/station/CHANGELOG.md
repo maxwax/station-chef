@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.25.26
+
+* OK, ok, install telnet by default
+
 # 0.25.25
 
 * Fedora 35 support
