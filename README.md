@@ -207,6 +207,8 @@ At this point the system is stable, so we can manual install some applications w
 
 * Install most recent [draw.io rpm for Linux](https://github.com/jgraph/drawio-desktop/releases)
 
+* Install 'duf' storage usage utility.  (duf github repo](https://github.com/muesli/duf/releases)
+
 ### Step 12 - Manual Configuration Tasks
 
 Here, perform any manual configuration steps that aren't included in the provisioning cookbook.  These are often accommodations to new changes introduced by Fedora.
