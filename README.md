@@ -278,33 +278,17 @@ These are in addition to the extensions installed by default in Fedora or by the
 
   * [Launch New Instance](https://extensions.gnome.org/extension/600/launch-new-instance/) - Always launch a new instance even if an application is already running
 
-  * MANUAL INSTALL [Multi-Monitors Add-On by spin83](https://extensions.gnome.org/extension/921/multi-monitors-add-on/) - Modifies GNOME desktop to use more than one monitor for virtual desktops
-    * Customize this extension with details
-    * Show Multi Monitors indicator on Top Panel - disabled
-    * Fedora 33 requires version 22.1 of this or it crashes the gui
-    * Workaround:
-```
-cd ~/.local/share/gnome-shell/extensions
-
-git clone https://github.com/spin83/multi-monitors-add-on
-
-# Re-Launch Tweak Tools and enable manually
-```
-
   * [OpenWeather](https://extensions.gnome.org/extension/750/openweather/) - Weather conditions applet for Gnome title bar
     * Customize this extension with details
     * Set location - Denver, CO
 
-  * [Recent Items by leonardo.bartoli](https://extensions.gnome.org/extension/977/recent-items/) - Track recently opened files and add drop down applet to make re-opening them very easy
-    * Customize this extension with details
-    * Display File Full Path - disabled
-    * Number of Items - 64
-    * Display Indicator Arrow - disabled
-    * Case Sensitive Search - disabled
+  * [Recent Items by bananenfisch](https://extensions.gnome.org/extension/72/recent-items/) - Track recently opened files and add drop down applet to make re-opening them very easy
 
   * [Sound Input & Output Chooser by kgshank](https://extensions.gnome.org/extension/906/sound-output-device-chooser/) - Select active speakers and microphone. Very useful after docking/undocking laptops from desk to roaming.
+    * Waiting for update for Fedora 35 compatability
 
   * [Tweaks in System Menu](https://extensions.gnome.org/extension/1653/tweaks-in-system-menu/) - Customization to put Gnome Tweaks Tool launch icon in system menu near control panel icon for natural accessibility.
+  * Waiting for update for Fedora 35 compatability
 
 ### Step 15 - Control Panel configurations
 
@@ -337,45 +321,20 @@ Apply the same to vim using [this guide](https://www.if-not-true-then-false.com/
 
 Record any known work arounds to issues here so they can be easily performed on a new deployment.
 
-As of Winter 2020, three modifications are required to ensure that VirtualBox 6.1 and Vagrant are allowed to work with each other:
-* [Vagrant 2.2.6 doesn't work with VirtualBox 6.1.0 #178
-](https://github.com/oracle/vagrant-boxes/issues/178)
-
-#### Disable suspend when lid is closed
-
-I used to have a Gnome Shell extension that would do this, but that appears lost.
-
-So edit /etc/systemd/logind.conf to change three lines to this:
-
-```
-HandleLidSwitch=ignore
-HandleLidSwitchExternalPower=ignore
-HandleLidSwitchDocked=ignore
-```
-Without this, once the docked computer with lid closed is booted it immediately goes into suspend mode.
-
 ### Step 18 - QA Checklist
 
 Verify the items on this checklist immediately after installation of Fedora in order to identify and resolve problems now and not 5 minutes before a collaboration with others where you need them.  This list is expected to grow.
 
-Network
-- [ ] Hostname is set to host.domain
-- [ ] DNS works on local home lab network to resolve other nodes
-- [ ] SSH allows incoming connections
-
-Browsers
-- [ ] Firefox is installed and sync'd with my account
-- [ ] Google Chrome is installed and sync'd with my account
-
-Virtualization
-- [ ] VirtualBox is installed, Extension pack installed
-- [ ] vagrant works with Virtual box
-- [ ] Chef Test Kitchen works with Vagrant and VirtualBox
-
-Shell
-- [ ] Terminals come up using Solarized low contrast color scheme
-- [ ] CLI prompt is provided via Powerline with custom Fonts
-- [ ] vim keys work with Shell history in bash
+Hardware
+- [ ] Display uses native resolution and looks good in X
+- [ ] Sound works through headphones jack
+- [ ] Sound works through laptop speakers
+- [ ] Sound works through USB dock speakers
+- [ ] USB keyboard, mice and trackpads work
+- [ ] Laptop screen can be closed and doesn't cause the laptop to sleep
+- [ ] Wireless network connectivity works
+- [ ] Wired network connectivity works
+- [ ] Laptop continues showing power from AC, power from battery
 
 Gnome UI
 - [ ] Top bar has day name, date and time in 24 hour format
@@ -385,20 +344,34 @@ Gnome UI
 - [ ] Mousefocus switches windows
 - [ ] Right menu key lowers windows
 
+Network
+- [ ] Hostname is set to host.domain
+- [ ] DNS works on local home lab network to resolve other nodes
+- [ ] SSH allows incoming connections
+
+Virtualization
+- [ ] VirtualBox is installed, Extension pack installed
+
+Shell
+- [ ] Terminals come up using Solarized low contrast color scheme
+- [ ] Terminals use bash and powerline prompt with custom config file
+- [ ] vim keys work with Shell history in bash (set -o vi)
+
 Applications
-- [ ] KeepassX can load a password safe
+- [ ] Firefox is installed and sync'd with my account
+- [ ] Evolution mail gets to IMAP accounts
+- [ ] KeepassXC can load a password safe
 - [ ] Draw.io allows diagramming
 - [ ] LibreOffice installed and working
 - [ ] Atom editor works
 - [ ] You can get to Google Drive from the Nautilus File Manager
 - [ ] Firefox is logged in and syncing bookmarks
-- [ ] Chrome is logged in and syncing bookmarks
+- [ ] Chrome works
 - [ ] Slack runs and is signed in
 - [ ] Zoom runs, is signed in, can use microphone and webcams
-- [ ] Google Meets runs, is signed in, can use microphone and webcams
-- [ ] Skype Meets runs, is signed in, can use microphone and webcams
 
 CLI Tools
 - [ ] The 'safe' command can open a LUKS safe file
 - [ ] You can ssh to an AWS Bastion node for tunneling
 - [ ] You can ssh through an AWS Bastion node for a private tunnel
+- [ ] AWS CLI can list s3 buckets (simple example)
