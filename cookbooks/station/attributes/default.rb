@@ -26,7 +26,8 @@ node.default['station']['user'] = {
     "position.conf",
     "santoku.conf",
     "coding.conf",
-    "vimrc"
+    "vimrc",
+    "tuncloud.conf"
   ],
   "proxychains-ng": {
     "config_dir": ".proxychains",
@@ -910,7 +911,8 @@ case plat_vers
           "wodim": "A command line CD/DVD recording program (fedora)",
           "xdpyinfo": "X Display Utilities",
           "xsane-gimp": "Scanner frontend for GIMP",
-          "xsane": "Scanner utility"
+          "xsane": "Scanner utility",
+          "xwininfo": "Xwindows window information utility"
         }
 
       # This isn't working for unknown reasons 2019-12-18
