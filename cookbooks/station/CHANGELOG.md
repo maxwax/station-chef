@@ -1,6 +1,14 @@
 
 # station CHANGELOG
 
+# 0.25.30
+
+* Update window size and position for KeepassXC which requires more screen space than Keepass
+
+# 0.25.29
+
+* Install xwininfo utility which reports information such as size and position on windows.
+
 # 0.25.28
 
 * Install gnome-extensions-app to replace functionality removed from TweakUI app
