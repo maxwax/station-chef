@@ -160,8 +160,8 @@ node.default['station']['usr_local'] = {
       },
       "open-tunnel": {
         "source": "https://github.com/maxwax/open-tunnel/archive",
-        "filename": "open-tunnel-v0.9.1.tar.gz",
-        "version": "0.9",
+        "filename": "v0.9.1.tar.gz",
+        "version": "0.9.1",
         "file_type": "tgz",
         "install_script": "install.sh",
         "condition_file": "/usr/local/bin/open-tunnel"
