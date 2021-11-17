@@ -1,57 +1,86 @@
 #!/bin/bash
 
-# Quick and dirty tunnel to AWS Ohio private nodes via specific Ohio bastion
-
-# Needs to be rewritten for long term use
-
-# 2020-1025
-# 2021-0527
-# 2021-0615 removed compression=no
+# Launch an SSH session with some
 
 function syntax {
 
+  echo "Launch an SSH session through an existing SSH tunnel"
   echo
-  echo "tuncloud <hostname> [key region]"
+  echo "Syntax:"
+  echo "tuncloud [options] <hostname>"
+  echo "$ tuncloud ip-99-100-99-100.us-east-2.compute.internal"
   echo
-  echo "Ex: SSH to EC2 node in Ohio (default region for maxwell)"
+  echo "Options:"
   echo
-  echo "tuncloud ec2-13-59-85-240.us-east-2.compute.amazonaws.com"
+  echo "--debug - Enable debugging"
   echo
-  echo "Ex: SSH to EC2 node in Oregon - specify the region"
+  echo "--region <region> - Specify AWS region"
+  echo "$ tuncloud --region ohio ip-99-100-99-100.us-east-2.compute.internal"
   echo
-  echo "tuncloud ec2-52-13-125-169.us-west-2.compute.amazonaws.com oregon"
-  echo
-  echo "The SSH key used is $HOME/ssh-maxwaxcloud-<$REGION>.pem"
-  echo "'ohio' is used if no Region specified."
+  echo "--config <config_file> - Specify tuncloud config file"
+  echo "$ tuncloud --config ohio ip-99-100-99-100.us-east-2.compute.internal"
   echo
 }
+
+
+CONFIG_FILE=$HOME/.tuncloud.conf
+
+# Read default variables from optional config file
+if [[ -f $CONFIG_FILE ]]
+then
+  if [[ -r $CONFIG_FILE ]]
+  then
+    echo "Reading $CONFIG_FILE for defaults"
+    # Read the following variables
+    # KEY_FILENAME_PREFIX
+    # KEY_FILENAME_SUFFIX
+    # TUNCLOUD_DEFAULT_REGION
+    # TUNCLOUD_PROXY_PROGRAM
+    . $CONFIG_FILE
+echo "TUNCLOUD_DEFAULT_REGION $TUNCLOUD_DEFAULT_REGION"
+  else
+    echo "Error: I see $CONFIG_FILE but I can't read it."
+    exit 1
+  fi
+else
+  # Set here if not read from a config file
+  KEY_FILENAME_PREFIX="aws-maxlabcloud-"
+  KEY_FILENAME_SUFFIX=".pem"
+  TUNCLOUD_DEFAULT_REGION="nvirginia"
+  TUNCLOUD_PROXY_PROGRAM="nmap-ncat"
+fi
 
 TARGET=${1:-"_null"}
 if [[ $TARGET != "_null" ]]
 then
 
-  KEY_FILENAME_PREFIX="aws-maxwaxcloud-"
-  KEY_FILENAME_SUFFIX=".pem"
-
-  SSH_KEY=${2:-"_null"}
-  if [[ $SSH_KEY == "_null" ]]
+  SSH_REGION_KEY=${2:-"_null"}
+  if [[ $SSH_REGION_KEY == "_null" ]]
   then
-    SSH_KEY="ohio"
+    SSH_REGION_KEY="$TUNCLOUD_DEFAULT_REGION"
   fi
 
-  SSH_FILENAME="$HOME/.ssh/${KEY_FILENAME_PREFIX}${SSH_KEY}${KEY_FILENAME_SUFFIX}"
+  SSH_FILENAME="$HOME/.ssh/${KEY_FILENAME_PREFIX}${SSH_REGION_KEY}${KEY_FILENAME_SUFFIX}"
   if [[ ! -f "$SSH_FILENAME" ]]
   then
     echo "Error: I can't read an SSH key file for $SSH_FILENAME"
     syntax
     exit 1
   else
-
-    ssh -i $SSH_FILENAME \
-      -o IdentitiesOnly=yes \
-      -o ProxyCommand="ncat --proxy-type=\"socks4\" --proxy localhost:9998 %h %p" \
-      ec2-user@${TARGET}
-
+    if [[ $TUNCLOUD_PROXY_PROGRAM == "netcat" ]]
+    then
+      # This version uses OpenBSD netcat, work-around for nmap-ncat issues
+      ssh -i $SSH_FILENAME \
+        -o IdentitiesOnly=yes \
+        -o ProxyCommand="ProxyCommand=/usr/bin/netcat -X 5 -x localhost:9998 %h %p" \
+        ec2-user@${TARGET}
+    else
+      # This version uses nmap-ncat. Broken in initial Fedora 35 packages
+ #    ssh -i $SSH_FILENAME \
+ #      -o IdentitiesOnly=yes \
+ #      -o ProxyCommand="ncat --proxy-type=\"socks4\" --proxy localhost:9998 %h %p" \
+ #      ec2-user@${TARGET}
+    fi
   fi
 
 else

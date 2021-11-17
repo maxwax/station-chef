@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.25.32
+
+* Deploy open-tunnel v0.9.1 via github.
+
 # 0.25.31
 
 * Add eight open-tunnel config files for deployment
