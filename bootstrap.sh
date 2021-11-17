@@ -41,7 +41,9 @@ if [[ $CHEF_SEEN == false ]]
 then
 
   echo
-  firefox --new-window https://downloads.chef.io/chef-workstation &
+  #firefox --new-window https://downloads.chef.io/chef-workstation &
+
+  wget --output-document=$HOME/Downloads/chef-workstation-latest.rpm http://maxwellspangler.com/s3/chef/chef-workstation-latest.rpm
   echo
 
   echo
@@ -82,6 +84,3 @@ sudo knife node environment set $(hostname -f) 'maxlab' -z
 
 # Now run chef-client again with the station run list
 sudo chef-client -z
-
-# Launch firefox and prompt to download Extension Pack
-firefox --new-tab https://www.virtualbox.org/wiki/Downloads &
