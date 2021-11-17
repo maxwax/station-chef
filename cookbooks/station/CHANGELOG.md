@@ -1,6 +1,11 @@
 
 # station CHANGELOG
 
+# 0.25.31
+
+* Add eight open-tunnel config files for deployment
+* Stop deploying tuncloud.conf
+
 # 0.25.30
 
 * Update window size and position for KeepassXC which requires more screen space than Keepass

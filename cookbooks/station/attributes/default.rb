@@ -27,7 +27,14 @@ node.default['station']['user'] = {
     "santoku.conf",
     "coding.conf",
     "vimrc",
-    "tuncloud.conf"
+    "open-tunnel-default.conf",
+    "open-tunnel-ireland.conf",
+    "open-tunnel-maxlab.conf",
+    "open-tunnel-nimbusohio.conf",
+    "open-tunnel-nvirginia.conf",
+    "open-tunnel-ohio.conf",
+    "open-tunnel-oregon.conf",
+    "open-tunnel-sydney.conf"
   ],
   "proxychains-ng": {
     "config_dir": ".proxychains",
