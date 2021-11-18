@@ -40,16 +40,13 @@ check_chef
 if [[ $CHEF_SEEN == false ]]
 then
 
-  echo
-  #firefox --new-window https://downloads.chef.io/chef-workstation &
-
   wget --output-document=$HOME/Downloads/chef-workstation-latest.rpm http://maxwellspangler.com/s3/chef/chef-workstation-latest.rpm
-  echo
-
-  echo
-  echo "Manually download the latest Chef Workstation via Firefox"
-  echo
-  read -p "Press 'ENTER' when ready to proceed:"
+  WGET_ERR=$?
+  if [[ $WGET_ERR -gt 0 ]]
+  then
+    echo "ERROR: Could not downlod chef from ms.com. Try manually?"
+    exit 1
+  fi
   echo
 
   DL=/home/$USERNAME/Downloads

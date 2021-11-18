@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.25.33
+
+* Modifying the bootstrap installer to remove manual processes and error handling for wget of chef
+
 # 0.25.32
 
 * Deploy open-tunnel v0.9.1 via github.
