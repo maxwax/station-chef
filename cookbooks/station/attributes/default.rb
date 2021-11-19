@@ -917,6 +917,7 @@ case plat_vers
           "wmctrl": "Command line tool to interact with an X Window Manager (fedora)",
           "wodim": "A command line CD/DVD recording program (fedora)",
           "xdpyinfo": "X Display Utilities",
+          "xrandr": "X display utility",
           "xsane-gimp": "Scanner frontend for GIMP",
           "xsane": "Scanner utility",
           "xwininfo": "Xwindows window information utility"

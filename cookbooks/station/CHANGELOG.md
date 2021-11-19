@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.25.34
+
+* Install xrandr X Display Utility
+
 # 0.25.33
 
 * Modifying the bootstrap installer to remove manual processes and error handling for wget of chef
