@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.25.35
+
+* Add mounting of x320 archive directory on NAS central
+
 # 0.25.34
 
 * Install xrandr X Display Utility

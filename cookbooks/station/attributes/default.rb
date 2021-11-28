@@ -232,7 +232,8 @@ node.default['station']['mount_points'] = {
     "offsite4tb-aux",
     "offsite4tb-filer",
     "teraxfiles",
-    "tv320"
+    "tv320",
+    "x320"
   ],
   "/mnt": [
     "usb",
