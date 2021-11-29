@@ -55,6 +55,9 @@ include_recipe 'station::mount_points'
 # Deploy system config files for my custom scripts
 include_recipe 'station::etc_config'
 
+# Deploy system config files for my custom scripts
+include_recipe 'station::etc_systemd'
+
 # Enable the fstrim time to TRIM SSD drives periodically
 include_recipe 'station::fstrim'
 

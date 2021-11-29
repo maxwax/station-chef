@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.25.36
+
+* Deploy /etc/systemd/logind.conf with an uncommented line to Inhibit the handling of the closed laptop lid as a trigger to suspend the laptop.  Resolves an issue where first booting up and logging in causes logind to report "Can't lock display - Lock disabled by application" and then immediately suspend the laptop.
+
 # 0.25.35
 
 * Add mounting of x320 archive directory on NAS central
