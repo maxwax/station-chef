@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.25.37
+
+* Add sarkometal to vital-backups.conf for backup to USB key
+
 # 0.25.36
 
 * Deploy /etc/systemd/logind.conf with an uncommented line to Inhibit the handling of the closed laptop lid as a trigger to suspend the laptop.  Resolves an issue where first booting up and logging in causes logind to report "Can't lock display - Lock disabled by application" and then immediately suspend the laptop.
