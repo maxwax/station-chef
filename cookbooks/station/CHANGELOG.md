@@ -1,6 +1,12 @@
 
 # station CHANGELOG
 
+# 0.25.38
+
+* Deploy safe configuration file safe.conf via Chef, add new safe locker 'maxwell'
+* Deploy bc configuration file bcrc via Chef
+* Added "Deployed by Chef" header to a variety of config files
+
 # 0.25.37
 
 * Add sarkometal to vital-backups.conf for backup to USB key

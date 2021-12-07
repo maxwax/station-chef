@@ -1,4 +1,5 @@
 # .bash_profile
+# THIS FILE DEPLOYED VIA CHEF 'station' cookbook
 
 # Get the aliases and functions
 if [ -f ~/.bashrc ]; then

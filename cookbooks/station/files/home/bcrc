@@ -1,0 +1,6 @@
+# THIS FILE DEPLOYED VIA CHEF 'station' cookbook
+#
+# Configures options for CLI calculator bc
+#
+scale=2
+quiet

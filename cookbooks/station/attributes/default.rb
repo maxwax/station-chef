@@ -25,6 +25,8 @@ node.default['station']['user'] = {
     "gitconfig",
     "position.conf",
     "santoku.conf",
+    "safe.conf",
+    "bcrc",
     "coding.conf",
     "vimrc",
     "open-tunnel-default.conf",
