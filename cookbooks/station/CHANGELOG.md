@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.25.39
+
+* Deploy safe v2.0.2 from github
+
 # 0.25.38
 
 * Deploy safe configuration file safe.conf via Chef, add new safe locker 'maxwell'
