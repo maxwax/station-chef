@@ -180,8 +180,8 @@ node.default['station']['usr_local'] = {
       },
       "safe": {
         "source": "https://github.com/maxwax/safe/archive",
-        "filename": "v2.0.2.tar.gz",
-        "version": "2.0.2",
+        "filename": "v2.0.3.tar.gz",
+        "version": "2.0.3",
         "file_type": "tgz",
         "install_script": "install.sh",
         "condition_file": "/usr/local/sbin/safe"

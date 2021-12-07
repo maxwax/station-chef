@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.25.40
+
+* Deploy safe v2.0.3 from github
+
 # 0.25.39
 
 * Deploy safe v2.0.2 from github
