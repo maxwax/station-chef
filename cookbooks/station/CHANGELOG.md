@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.25.41
+
+* Modify safe.conf to rename old safe files as archive-<safe> so I can open them but don't unless I go out of my way to do so.
+
 # 0.25.40
 
 * Deploy safe v2.0.3 from github
