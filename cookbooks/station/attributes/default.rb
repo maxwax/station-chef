@@ -826,6 +826,7 @@ case plat_vers
           "hfsutils": "Tools for reading and writing Macintosh HFS volumes (fedora)",
           "ImageMagick": "An X application for displaying and manipulating images (updates)",
           "info": "A stand-alone TTY-based reader for GNU texinfo documentation (fedora)",
+          "iperf3": "iperf3 Network performance tool",
           "ipmitool": "Utility for IPMI control (fedora)",
           "iptraf-ng": "A console-based network monitoring utility (fedora)",
           "jq": "Command-line JSON processor (fedora)",

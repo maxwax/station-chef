@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.25.43
+
+* Deploy iperf3. Was deployed in the past, not sure why I removed it.
+
 # 0.25.42
 
 * Removing terminator since I never use it
