@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.25.44
+
+* Deploy mu-editor, a very user friendly editor for Python tutorials
+
 # 0.25.43
 
 * Deploy iperf3. Was deployed in the past, not sure why I removed it.

@@ -854,6 +854,7 @@ case plat_vers
           "mplayer-gui": "GUI for MPlayer (rpmfusion-free)",
           "mplayer": "Movie player playing most video formats and DVDs (rpmfusion-free)",
           "mtr-gtk": "GTK+ interface for MTR (fedora)",
+          "mu-editor": "User friendly python editor for Sweigert book", 
           "nmap": "Network exploration tool and security scanner (fedora)",
           "pass": "A password manager using standard Unix tools (fedora)",
           "patch": "Utility for modifying/upgrading files (fedora)",
