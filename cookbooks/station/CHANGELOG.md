@@ -1,6 +1,11 @@
 
 # station CHANGELOG
 
+# 0.25.45
+
+* Add /net/depotdata NFS mount point
+* Rename offsite4tb-filer and offsite4tb-aux as 'usb-filer', 'usb-aux', etc.
+
 # 0.25.44
 
 * Deploy mu-editor, a very user friendly editor for Python tutorials
