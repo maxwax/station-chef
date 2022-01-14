@@ -1,6 +1,14 @@
 
 # station CHANGELOG
 
+# 0.25.46
+
+* Added nmon real time system performance monitor
+* Added bat, an improved cat command
+* Added httpie, a command line HTTP API Utility
+* Added exa, an enhanced ls
+* Added fx, a JSON cli utility 
+
 # 0.25.45
 
 * Add /net/depotdata NFS mount point
