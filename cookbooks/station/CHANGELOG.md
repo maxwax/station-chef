@@ -1,13 +1,18 @@
 
 # station CHANGELOG
 
+# 0.25.47
+
+* Update on NAS /etc/nas.conf config file for tv320 drive moving from media to central
+* Cleanup on NAS /etc/nas.conf config file
+
 # 0.25.46
 
 * Added nmon real time system performance monitor
 * Added bat, an improved cat command
 * Added httpie, a command line HTTP API Utility
 * Added exa, an enhanced ls
-* Added fx, a JSON cli utility 
+* Added fx, a JSON cli utility
 
 # 0.25.45
 
