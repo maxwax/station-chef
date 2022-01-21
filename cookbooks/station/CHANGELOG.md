@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.25.48
+
+* Deploy g++ so some Ruby gems can compile.  This fulfills a dependency for gems helping vagrant helping test kitchen helping Chef development.
+
 # 0.25.47
 
 * Update on NAS /etc/nas.conf config file for tv320 drive moving from media to central

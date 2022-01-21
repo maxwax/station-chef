@@ -830,6 +830,7 @@ case plat_vers
           "gstreamer-ffmpeg": "GStreamer FFmpeg-based plug-ins (rpmfusion-free-updates)",
           "gthumb": "Image Viewer",
           "gtkimageview": "Simple image viewer widget (fedora)",
+          "g++": "GNU c++ (Dependency for ruby gems -> Vagrant -> Test Kitchen -> Chef",
           "hddtemp": "Hard disk temperature tool (fedora)",
           "hdparm": "A utility for displaying and/or setting hard disk parameters (fedora)",
           "hfsutils": "Tools for reading and writing Macintosh HFS volumes (fedora)",
