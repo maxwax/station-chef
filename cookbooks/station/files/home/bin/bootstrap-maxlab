@@ -4,236 +4,184 @@
 #
 # Bootstrap a node in my maxlab home lab
 #
+# Not a very good script, but designed to make it easier than remembering a lot of command line options.
+#
+# Dependent upon santoku
+#
 
-VERSION="1.2.0"
-VERSION_DATE="2020-02-11"
-
-# List of valid names to the --base parameter
-VALID_BASE_NAMES="vmlab, nas, proxmox"
+VERSION="1.3.0"
+VERSION_DATE="2022-0120"
 
 function usage {
   echo "bootstrap-maxlab - Bootstrap a node in the maxlab home lab."
   echo
-  echo "Syntax: bootstrap-maxlab --base <base_name> <HOSTNAME>"
-  echo
-  echo "Valid base names are $VALID_BASE_NAMES"
+  echo "Syntax: "
+  echo "bootstrap-maxlab --policy-group <policy-group> --policy-name <policy-name> <HOSTNAME>"
   echo
 }
 
-function host_check {
-  # Resolve IP of this FQDN if possible
-  HOST_IP=$(host $1 | awk '{print $4}')
-  if [[ $? -gt 0 ]]
+function check_hostname {
+  host $NODE_NAME > /dev/null 2>&1
+  if [[ $? != 0 ]]
   then
-    echo "Error: Can't resolve $NODE to an IP address"
+    echo "Error: $1 does not appear to be a recognized FQDN"
     exit 1
   fi
 }
 
 # Global scope variables
-
-BASE_DEFINED=false
 POLICY_GROUP_DEFINED=false
 POLICY_NAME_DEFINED=false
 
 #
 HOST_IP=""
-BASE_NAME=""
 POLICY_GROUP_NAME=""
 POLICY_NAME=""
 
-NODE=${1:-"_null"}
-if [[ $NODE == "_null" ]]
+NODE_NAME=${1:-"_null"}
+if [[ $NODE_NAME == "_null" ]]
 then
   usage
   exit 1
-else
+fi
 
-  while [[ $# -gt 0 ]]
-  do
-    case "$1" in
+while [[ $# -gt 0 ]]
+do
+  case "$1" in
 
-      "-h"|"-help"|"--help")
-        usage
-        exit 0
-      ;;
+    "-h"|"-help"|"--help")
+      usage
+      exit 0
+    ;;
 
-      "--base")
-        BASE_NAME=${2:-"_null"}
-        if [[ $BASE_NAME == "_null" ]]
-        then
-          echo "Error: you must supply a valid base name with this parameter"
-        fi
-        shift;
-        shift;
-      ;;
-
-      "--environment"|"--env")
-        ENVIRONMENT_NAME=${2:-"_null"}
-        if [[ $ENVIRONMENT_NAME == "_null" ]]
-        then
-          echo "Error: you must supply a valid environment with this parameter."
-        fi
-        shift;
-        shift;
-      ;;
-
-
-      "--policy-group"|"--policygroup")
-        POLICY_GROUP_NAME=${2:-"_null"}
-        if [[ $POLICY_GROUP_NAME == "_null" ]]
-        then
-          echo "Error: you must supply a valid policy group name with this parameter."
-        fi
-        shift;
-        shift;
-      ;;
-
-      "--policy-name"|"--policyname")
-        POLICY_NAME=${2:-"_null"}
-        if [[ $POLICY_NAME == "_null" ]]
-        then
-          echo "Error: you must supply a valid policy name with this parameter."
-        fi
-        shift;
-        shift;
-      ;;
-
-      # Last parameter is host name
-      *)
-        HOST_CHECK=$(host $1 > /dev/null 2>&1)
-        if [[ $? != 0 ]]
-        then
-          echo "Error: $1 does not appear to be a recognized FQDN"
-          exit 1
-        else
-          NODE="$1"
-          shift
-        fi
-      ;;
-
-    esac
-  done
-
-  if [[ $BASE_NAME != "" ]]
-  then
-    case $BASE_NAME in
-
-      "vmlab")
-        # Initial runlist to execute after node has Chef deployed
-        DEFAULT_RUNLIST='role[base_maxlab_vmlab]'
-        BASE_DEFINED=true
-      ;;
-
-      "nas")
-        # Initial runlist to execute after node has Chef deployed
-        DEFAULT_RUNLIST='role[base_maxlab_nas]'
-        BASE_DEFINED=true
-      ;;
-
-      "proxmox")
-        # Initial runlist to execute after node has Chef deployed
-        DEFAULT_RUNLIST='role[base_maxlab_proxmox]'
-        BASE_DEFINED=true
-      ;;
-
-      *)
-        echo "Error: Unknown base name $BASE_NAME specified."
-        usage
+    "--environment"|"--env")
+      ENVIRONMENT_NAME=${2:-"_null"}
+      if [[ $ENVIRONMENT_NAME == "_null" ]]
+      then
+        echo "Error: you must supply a valid environment with this parameter."
         exit 1
-    esac
-  fi
+      fi
+      shift;
+      shift;
+    ;;
 
-  if [[ $POLICY_GROUP_NAME != "" ]]
+    "--policy-group"|"--policygroup")
+      POLICY_GROUP_NAME=${2:-"_null"}
+      POLICY_GROUP_DEFINED=true
+      if [[ $POLICY_GROUP_NAME == "_null" ]]
+      then
+        echo "Error: you must supply a valid policy group name with this parameter."
+        exit 1
+      fi
+      shift;
+      shift;
+    ;;
+
+    "--policy-name"|"--policyname")
+      POLICY_NAME=${2:-"_null"}
+      POLICY_NAME_DEFINED=true
+      if [[ $POLICY_NAME == "_null" ]]
+      then
+        echo "Error: you must supply a valid policy name with this parameter."
+        exit 1
+      fi
+      shift;
+      shift;
+    ;;
+
+    # Last parameter is host name
+    *)
+      NODE_NAME=${1:-"_null"}
+      if [[ $NODE_NAME == "_null" ]]
+      then
+        echo "The last parameter must be a node name."
+        exit 1
+      else
+        shift
+      fi
+    ;;
+
+  esac
+done
+
+if [[ $POLICY_GROUP_DEFINED == false ]] || [[ $POLICY_NAME_DEFINED == false ]]
+then
+  if [[ $POLICY_GROUP_DEFINED == false ]]
   then
-    POLICY_GROUP_DEFINED=true
+    echo "Error: No policy group defined."
   fi
-
-  # if [[ $BASE_DEFINED == false ]]
-  # then
-  #   echo "Error: You need to specify a type of node with the --base parameter"
-  #   usage
-  #   exit 1
-  # fi
-
-  # My personal lab key
-  SSH_KEY="/home/maxwell/.ssh/maxwell-lab"
-
-  # Lock to a specific version to avoid newer releases which I haven't validated
-  # 2019-12 version
-  CHEF_VERSION_PIN="15.8"
-
-  # Set new node to this Chef environment
-  DEFAULT_ENVIRONMENT="maxlab"
-
-  # This will set HOST_IP or exit if an IP address can't be found
-  host_check $NODE
-
-  # Remove existing SSH keys for this node's IP (created before VM was rebuilt)
-  if [[ ! -z ${HOST_IP} ]]
+  if [[ $POLICY_NAME_DEFINED == false ]]
   then
-    echo "Removing old entries for this host in $HOME/.ssh/known_hosts"
-    sed -i 's/^.*'"${HOST_IP}"'.*$//g' $HOME/.ssh/known_hosts
-    sed -i '/^$/d' $HOME/.ssh/known_hosts
+    echo "Error: No policy name defined."
   fi
+  echo "Error: You must define both a policy group and policy name."
+  exit 1
+fi
 
-  echo "Checking for old Chef server node object"
-  NODE_SHOW_TEST=$(santoku maxlab node show ${NODE} > /dev/null 2>&1)
-  RESULT=$?
-  if [[ $RESULT == 0 ]]
+function check_hostname {
+  host $NODE_NAME > /dev/null 2>&1
+  if [[ $? != 0 ]]
   then
-
-    # Delete existing node and client objects,
-    # remove existing SSH key from $HOME/known_hosts file
-    read -p "Would you like to erase ${NODE} first?" ERASE_YESNO
-    if [[ $ERASE_YESNO == "y" || $ERASE_YESNO == "yes" ]]
-    then
-      echo "Deleting old Chef server node object for ${NODE}"
-      santoku maxlab node delete ${NODE} --yes
-      echo "Deleting old Chef server client object for ${NODE}"
-      santoku maxlab client delete ${NODE} --yes
-    fi
+    echo "Error: $1 does not appear to be a recognized FQDN"
+    exit 1
   fi
+}
 
-  # Deploy personal SSH key
-  ssh-copy-id -i $SSH_KEY root@${NODE}
+check_hostname "$NODE_NAME"
 
-  RESULT_CODE=$?
+if [[ $POLICY_GROUP_NAME != "" ]]
+then
+  POLICY_GROUP_DEFINED=true
+fi
 
-  # If the key was deployed OK, bootstrap it
-  if [[ $RESULT_CODE == 0 ]]
+# My personal lab key
+SSH_KEY="/home/maxwell/.ssh/maxwell-lab"
+
+# Lock to a specific version to avoid newer releases which I haven't validated
+# 2019-12 version
+CHEF_VERSION_PIN="15.8"
+
+# Remove existing SSH keys for this node's IP (created before VM was rebuilt)
+if [[ ! -z ${HOST_IP} ]]
+then
+  echo "Removing old entries for this host in $HOME/.ssh/known_hosts"
+  sed -i 's/^.*'"${HOST_IP}"'.*$//g' $HOME/.ssh/known_hosts
+  sed -i '/^$/d' $HOME/.ssh/known_hosts
+fi
+
+echo "Checking for old Chef server node object"
+NODE_SHOW_TEST=$(santoku maxlab node show ${NODE_NAME} > /dev/null 2>&1)
+RESULT=$?
+if [[ $RESULT == 0 ]]
+then
+
+  # Delete existing node and client objects,
+  # remove existing SSH key from $HOME/known_hosts file
+  read -p "Would you like to erase ${NODE_NAME} first?" ERASE_YESNO
+  if [[ $ERASE_YESNO == "y" || $ERASE_YESNO == "yes" ]]
   then
-
-    if [[ $BASE_NAME_DEFINED == true ]]
-    then
-      # Bootstrap using traditional, non-policyfile method
-      # with a predefined role and an environment set
-      santoku maxlab bootstrap ${NODE} \
-        --connection-user root \
-        --ssh-identity-file $SSH_KEY \
-        --node-name ${NODE} \
-        --bootstrap-version "$CHEF_VERSION_PIN" \
-        --environment "$DEFAULT_ENVIRONMENT" \
-        --run-list "$DEFAULT_RUNLIST"
-
-    elif [[ $POLICY_GROUP_NAME_DEFINED == true ]]
-    then
-      # Bootstrap using policy-group and policy-name
-      santoku maxlab bootstrap ${NODE} \
-        --connection-user root \
-        --ssh-identity-file $SSH_KEY \
-        --node-name ${NODE} \
-        --bootstrap-version "$CHEF_VERSION_PIN" \
-        --policy-group "$POLICY_GROUP_NAME" \
-        --policy-name "$POLICY_NAME"
-    else
-      # Bootstrap without environment or policy group.
-      # I'm assuming one of these will be set later.
-      santoku maxlab bootstrap ${NODE} \
-        --connection-user root \
-        --ssh-identity-file $SSH_KEY \
-        --node-name ${NODE} \
-        --bootstrap-version "$CHEF_VERSION_PIN"
-    fi
+    echo "Deleting old Chef server node object for ${NODE_NAME}"
+    santoku maxlab node delete ${NODE_NAME} --yes
+    echo "Deleting old Chef server client object for ${NODE_NAME}"
+    santoku maxlab client delete ${NODE_NAME} --yes
   fi
+fi
+
+# Deploy personal SSH key
+ssh-copy-id -i $SSH_KEY root@${NODE_NAME}
+
+RESULT_CODE=$?
+
+# If the key was deployed OK, bootstrap it
+if [[ $RESULT_CODE == 0 ]]
+then
+
+  # Bootstrap using policy-group and policy-name
+  santoku maxlab bootstrap ${NODE_NAME} \
+    --connection-user root \
+    --ssh-identity-file $SSH_KEY \
+    --node-name ${NODE_NAME} \
+    --bootstrap-version "$CHEF_VERSION_PIN" \
+    --policy-group "$POLICY_GROUP_NAME" \
+    --policy-name "$POLICY_NAME"
 fi

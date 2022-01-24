@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.25.50
+
+* Including updated bootstap-maxlab script. Needs more testing, but lets check it in.
+
 # 0.25.49
 
 * Update nas.conf to add NFS share /srv/terawd from depot.maxlab
