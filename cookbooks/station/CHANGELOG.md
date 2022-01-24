@@ -1,6 +1,12 @@
 
 # station CHANGELOG
 
+# 0.25.49
+
+* Update nas.conf to add NFS share /srv/terawd from depot.maxlab
+* Update $HOME/coding.conf to reposition east, mid and west windows to accommodate the primary monitor being physically lowered
+* Updating $HOME/.bashrc with updated Chef use of ruby 3.0.0, so commenting out past use of ruby 2.6.0 and adjusting. This is an attempt towards getting Test Kitchen and vagrant working again.
+
 # 0.25.48
 
 * Deploy g++ so some Ruby gems can compile.  This fulfills a dependency for gems helping vagrant helping test kitchen helping Chef development.
