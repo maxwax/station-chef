@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.25.51
+
+* Include libffi-devel to aide in updating Ruby gem ffi 
+
 # 0.25.50
 
 * Including updated bootstap-maxlab script. Needs more testing, but lets check it in.

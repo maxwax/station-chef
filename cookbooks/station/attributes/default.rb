@@ -848,6 +848,7 @@ case plat_vers
           "lame": "Free MP3 audio compressor (fedora)",
           "lftp": "A sophisticated file transfer program (fedora)",
           "liberation-fonts": "Fonts to replace commonly used Microsoft Windows fonts (fedora)",
+          "libffi-devel": "Foreign Function Library used for gem with Ruby",
           "libgomp": "for VirtualBox-6.1 kernel modules",
           "libxkbcommon": "for VirtualBox-6.1 kernel modules",
           "livecd-iso-to-mediums": "Scripts for creating custom USB boot drives",
