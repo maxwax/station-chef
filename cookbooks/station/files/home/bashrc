@@ -9,11 +9,6 @@ fi
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
-# User specific aliases and functions
-
-# CUSTOM PATH
-PATH=$PATH:/home/maxwell/.gem/bin
-
 # Basic settings
 . /usr/local/etc/shell-basics
 
@@ -55,8 +50,6 @@ export BC_ENV_ARGS=$HOME/.bcrc
 export EDITOR="vim"
 
 # Remove chef workstation from path to use system resources only
-#export RUBY_SYS_PATH="/usr/share/Modules/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/home/maxwell/bin:/home/maxwell/.gem/bin:/opt/chef-workstation/gitbin"
-# Remove chef workstation from path to use system resources only
 # Updated 2022-0123 maxwell, removing the trailing part with chef
 export RUBY_SYS_PATH="/usr/share/Modules/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/home/maxwell/bin:/home/maxwell/.gem/bin"
 # Untested!
@@ -64,31 +57,12 @@ export RUBY_SYS_GEM_ROOT="/home/maxwell/.gem"
 export RUBY_SYS_GEM_HOME="/home/maxwell/.gem/ruby"
 export RUBY_SYS_GEM_PATH="/home/maxwell/.gem/ruby:/usr/share/gems:/usr/local/share/gems"
 
-# ----------
-# 2020-01-24 'chef shell-init bash'
-# Original, unmodified, redundant
-#export PATH="/opt/chef-workstation/bin:/home/maxwell/.chefdk/gem/ruby/2.6.0/bin:/opt/chef-workstation/embedded/bin:/usr/share/Modules/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/home/maxwell/.gem/bin:/home/maxwell/.local/bin:/home/maxwell/bin:/home/maxwell/.gem/bin:/opt/chef-workstation/gitbin"
-
-# Constructed by 'chef shell-init bash' - uses Embedded ruby, gems and other resources from Chef Workstation
-# export CHEFWORK_PATH="/opt/chef-workstation/bin:/home/maxwell/.chefdk/gem/ruby/2.6.0/bin:/opt/chef-workstation/embedded/bin:/usr/share/Modules/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/home/maxwell/bin:/opt/chef-workstation/gitbin"
-
-# Pre 2022-0123 update
-# export CHEF_GEM_ROOT="/opt/chef-workstation/embedded/lib/ruby/gems/2.6.0"
-# export CHEF_GEM_HOME="/home/maxwell/.chefdk/gem/ruby/2.6.0"
-# export CHEF_GEM_PATH="/home/maxwell/.chefdk/gem/ruby/2.6.0:/opt/chef-workstation/embedded/lib/ruby/gems/2.6.0"
-#
-# _chef_comp() {
-#     local COMMANDS="exec env gem generate shell-init install update push push-archive show-policy diff export clean-policy-revisions clean-policy-cookbooks delete-policy-group delete-policy undelete describe-cookbook provision"
-#     COMPREPLY=($(compgen -W "$COMMANDS" -- ${COMP_WORDS[COMP_CWORD]} ))
-# }
-# complete -F _chef_comp chef
-
 # Updated 2022-0123
 # CHEFWORK_PATH is used in the use_chef_ruby function below - added by maxwell
-export CHECKWORK_PATH="/opt/chef-workstation/bin:/home/maxwell/.chefdk/gem/ruby/3.0.0/bin:/usr/share/Modules/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/home/maxwell/bin:/opt/chef-workstation/gitbin"
-export GEM_ROOT="/opt/chef-workstation/embedded/lib/ruby/gems/3.0.0"
-export GEM_HOME="/home/maxwell/.chefdk/gem/ruby/3.0.0"
-export GEM_PATH="/home/maxwell/.chefdk/gem/ruby/3.0.0:/opt/chef-workstation/embedded/lib/ruby/gems/3.0.0"
+export CHEFWORK_PATH="/opt/chef-workstation/bin:/home/maxwell/.chefdk/gem/ruby/3.0.0/bin:/usr/share/Modules/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/home/maxwell/bin:/opt/chef-workstation/gitbin"
+export CHEF_GEM_ROOT="/opt/chef-workstation/embedded/lib/ruby/gems/3.0.0"
+export CHEF_GEM_HOME="/home/maxwell/.chefdk/gem/ruby/3.0.0"
+export CHEF_GEM_PATH="/home/maxwell/.chefdk/gem/ruby/3.0.0:/opt/chef-workstation/embedded/lib/ruby/gems/3.0.0"
 _chef_comp() {
     local COMMANDS="exec env gem generate shell-init install update push push-archive show-policy diff export clean-policy-revisions clean-policy-cookbooks delete-policy-group delete-policy undelete describe-cookbook provision"
     COMPREPLY=($(compgen -W "$COMMANDS" -- ${COMP_WORDS[COMP_CWORD]} ))

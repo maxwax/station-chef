@@ -1,6 +1,13 @@
 
 # station CHANGELOG
 
+# 0.25.56
+
+* Personal $HOME/.bashrc cleanup:
+* Remove inclusion of $HOME/.gem - this looks like legacy Ruby work
+* Set variables CHEF_GEM_HOME,CHEF_GEM_ROOT,CHEF_GEM_PATH so they can be set properly using use_chef_ruby functions
+* Remove some previously used but commented out code related to past configuration work for Chef+Ruby.  The new code works, so this is no longer needed even for reference.
+
 # 0.25.55
 
 * Replace a single mode attribute with two mode attributes: one for files deployed as executable and one for files deployed as config files.
