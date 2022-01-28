@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.25.54
+
+* Create and maintain mount points in /net for NFS shares as owner/group maxwell:maxwell so I can access personal files.
+
 # 0.25.53
 
 * Remove roxterm, haven't used it in years
