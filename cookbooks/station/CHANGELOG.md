@@ -1,6 +1,11 @@
 
 # station CHANGELOG
 
+# 0.25.53
+
+* Remove roxterm, haven't used it in years
+* Re-enable deployment of Skype
+
 # 0.25.52
 
 * Modify fstrim.rb to enable fstrim.timer systemd unit via Chef systemd resource instead of calling out to a bash command.
