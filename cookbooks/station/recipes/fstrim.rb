@@ -10,8 +10,15 @@ Enable the fstrim timer event to periodically TRIM SSD drives
 #>
 =end
 
-execute 'fstrim-timer' do
-  command 'systemctl enable fstrim.timer'
+# Old way, remove later
+# execute 'fstrim-timer' do
+#   command 'systemctl enable fstrim.timer'
+#
+#   action :run
+# end
 
-  action :run
+systemd_unit 'fstrim.timer' do
+
+  action [:enable, :start]
+
 end

@@ -1,9 +1,13 @@
 
 # station CHANGELOG
 
+# 0.25.52
+
+* Modify fstrim.rb to enable fstrim.timer systemd unit via Chef systemd resource instead of calling out to a bash command.
+
 # 0.25.51
 
-* Include libffi-devel to aide in updating Ruby gem ffi 
+* Include libffi-devel to aide in updating Ruby gem ffi
 
 # 0.25.50
 
