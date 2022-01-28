@@ -1,6 +1,17 @@
 
 # station CHANGELOG
 
+# 0.25.55
+
+* Replace a single mode attribute with two mode attributes: one for files deployed as executable and one for files deployed as config files.
+* Add the same mode executable/config file attributes for root user for files deployed in /root
+* Modify solarized.rb to deploy config files using a config file specific file mode octal.
+* Deploy config files in /etc with root's config file octal.
+* Remove roxterm.rb recipe, haven't used it in years
+* In user.rb place static mode octals in single quotes for consistency
+* In shortcuts.rb use root's octal for config file.
+* In google-chrome.rb use root's config file octal to deploy google chrome repo in /etc
+
 # 0.25.54
 
 * Create and maintain mount points in /net for NFS shares as owner/group maxwell:maxwell so I can access personal files.

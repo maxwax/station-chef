@@ -11,6 +11,7 @@ Install Google Chrome
 =end
 
 my = node['station']['user']
+root = node['station']['root']
 
 # WARNING: Order matters: Import the key IF NO REPO, THEN make the repo.
 
@@ -32,7 +33,7 @@ cookbook_file "/etc/yum.repos.d/google-chrome.repo" do
   source "etc/yum.repos.d/google-chrome.repo"
   owner 'root'
   group 'root'
-  mode 0644
+  mode root['mode_config_file']
   action :create
 
   not_if 'fgrep "enabled=1" /etc/yum.repos.d/google-chrome.repo'

@@ -11,6 +11,8 @@ Deploy various scripts to /usr/local/bin and /usr/local/etc
 =end
 my = node['station']['user']
 
+root = node['station']['root']
+
 # Create a directory where all downloaded tar files will be unpacked.
 # This way we can delete this directory to clean up untarred files regardless
 # of the subdirectories created by the tar file extractionj
@@ -84,7 +86,7 @@ node['station']['usr_local']['remote_scripts'].each do |usr_local_dir, script_de
       directory untar_dir do
         owner 'root'
         group 'root'
-        mode 0755
+        mode '0755'
         action :create
       end
 
@@ -116,7 +118,7 @@ node['station']['usr_local']['remote_scripts'].each do |usr_local_dir, script_de
       directory untar_dir do
         owner 'root'
         group 'root'
-        mode 0755
+        mode '0755'
         recursive true
         action :delete
       end

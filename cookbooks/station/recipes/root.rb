@@ -18,7 +18,7 @@ root['personal_dot_files'].each do |fname|
     source "root/#{fname}"
     owner 'root'
     group 'root'
-    mode 0755
+    mode root['mode_config_file']
     action :create
   end
 end
@@ -26,7 +26,7 @@ end
 directory "/root/bin" do
   owner 'root'
   group 'root'
-  mode 0755
+  mode root['mode_executable_file']
   action :create
 end
 
@@ -35,7 +35,7 @@ root['personal_bin_scripts'].each do |fname|
     source "root/bin/#{fname}"
     owner 'root'
     group 'root'
-    mode 0755
+    mode root['mode_executable_file']
     action :create
   end
 end

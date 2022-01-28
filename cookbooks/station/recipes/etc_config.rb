@@ -10,13 +10,15 @@ Deploy custom configuration files for system wide use
 #>
 =end
 
+my = node['station']['user']
+root = node['station']['root']
 
 node['station']['etc_config'].each do |fname|
   cookbook_file "/etc/#{fname}" do
     source "etc/#{fname}"
     owner 'root'
     group 'root'
-    mode 0755
+    mode root['mode_config_file']
     action :create
   end
 end

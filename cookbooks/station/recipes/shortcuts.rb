@@ -10,6 +10,8 @@ Install various .desktop files to enable Gnome command shorts to launch apps
 #>
 =end
 
+root = node['station']['root']
+
 directory node['station']['shortcuts']['dir'] do
   owner 'root'
   group 'root'
@@ -23,7 +25,7 @@ node['station']['shortcuts']['files'].each do |fname|
     source "usr/share/applications/station/#{fname}.desktop"
     owner 'root'
     group 'root'
-    mode '0644'
+    mode root['mode_config_file']
 
     action :create
   end
