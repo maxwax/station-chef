@@ -1,6 +1,11 @@
 
 # station CHANGELOG
 
+# 0.25.60
+
+* Bug Fix: Import keys for Atom repo if the package isn't already installed, replacing a guard against whether the key was already installed.  Since we have to install keys in two ways, once the first way is done, the old guard skipped the second way.
+* Attempting to pass "yes" to Chef installation prompt
+
 # 0.25.59
 
 * Bug Fix: Change use of USERNAME script in bootstrap.sh to POSIX $LOGNAME. USERNAME exists later, but not on an absolutely fresh install, it seems.

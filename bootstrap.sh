@@ -80,4 +80,4 @@ sudo knife node run_list add $(hostname -f) 'recipe[station]' -z
 sudo knife node environment set $(hostname -f) 'maxlab' -z
 
 # Now run chef-client again with the station run list
-sudo chef-client -z
+echo "yes" | sudo chef-client -z
