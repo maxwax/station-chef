@@ -68,7 +68,7 @@ then
 fi
 
 # First run creates the chef-zero node object
-sudo chef-client -z
+echo "yes" | sudo chef-client -z
 
 # Change ownership of the root created nodes/ directory to my user from root
 sudo chown -R $USER:$USER nodes
@@ -80,4 +80,4 @@ sudo knife node run_list add $(hostname -f) 'recipe[station]' -z
 sudo knife node environment set $(hostname -f) 'maxlab' -z
 
 # Now run chef-client again with the station run list
-echo "yes" | sudo chef-client -z
+sudo chef-client -z
