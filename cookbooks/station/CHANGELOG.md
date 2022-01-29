@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.25.58
+
+* Bug fix: Import repo keys with 'rpm --import' and 'rpmkeys --import' commands -- both of them.  Per https://access.redhat.com/solutions/3720351 this is required in RHEL 8, later versions of Fedora and assuming, CentOS.
+
 # 0.25.57
 
 * Bug fix: When creating directories to store config script, make sure they are executable by owner so files within them can be accessed.  Impacts $HOME/.vim and $HOME/.vim/colors causing an error when vim launches and the $HOME/.vimrc wants to load the solarized color config in $HOME/.vim/colors/solarized.vim

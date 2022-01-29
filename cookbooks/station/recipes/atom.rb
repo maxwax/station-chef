@@ -24,6 +24,16 @@ remote_file "atom-gpgkey" do
   not_if { File.exists?("/etc/yum.repos.d/atom.repo")}
 end
 
+# You must load keys with rpm --import and rpmkeys --import
+# per https://access.redhat.com/solutions/3720351
+execute 'import-atom-gpgkey' do
+  command "rpmkeys --import #{key_file}"
+
+  not_if 'rpm -qa --qf "%{VERSION}-%{RELEASE} %{SUMMARY}\n" gpg-pubkey* | grep AtomEditor'
+end
+
+# You must load keys with rpm --import and rpmkeys --import
+# per https://access.redhat.com/solutions/3720351
 execute 'import-atom-gpgkey' do
   command "rpm --import #{key_file}"
 
