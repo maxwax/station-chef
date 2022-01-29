@@ -44,14 +44,27 @@ execute 'import-atom-gpgkey-rpm' do
   #not_if 'rpm -qa --qf "%{VERSION}-%{RELEASE} %{SUMMARY}\n" gpg-pubkey* | grep AtomEditor'
 end
 
-cookbook_file "/etc/yum.repos.d/atom.repo" do
-  source "etc/yum.repos.d/atom.repo"
-  owner 'root'
-  group 'root'
-  mode 0644
-  action :create
+# cookbook_file "/etc/yum.repos.d/atom.repo" do
+#   source "etc/yum.repos.d/atom.repo"
+#   owner 'root'
+#   group 'root'
+#   mode 0644
+#   action :create
+#
+#   not_if { File.exists?("/etc/yum.repos.d/atom.repo")}
+# end
 
-  not_if { File.exists?("/etc/yum.repos.d/atom.repo")}
+yum_repository 'atom' do
+  description "Atom Editor"
+  baseurl "https://packagecloud.io/AtomEditor/atom/el/7/$basearch"
+  enabled true
+  gpgcheck false
+  repo_gpgcheck true
+  gpgkey "https://packagecloud.io/AtomEditor/atom/gpgkey"
+  
+  make_cache true
+
+  not_if { node['packages'].key?('atom') }
 end
 
 package node['station']['atom']['package_name'] do

@@ -1,6 +1,11 @@
 
 # station CHANGELOG
 
+# 0.25.61
+
+* Another attempt to get Atom to install without manual confirmation of repo gpgkey.  Trying to make the repo with Chef yum_repository resource.
+
+
 # 0.25.60
 
 * Bug Fix: Import keys for Atom repo if the package isn't already installed, replacing a guard against whether the key was already installed.  Since we have to install keys in two ways, once the first way is done, the old guard skipped the second way.
