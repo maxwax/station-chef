@@ -23,8 +23,14 @@ remote_file "google-signing-key" do
   not_if 'fgrep "enabled=1" /etc/yum.repos.d/google-chrome.repo'
 end
 
-execute 'install-google-key' do
+execute 'install-google-key-rpm' do
   command "rpm --import /home/#{my['username']}/Downloads/linux_signing_key.pub"
+
+  not_if 'fgrep "enabled=1" /etc/yum.repos.d/google-chrome.repo'
+end
+
+execute 'install-google-key-rpmkeys' do
+  command "rpmkeys --import /home/#{my['username']}/Downloads/linux_signing_key.pub"
 
   not_if 'fgrep "enabled=1" /etc/yum.repos.d/google-chrome.repo'
 end

@@ -1,6 +1,12 @@
 
 # station CHANGELOG
 
+# 0.25.59
+
+* Bug Fix: Change use of USERNAME script in bootstrap.sh to POSIX $LOGNAME. USERNAME exists later, but not on an absolutely fresh install, it seems.
+* Bug Fix: When importing GPG keys in atom.rb, name each block uniquely. Copy & paste error, oops.
+* When importing Google keys use rpm --import and rpmkeys --import
+
 # 0.25.58
 
 * Bug fix: Import repo keys with 'rpm --import' and 'rpmkeys --import' commands -- both of them.  Per https://access.redhat.com/solutions/3720351 this is required in RHEL 8, later versions of Fedora and assuming, CentOS.

@@ -49,7 +49,7 @@ then
   fi
   echo
 
-  DL=/home/$USERNAME/Downloads
+  DL=/home/$LOGNAME/Downloads
 
   ls -l $DL/chef*rpm
   CHEF_COUNT=$(ls -l $DL/chef*rpm | wc -l)
