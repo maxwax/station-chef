@@ -6,6 +6,7 @@ node.default['station']['user'] = {
   "uid": "1000",
   "gid": "1000",
   'mode_executable_file': "0755",
+  'mode_config_dir': "0744",
   'mode_config_file': "0644",
   'personal_bin_scripts': [
     "bootstrap-maxlab",
@@ -80,6 +81,7 @@ node.default['station']['root'] = {
   "username": "root",
   "group": "root",
   'mode_executable_file': "0755",
+  'mode_config_dir': "0744",
   'mode_config_file': "0644",
   'personal_bin_scripts': [
   ],

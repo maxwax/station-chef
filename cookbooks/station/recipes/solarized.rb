@@ -16,14 +16,14 @@ my = node['station']['user']
 directory "/home/#{my['username']}/.vim" do
   owner my['username']
   group my['group']
-  mode my['mode_config_file']
+  mode my['mode_config_dir']
   action :create
 end
 
 directory "/home/#{my['username']}/.vim/colors" do
   owner my['username']
   group my['group']
-  mode my['mode_config_file']
+  mode my['mode_config_dir']
   action :create
 end
 

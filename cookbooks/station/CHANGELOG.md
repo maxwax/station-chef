@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.25.57
+
+* Bug fix: When creating directories to store config script, make sure they are executable by owner so files within them can be accessed.  Impacts $HOME/.vim and $HOME/.vim/colors causing an error when vim launches and the $HOME/.vimrc wants to load the solarized color config in $HOME/.vim/colors/solarized.vim
+
 # 0.25.56
 
 * Personal $HOME/.bashrc cleanup:
