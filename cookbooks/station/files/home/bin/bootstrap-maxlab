@@ -4,13 +4,13 @@
 #
 # Bootstrap a node in my maxlab home lab
 #
-# Not a very good script, but designed to make it easier than remembering a lot of command line options.
+# This is not generic code, but code to make it quick and easy for me to
+# bootstrap a node in my homelab with Chef and deploy services
 #
-# Dependent upon santoku
 #
 
-VERSION="1.3.0"
-VERSION_DATE="2022-0120"
+VERSION="1.3.1"
+VERSION_DATE="2022-0203"
 
 function usage {
   echo "bootstrap-maxlab - Bootstrap a node in the maxlab home lab."
@@ -20,6 +20,30 @@ function usage {
   echo
 }
 
+# COMMAND LINE PARAMETERS
+ENVIRONMENT=""
+POLICY_GROUP_NAME=""
+POLICY_NAME=""
+
+# Global scope variables
+ENVIRONMENT_DEFINED=false
+POLICY_GROUP_DEFINED=false
+POLICY_NAME_DEFINED=false
+
+# IP OF TARGET, RESOLVED USING 'host' command on host name
+HOST_IP=""
+
+# My personal lab key
+SSH_KEY="/home/maxwell/.ssh/maxwell-lab"
+
+# Result code after trying to use ssh-copy-id to deploy an SSH key to target
+SSH_ERROR=0
+
+#
+# Functions
+#
+
+# Verify that the hostname provided has a valid IP
 function check_hostname {
   host $NODE_NAME > /dev/null 2>&1
   if [[ $? != 0 ]]
@@ -31,21 +55,82 @@ function check_hostname {
   fi
 }
 
-# Global scope variables
-POLICY_GROUP_DEFINED=false
-POLICY_NAME_DEFINED=false
+# Verify that user has provided an environment, policy group and policy name
+function require_env_policy_group_and_name {
+  if [[ $POLICY_GROUP_DEFINED == false ]] || [[ $POLICY_NAME_DEFINED == false ]] || [[ $ENVIRONMENT_DEFINED == false ]]
+  then
+    if [[ $POLICY_GROUP_DEFINED == false ]]
+    then
+      echo "Error: No policy group defined."
+    fi
+    if [[ $POLICY_NAME_DEFINED == false ]]
+    then
+      echo "Error: No policy name defined."
+    fi
+    if [[ $POLICY_NAME_DEFINED == false ]]
+    then
+      echo "Error: No environment defined."
+    fi
+    echo "Error: You must define an environment, policy group, and policy name."
+    exit 1
+  fi
+}
+
+# Remove existing SSH keys for this node's IP (created before VM was rebuilt)
+function offer_clear_known_hosts {
+  if [[ ! -z ${HOST_IP} ]]
+  then
+    echo
+    KNOWN_HOSTS_COUNT=$(egrep "$NODE_NAME|$HOST_IP" $HOME/.ssh/known_hosts | wc -l)
+    if [[ $KNOWN_HOSTS_COUNT -gt 0 ]]
+    then
+      ERASE_YESNO="n"
+      echo
+      read -p "Erase existing entries in known_hosts for ${NODE_NAME} and ${HOST_IP}?" ERASE_YESNO
+
+      if [[ $ERASE_YESNO == "y" || $ERASE_YESNO == "yes" ]]
+      then
+        echo "Removing old entries for this host in $HOME/.ssh/known_hosts"
+        sed -i 's/^.*'"${HOST_IP}"'.*$//g' $HOME/.ssh/known_hosts
+        sed -i 's/^.*'"${NODE_NAME}"'.*$//g' $HOME/.ssh/known_hosts
+        echo
+      fi
+    fi
+  fi
+}
+
+function offer_clear_chef_objects {
+  echo
+  echo "Checking for existing Chef server node and client objects"
+  echo
+  NODE_SHOW_TEST=$(santoku maxlab node show ${NODE_NAME} > /dev/null 2>&1)
+  RESULT=$?
+  if [[ $RESULT == 0 ]]
+  then
+
+    # Delete existing node and client objects,
+    # remove existing SSH key from $HOME/known_hosts file
+    read -p "Would you like to erase ${NODE_NAME} NODE & CLIENT objects?" ERASE_YESNO
+    if [[ $ERASE_YESNO == "y" || $ERASE_YESNO == "yes" ]]
+    then
+      echo "Deleting old Chef server node object for ${NODE_NAME}"
+      santoku maxlab node delete ${NODE_NAME} --yes
+      echo "Deleting old Chef server client object for ${NODE_NAME}"
+      santoku maxlab client delete ${NODE_NAME} --yes
+      echo
+    fi
+  fi
+}
+
+function deploy_root_ssh_key {
+  # Deploy personal SSH key
+  ssh-copy-id -i $SSH_KEY root@${NODE_NAME}
+  SSH_ERROR=$?
+}
 
 #
-HOST_IP=""
-POLICY_GROUP_NAME=""
-POLICY_NAME=""
-
-NODE_NAME=${1:-"_null"}
-if [[ $NODE_NAME == "_null" ]]
-then
-  usage
-  exit 1
-fi
+#
+#
 
 while [[ $# -gt 0 ]]
 do
@@ -62,33 +147,38 @@ do
       then
         echo "Error: you must supply a valid environment with this parameter."
         exit 1
+      else
+        ENVIRONMENT_DEFINED=true
+        shift;
+        shift;
       fi
-      shift;
-      shift;
     ;;
 
     "--policy-group"|"--policygroup")
       POLICY_GROUP_NAME=${2:-"_null"}
-      POLICY_GROUP_DEFINED=true
+
       if [[ $POLICY_GROUP_NAME == "_null" ]]
       then
         echo "Error: you must supply a valid policy group name with this parameter."
         exit 1
+      else
+        POLICY_GROUP_DEFINED=true
+        shift;
+        shift;
       fi
-      shift;
-      shift;
     ;;
 
     "--policy-name"|"--policyname")
       POLICY_NAME=${2:-"_null"}
-      POLICY_NAME_DEFINED=true
       if [[ $POLICY_NAME == "_null" ]]
       then
         echo "Error: you must supply a valid policy name with this parameter."
         exit 1
+      else
+        POLICY_NAME_DEFINED=true
+        shift;
+        shift;
       fi
-      shift;
-      shift;
     ;;
 
     # Last parameter is host name
@@ -106,78 +196,29 @@ do
   esac
 done
 
-if [[ $POLICY_GROUP_DEFINED == false ]] || [[ $POLICY_NAME_DEFINED == false ]]
-then
-  if [[ $POLICY_GROUP_DEFINED == false ]]
-  then
-    echo "Error: No policy group defined."
-  fi
-  if [[ $POLICY_NAME_DEFINED == false ]]
-  then
-    echo "Error: No policy name defined."
-  fi
-  echo "Error: You must define both a policy group and policy name."
-  exit 1
-fi
+# Verify that user has provided an environment, policy group and policy name
+require_env_policy_group_and_name
 
+# Verify that the hostname provided resolves to a known IP address
 check_hostname "$NODE_NAME"
 
-# My personal lab key
-SSH_KEY="/home/maxwell/.ssh/maxwell-lab"
+# If this host name is in $HOME/.ssh/known_hosts offer to remove it
+# This lets us clear out old keys after a VM has been rebuilt
+offer_clear_known_hosts
 
-# Lock to a specific version to avoid newer releases which I haven't validated
-# 2019-12 version
-#CHEF_VERSION_PIN="15.8"
+# Offer to delete existing Chef node and client objects
+offer_clear_chef_objects
 
-# Remove existing SSH keys for this node's IP (created before VM was rebuilt)
-if [[ ! -z ${HOST_IP} ]]
-then
-  echo "Checking for $HOST_NAME in $HOME/.ssh/known_hosts"
-  HOST_IN_KNOWN_HOSTS=$(egrep "$HOST_NAME|$HOST_IP" $HOME/.ssh/known_hosts | wc -l)
-  if [[ $HOST_IN_KNOWN_HOSTS -gt 0 ]]
-  then
-    ERASE_YESNO="n"
-    read -p "Would you like to erase existing entries in $HOME/ssh/known_hosts for ${NODE_NAME}?" ERASE_YESNO
-    if [[ $ERASE_YESNO == "y" || $ERASE_YESNO == "yes" ]]
-    then
-      echo "Removing old entries for this host in $HOME/.ssh/known_hosts"
-      sed -i 's/^.*'"${HOST_IP}"'.*$//g' $HOME/.ssh/known_hosts
-  #    sed -i '/^$/d' $HOME/.ssh/known_hosts
-      echo
-    fi
-  fi
-fi
-
-echo "Checking for old Chef server node object"
-NODE_SHOW_TEST=$(santoku maxlab node show ${NODE_NAME} > /dev/null 2>&1)
-RESULT=$?
-if [[ $RESULT == 0 ]]
-then
-
-  # Delete existing node and client objects,
-  # remove existing SSH key from $HOME/known_hosts file
-  read -p "Would you like to erase ${NODE_NAME} NODE & CLIENT objects?" ERASE_YESNO
-  if [[ $ERASE_YESNO == "y" || $ERASE_YESNO == "yes" ]]
-  then
-    echo "Deleting old Chef server node object for ${NODE_NAME}"
-    santoku maxlab node delete ${NODE_NAME} --yes
-    echo "Deleting old Chef server client object for ${NODE_NAME}"
-    santoku maxlab client delete ${NODE_NAME} --yes
-    echo
-  fi
-fi
-
-# Deploy personal SSH key
-ssh-copy-id -i $SSH_KEY root@${NODE_NAME}
-
-RESULT_CODE=$?
+# Use ssh-copy id to deploy an ssh key on the remote node
+deploy_root_ssh_key
 
 # If the key was deployed OK, bootstrap it
-if [[ $RESULT_CODE == 0 ]]
+if [[ $SSH_ERROR == 0 ]]
 then
   # Minimal policy used to deploy
   BOOTSTRAP_POLICY="maxlab_node_bootstrap"
 
+  echo
   echo "INITIAL KNIFE BOOTSTRAP TO GET CHEF DEPLOYED"
   echo "--------------------------------------------"
   santoku maxlab bootstrap ${NODE_NAME} \
@@ -185,30 +226,16 @@ then
     --ssh-identity-file $SSH_KEY \
     --node-name ${NODE_NAME} \
     --environment ${ENVIRONMENT}
-    #--bootstrap-version "$CHEF_VERSION_PIN"
-    # --policy-group "$POLICY_GROUP_NAME" \
-    # --policy-name "$BOOTSTRAP_POLICY"
-
-  # Bootstrap using policy-group and policy-name
-  # santoku maxlab bootstrap ${NODE_NAME} \
-  #   --connection-user root \
-  #   --ssh-identity-file $SSH_KEY \
-  #   --node-name ${NODE_NAME} \
-  #   --environment {$ENVIRONMENT} \
-  #   --bootstrap-version "$CHEF_VERSION_PIN" \
-  #   --policy-group "$POLICY_GROUP_NAME" \
-  #   --policy-name "$POLICY_NAME"
-
-  # Set the environment
-  #santoku maxlab node environment_set ${ENVIRONMENT}
 
   # Now that the node is bootstrapped, set it to the policy for its services
+  echo
   echo "SETTING ACTUAL POLICY FOR THE NODE"
   echo "----------------------------------"
   santoku maxlab node policy set ${NODE_NAME} ${POLICY_GROUP_NAME} ${POLICY_NAME}
 
   # Only do this in private homelab, not production
   # Make it easy to spin up new nodes, but limits node-specific key access
+  echo
   echo "REFRESHING VAULT SECRETS TO INCLUDE THE NEW NODE"
   echo "------------------------------------------------"
   santoku maxlab vault refresh secret_postfix secret_maxlab_relay -M client

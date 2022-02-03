@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.25.62
+
+* Updated bootstrap-maxlab script with current changes.
+
 # 0.25.61
 
 * Another attempt to get Atom to install without manual confirmation of repo gpgkey.  Trying to make the repo with Chef yum_repository resource.
