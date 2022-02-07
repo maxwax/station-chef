@@ -1,6 +1,12 @@
 
 # station CHANGELOG
 
+# 0.25.63
+
+* For AWS cli install, download and unzip in a unique directory in /tmp
+* Delete any previous install/download directory in /tmp
+* After successful install, delete the install/download directory in /tmp
+
 # 0.25.62
 
 * Updated bootstrap-maxlab script with current changes.

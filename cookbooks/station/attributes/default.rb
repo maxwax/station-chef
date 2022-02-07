@@ -278,9 +278,10 @@ node.default['station']['zoom'] = {
   "rpm_source": "https://zoom.us/client/latest"
 }
 
-node.default['station']['aws_cli'] = {
+node.default['station']['aws_cli_cfg'] = {
   "package_name": "awscli-exe-linux-x86_64.zip",
-  "rpm_source": "https://awscli.amazonaws.com"
+  "rpm_source": "https://awscli.amazonaws.com",
+  "download_dir": "/tmp/aws_cli_install_chef"
 }
 
 plat_vers = "#{node['platform']}_#{node['platform_version']}"
