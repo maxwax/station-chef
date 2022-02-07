@@ -62,11 +62,12 @@ execute 'install_aws_cli' do
   not_if { File.exists?("/usr/local/bin/aws")}
 end
 
-directory "cleanup-delete-#{aws_cli_cfg['download_dir']}" do
+directory aws_cli_cfg['download_dir'] do
 
   recursive true
 
   action :delete
 
-  only_if { Dir.exists?(aws_cli_cfg['download_dir']) && aws_cli_cfg['download_dir'][0..4] == '/tmp/'}
+  only_if { Dir.exists?(aws_cli_cfg['download_dir']) &&
+            aws_cli_cfg['download_dir'][0..4] == '/tmp/'}
 end

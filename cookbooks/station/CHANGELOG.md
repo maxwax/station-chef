@@ -1,6 +1,12 @@
 
 # station CHANGELOG
 
+# 0.26.0
+
+* Adding linux-timemachine backup script from github for deployment
+* Bug fix in aws_cli deployment to do a cleanup delete of the download/install directory.
+* Deploy /etc/gdm/custom.conf file that switches from Wayland to X11 for displays. This eliminates a manual step in the re-install process
+
 # 0.25.66
 
 * Added a lot of guards on each resource to skip steps when a typeface is already installed.  Since each typeface is downloaded from the internet and takes a few seconds to do so, this is a considerable time savings if they are (likely) already installed.

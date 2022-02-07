@@ -292,6 +292,13 @@ node.default['station']['aws_cli_cfg'] = {
   "download_dir": "/tmp/chef_aws_cli_installer"
 }
 
+node.default['station']['timemachine_cfg'] = {
+  "version": "1.3.1",
+  "package_name": "v1.3.1.tar.gz",
+  "rpm_source": "https://github.com/cytopia/linux-timemachine/archive/refs/tags",
+  "download_dir": "/tmp/chef_timemachine_installer"
+}
+
 plat_vers = "#{node['platform']}_#{node['platform_version']}"
 
 case plat_vers

@@ -76,8 +76,14 @@ include_recipe 'station::solarized'
 # Install the AWS CLI
 include_recipe 'station::aws_cli'
 
+# Install the Time Machine backup script from github
+include_recipe 'station::timemachine'
+
 # Install config files for proxychains
 include_recipe 'station::proxychains'
+
+# Install config files for proxychains
+include_recipe 'station::x11'
 
 # Configure firewall for personal workstation use
 include_recipe 'station::firewall'
