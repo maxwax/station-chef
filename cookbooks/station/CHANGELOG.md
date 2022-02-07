@@ -1,6 +1,11 @@
 
 # station CHANGELOG
 
+# 0.25.64
+
+* Apply multiple guards on the creation / cleanup-deletion of the /tmp directory used to download and install the AWS cli.
+* Name reach code block uniquely for best practices
+
 # 0.25.63
 
 * For AWS cli install, download and unzip in a unique directory in /tmp
