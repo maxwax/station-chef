@@ -29,8 +29,6 @@ Station performs the following actions:
 
 * Configure [firewalld](https://firewalld.org/) for limited inbound services
 
-* Configure [roxterm](http://roxterm.sourceforge.net/) (alternative to gnome-terminal) and configure it with solarized color scheme and config options
-
 * Enable service to apply TRIM feature periodically for SSD discarded blocks maintenance
 
 * Deploy optional typefaces from personal repositories
@@ -51,7 +49,32 @@ Station performs the following actions:
 
 * Configures a small number of changes for root user
 
-## Step-by-Step Rebuild Procedure
+## Optimized Re-Deploy Procedure
+
+* This is the procedure I use when re-installing the same version of Linux and restoring much of my files.
+
+0. Backup any files to multiple copies of encrypted, external storage.
+1. Install Fedora (v35+)
+2. Clone this github repo
+```
+git clone github.com/maxwax/station
+```
+3. Bootstrap the node
+```
+cd station
+./bootstrap.sh
+```
+4. Restore files to
+* /home/maxwell
+* /home/library
+* /etc/NetworkManager/system-connections
+5. Re-configure printers
+
+## Step-by-Step Rebuild Procedure (NEEDS UPDATING)
+
+* This is my rough guide (for myself) when switching from one version of Fedora Linux to a new version.
+* Fedora is a bleeding edge Linux and a new version often breaks things and introduces drastic changes
+* Instead of relying on automation to make upgrades a smooth process, I often perform some amount of manual reconfiguration.
 
 ### High Level Summary
 
