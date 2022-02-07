@@ -1,7 +1,11 @@
 
 # station CHANGELOG
 
-# 0.25.64
+# 0.25.65
+
+* Move execution of firewall code to bottom to be more consistent with the operation of my maxlab cookbook code.
+
+# 0.25.65
 
 * Apply multiple guards on the creation / cleanup-deletion of the /tmp directory used to download and install the AWS cli.
 * Name reach code block uniquely for best practices

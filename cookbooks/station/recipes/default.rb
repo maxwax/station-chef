@@ -31,9 +31,6 @@ include_recipe 'station::user'
 # Install personal files for root user
 include_recipe 'station::root'
 
-# Configure firewall for personal workstation use
-include_recipe 'station::firewall'
-
 # Install Google Chrome
 include_recipe 'station::google-chrome'
 
@@ -81,6 +78,9 @@ include_recipe 'station::aws_cli'
 
 # Install config files for proxychains
 include_recipe 'station::proxychains'
+
+# Configure firewall for personal workstation use
+include_recipe 'station::firewall'
 
 # Tag this node as managed by the station cookbook
 tag('station-managed')
