@@ -1,6 +1,11 @@
 
 # station CHANGELOG
 
+# 0.25.66
+
+* Added a lot of guards on each resource to skip steps when a typeface is already installed.  Since each typeface is downloaded from the internet and takes a few seconds to do so, this is a considerable time savings if they are (likely) already installed.
+* Added a not_if_dir to the typeface related attributes which allows each typeface to be checked to see if it is already installed signaled by the presence of its typeface directory in /usr/share/fonts
+
 # 0.25.65
 
 * Move execution of firewall code to bottom to be more consistent with the operation of my maxlab cookbook code.

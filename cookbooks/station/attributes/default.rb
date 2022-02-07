@@ -221,12 +221,20 @@ node.default['station']['usr_local'] = {
 }
 
 node.default['station']['typefaces'] = {
-  "tarfiles": [
-    "my-adobe",
-    "microsoft-tt-core",
-    "maxwell-fonts-atari",
-    "sfpro"
-  ]
+  "tarfiles": {
+    "my-adobe": {
+      "not_if_dir": "/usr/share/fonts/maxwell-fonts-adb"
+    },
+    "microsoft-tt-core": {
+      "not_if_dir": "/usr/share/fonts/msttcore"
+    },
+    "maxwell-fonts-atari": {
+      "not_if_dir": "/usr/share/fonts/maxwell-fonts-atari"
+    },
+    "sfpro": {
+      "not_if_dir": "/usr/share/fonts/sfpro"
+    }
+  }
 }
 
 node.default['station']['mount_points'] = {
@@ -281,7 +289,7 @@ node.default['station']['zoom'] = {
 node.default['station']['aws_cli_cfg'] = {
   "package_name": "awscli-exe-linux-x86_64.zip",
   "rpm_source": "https://awscli.amazonaws.com",
-  "download_dir": "/tmp/aws_cli_install_chef"
+  "download_dir": "/tmp/chef_aws_cli_installer"
 }
 
 plat_vers = "#{node['platform']}_#{node['platform_version']}"
