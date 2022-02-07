@@ -234,6 +234,7 @@ node.default['station']['mount_points'] = {
     "audiovideo",
     "auxdata",
     "avarchive",
+    "filerdata",
     "centraldata",
     "data",
     "mediadata",
@@ -245,7 +246,8 @@ node.default['station']['mount_points'] = {
     "usb-media",
     "teraxfiles",
     "tv320",
-    "x320"
+    "x320",
+    "terawd",
   ],
   "/mnt": [
     "usb",
