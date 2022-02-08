@@ -68,7 +68,8 @@ cd station
 * /home/maxwell
 * /home/library
 * /etc/NetworkManager/system-connections
-5. Re-configure printers
+
+5. Re-configure printers and other system wide resources that haven't been restored by hand or by automation.
 
 ## Step-by-Step Rebuild Procedure (NEEDS UPDATING)
 
