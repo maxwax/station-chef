@@ -104,3 +104,8 @@ function use_system_ruby {
 use_chef_ruby --quiet
 
 complete -C '/usr/local/bin/aws_completer' aws
+
+# Direct Vagrant to use Virtualbox as a default provider
+# For some reason it switched to libvirt after downloading a libvirt
+# box around 2022-0222
+export VAGRANT_DEFAULT_PROVIDER=virtualbox

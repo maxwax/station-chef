@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.27.0
+
+* Add export VAGRANT_DEFAULT_PROVIDER=virtualbox to $HOME/.bashrc to direct Vagrant to use Virtualbox as default provider
+
 # 0.26.0
 
 * Adding linux-timemachine backup script from github for deployment
