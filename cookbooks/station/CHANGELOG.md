@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+* 0.28.1
+
+* Modify mount_points so subdirectories are created with maxwell:maxwell permissions
+
 * 0.28.0
 
 * Adding 'export HISTCONTROL=erasedups' to .bashrc to skip recording duplicate commands

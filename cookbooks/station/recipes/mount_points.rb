@@ -28,8 +28,8 @@ node['station']['mount_points'].each do |parent_dir, subdir|
   # Make NFS mount points within parent directory
   subdir.each do |dirname|
     directory "#{parent_dir}/#{dirname}" do
-      owner 'root'
-      group 'root'
+      owner 'maxwell'
+      group 'maxwell'
       mode 0755
 
       action :create
