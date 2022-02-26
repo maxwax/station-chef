@@ -14,4 +14,11 @@ export HISTSIZE=
 # Unlimited history stored in .history file
 export HISTFILESIZE=
 
-# Investigate HSTCONTROL="erasedups"
+# Erase duplicates
+export HISTCONTROL=erasedups
+
+# Store date time stamp with each command, show it with 'history' command
+export HISTTIMEFORMAT="[%F %T] "
+
+# Record history to an alternate file because some things truncate .bash_history
+export HISTFILE=~/.bash_history_eternal

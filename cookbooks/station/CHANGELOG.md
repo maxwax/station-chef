@@ -1,6 +1,12 @@
 
 # station CHANGELOG
 
+* 0.28.0
+
+* Adding 'export HISTCONTROL=erasedups' to .bashrc to skip recording duplicate commands
+* Adding 'export HISTTIMEFORMAT="[%F %T] "' to record date/time in history file
+* Adding 'export HISTFILE=~/.bash_history_eternal' to record history in alternate file per internet warnings that some files truncate $HOME/.bash_history
+
 # 0.27.0
 
 * Add export VAGRANT_DEFAULT_PROVIDER=virtualbox to $HOME/.bashrc to direct Vagrant to use Virtualbox as default provider
