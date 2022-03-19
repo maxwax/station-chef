@@ -1,0 +1,28 @@
+#!/bin/bash
+
+#
+# Update a Chef policyfile to create a .lock file
+# Push the .lock file to the chef server
+#
+
+for COOKBOOK in $*
+do
+  if [[ -f ${COOKBOOK} ]]
+  then
+    echo "UPDATING POLICYFILE ${COOKBOOK}"
+    chef update ${COOKBOOK}
+    UPDATE_ERROR=$?
+    if [[ $UPDATE_ERROR -eq 0 ]]
+    then
+      echo
+      echo "PUSHING POLICYFILE ${COOKBOOK}"
+      chef push pg_maxlab ${COOKBOOK}
+    else
+      echo;
+      echo "SKIPPING PUSH OF ${COOKBOOK}"
+    fi
+  else
+    echo
+    echo "ERROR: Cookbook $COOKBOOK does not exist"
+  fi
+done

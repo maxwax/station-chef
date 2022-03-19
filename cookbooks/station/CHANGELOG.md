@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+* 0.29.0
+
+* Adding the chefpush script to deploy into $HOME/bin
+
 * 0.28.1
 
 * Modify mount_points so subdirectories are created with maxwell:maxwell permissions
