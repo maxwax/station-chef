@@ -1,0 +1,47 @@
+#!/bin/bash
+
+# Hack script used to let me walk a physical location and capture
+# WIFI signal information and perform iperf3 testing from WIFI to 
+# a physically connected iperf3 server
+
+# The output captured can then be placed in a spreadsheet and/or
+# on a map to show geographical areas with strong or weak signal information
+
+# Instructions:
+# 1. Setup a wired Linux system running iperf3 --server on the network
+# 2. Walk to an initial location in physical site of a WIFI access point
+# 3. Run this script and enter location description (ex: 'under WAP #1')
+# 4. Let it capture the signal strength and run an iperf client
+#    performance test against the wired server
+# 5. Move to the next location
+# 6. Repeat at number 4
+
+function usage {
+  echo "wifi-inventory-by-location <iperf3-target-hostname|ip>"
+  echo
+}
+
+IPERF_TARGET=${1:-"_null"}
+if [[ $IPERF_TARGET == "_null" ]]
+then
+  echo "Error: You must specify an iperf3 server target for benchmarking."
+  echo
+  usage
+  exit 1
+else
+  while :
+  do
+    clear
+    read -p "Location? " WHERE
+
+    echo
+    date
+    echo
+
+    iwconfig wlp2s0 
+
+    iperf3 -c $IPERF_TARGET
+    echo 
+    read -p "Press ENTER"
+  done
+fi

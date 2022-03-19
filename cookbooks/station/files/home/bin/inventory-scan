@@ -1,0 +1,76 @@
+#!/bin/bash
+
+# This is a tool for manually de-duplicating files found in a source
+# data set with files found in a backup data set.
+
+# Use case: You have a file, my-best-photo-1985 and it may be on a
+# 'source' data set like a master hard drive and it may be on a 
+# 'backup' data set like an external backup archive, but in another
+# directory location.
+
+# You want an easy way to scan each data set to see if and where it appears
+# in each.  So you use the find command to create an index of all files
+# on each data set then use this script to repeatedly scan and report
+# what is found.
+
+# First, use the 'find' command to list all files in the source and
+# output it to 'source-<something>' in the current directory.
+
+# Next, ue the 'find' command to list all files in a backup dataset
+# and output it to 'backup-<something>' in the current directory.
+
+# Run this script and enter one or two words to scan in the files
+
+# Grep will perform a case insensitive scan for WORD and optionall WORD2
+# in the source and report where it is seen
+
+# It will then do the same for the backup inventory file.
+
+while :
+do
+  read -p "== Word 1 |" WORD
+  read -p "==== Word 2 |" WORD2
+
+  SOURCE_LINECOUNT=0
+  BACKUP_LINECOUNT=0
+
+  for EACHFILE in source-*
+  do
+    echo -n "SOURCE $EACHFILE     "
+    # Count the number of lines found
+    LINECOUNT=$(fgrep -i "$WORD" $EACHFILE| fgrep -i -c "$WORD2")
+    echo "$LINECOUNT    ***FOUND***"
+    let SOURCE_LINECOUNT=$SOURCE_LINECOUNT+$LINECOUNT
+    # Preview some of the lines found
+    fgrep -i "$WORD" $EACHFILE | fgrep -i "$WORD2" | tail -10 | sort
+    echo
+  done
+
+  echo "---- Backup Drives ----"
+
+  for EACHFILE in backup-*
+  do
+    echo -n "BACKUP $EACHFILE     "
+    # Count the number of lines found
+    LINECOUNT=$(fgrep -i "$WORD" $EACHFILE| fgrep -i -c "$WORD2")
+    echo "$LINECOUNT    ***FOUND***"
+    let BACKUP_LINECOUNT=$BACKUP_LINECOUNT+$LINECOUNT
+    # Preview some of the lines found
+    fgrep -i "$WORD" $EACHFILE | fgrep -i "$WORD2" | tail -10 | sort
+    echo
+  done
+
+  echo
+  echo "Found in source inventory " $SOURCE_LINECOUNT
+  echo "Found in backup inventory " $BACKUP_LINECOUNT
+  echo
+  if [[ $BACKUP_LINECOUNT -gt 0 ]] && [ $SOURCE_LINECOUNT -gt 0 ]
+  then
+    let MULTI=$BACKUP_LINECOUNT/$SOURCE_LINECOUNT
+    echo "Multiples? $MULTI"
+    echo 
+  else
+    echo "Can't calculate multiples."
+  fi
+
+done

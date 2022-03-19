@@ -4,6 +4,9 @@
 * 0.29.0
 
 * Adding the chefpush script to deploy into $HOME/bin
+* Adding script 'fix-ipad-images'. Used in the past to identify the proper image format of photos saved on an iPad and being accessed on Linux.  (Ex: File is .png but labeled .jpg)
+* Adding script 'inventory-scan'.  Used recently to scan 'source' and 'backup' index files containing file lists of source (NAS data) and backup (external HD) data to help find duplicated data.
+* Adding script 'wifi-inventory-location'. Used to walk different physical locations to perform WIFI signal strength mapping.
 
 * 0.28.1
 

@@ -1,0 +1,53 @@
+#!/bin/bash
+
+# This option resolves *.jpg to null when no files of that name exist
+shopt -s nullglob
+
+#for EACH_FILE in *.jpg *.jpeg *.JPG *.png *.PNG
+for EACH_FILE in *
+do
+  IMAGE_FORMAT=""
+  NEWF=""
+  NEW_FILE=""
+  EXT=""
+
+  # First awk gets "JPEG image data"
+  # Second awk gets "JPEG"
+  IMAGE_FORMAT=$(file --brief "$EACH_FILE" | awk -F "," '{print $1}' | awk '{print $1}')
+  echo $IMAGE_FORMAT "|${EACH_FILE}|"
+
+  NEWF=$(echo $EACH_FILE | sed 's/.png//g' | sed 's/.PNG//g' | sed 's/\.\.//g' | sed 's/.jfif//g' | sed 's/.jpg//g' | sed 's/.jpeg//g' | sed 's/.JPG//g' | sed 's/.gif//g' | sed 's/.GIF//g')
+
+  case $IMAGE_FORMAT in
+    "PNG")
+      EXT="png";;
+    "JPEG")
+      EXT="jpg";;
+    "GIF")
+      EXT="GIF";;
+    "ISO")
+      MEDIA_FORMAT=$(file --brief "$EACH_FILE" | awk -F "," '{print $2}' | awk '{print $1'})
+      case $MEDIA_FORMAT in
+        "MP4")
+          EXT="mp4";;
+        "MKV")
+          EXT="mkv";;
+        "AVI")
+          EXT="avi";;
+      esac
+      ;;
+  esac
+
+  NEW_FILE="${NEWF}.${EXT}"
+
+  if [[ "$EACH_FILE" == "$NEW_FILE" ]]
+  then
+    echo "No change needed."
+  else
+    echo "Renaming $EACH_FILE to $NEW_FILE"
+
+    mv -- "${EACH_FILE}" "${NEW_FILE}"
+  fi
+
+  echo
+done
