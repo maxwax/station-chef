@@ -10,16 +10,20 @@ node.default['station']['user'] = {
   'mode_config_file': "0644",
   'personal_bin_scripts': [
     "bootstrap-maxlab",
-    "erase-node",
+    "chefpush",
     "clean-history",
+    "erase-node",
+    "fix-ipad-images",
     "git-run-meld",
     "goatari",
+    "inventory-scan",
     "library-sync",
     "reset-evolution",
     "reset-gnome",
-    "update-maxlab-chef",
-    "tuncloud",
     "sshcloud",
+    "tuncloud",
+    "update-maxlab-chef",
+    "wifi-inventory-location"
   ],
   "personal_dot_files": [
     "bashrc",

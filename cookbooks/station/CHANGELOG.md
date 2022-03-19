@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+* 0.29.1
+
+* Updating attributes to deploy the scripts just added to the repo
+
 * 0.29.0
 
 * Adding the chefpush script to deploy into $HOME/bin
