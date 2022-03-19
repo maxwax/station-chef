@@ -1,0 +1,18 @@
+#!/bin/bash
+
+FILE_DATE=$(date +"%Y-%m%d")
+
+HISTORY_FILE=.bash_history_eternal
+ARCHIVE_DIR=~/projects/archive-bash-history
+BACKUP_FILE=$ARCHIVE_DIR/bash_history_eternal.to.$FILE_DATE
+
+if [[ ! -d $ARCHIVE_DIR ]]
+then
+  mkdir -p $ARCHIVE_DIR
+fi
+
+if [[ -f ~/$HISTORY_FILE ]]
+then
+  cp -pa ~/$HISTORY_FILE $BACKUP_FILE
+  gzip -9vf $BACKUP_FILE
+fi

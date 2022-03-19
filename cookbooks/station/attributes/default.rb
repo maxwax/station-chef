@@ -12,6 +12,7 @@ node.default['station']['user'] = {
     "bootstrap-maxlab",
     "chefpush",
     "clean-history",
+    "cron-backup-history",
     "erase-node",
     "fix-ipad-images",
     "git-run-meld",
@@ -79,6 +80,19 @@ node.default['station']['firewall'] =
   ],
   "ports_allowed": [
   ]
+}
+
+node.default['station']['cron_jobs'] =
+{
+  "cron-backup-history": {
+    "command": "/home/maxwell/bin/cron-backup-history",
+    "minute": "0",
+    "hour": "12,14,16,18,20,22,23,0",
+    "day": "*",
+    "month": "*",
+    "day_of_week": "*",
+    "user": "maxwell"
+  }
 }
 
 node.default['station']['root'] = {
@@ -814,6 +828,7 @@ case plat_vers
           "f34-backgrounds-gnome": "Fedora 33 default wallpaper for Gnome and Cinnamon (updates)",
           "faac": "Encoder and encoding library for MPEG2/4 AAC (rpmfusion-nonfree)",
           "faad2-libs": "Shared libraries of the FAAD 2 AAC decoder (rpmfusion-free)",
+          "fdupes": "Duplicate file identifier for directory de-duplication",
           "ffmpeg": "Digital VCR and streaming server (rpmfusion-free-updates)",
           "ffmpeg-libs": "Libraries for ffmpeg (rpmfusion-free-updates)",
           "fio": "Multithreaded IO generation tool (fedora)",

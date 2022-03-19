@@ -1,6 +1,11 @@
 
 # station CHANGELOG
 
+* 0.30.0
+
+* Adding recipe 'cron_jobs.rb' to configure cron jobs to execute previously deployed scripts on a periodic basis.  Ex: Run cron-backup-history every Sunday, once a week.
+* Adding 'fdupes' to standard packages to be installed
+
 * 0.29.1
 
 * Updating attributes to deploy the scripts just added to the repo
