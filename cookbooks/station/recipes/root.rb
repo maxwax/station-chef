@@ -2,13 +2,7 @@
 # Cookbook:: station
 # Recipe:: root
 #
-# Copyright:: 2019, The Authors, All Rights Reserved.
-
-=begin
-#<
-Configure root personal account with various customizations
-#>
-=end
+# Copyright:: 2019, Maxwell Spangler, All Rights Reserved.
 
 # Just for each access later
 root = node['station']['root']
@@ -23,7 +17,7 @@ root['personal_dot_files'].each do |fname|
   end
 end
 
-directory "/root/bin" do
+directory '/root/bin' do
   owner 'root'
   group 'root'
   mode root['mode_executable_file']

@@ -2,13 +2,7 @@
 # Cookbook:: station
 # Recipe:: sshd
 #
-# Copyright:: 2019, The Authors, All Rights Reserved.
-
-=begin
-#<
-Deploy various scripts to /usr/local/bin and /usr/local/etc
-#>
-=end
+# Copyright:: 2019, Maxwell Spangler, All Rights Reserved.
 
 service 'sshd' do
   action [:enable, :start]

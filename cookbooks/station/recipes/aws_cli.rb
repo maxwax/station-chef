@@ -2,15 +2,7 @@
 # Cookbook:: station
 # Recipe:: aws_cli
 #
-# Copyright:: 2019, The Authors, All Rights Reserved.
-
-=begin
-#<
-Install AWS CLI
-#>
-=end
-
-my = node['station']['user']
+# Copyright:: 2019, Maxwell Spangler, All Rights Reserved.
 
 aws_cli_cfg = node['station']['aws_cli_cfg']
 
@@ -24,12 +16,14 @@ directory aws_cli_cfg['download_dir'] do
 
   action :delete
 
-  not_if { File.exists?("/usr/local/bin/aws")}
+  not_if { ::File.exist?('/usr/local/bin/aws') }
 
   # Safety check, only recursively delete a directory in a variable
   # if the variable is only a subdirectory within /tmp
-  only_if { Dir.exists?(aws_cli_cfg['download_dir']) &&
-            aws_cli_cfg['download_dir'][0..4] == '/tmp/'}
+  only_if do
+    Dir.exist?(aws_cli_cfg['download_dir']) &&
+      aws_cli_cfg['download_dir'][0..4] == '/tmp/'
+  end
 end
 
 directory aws_cli_cfg['download_dir'] do
@@ -37,14 +31,14 @@ directory aws_cli_cfg['download_dir'] do
 end
 
 # Download the remote file to a unique directory in /tmp
-remote_file "aws_cli_zip" do
+remote_file 'aws_cli_zip' do
   path "#{aws_cli_cfg['download_dir']}/#{aws_cli_cfg['package_name']}"
 
   source "#{aws_cli_cfg['rpm_source']}/#{aws_cli_cfg['package_name']}"
 
   action :create
 
-  not_if { File.exists?("/usr/local/bin/aws")}
+  not_if { ::File.exist?('/usr/local/bin/aws') }
 end
 
 # Unpack its files
@@ -53,13 +47,13 @@ execute 'unzip_aws_cli' do
 
   cwd aws_cli_cfg['download_dir']
 
-  not_if { File.exists?("/usr/local/bin/aws")}
+  not_if { ::File.exist?('/usr/local/bin/aws') }
 end
 
 execute 'install_aws_cli' do
   command "#{aws_cli_cfg['download_dir']}/aws/install"
 
-  not_if { File.exists?("/usr/local/bin/aws")}
+  not_if { ::File.exist?('/usr/local/bin/aws') }
 end
 
 directory aws_cli_cfg['download_dir'] do
@@ -68,6 +62,8 @@ directory aws_cli_cfg['download_dir'] do
 
   action :delete
 
-  only_if { Dir.exists?(aws_cli_cfg['download_dir']) &&
-            aws_cli_cfg['download_dir'][0..4] == '/tmp/'}
+  only_if do
+    Dir.exist?(aws_cli_cfg['download_dir']) &&
+      aws_cli_cfg['download_dir'][0..4] == '/tmp/'
+  end
 end

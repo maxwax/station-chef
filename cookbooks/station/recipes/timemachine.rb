@@ -4,13 +4,7 @@
 #
 # Copyright:: 2019, Maxwell Spangler, All Rights Reserved.
 
-=begin
-#<
-Install linux-timemachine a script to do Apple Timemachine like de-duplicated point in time backups on Linux
-#>
-=end
-
-my = node['station']['user']
+# my = node['station']['user']
 
 timemachine_cfg = node['station']['timemachine_cfg']
 
@@ -24,13 +18,17 @@ directory timemachine_cfg['download_dir'] do
 
   action :delete
 
-  not_if { File.exists?("/usr/local/bin/timemachine") &&
-           File.readlines("/usr/local/bin/timemachine").grep(/MY_VERS=\"#{timemachine_cfg['version']}/).any? }
+  not_if do
+    File.exist?('/usr/local/bin/timemachine') &&
+      File.readlines('/usr/local/bin/timemachine').grep(/MY_VERS=\"#{timemachine_cfg['version']}/).any?
+  end
 
   # Safety check, only recursively delete a directory in a variable
   # if the variable is only a subdirectory within /tmp
-  only_if { Dir.exists?(timemachine_cfg['download_dir']) &&
-            timemachine_cfg['download_dir'][0..4] == '/tmp/'}
+  only_if do
+    Dir.exist?(timemachine_cfg['download_dir']) &&
+      timemachine_cfg['download_dir'][0..4] == '/tmp/'
+  end
 end
 
 directory timemachine_cfg['download_dir'] do
@@ -38,15 +36,17 @@ directory timemachine_cfg['download_dir'] do
 end
 
 # Download the remote file to a unique directory in /tmp
-remote_file "timemachine-tarball" do
+remote_file 'timemachine-tarball' do
   path "#{timemachine_cfg['download_dir']}/#{timemachine_cfg['package_name']}"
 
   source "#{timemachine_cfg['rpm_source']}/#{timemachine_cfg['package_name']}"
 
   action :create
 
-  not_if { File.exists?("/usr/local/bin/timemachine") &&
-           File.readlines("/usr/local/bin/timemachine").grep(/MY_VERS=\"#{timemachine_cfg['version']}/).any? }
+  not_if do
+    File.exist?('/usr/local/bin/timemachine') &&
+      File.readlines('/usr/local/bin/timemachine').grep(/MY_VERS=\"#{timemachine_cfg['version']}/).any?
+  end
 end
 
 # Unpack its files
@@ -55,17 +55,21 @@ execute 'untar-timemachine' do
 
   cwd timemachine_cfg['download_dir']
 
-  not_if { File.exists?("/usr/local/bin/timemachine") &&
-           File.readlines("/usr/local/bin/timemachine").grep(/MY_VERS=\"#{timemachine_cfg['version']}/).any? }
+  not_if do
+    File.exist?('/usr/local/bin/timemachine') &&
+      File.readlines('/usr/local/bin/timemachine').grep(/MY_VERS=\"#{timemachine_cfg['version']}/).any?
+  end
 end
 
 execute 'install_timemachine' do
-  command "make install"
+  command 'make install'
 
   cwd "#{timemachine_cfg['download_dir']}/linux-timemachine-#{timemachine_cfg['version']}"
 
-  not_if { File.exists?("/usr/local/bin/timemachine") &&
-           File.readlines("/usr/local/bin/timemachine").grep(/MY_VERS=\"#{timemachine_cfg['version']}/).any? }
+  not_if do
+    File.exist?('/usr/local/bin/timemachine') &&
+      File.readlines('/usr/local/bin/timemachine').grep(/MY_VERS=\"#{timemachine_cfg['version']}/).any?
+  end
 end
 
 directory timemachine_cfg['download_dir'] do
@@ -74,6 +78,5 @@ directory timemachine_cfg['download_dir'] do
 
   action :delete
 
-  only_if { Dir.exists?(timemachine_cfg['download_dir']) &&
-            timemachine_cfg['download_dir'][0..4] == '/tmp/'}
+  only_if { Dir.exist?(timemachine_cfg['download_dir']) && timemachine_cfg['download_dir'][0..4] == '/tmp/' }
 end

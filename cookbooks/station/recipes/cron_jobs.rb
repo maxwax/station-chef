@@ -4,8 +4,6 @@
 #
 # Copyright:: 2019, Maxwell Spangler, All Rights Reserved.
 
-my = node['station']['user']
-
 cron_config = node['station']['cron_jobs']
 
 cron_config.each do |cron_id, cron_cfg|

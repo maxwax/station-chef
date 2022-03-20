@@ -2,15 +2,7 @@
 # Cookbook:: station
 # Recipe:: nfs_mounts
 #
-# Copyright:: 2019, The Authors, All Rights Reserved.
-
-=begin
-#<
-Install the Atom text editor
-#>
-=end
-
-my = node['station']['user']
+# Copyright:: 2019, Maxwell Spangler, All Rights Reserved.
 
 node['station']['mount_points'].each do |parent_dir, subdir|
 
@@ -18,7 +10,7 @@ node['station']['mount_points'].each do |parent_dir, subdir|
   directory parent_dir do
     owner 'maxwell'
     group 'maxwell'
-    mode 0755
+    mode '0755'
 
     action :create
 
@@ -30,7 +22,7 @@ node['station']['mount_points'].each do |parent_dir, subdir|
     directory "#{parent_dir}/#{dirname}" do
       owner 'maxwell'
       group 'maxwell'
-      mode 0755
+      mode '0755'
 
       action :create
 

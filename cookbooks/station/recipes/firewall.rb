@@ -2,16 +2,10 @@
 # Cookbook:: station
 # Recipe:: firewall
 #
-# Copyright:: 2019, The Authors, All Rights Reserved.
-
-=begin
-#<
-Set default firewalld zone and allow some services
-#>
-=end
+# Copyright:: 2019, Maxwell Spangler, All Rights Reserved.
 
 # Set the default zone
-execute "set-default-zone" do
+execute 'set-default-zone' do
   command "firewall-cmd --set-default-zone=#{node['station']['firewall']['default_zone']}"
 end
 
@@ -30,6 +24,6 @@ node['station']['firewall']['ports_allowed'].each do |port_name|
 end
 
 # Activate the permanent changes made above
-execute "reload-firewall" do
-  command "firewall-cmd --reload"
+execute 'reload-firewall' do
+  command 'firewall-cmd --reload'
 end

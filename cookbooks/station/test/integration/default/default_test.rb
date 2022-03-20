@@ -33,17 +33,17 @@ end
 
 describe file('/usr/local/etc/shell-basics') do
   it { should exist }
-  its('mode') { should cmp '0755'}
+  its('mode') { should cmp '0755' }
 end
 
 describe file('/usr/local/etc/shell-history') do
   it { should exist }
-  its('mode') { should cmp '0755'}
+  its('mode') { should cmp '0755' }
 end
 
 describe file('/usr/local/etc/shell-prompt-powerline') do
   it { should exist }
-  its('mode') { should cmp '0755'}
+  its('mode') { should cmp '0755' }
 end
 
 #
@@ -52,37 +52,37 @@ end
 
 describe file('/usr/local/bin/coding') do
   it { should exist }
-  its('mode') { should cmp '0755'}
+  its('mode') { should cmp '0755' }
 end
 
 describe file('/usr/local/bin/position') do
   it { should exist }
-  its('mode') { should cmp '0755'}
+  its('mode') { should cmp '0755' }
 end
 
 describe file('/usr/local/sbin/nas') do
   it { should exist }
-  its('mode') { should cmp '0755'}
+  its('mode') { should cmp '0755' }
 end
 
 describe file('/usr/local/sbin/safe') do
   it { should exist }
-  its('mode') { should cmp '0755'}
+  its('mode') { should cmp '0755' }
 end
 
 describe file('/usr/local/sbin/santoku') do
   it { should exist }
-  its('mode') { should cmp '0755'}
+  its('mode') { should cmp '0755' }
 end
 
 describe file('/usr/local/sbin/smartcap') do
   it { should exist }
-  its('mode') { should cmp '0755'}
+  its('mode') { should cmp '0755' }
 end
 
 describe file('/usr/local/sbin/vital-backup') do
   it { should exist }
-  its('mode') { should cmp '0755'}
+  its('mode') { should cmp '0755' }
 end
 
 #
@@ -90,15 +90,15 @@ end
 #
 
 describe file('/home/maxwell/.position.conf') do
-    it { should exist }
+  it { should exist }
 end
 
 describe file('/home/maxwell/.santoku.conf') do
-    it { should exist }
+  it { should exist }
 end
 
 describe file('/home/maxwell/.vimrc') do
-    it { should exist }
+  it { should exist }
 end
 
 #
@@ -106,15 +106,15 @@ end
 #
 
 describe file('/home/maxwell/bin/bootstrap-maxlab') do
-    it { should exist }
+  it { should exist }
 end
 
 describe file('/home/maxwell/bin/git-run-meld') do
-    it { should exist }
+  it { should exist }
 end
 
 describe file('/home/maxwell/bin/update-maxlab-chef') do
-    it { should exist }
+  it { should exist }
 end
 
 #

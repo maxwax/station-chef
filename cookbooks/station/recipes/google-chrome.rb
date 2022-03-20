@@ -2,22 +2,16 @@
 # Cookbook:: station
 # Recipe:: google-chrome
 #
-# Copyright:: 2019, The Authors, All Rights Reserved.
-
-=begin
-#<
-Install Google Chrome
-#>
-=end
+# Copyright:: 2019, Maxwell Spangler, All Rights Reserved.
 
 my = node['station']['user']
 root = node['station']['root']
 
 # WARNING: Order matters: Import the key IF NO REPO, THEN make the repo.
 
-remote_file "google-signing-key" do
+remote_file 'google-signing-key' do
   path "/home/#{my['username']}/Downloads/linux_signing_key.pub"
-  source "https://dl.google.com/linux/linux_signing_key.pub"
+  source 'https://dl.google.com/linux/linux_signing_key.pub'
   action :create
 
   not_if 'fgrep "enabled=1" /etc/yum.repos.d/google-chrome.repo'
@@ -35,8 +29,8 @@ execute 'install-google-key-rpmkeys' do
   not_if 'fgrep "enabled=1" /etc/yum.repos.d/google-chrome.repo'
 end
 
-cookbook_file "/etc/yum.repos.d/google-chrome.repo" do
-  source "etc/yum.repos.d/google-chrome.repo"
+cookbook_file '/etc/yum.repos.d/google-chrome.repo' do
+  source 'etc/yum.repos.d/google-chrome.repo'
   owner 'root'
   group 'root'
   mode root['mode_config_file']
@@ -50,5 +44,5 @@ package 'google-chrome-stable' do
 
   flush_cache [ :before ]
 
-  not_if { node['packages'].key?('google-chrome-stable')}
+  not_if { node['packages'].key?('google-chrome-stable') }
 end

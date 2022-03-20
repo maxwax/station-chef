@@ -2,13 +2,7 @@
 # Cookbook:: station
 # Recipe:: user
 #
-# Copyright:: 2019, The Authors, All Rights Reserved.
-
-=begin
-#<
-Configure my personal account with various customizations
-#>
-=end
+# Copyright:: 2019, Maxwell Spangler, All Rights Reserved.
 
 # Just for each access later
 my = node['station']['user']

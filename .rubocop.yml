@@ -1,0 +1,49 @@
+# This file maintains maxwell's preferred ruby style 2022-0208
+
+AllCops:
+  TargetRubyVersion: 3.0
+
+#
+# Ignore cookstyle complaints about the use of normal attributes
+# I specifically use normal attributes with firewall attributes
+# in order to save the attribute to the node for persistence
+#
+
+Chef/Correctness/NodeNormal:
+  Exclude:
+    - '**/metadata.rb'
+    - '**/Berksfile'
+    - 'recipes/*.rb'
+  Enabled: false
+
+#
+# Ignore complaints about extra lines before and after blocks
+# I like the extra white space for code visibility
+#
+
+Layout/EmptyLinesAroundBlockBody:
+  Exclude:
+    - '**/recipes/*.rb'
+    - '**/spec/**/*.rb'
+    - '**/test/**/*.rb'
+  EnforcedStyle: empty_lines
+
+#
+# Don't expect a comma after the last element in a multi-line hash
+#
+
+Style/TrailingCommaInHashLiteral:
+  Exclude:
+    - '**/recipes/*.rb'
+    - '**/attributes/*.rb'
+  EnforcedStyleForMultiline: comma
+
+#
+# Don't expect a comma after the last element in a literal array
+#
+
+Style/TrailingCommaInArrayLiteral:
+  Exclude:
+    - '**/recipes/*.rb'
+    - '**/attributes/*.rb'
+  EnforcedStyleForMultiline: comma

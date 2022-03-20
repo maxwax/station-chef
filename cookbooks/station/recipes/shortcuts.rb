@@ -2,13 +2,7 @@
 # Cookbook:: station
 # Recipe:: shortcuts
 #
-# Copyright:: 2019, The Authors, All Rights Reserved.
-
-=begin
-#<
-Install various .desktop files to enable Gnome command shorts to launch apps
-#>
-=end
+# Copyright:: 2019, Maxwell Spangler, All Rights Reserved.
 
 root = node['station']['root']
 

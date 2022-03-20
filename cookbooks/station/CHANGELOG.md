@@ -1,27 +1,31 @@
 
 # station CHANGELOG
 
-* 0.30.0
+# 0.31.0
+
+* Major cleanup using cookstyle.  Tested in a VM on a fresh Fedora 35 installation and tested on sarko with existing chef provisioned environment.
+
+# 0.30.0
 
 * Adding recipe 'cron_jobs.rb' to configure cron jobs to execute previously deployed scripts on a periodic basis.  Ex: Run cron-backup-history every Sunday, once a week.
 * Adding 'fdupes' to standard packages to be installed
 
-* 0.29.1
+# 0.29.1
 
 * Updating attributes to deploy the scripts just added to the repo
 
-* 0.29.0
+# 0.29.0
 
 * Adding the chefpush script to deploy into $HOME/bin
 * Adding script 'fix-ipad-images'. Used in the past to identify the proper image format of photos saved on an iPad and being accessed on Linux.  (Ex: File is .png but labeled .jpg)
 * Adding script 'inventory-scan'.  Used recently to scan 'source' and 'backup' index files containing file lists of source (NAS data) and backup (external HD) data to help find duplicated data.
 * Adding script 'wifi-inventory-location'. Used to walk different physical locations to perform WIFI signal strength mapping.
 
-* 0.28.1
+# 0.28.1
 
 * Modify mount_points so subdirectories are created with maxwell:maxwell permissions
 
-* 0.28.0
+# 0.28.0
 
 * Adding 'export HISTCONTROL=erasedups' to .bashrc to skip recording duplicate commands
 * Adding 'export HISTTIMEFORMAT="[%F %T] "' to record date/time in history file

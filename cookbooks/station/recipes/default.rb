@@ -2,13 +2,7 @@
 # Recipe:: default
 # Cookbook:: station
 #
-# Copyright:: 2019, The Authors, All Rights Reserved.
-
-=begin
-#<
-Call sub recipes to install and configure various components
-#>
-=end
+# Copyright:: 2019, Maxwell Spangler, All Rights Reserved.
 
 # Enable rpm fusion by downloading remote rpms that configure repos
 include_recipe 'station::repo_packages'

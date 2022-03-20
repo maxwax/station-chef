@@ -2,15 +2,8 @@
 # Cookbook:: station
 # Recipe:: user
 #
-# Copyright:: 2019, The Authors, All Rights Reserved.
+# Copyright:: 2019, Maxwell Spangler, All Rights Reserved.
 
-=begin
-#<
-Configure my personal account with various customizations
-#>
-=end
-
-# Just for each access later
 my = node['station']['user']
 
 proxychains_config_dir = "/home/#{my['username']}/#{my['proxychains-ng']['config_dir']}"

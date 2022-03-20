@@ -2,15 +2,8 @@
 # Cookbook:: station
 # Recipe:: etc_config
 #
-# Copyright:: 2019, The Authors, All Rights Reserved.
+# Copyright:: 2019, Maxwell Spangler, All Rights Reserved.
 
-=begin
-#<
-Deploy custom configuration files for system wide use
-#>
-=end
-
-my = node['station']['user']
 root = node['station']['root']
 
 node['station']['etc_config'].each do |fname|
