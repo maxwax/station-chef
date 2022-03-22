@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.31.1
+
+* Add root crontab to backup /root/.bash_history
+
 # 0.31.0
 
 * Major cleanup using cookstyle.  Tested in a VM on a fresh Fedora 35 installation and tested on sarko with existing chef provisioned environment.

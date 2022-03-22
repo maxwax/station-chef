@@ -74,7 +74,7 @@ node.default['station']['firewall'] =
 
 node.default['station']['cron_jobs'] =
 {
-  'cron-backup-history': {
+  'cron-backup-history-maxwell': {
     'command': '/home/maxwell/bin/cron-backup-history',
     'minute': '0',
     'hour': '12,14,16,18,20,22,23,0',
@@ -82,6 +82,15 @@ node.default['station']['cron_jobs'] =
     'month': '*',
     'day_of_week': '*',
     'user': 'maxwell'
+  },
+  'cron-backup-history-root': {
+    'command': '/home/maxwell/bin/cron-backup-history',
+    'minute': '0',
+    'hour': '12,14,16,18,20,22,23,0',
+    'day': '*',
+    'month': '*',
+    'day_of_week': '*',
+    'user': 'root'
   }
 }
 
