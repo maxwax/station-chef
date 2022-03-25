@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.31.2
+
+* Minor update of position.conf for cloud study window positions.
+
 # 0.31.1
 
 * Add root crontab to backup /root/.bash_history
