@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.31.3
+
+* Second: Minor update of position.conf for cloud study window positions.
+
 # 0.31.2
 
 * Minor update of position.conf for cloud study window positions.
