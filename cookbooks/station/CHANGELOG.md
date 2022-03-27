@@ -1,6 +1,11 @@
 
 # station CHANGELOG
 
+# 0.31.4
+
+* Updated tuncloud script. Seems I had a work in progress in the past and left it incomplete. Fixed, but not tested much because I'm in a rush for other work.
+* Updated $HOME/.tuncloud.conf to add TUNCLOUD_DEFAULT_REGION variable
+
 # 0.31.3
 
 * Second: Minor update of position.conf for cloud study window positions.

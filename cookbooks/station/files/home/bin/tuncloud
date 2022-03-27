@@ -1,8 +1,9 @@
 #!/bin/bash
 
-# Launch an SSH session with some
+# Launch an SSH session through a bastion using the local client
+# nmap-ncat or netcat to forward data through a local SSH tunnel port
 
-function syntax {
+function usage {
 
   echo "Launch an SSH session through an existing SSH tunnel"
   echo
@@ -22,45 +23,129 @@ function syntax {
   echo
 }
 
+# Config file defaults
+KEY_FILENAME_PREFIX="aws-maxlabcloud-"
+KEY_FILENAME_SUFFIX=".pem"
+TUNCLOUD_DEFAULT_REGION="nvirginia"
+TUNCLOUD_PROXY_PROGRAM="nmap-ncat"
 
-CONFIG_FILE=$HOME/.tuncloud.conf
+# Non-config file defaults
+DEBUG_MODE=false
+SSH_REGION_KEY="_null"
+CONFIG_FILE="$HOME/.tuncloud.conf"
+
+# Process command line parameters
+while [[ $# -gt 0 ]]
+do
+  case "$1" in
+
+    "-h"|"-help"|"--help")
+      usage
+      exit 0
+    ;;
+
+    # --config <filename>
+    "--config")
+      CONFIG_FILE=${2:-"_null"}
+      if [[ $CONFIG_FILE == "_null" ]]
+      then
+        echo "Error: you must supply a valid config_file name parameter."
+        exit 1
+      else
+        shift;
+        shift;
+      fi
+    ;;
+
+    # --region ohio
+    "--region")
+      REGION_CLI=${2:-"_null"}
+      if [[ $REGION_CLI == "_null" ]]
+      then
+        echo "Error: you must supply a valid region with this parameter."
+        exit 1
+      else
+        SSH_REGION_KEY=$REGION_CLI
+        shift;
+        shift;
+      fi
+    ;;
+
+    "--debug")
+      echo "Debug mode enabled"
+      DEBUG_MODE=true
+      shift;
+    ;;
+
+    # Last parameter is host name
+    *)
+      NODE_NAME=${1:-"_null"}
+      if [[ $NODE_NAME == "_null" ]]
+      then
+        echo "The last parameter must be a node name."
+        exit 1
+      fi
+      break
+    ;;
+
+  esac
+done
+
+if [[ $DEBUG_MODE == true ]]
+then
+  echo "CONFIG_FILE |$CONFIG_FILE|"
+fi
 
 # Read default variables from optional config file
 if [[ -f $CONFIG_FILE ]]
 then
   if [[ -r $CONFIG_FILE ]]
   then
-    echo "Reading $CONFIG_FILE for defaults"
+    if [[ $DEBUG_MODE == true ]]
+    then
+      echo "Reading $CONFIG_FILE for defaults"
+    fi
     # Read the following variables
     # KEY_FILENAME_PREFIX
     # KEY_FILENAME_SUFFIX
     # TUNCLOUD_DEFAULT_REGION
     # TUNCLOUD_PROXY_PROGRAM
     . $CONFIG_FILE
-echo "TUNCLOUD_DEFAULT_REGION $TUNCLOUD_DEFAULT_REGION"
+    if [[ $DEBUG_MODE == true ]]
+    then
+      echo "TUNCLOUD_DEFAULT_REGION $TUNCLOUD_DEFAULT_REGION"
+    fi
   else
     echo "Error: I see $CONFIG_FILE but I can't read it."
     exit 1
   fi
 else
-  # Set here if not read from a config file
-  KEY_FILENAME_PREFIX="aws-maxlabcloud-"
-  KEY_FILENAME_SUFFIX=".pem"
-  TUNCLOUD_DEFAULT_REGION="nvirginia"
-  TUNCLOUD_PROXY_PROGRAM="nmap-ncat"
+  if [[ $DEBUG_MODE == true ]]
+  then
+    echo "No config file $CONFIG_FILE available"
+  fi
 fi
 
 TARGET=${1:-"_null"}
-if [[ $TARGET != "_null" ]]
+if [[ $TARGET == "_null" ]]
 then
-
-  SSH_REGION_KEY=${2:-"_null"}
+  echo "You must supply a target IP address or FQDN"
+  syntax
+  exit
+else
+  # If SSH_REGION_KEY at default and not set on command line, use default
   if [[ $SSH_REGION_KEY == "_null" ]]
   then
     SSH_REGION_KEY="$TUNCLOUD_DEFAULT_REGION"
   fi
 
   SSH_FILENAME="$HOME/.ssh/${KEY_FILENAME_PREFIX}${SSH_REGION_KEY}${KEY_FILENAME_SUFFIX}"
+
+  if [[ $DEBUG_MODE == true ]]
+  then
+    echo "SSH_FILENAME |$SSH_FILENAME|"
+  fi
+
   if [[ ! -f "$SSH_FILENAME" ]]
   then
     echo "Error: I can't read an SSH key file for $SSH_FILENAME"
@@ -70,22 +155,34 @@ then
     if [[ $TUNCLOUD_PROXY_PROGRAM == "netcat" ]]
     then
       # This version uses OpenBSD netcat, work-around for nmap-ncat issues
+      if [[ $DEBUG_MODE == true ]]
+      then
+        echo
+        echo "Attempting SSH with"
+        echo ssh -i $SSH_FILENAME \
+          -o IdentitiesOnly=yes \
+          -o ProxyCommand="ProxyCommand=/usr/bin/netcat -X 5 -x localhost:9998 %h %p" \
+          ec2-user@${TARGET}
+      fi
       ssh -i $SSH_FILENAME \
         -o IdentitiesOnly=yes \
         -o ProxyCommand="ProxyCommand=/usr/bin/netcat -X 5 -x localhost:9998 %h %p" \
         ec2-user@${TARGET}
     else
       # This version uses nmap-ncat. Broken in initial Fedora 35 packages
- #    ssh -i $SSH_FILENAME \
- #      -o IdentitiesOnly=yes \
- #      -o ProxyCommand="ncat --proxy-type=\"socks4\" --proxy localhost:9998 %h %p" \
- #      ec2-user@${TARGET}
+      if [[ $DEBUG_MODE == true ]]
+      then
+        echo
+        echo "Attempting SSH with"
+        echo ssh -i $SSH_FILENAME \
+          -o IdentitiesOnly=yes \
+          -o ProxyCommand="ncat --proxy-type=\"socks4\" --proxy localhost:9998 %h %p" \
+          ec2-user@${TARGET}
+      fi
+      ssh -i $SSH_FILENAME \
+        -o IdentitiesOnly=yes \
+        -o ProxyCommand="ncat --proxy-type=\"socks4\" --proxy localhost:9998 %h %p" \
+        ec2-user@${TARGET}
     fi
   fi
-
-else
-
-  echo "You must supply a target IP address or FQDN"
-  syntax
-
 fi
