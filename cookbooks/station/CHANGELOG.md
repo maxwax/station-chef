@@ -1,6 +1,11 @@
 
 # station CHANGELOG
 
+# 0.32.0
+
+* Download open-tunnel script v0.9.3
+* Updated multiple open-tunnel config files deployed to $HOME/.open-tunnel*.conf.  These now use 'ncat' as default
+
 # 0.31.4
 
 * Updated tuncloud script. Seems I had a work in progress in the past and left it incomplete. Fixed, but not tested much because I'm in a rush for other work.
