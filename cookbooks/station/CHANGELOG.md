@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.32.1
+
+* Update $HOME/.open-tunnel-nimbushoio.conf to point to SSH key file aws-nimbus-ohio
+
 # 0.32.0
 
 * Download open-tunnel script v0.9.3
