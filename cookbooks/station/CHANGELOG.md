@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.32.2
+
+* Added pycharm path to $HOME/.bashrc
+
 # 0.32.1
 
 * Update $HOME/.open-tunnel-nimbushoio.conf to point to SSH key file aws-nimbus-ohio

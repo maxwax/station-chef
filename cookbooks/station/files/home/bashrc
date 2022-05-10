@@ -103,6 +103,12 @@ function use_system_ruby {
 
 use_chef_ruby --quiet
 
+#
+# Pycharm for Python course
+#
+export PYCHARM_DIR=/opt/pycharm-community-2022.1
+PATH=$PATH:$PYCHARM_DIR/bin
+
 complete -C '/usr/local/bin/aws_completer' aws
 
 # Direct Vagrant to use Virtualbox as a default provider
