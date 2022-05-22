@@ -36,11 +36,13 @@ fi
 # link on Chef's download page in order to do so.  Until then, take the user
 # to this page and have them select it manually
 
+DL=/home/$LOGNAME/Downloads
+
 check_chef
 if [[ $CHEF_SEEN == false ]]
 then
 
-  wget --output-document=$HOME/Downloads/chef-workstation-latest.rpm http://maxwellspangler.com/s3/chef/chef-workstation-latest.rpm
+  wget --output-document=${DL}/chef-workstation-latest.rpm http://maxwellspangler.com/s3/chef/chef-workstation-latest.rpm
   WGET_ERR=$?
   if [[ $WGET_ERR -gt 0 ]]
   then
@@ -48,8 +50,6 @@ then
     exit 1
   fi
   echo
-
-  DL=/home/$LOGNAME/Downloads
 
   ls -l $DL/chef*rpm
   CHEF_COUNT=$(ls -l $DL/chef*rpm | wc -l)
@@ -71,7 +71,7 @@ fi
 echo "yes" | sudo chef-client -z
 
 # Change ownership of the root created nodes/ directory to my user from root
-sudo chown -R $USER:$USER nodes
+sudo chown -R $USER:$USER nodes nodes/*
 
 # Now we can add a runlist to the node object
 sudo knife node run_list add $(hostname -f) 'recipe[station]' -z
