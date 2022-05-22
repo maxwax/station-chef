@@ -6,6 +6,7 @@
 * Fedora 36 Support is being added
 * Adjust bootstrap script to place chef rpm in /home/$SUDO_USER/Downloads.  Past breadcrumbs suggest I've struggled with this including using $LOGUSER for the same.  The issue is that when you run bootstrap via sudo, things like ~ and $HOME are /root and I want them in my user's Downloads directory.  We'll try this for now which works.
 * Add 'when' in default attributes file for Fedora 36 with packages
+* Removing 'fx' package which is not available in default packages
 
 # 0.32.2
 

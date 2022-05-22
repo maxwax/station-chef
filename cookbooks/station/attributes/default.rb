@@ -826,7 +826,6 @@ when 'fedora_35'
       'fuse3-libs': 'File System in Userspace (FUSE) v3 libraries (anaconda)',
       'fuse-exfat': 'Free exFAT file system implementation (rpmfusion-free)',
       'fuse-overlayfs': 'FUSE overlay+shiftfs implementation for rootless containers (updates)',
-      'fx': 'JSON command line tool',
       'gcc': 'for VirtualBox-6.1 kernel modules',
       'gcolor2': 'A simple color selector for GTK+2 (fedora)',
       'gdbm-devel': 'Development libraries and header files for the gdbm library (fedora)',
