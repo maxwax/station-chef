@@ -23,7 +23,7 @@ Station performs the following actions:
 
 * Installs [Zoom](https://zoom.us/download?os=linux)
 
-* Installs [Skype](https://repo.skype.com/rpm/stable/)
+* Installs [Skype](https://repo.skype.com/rpm/stable/).
 
 * Enable [sshd](https://www.ssh.com/ssh) for inbound network access
 
@@ -109,6 +109,8 @@ Complete the following actions to enable cookbook support for a new version of F
 
 - [ ] Update the README.md docs with any new accommodations for the new version of Fedora
 
+- [ ] Adjust any unexpected issues with the script caused by changes in behavior of the new Fedora release.  Do this on the first attempt to use this script.
+
 ### Step 2 - Backup existing Fedora Installation
 
 1. Backup the existing Fedora installation to external media such as an NFS mount or USB storage.  Make two copies of this on two different media.
@@ -148,6 +150,8 @@ Complete the following actions to enable cookbook support for a new version of F
 1. Reboot into new kernel, library, packages, etc
 
 ### Step 6 - Restore files from backup
+
+* Skip this step if you're running this on a spare computer or testing VM.
 
 1. After booting the system, don't login on the GUI!
 2. Switch to a virtual console and login as maxwell
@@ -231,7 +235,9 @@ At this point the system is stable, so we can manual install some applications w
 
 * Install most recent [draw.io rpm for Linux](https://github.com/jgraph/drawio-desktop/releases)
 
-* Install 'duf' storage usage utility.  (duf github repo](https://github.com/muesli/duf/releases)
+* Install 'duf' storage usage utility.  [duf github repo](https://github.com/muesli/duf/releases)
+
+* Install PyCharm - Python IDE.  [pycharm download page](https://www.jetbrains.com/pycharm/download/download-thanks.html?platform=linux&code=PCC)
 
 ### Step 12 - Manual Configuration Tasks
 
@@ -316,6 +322,8 @@ These are in addition to the extensions installed by default in Fedora or by the
   * [Tweaks in System Menu](https://extensions.gnome.org/extension/1653/tweaks-in-system-menu/) - Customization to put Gnome Tweaks Tool launch icon in system menu near control panel icon for natural accessibility.
   * Waiting for update for Fedora 35 compatability
 
+  * [No Overview at Startup](https://extensions.gnome.org/extension/4099/no-overview/)
+
 ### Step 15 - Control Panel configurations
 
 * Configure Top Bar Clock with World Clock Eastern and UTC Time zones.
@@ -323,6 +331,12 @@ These are in addition to the extensions installed by default in Fedora or by the
 * Configure OpenWeather app for Denver weather, remove Tuvalu
 
 * Configure WIFI: You may need to reconfigure access to known access points
+
+* Configure Bluetooth: Disable if not using it for anything
+
+* Configure Multitasking: Fixed Number of Workspaces: 6
+* Configure Multitasking: Multi-Monitor: Workspaces on all displays
+* Configure Multitasking: Application Switching: Include applications from the current workspace
 
 * Configure Power: to not 'Automatic Suspend' after idle use
 * Configure Power: to show battery Percentage
