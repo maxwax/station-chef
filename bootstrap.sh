@@ -36,7 +36,7 @@ fi
 # link on Chef's download page in order to do so.  Until then, take the user
 # to this page and have them select it manually
 
-DL=/home/$LOGNAME/Downloads
+DL=/home/$SUDO_USER/Downloads
 
 check_chef
 if [[ $CHEF_SEEN == false ]]
