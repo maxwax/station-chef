@@ -1,6 +1,11 @@
 
 # station CHANGELOG
 
+# 0.33.2
+
+* Removed an unused desktop shortcut file called .new
+* Updated timemachine config to backup individual personal directories instead of all files.  This should greatly cut down on timemachine backups of files that don't need to be backed up.
+
 # 0.33.1
 
 * Fedora 36 Support is being added

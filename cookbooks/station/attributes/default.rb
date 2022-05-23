@@ -126,7 +126,6 @@ node.default['station']['shortcuts'] = {
     bastionprod
     bastionstaging
     studywin
-    new
   )
 }
 
