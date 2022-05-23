@@ -315,6 +315,14 @@ node.default['station']['timemachine_cfg'] = {
   'download_dir': '/tmp/chef_timemachine_installer'
 }
 
+node.default['station']['pycharm_cfg'] = {
+  'version': '2022-1.1',
+  'package_name': 'pycharm-community-2022.1.1',
+  'rpm_source': 'n/a',
+  'download_dir': '/tmp/chef_pycharm_installer',
+  'install_dir': '/opt'
+}
+
 plat_vers = "#{node['platform']}_#{node['platform_version']}"
 
 case plat_vers

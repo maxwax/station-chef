@@ -73,6 +73,10 @@ include_recipe 'station::aws_cli'
 # Install the Time Machine backup script from github
 include_recipe 'station::timemachine'
 
+# Install a Gnome shortcut for PyCharm
+# Must be run after station:shortcuts to use /usr/share/applications/station
+include_recipe 'station::pycharm'
+
 # Install config files for proxychains
 include_recipe 'station::proxychains'
 

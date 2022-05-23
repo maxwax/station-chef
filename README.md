@@ -238,6 +238,7 @@ At this point the system is stable, so we can manual install some applications w
 * Install 'duf' storage usage utility.  [duf github repo](https://github.com/muesli/duf/releases)
 
 * Install PyCharm - Python IDE.  [pycharm download page](https://www.jetbrains.com/pycharm/download/download-thanks.html?platform=linux&code=PCC)
+** A Gnome desktop shortcut will be setup for this but no automated install, yet.
 
 ### Step 12 - Manual Configuration Tasks
 

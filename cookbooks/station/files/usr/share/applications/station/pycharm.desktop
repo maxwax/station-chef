@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=PyCharm
+GenericName=PyCharm
+Comment=PyCharm Python Integrated Development Environment [maxdesktop]
+Keywords=pycharm
+TryExec=/opt/pycharm/bin/pycharm.sh
+Exec=/opt/pycharm/bin/pycharm.sh
+Icon=pythonbackend
+Type=Application
+Categories=GTK;Utility;IDE
+StartupNotify=true
