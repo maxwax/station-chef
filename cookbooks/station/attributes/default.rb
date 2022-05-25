@@ -91,6 +91,15 @@ node.default['station']['cron_jobs'] =
     'month': '*',
     'day_of_week': '*',
     'user': 'root'
+  },
+  'cron-hot-tub-timemachine': {
+    'command': '/usr/local/bin/hot-tub-timemachine > /root/timemachine.out 2>&1',
+    'minute': '0',
+    'hour': '0,12,18',
+    'day': '*',
+    'month': '*',
+    'day_of_week': '*',
+    'user': 'root'
   }
 }
 

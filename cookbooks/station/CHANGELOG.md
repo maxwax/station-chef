@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.33.3
+
+* Deploying cronjob for root to run hot-tub-timemachine periodically for snapshot backups
+
 # 0.33.2
 
 * Removed an unused desktop shortcut file called .new

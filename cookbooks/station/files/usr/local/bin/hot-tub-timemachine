@@ -176,7 +176,7 @@ function backup_each_config {
       dir_check ${HASH_CFG_TARGET[$EACH_CONFIG]}
       if [[ $DIR_CHECK_RESULTS == true ]]
       then
-        timemachine -v "${HASH_CFG_SOURCE[$EACH_CONFIG]}" "${HASH_CFG_TARGET[$EACH_CONFIG]}" --verbose
+        /usr/local/bin/timemachine -v "${HASH_CFG_SOURCE[$EACH_CONFIG]}" "${HASH_CFG_TARGET[$EACH_CONFIG]}" --verbose
       fi
     fi
   done
@@ -238,13 +238,9 @@ then
   dir_check "$NAS_DIR"
   if [[ $DIR_CHECK_RESULTS == true ]]
   then
-#
-#
-# SLACK AFTER HOME MAXWELL
-#
-set -x
-    timemachine -v /home/maxwell/ "${NAS_DIR}" --verbose
-set +x
+    set -x
+    eval ${TIMEMACHINE_BIN} -v /home/maxwell/ "${NAS_DIR}" --verbose
+    set +x
   fi
 fi
 
@@ -254,8 +250,8 @@ then
   dir_check "$USB_DIR"
   if [[ $DIR_CHECK_RESULTS == true ]]
   then
-set -x
-    timemachine -v /home/maxwell/ "${USB_DIR}" --verbose
-set +x
+    set -x
+    eval ${TIMEMACHINE_BIN} -v /home/maxwell/ "${USB_DIR}" --verbose
+    set +x
   fi
 fi
