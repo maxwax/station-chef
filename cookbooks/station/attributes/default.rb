@@ -271,6 +271,7 @@ node.default['station']['mount_points'] = {
     data
     mediadata
     depotdata
+    depotroot
     usb-aux
     usb-filer
     usb-depot
