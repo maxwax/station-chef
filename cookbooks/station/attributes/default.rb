@@ -263,23 +263,16 @@ node.default['station']['typefaces'] = {
 
 node.default['station']['mount_points'] = {
   '/net': %w(
-    audiovideo
+    av
     auxdata
-    avarchive
     filerdata
     centraldata
-    data
-    mediadata
     depotdata
     depotroot
     usb-aux
     usb-filer
     usb-depot
-    usb-central
-    usb-media
     teraxfiles
-    tv320
-    x320
     terawd
   ),
   '/mnt': %w(
