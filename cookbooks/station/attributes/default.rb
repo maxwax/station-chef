@@ -77,7 +77,7 @@ node.default['station']['cron_jobs'] =
   'cron-backup-history-maxwell': {
     'command': '/home/maxwell/bin/cron-backup-history',
     'minute': '0',
-    'hour': '4',
+    'hour': '4,18,8',
     'day': '*',
     'month': '*',
     'day_of_week': '*',
