@@ -77,7 +77,7 @@ node.default['station']['cron_jobs'] =
   'cron-backup-history-maxwell': {
     'command': '/home/maxwell/bin/cron-backup-history',
     'minute': '0',
-    'hour': '12,14,16,18,20,22,23,0',
+    'hour': '4',
     'day': '*',
     'month': '*',
     'day_of_week': '*',
@@ -86,7 +86,7 @@ node.default['station']['cron_jobs'] =
   'cron-backup-history-root': {
     'command': '/home/maxwell/bin/cron-backup-history',
     'minute': '0',
-    'hour': '12,14,16,18,20,22,23,0',
+    'hour': '4,12,18',
     'day': '*',
     'month': '*',
     'day_of_week': '*',
@@ -95,7 +95,7 @@ node.default['station']['cron_jobs'] =
   'cron-hot-tub-timemachine': {
     'command': '/usr/local/bin/hot-tub-timemachine > /root/timemachine.out 2>&1',
     'minute': '0',
-    'hour': '0,12,18',
+    'hour': '4',
     'day': '*',
     'month': '*',
     'day_of_week': '*',

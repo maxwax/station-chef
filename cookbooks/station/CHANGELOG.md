@@ -1,6 +1,12 @@
 
 # station CHANGELOG
 
+# 0.34.0
+
+* Update cronjobs for backing up histories and running time machine to less runs
+* Time machine: daily at 4am
+* Backup histories: several times a day but not many.
+
 # 0.33.3
 
 * Deploying cronjob for root to run hot-tub-timemachine periodically for snapshot backups
