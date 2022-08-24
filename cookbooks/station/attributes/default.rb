@@ -272,7 +272,7 @@ node.default['station']['mount_points'] = {
     usb-aux
     usb-filer
     usb-depot
-    teraxfiles
+    redfiles
     terawd
   ),
   '/mnt': %w(
