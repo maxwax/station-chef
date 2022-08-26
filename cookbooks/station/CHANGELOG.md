@@ -1,6 +1,11 @@
 
 # station CHANGELOG
 
+# 0.35.0
+
+* Comment out depot nas points from /etc/nas.conf so I can turn depot off and manually uncomment these in the future
+* A bettery way would be modifying the nas command to optionally enable things that are disabled by default, but not today.
+
 # 0.34.0
 
 * Update cronjobs for backing up histories and running time machine to less runs
