@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.35.1
+
+* Updating position.conf window positions for 1920x1080 laptop use on new metal laptop.
+
 # 0.35.0
 
 * Comment out depot nas points from /etc/nas.conf so I can turn depot off and manually uncomment these in the future
