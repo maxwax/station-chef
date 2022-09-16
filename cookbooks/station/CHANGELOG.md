@@ -1,6 +1,11 @@
 
 # station CHANGELOG
 
+# 0.38.0
+
+* Deploy nas-1.3.0 script from github.
+* Updated /etc/nas.conf to include unique identifiers and group names for each configured NAS mount point.
+
 # 0.37.0
 
 * Minor updates to coding.conf and position.conf configuration files to support new HP Elitebook laptop with 1920x1080 display and new three monitor 'battlestation' home office setup.
