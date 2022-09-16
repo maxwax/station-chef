@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.36.0
+
+* Added /etc/X11/xorg.conf.d/01-orbit-fusion.conf to remap buttons on new Kensington Orbit Fusion trackball.
+
 # 0.35.1
 
 * Updating position.conf window positions for 1920x1080 laptop use on new metal laptop.
