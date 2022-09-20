@@ -1,6 +1,11 @@
 
 # station CHANGELOG
 
+# 0.39.0
+
+* Adding gnome-terminal launchers via .desktop files as 'away', 'basementleft', 'basementright', and 'debug'
+* Minor adjustments, again, to coding.conf for updated three-monitor positioning.
+
 # 0.38.2
 
 * Removing gstreamer1-libav which is replaced by gstreamer1-plugins-libav perhaps? Trying to resolve a package conflict.

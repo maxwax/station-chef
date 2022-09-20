@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Away Terminal
+Comment=Gnome Terminal, Tall style, on top right of rightmost (3 of 3) monitor
+Comment=Use the command line
+Keywords=away
+TryExec=gnome-terminal
+Exec=coding away
+Icon=org.gnome.Terminal
+Type=Application
+Categories=GNOME;GTK;System;TerminalEmulator;
+StartupNotify=true

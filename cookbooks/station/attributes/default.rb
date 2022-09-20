@@ -134,6 +134,10 @@ node.default['station']['shortcuts'] = {
     sideright
     bastionprod
     bastionstaging
+    debug
+    away
+    basementleft
+    basementright
     studywin
   )
 }

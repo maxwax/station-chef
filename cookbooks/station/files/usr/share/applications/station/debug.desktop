@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Debug Terminal
+Comment=gnome-terminal positioned in the top left of the secondary display
+Comment=Use the command line
+Keywords=debug
+TryExec=gnome-terminal
+Exec=coding debug
+Icon=org.gnome.Terminal
+Type=Application
+Categories=GNOME;GTK;System;TerminalEmulator;
+StartupNotify=true
