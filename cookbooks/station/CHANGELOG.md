@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.38.2
+
+* Removing gstreamer1-libav which is replaced by gstreamer1-plugins-libav perhaps? Trying to resolve a package conflict.
+
 # 0.38.1
 
 * Minor fix to coding.conf and position.conf for new three-monitor setup.  Needs some code to do it more dynamically, but I'll do this later.

@@ -860,7 +860,6 @@ when 'fedora_35'
       'grip': 'Front-end for CD rippers and Ogg Vorbis encoders (updates)',
       'grubby': 'Command line tool for updating bootloader configs (fedora)',
       'gstreamer1': 'GStreamer streaming media framework runtime (anaconda)',
-      'gstreamer1-libav': 'GStreamer 1.0 libav-based plug-ins (rpmfusion-free)',
       'gstreamer1-plugins-bad-freeworld': 'GStreamer 1.0 streaming media framework bad plug-ins (rpmfusion-free)',
       'gstreamer1-plugins-base': 'GStreamer streaming media framework base plugins (anaconda)',
       'gstreamer1-plugins-base-tools': 'Tools for GStreamer streaming media framework base plugins (fedora)',
