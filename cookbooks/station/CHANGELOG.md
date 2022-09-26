@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.40.0
+
+* Added safe file 'vault' to safe.conf
+
 # 0.39.0
 
 * Adding gnome-terminal launchers via .desktop files as 'away', 'basementleft', 'basementright', and 'debug'
