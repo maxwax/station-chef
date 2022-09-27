@@ -1,10 +1,10 @@
 [Desktop Entry]
-Name=Basement Left Terminal
+Name=Wall monitor Left Terminal
 Comment=Gnome Terminal, Normal style, on bottom left of rightmost (3 of 3) monitor
 Comment=Use the command line
-Keywords=basementleft
+Keywords=wallone
 TryExec=gnome-terminal
-Exec=coding basementleft
+Exec=coding wallone
 Icon=org.gnome.Terminal
 Type=Application
 Categories=GNOME;GTK;System;TerminalEmulator;

@@ -1,10 +1,10 @@
 [Desktop Entry]
-Name=Basement Right Terminal
+Name=Wall monitor Right Terminal
 Comment=Gnome Terminal, Normal style, on bottom right of rightmost (3 of 3) monitor
 Comment=Use the command line
-Keywords=basementright
+Keywords=walltwo
 TryExec=gnome-terminal
-Exec=coding basementright
+Exec=coding walltwo
 Icon=org.gnome.Terminal
 Type=Application
 Categories=GNOME;GTK;System;TerminalEmulator;
