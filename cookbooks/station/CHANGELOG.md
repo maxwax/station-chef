@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.41.0
+
+* Renaming 'basementleft' and 'basementright' to 'wallone' and 'walltwo'.  This avoids conflicts with the more commonly used shortcuts 'left' and 'right'.
+
 # 0.40.0
 
 * Added safe file 'vault' to safe.conf

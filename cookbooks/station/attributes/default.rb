@@ -136,8 +136,8 @@ node.default['station']['shortcuts'] = {
     bastionstaging
     debug
     away
-    basementleft
-    basementright
+    wallone
+    walltwo
     studywin
   )
 }
