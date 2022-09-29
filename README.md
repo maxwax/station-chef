@@ -209,23 +209,32 @@ WaylandEnable=false
 DefaultSession=gnome-xorg.desktop
 ```
 
+### Step 9 - For HP Elitebook, configure kernel parameter for ACPI display backlighting
+
+1. Add 'acpi_backlight' to /etc/default/grub
+2. Deploy a new grub.cfg file with the new kernel parameter
+
+```
+grub2-mkconfig -o /boot/grub2/grub.cfg
+```
+
 Upon next boot you *should* be in X11.
 
-### Step 8 - Final Reboot
+### Step 10 - Final Reboot
 
 With the provisioning complete, the majority of major software deployments and configurations is complete.
 
 Now is a good time to reboot the system and login.
 
-### Step 9 - Debug the Surprises
+### Step 11 - Debug the Surprises
 
 Along the way, look for problems, errors and obvious things that are broken. Debug them and resolve them before moving on.
 
-### Step 10 - Sign into Firefox Sync
+### Step 12 - Sign into Firefox Sync
 
 Run Firefox, sign in then wait for synced bookmarks and extensions to appear.
 
-### Step 11 - Manual Application Installs
+### Step 13 - Manual Application Installs
 
 At this point the system is stable, so we can manual install some applications whose installation is difficult to reliably automate.
 
@@ -240,7 +249,7 @@ At this point the system is stable, so we can manual install some applications w
 * Install PyCharm - Python IDE.  [pycharm download page](https://www.jetbrains.com/pycharm/download/download-thanks.html?platform=linux&code=PCC)
 ** A Gnome desktop shortcut will be setup for this but no automated install, yet.
 
-### Step 12 - Manual Configuration Tasks
+### Step 14 - Manual Configuration Tasks
 
 Here, perform any manual configuration steps that aren't included in the provisioning cookbook.  These are often accommodations to new changes introduced by Fedora.
 
@@ -261,7 +270,7 @@ System clock synchronized: yes
           RTC in local TZ: no
 ```
 
-### Step 13 - Gnome Tweak Tool Configurations
+### Step 15 - Gnome Tweak Tool Configurations
 
 The Gnome tweaks have a strong impact on the look and feel operation of the GUI, so verify that the expected settings are in place.
 
@@ -288,7 +297,7 @@ After restoring my home directory most of these should already be restored, so v
   * Number of Workspaces - 5
   * Display Handling - Workspaces Span Displays
 
-### Step 14 - Gnome Shell Extensions
+### Step 16 - Gnome Shell Extensions
 
 These extensions modify the Gnome GUI environment in ways that make it significantly more comfortable so install them now:
 
@@ -325,7 +334,7 @@ These are in addition to the extensions installed by default in Fedora or by the
 
   * [No Overview at Startup](https://extensions.gnome.org/extension/4099/no-overview/)
 
-### Step 15 - Control Panel configurations
+### Step 17 - Control Panel configurations
 
 * Configure Top Bar Clock with World Clock Eastern and UTC Time zones.
 
@@ -352,17 +361,17 @@ These are in addition to the extensions installed by default in Fedora or by the
 * Configure Date & Time: Enable both 'Automati Date & Time' and 'Automatic Time Zone'
 * Configure Date & Time: Time format 24-hour
 
-### Step 16 - Solarize gnome-shell and vim
+### Step 18 - Solarize gnome-shell and vim
 
 Apply a low contrast color palette to gnome-shell windows using [this guide on if-not-true-then-false.com](https://www.if-not-true-then-false.com/2012/solarized-linux/#solarized-gnome-terminal
 
 Apply the same to vim using [this guide](https://www.if-not-true-then-false.com/2012/solarized-linux/#solarized-vim)
 
-### Step 17 - Work Around Accommodations
+### Step 19 - Work Around Accommodations
 
 Record any known work arounds to issues here so they can be easily performed on a new deployment.
 
-### Step 18 - QA Checklist
+### Step 20 - QA Checklist
 
 Verify the items on this checklist immediately after installation of Fedora in order to identify and resolve problems now and not 5 minutes before a collaboration with others where you need them.  This list is expected to grow.
 
