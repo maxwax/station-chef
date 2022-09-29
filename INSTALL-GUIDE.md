@@ -21,13 +21,14 @@ Rough guide to go from fresh Fedora Linux install to working DevOps workstation 
     * Preserve /home if possible to avoid having to restore from external source
     * Make volume group name unique for long term use
 
-    Filesystem | Type | Size | Volume
-    ---------- | ---- | ---- | ------
-    `/boot`      | ext3 | 1G | n/a
-    `/boot/efi`  | fat16 | 200MB | n/a
-    `swap`       | swap | 2G | n/a
-    `/`          | ext4 | 24G | vg_sysname
-    `/home`      | ext4 | Remaining | vg_sysname
+    Filesystem | Type | Size | Volume | Description
+    ---------- | ---- | ---- | ------ | -----
+    `/boot`      | ext3 | 1G | n/a | OS boot files
+    `/boot/efi`  | fat16 | 400MB | n/a | EFI firmware boot loader files
+    `swap`       | swap | 2G | n/a | OS demand paging space
+    `/`          | ext4 | 24G | vg_sysname | OS root filesystem (programs, configs)
+    `/home`      | ext4 | Remaining | vg_sysname | Users' data
+    `/var/log/`  | ext4 | 8G | vg_sysname | Reserved for log files
   1. While install is happening, you can open another window and adjust things as needed
     1. Move /home/maxwell to /home/maxwell.backup (if you want an absolutely clean home directory to start with)
 
