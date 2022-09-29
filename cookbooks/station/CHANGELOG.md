@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.42.0
+
+* Adding 'metalkeys' config for vital-backup to again use a metal-housed 128G USB stick for backups.
+
 # 0.41.0
 
 * Renaming 'basementleft' and 'basementright' to 'wallone' and 'walltwo'.  This avoids conflicts with the more commonly used shortcuts 'left' and 'right'.
