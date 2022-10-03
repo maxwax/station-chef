@@ -1,6 +1,11 @@
 
 # station CHANGELOG
 
+# 0.43.0
+
+* Add Handbrake-gui to default install packages list
+* Add stub for Fedora 37 which will be released later this month.
+
 # 0.42.0
 
 * Adding 'metalkeys' config for vital-backup to again use a metal-housed 128G USB stick for backups.
