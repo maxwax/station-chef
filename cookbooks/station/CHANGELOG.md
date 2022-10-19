@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.43.1
+
+* Fix typo for Handbrake, it requires 'HandBrake-gui' as package name.
+
 # 0.43.0
 
 * Add Handbrake-gui to default install packages list

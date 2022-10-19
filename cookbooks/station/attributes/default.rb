@@ -876,7 +876,7 @@ when 'fedora_35'
       'hddtemp': 'Hard disk temperature tool (fedora)',
       'hdparm': 'A utility for displaying and/or setting hard disk parameters (fedora)',
       'hfsutils': 'Tools for reading and writing Macintosh HFS volumes (fedora)',
-      'Handbrake-gui': 'Handbrake video transcoding application',
+      'HandBrake-gui': 'Handbrake video transcoding application',
       'ImageMagick': 'An X application for displaying and manipulating images (updates)',
       'info': 'A stand-alone TTY-based reader for GNU texinfo documentation (fedora)',
       'iperf3': 'iperf3 Network performance tool',
