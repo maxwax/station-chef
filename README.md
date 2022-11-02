@@ -425,3 +425,7 @@ CLI Tools
 - [ ] You can ssh to an AWS Bastion node for tunneling
 - [ ] You can ssh through an AWS Bastion node for a private tunnel
 - [ ] AWS CLI can list s3 buckets (simple example)
+
+### Step 21 - Security review with Lynis
+
+* Download and run the latest version of Lynis and review the security posture for vulnerabilities.
