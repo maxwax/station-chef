@@ -10,6 +10,12 @@
 # 2020-02-04Bug fix on knife node environment set..
 # 2020-12-02 Various improvements
 
+if [[ "$EUID" -gt 0 ]]
+then
+  echo "You must run this script via sudo or as the root user."
+  exit 1
+fi
+
 CHEF_SEEN=false
 function check_chef {
 
