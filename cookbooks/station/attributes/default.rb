@@ -1008,13 +1008,13 @@ when 'fedora_35'
         'rpmfusion': {
           'free': {
             'pkg_name': 'rpmfusion-free-release',
-            'path': 'rpmfusion-free-release-36.noarch.rpm',
-            'source': 'https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-36.noarch.rpm'
+            'path': 'rpmfusion-free-release-37.noarch.rpm',
+            'source': 'https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-37.noarch.rpm'
           },
           'nonfree': {
             'pkg_name': 'rpmfusion-nonfree-release',
-            'path': 'rpmfusion-nonfree-release-36.noarch.rpm',
-            'source': 'https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-36.noarch.rpm'
+            'path': 'rpmfusion-nonfree-release-37.noarch.rpm',
+            'source': 'https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-37.noarch.rpm'
           }
         }
       }
