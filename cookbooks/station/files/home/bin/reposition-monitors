@@ -1,0 +1,17 @@
+#!/bin/bash
+
+#
+# Use xrandr -pos command to position a left and right monitor
+# in relation to a central monitor
+#
+# 2022-1127 - created for a three monitor setup with
+#             central landscape 1900x1200 monitor
+#             right portrait 1200x1900 monitor
+#             left portrait 1200x1900 monitor
+#
+
+set -x
+xrandr --output DP-2-2-8 --pos 0x0 --output DP-2-1-8 --pos 1200x356 --output DP-2-2-1 --pos 3120x0
+set +x
+
+xrandr | egrep "Screen|DP-2" | grep -v dis
