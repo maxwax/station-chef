@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.44.1
+
+* Add Microsoft Visual Code as a replacement for Atom which has been discontinued by Microsoft
+
 # 0.43.1
 
 * Fix typo for Handbrake, it requires 'HandBrake-gui' as package name.

@@ -304,6 +304,10 @@ node.default['station']['atom'] = {
   'package_name': 'atom'
 }
 
+node.default['station']['vscode'] = {
+  'package_name': 'code'
+}
+
 node.default['station']['zoom'] = {
   'package_name': 'zoom_x86_64.rpm',
   'rpm_source': 'https://zoom.us/client/latest'

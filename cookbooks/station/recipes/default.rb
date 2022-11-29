@@ -34,6 +34,9 @@ include_recipe 'station::virtualbox'
 # Install Atom editor
 include_recipe 'station::atom'
 
+# Install Visual Studio Code Editor
+include_recipe 'station::vscode'
+
 # Install Zoom
 include_recipe 'station::zoom'
 
