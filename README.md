@@ -371,7 +371,13 @@ Apply the same to vim using [this guide](https://www.if-not-true-then-false.com/
 
 Record any known work arounds to issues here so they can be easily performed on a new deployment.
 
-### Step 20 - QA Checklist
+### Step 20 - VirtualBox Patching
+
+Sometimes the vagrant deployed by Fedora doesn't support the latest release of VirtualBox used with Chef and Test Kitchen for ad-hoc testing in virtual machines.
+
+Follow (https://blogs.oracle.com/scoter/post/getting-vagrant-23-working-with-oracle-vm-virtualbox-70-beta#This Oracle Blog post) or a similar one to modify a variety of vagrant files to treat VirtualBox N+1 as Virtual Box N.
+
+### Step 21 - QA Checklist
 
 Verify the items on this checklist immediately after installation of Fedora in order to identify and resolve problems now and not 5 minutes before a collaboration with others where you need them.  This list is expected to grow.
 
@@ -426,6 +432,6 @@ CLI Tools
 - [ ] You can ssh through an AWS Bastion node for a private tunnel
 - [ ] AWS CLI can list s3 buckets (simple example)
 
-### Step 21 - Security review with Lynis
+### Step 22 - New, Experimental: Security review with Lynis
 
 * Download and run the latest version of Lynis and review the security posture for vulnerabilities.
