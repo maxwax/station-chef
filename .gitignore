@@ -7,6 +7,8 @@
 ##    https://github.com/mwrock/chef_workstation
 ##    https://github.com/Nordstrom/chefdk_bootstrap
 
+local-mode-cache
+chef_guid
 
 ## Ignore Chef related files and secrets
 .chef
