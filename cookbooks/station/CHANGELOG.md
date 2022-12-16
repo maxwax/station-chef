@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.45.0
+
+* Adding grub_config cookbook to add acpi_backlight kernel parameter to /etc/default/grub file only when run on HP Elitebook 840 G8 model laptop.
+
 # 0.44.1
 
 * Add Microsoft Visual Code as a replacement for Atom which has been discontinued by Microsoft

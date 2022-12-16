@@ -89,8 +89,11 @@ include_recipe 'station::x11'
 # Configure firewall for personal workstation use
 include_recipe 'station::firewall'
 
-# Configure firewall for personal workstation use
+# Configure cron jobs for personal workstation use
 include_recipe 'station::cron_jobs'
+
+# Configure grub config for personal workstation use
+include_recipe 'station::grub_config'
 
 # Tag this node as managed by the station cookbook
 tag('station-managed')
