@@ -10,8 +10,10 @@
 #             left portrait 1200x1900 monitor
 #
 
+# 2022-1215 Last update for Fedora 37 fresh install with three Dell 24" 1920x1200 monitors model U2415
+
 set -x
-xrandr --output DP-2-2-8 --pos 0x0 --output DP-2-1-8 --pos 1200x356 --output DP-2-2-1 --pos 3120x0
+xrandr --output DP-2-2-8 --pos 0x0 --output DP-2-1-8 --pos 1200x370 --output DP-2-2-1 --pos 3120x32
 set +x
 
-xrandr | egrep "Screen|DP-2" | grep -v dis
+xrandr | egrep "^Screen|^DP|^eDP" | egrep -v "disconnected"
