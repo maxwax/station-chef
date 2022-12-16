@@ -27,6 +27,7 @@ node.default['station']['user']['personal_bin_scripts'] = %w(
   tuncloud
   update-maxlab-chef
   wifi-inventory-location
+  display-positions
   reposition-monitors
 )
 
