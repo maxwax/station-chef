@@ -1102,6 +1102,7 @@ when 'fedora_35'
         'gstreamer1-plugins-good-extras': 'Extra GStreamer plugins with good code and licensing (fedora)',
         'gstreamer1-plugins-ugly': 'GStreamer 1.0 streaming media framework ugly plug-ins (rpmfusion-free)',
         'gstreamer-ffmpeg': 'GStreamer FFmpeg-based plug-ins (rpmfusion-free-updates)',
+        'gstreamer1-plugin-openh264': 'GStreamer H.264 plugin',
         'gthumb': 'Image Viewer',
         'gtkimageview': 'Simple image viewer widget (fedora)',
         'g++': 'GNU c++ (Dependency for ruby gems -> Vagrant -> Test Kitchen -> Chef',
