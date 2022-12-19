@@ -1,6 +1,12 @@
 
 # station CHANGELOG
 
+# 0.46.0
+
+* Install Docker engine and Docker Desktop
+* Re-ordering install components to put commercial packages together
+* 
+
 # 0.45.1
 
 * Adding gstreamer1-plugin-openh264 for Fedora 37

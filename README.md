@@ -19,11 +19,15 @@ Station performs the following actions:
 
 * Installs [Atom](https://atom.io/) text editor for Linux
 
+* Installs [Microsoft VS Code Editor](https://code.visualstudio.com/docs/setup/linux)]
+
 * Installs [VirtualBox](https://www.virtualbox.org/wiki/Linux_Downloads) hypervisor for Linux
 
 * Installs [Zoom](https://zoom.us/download?os=linux)
 
 * Installs [Skype](https://repo.skype.com/rpm/stable/).
+
+* Installs [WebEx](https://help.webex.com/en-us/article/9vstcdb/Webex-App-for-Linux).
 
 * Enable [sshd](https://www.ssh.com/ssh) for inbound network access
 
@@ -36,6 +40,8 @@ Station performs the following actions:
 * Configure expected mount points for local NFS servers
 
 * Install a variety of scripts that I've written for personal use
+
+* Documents a set of applications or changes that can't easily be automated and must be performed by hand.  Guides the user to do this so the environment ends up being consistent with past builds.
 
 ## User Focused Actions
 
@@ -238,16 +244,18 @@ Run Firefox, sign in then wait for synced bookmarks and extensions to appear.
 
 At this point the system is stable, so we can manual install some applications whose installation is difficult to reliably automate.
 
+These applications are installed manually due to the obstacles their providers make in quickly and easily automating installations without fixed download URLs or yum repositories.
+
 * Install the most recent version of [Slack](https://slack.com/downloads/instructions/fedora)
+** This now has a Electron conflict with draw.io, so I use draw.io locally and Slack via a web page.
 
 * Install [VirtualBox Extension Pack](https://www.virtualbox.org/wiki/Downloads). This appears to require a manual process.
 
 * Install most recent [draw.io rpm for Linux](https://github.com/jgraph/drawio-desktop/releases)
 
-* Install 'duf' storage usage utility.  [duf github repo](https://github.com/muesli/duf/releases)
-
 * Install PyCharm - Python IDE.  [pycharm download page](https://www.jetbrains.com/pycharm/download/download-thanks.html?platform=linux&code=PCC)
 ** A Gnome desktop shortcut will be setup for this but no automated install, yet.
+** No direct link or yum repo to download, and not even an .rpm file.
 
 ### Step 14 - Manual Configuration Tasks
 
@@ -431,6 +439,15 @@ CLI Tools
 - [ ] You can ssh to an AWS Bastion node for tunneling
 - [ ] You can ssh through an AWS Bastion node for a private tunnel
 - [ ] AWS CLI can list s3 buckets (simple example)
+
+Editors
+- [ ] Atom launches and can edit code
+- [ ] VS Code launches and can edit code
+- [ ] Pycharm launches and can edit and run Python code
+
+Containers
+- [ ] Docker Desktop GUI app launches and can find running docker engine daemon
+- [ ] Docker can launch containers from command line
 
 ### Step 22 - New, Experimental: Security review with Lynis
 

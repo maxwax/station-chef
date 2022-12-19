@@ -40,6 +40,16 @@ include_recipe 'station::vscode'
 # Install Zoom
 include_recipe 'station::zoom'
 
+# Install Skype
+include_recipe 'station::skype'
+
+# Install a Gnome shortcut for PyCharm
+# Must be run after station:shortcuts to use /usr/share/applications/station
+include_recipe 'station::pycharm'
+
+# Install Docker Desktop
+include_recipe 'station::docker_desktop'
+
 # Enable SSH Server
 include_recipe 'station::sshd'
 
@@ -64,9 +74,6 @@ include_recipe 'station::typefaces'
 # Install and configure powerline
 include_recipe 'station::powerline'
 
-# Install Skype
-include_recipe 'station::skype'
-
 # Configure Solarzied Color Scheme
 include_recipe 'station::solarized'
 
@@ -75,10 +82,6 @@ include_recipe 'station::aws_cli'
 
 # Install the Time Machine backup script from github
 include_recipe 'station::timemachine'
-
-# Install a Gnome shortcut for PyCharm
-# Must be run after station:shortcuts to use /usr/share/applications/station
-include_recipe 'station::pycharm'
 
 # Install config files for proxychains
 include_recipe 'station::proxychains'

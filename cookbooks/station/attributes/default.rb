@@ -305,6 +305,24 @@ node.default['station']['atom'] = {
   'package_name': 'atom'
 }
 
+node.default['station']['docker-engine'] = {
+  'package_list': [
+    'docker-ce',
+    'docker-ce-cli',
+    'containerd.io',
+    'docker-compose-plugin'
+  ]
+}
+
+node.default['station']['docker-desktop'] = {
+  'package_name': 'docker-desktop-4.15.0-x86_64.rpm',
+  'version': '4.15.0',
+  'source_file': 'https://desktop.docker.com/linux/main/amd64/docker-desktop-4.15.0-x86_64.rpm?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64',
+  'remove_conflict_packages': 'podman-docker',
+  'service': 'docker',
+  'docker_group': 'docker'
+}
+
 node.default['station']['vscode'] = {
   'package_name': 'code'
 }
@@ -328,11 +346,9 @@ node.default['station']['timemachine_cfg'] = {
 }
 
 node.default['station']['pycharm_cfg'] = {
-  'version': '2022-1.1',
-  'package_name': 'pycharm-community-2022.1.1',
-  'rpm_source': 'n/a',
-  'download_dir': '/tmp/chef_pycharm_installer',
-  'install_dir': '/opt'
+  'note': 'waiting for a non-signed URL URL or yum repo to be available',
+  'version': '2022.3',
+  'package_name': 'pycharm-community-2022.3.tar.gz'
 }
 
 plat_vers = "#{node['platform']}_#{node['platform_version']}"
@@ -768,8 +784,8 @@ when 'fedora_35'
       jomolhari-fonts
       lohit-assamese-fonts
       lohit-bengali-fonts
-      lohit-devanagari-fonts
       lohit-gujarati-fonts
+      lohit-devanagari-fonts
       lohit-kannada-fonts
       lohit-odia-fonts
       lohit-tamil-fonts
@@ -1041,6 +1057,7 @@ when 'fedora_35'
         'darktable': 'Utility to organize and develop raw images (updates)',
         'ddrescue': 'dd command that can read damaged media and recover data',
         'dkms': 'Dynamic Kernel Module Support Framework (fedora)',
+        'duf': 'Disk usage utilty, like df but better',
         'easytag': 'Tag editor for MP3, Ogg, FLAC and other music files (fedora)',
         'ebook-tools-libs': 'Libraries for ebook-tools (fedora)',
         'ed': 'The GNU line editor (fedora)',
