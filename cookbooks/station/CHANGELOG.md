@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.47.0
+
+* Adding 'gstreamer1-plugin-libav for AV codec for E-AC3 format.
+
 # 0.46.0
 
 * Install Docker engine and Docker Desktop
