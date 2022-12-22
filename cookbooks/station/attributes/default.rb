@@ -1047,6 +1047,7 @@ when 'fedora_35'
         'atari++': 'Unix based emulator of the Atari eight bit computers (fedora)',
         'atop': 'Better version of top',
         'autodownloader': 'GUI-tool to automate the download of certain files (updates)',
+        'apostrophe': 'Apostophe markdown editor with ascii text and WYSIWYG display',
         'bat': 'bat is an enhanced cat',
         'binutils': 'for VirtualBox-6.1 kernel modules',
         'bpytop': 'An enhanced top command, very modern.',

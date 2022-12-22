@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.48.0
+
+* Added Apostrophe markdown Editor
+
 # 0.47.0
 
 * Adding 'gstreamer1-plugin-libav for AV codec for E-AC3 format.
@@ -9,7 +13,7 @@
 
 * Install Docker engine and Docker Desktop
 * Re-ordering install components to put commercial packages together
-* 
+*
 
 # 0.45.1
 
