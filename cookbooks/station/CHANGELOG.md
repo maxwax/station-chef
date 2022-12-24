@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.49.0
+
+* Add log-battery-stats script from github to record battery health
+
 # 0.48.0
 
 * Added Apostrophe markdown Editor

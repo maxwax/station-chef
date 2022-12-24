@@ -203,6 +203,14 @@ node.default['station']['usr_local'] = {
         'file_type': 'tgz',
         'install_script': 'install.sh',
         'condition_file': '/usr/local/bin/open-tunnel'
+      },
+      'log-battery-stats': {
+        'source': 'https://github.com/maxwax/log-battery-stats/archive',
+        'filename': 'v1.0.1.tar.gz',
+        'version': '1.0.1',
+        'file_type': 'tgz',
+        'install_script': 'install.sh',
+        'condition_file': '/usr/local/bin/log-battery-stats'
       }
     },
     'sbin': {
