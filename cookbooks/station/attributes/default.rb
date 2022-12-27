@@ -102,6 +102,15 @@ node.default['station']['cron_jobs'] =
     'month': '*',
     'day_of_week': '*',
     'user': 'root'
+  },
+  'cron-battery-logger': {
+    'command': '/usr/local/bin/log-battery-stats > /root/log-battery-stats.out 2>&1',
+    'minute': '0',
+    'hour': '4',
+    'day': '*',
+    'month': '*',
+    'day_of_week': '*',
+    'user': 'root'
   }
 }
 

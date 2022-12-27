@@ -1,7 +1,11 @@
 
 # station CHANGELOG
 
-# 0.49.0
+# 0.50.0
+
+* Adding cron job for script log-battery-stats to record battery information for historical analysis
+
+# 0.49.1
 
 * After calling dnf to add a docker repo, execute a yum_repository resource with the :makecache action in order to update that repo's cache. Only then can we search for packages in the repo and find them, else we get an error.
 
