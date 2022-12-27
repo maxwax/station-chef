@@ -25,6 +25,14 @@ package node['station']['docker-engine']['package_list'] do
   # not_if { node['packages'].key?('docker-desktop') }
 end
 
+# Hack to get the new docker repo's cache updated so we can find docker pkgs
+yum_repository 'docker-ce-stable' do
+  enabled true
+  gpgcheck true
+  action :makecache
+
+end
+
 docker_rpm_file = "/home/#{my['username']}/Downloads/#{node['station']['docker-desktop']['package_name']}"
 
 remote_file 'docker-desktop-rpm' do

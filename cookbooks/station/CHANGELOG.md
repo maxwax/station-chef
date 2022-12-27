@@ -3,6 +3,10 @@
 
 # 0.49.0
 
+* After calling dnf to add a docker repo, execute a yum_repository resource with the :makecache action in order to update that repo's cache. Only then can we search for packages in the repo and find them, else we get an error.
+
+# 0.49.0
+
 * Add log-battery-stats script from github to record battery health
 
 # 0.48.0
