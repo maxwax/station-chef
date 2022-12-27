@@ -8,14 +8,13 @@ local_mode		true
 log_level                :info
 log_location             STDOUT
 
+#cache_type               'BasicFile'
+#ssl_verify_mode          :verify_none
+#cache_options( :path =>  "/home/maxwell/projects/chef/knife-configs/maxwell/checksums" )
+#cache_options( :path =>  "checksums" )
 
-cache_type               'BasicFile'
-ssl_verify_mode          :verify_none
-cache_options( :path =>  "/home/maxwell/projects/chef/knife-configs/maxwell/checksums" )
-
-cookbook_path            ["/home/maxwell/projects/chef/station/cookbooks"]
+# cookbook_path            ["/home/maxwell/projects/chef/station/cookbooks"]
 
 cookbook_copyright "Maxwell Spangler"
 cookbook_email     "maxcode@maxwellspangler.com"
 cookbook_license   "mit"
-
