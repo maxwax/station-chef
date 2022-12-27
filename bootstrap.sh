@@ -52,7 +52,7 @@ then
   WGET_ERR=$?
   if [[ $WGET_ERR -gt 0 ]]
   then
-    echo "ERROR: Could not downlod chef from ms.com. Try manually?"
+    echo "ERROR: Could not download chef from ms.com. Try manually?"
     exit 1
   fi
   echo
