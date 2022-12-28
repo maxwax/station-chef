@@ -106,12 +106,17 @@ use_chef_ruby --quiet
 #
 # Pycharm for Python course
 #
-export PYCHARM_DIR=/opt/pycharm-community-2022.1
+export PYCHARM_DIR=/opt/pycharm-community-2022.3
 PATH=$PATH:$PYCHARM_DIR/bin
-
-complete -C '/usr/local/bin/aws_completer' aws
 
 # Direct Vagrant to use Virtualbox as a default provider
 # For some reason it switched to libvirt after downloading a libvirt
 # box around 2022-0222
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
+
+# IDE style prompting to complete AWS commands
+# https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters-prompting.html
+AWS_CLI_AUTO_PROMPT=on-partial
+
+# AWS tab completion
+complete -C '/usr/local/bin/aws_completer' aws

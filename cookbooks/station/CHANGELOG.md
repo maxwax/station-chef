@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.51.0
+
+* Add AWS_CLI_AUTO_PROMPT=on-partial to $HOME/.bashrc in order to have IDE style aws cli command completion.
+
 # 0.50.0
 
 * Adding cron job for script log-battery-stats to record battery information for historical analysis
