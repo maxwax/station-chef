@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.51.1
+
+* Updating coding.conf and position.conf monitor positions again because GNOME lost my monitor configs.
+
 # 0.51.0
 
 * Add AWS_CLI_AUTO_PROMPT=on-partial to $HOME/.bashrc in order to have IDE style aws cli command completion.
