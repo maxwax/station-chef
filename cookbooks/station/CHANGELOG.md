@@ -1,5 +1,10 @@
 # station CHANGELOG
 
+# 0.54.4
+
+* Modify other_users so optional users are added as members of groups beyond the user's personal group.
+* Ensure 'maxwell' user added to pfiles group when pfiles group created.
+
 # 0.54.3
 
 * In timemachine.rb don't create a directory for downloading the time machine script if timemachine is already installed. Makes things faster.

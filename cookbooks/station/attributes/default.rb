@@ -10,6 +10,17 @@ node.default['station']['user'] = {
   'mode_config_file': '0644'
 }
 
+node.default['station']['other_groups'] = {
+  'plex': {
+    'gid': 1200,
+    'members': [ 'maxwell' ]
+  },
+  'pfiles': {
+    'gid': 1984,
+    'members': [ 'maxwell' ]
+  }
+}
+
 node.default['station']['other_users'] = {
   'pris': {
     'group': 'pris',
@@ -172,17 +183,6 @@ node.default['station']['shortcuts'] = {
 node.default['station']['firefox-markdown'] = {
   'dir': '.local/share/mime/packages',
   'filename': 'text-markdown.xml'
-}
-
-node.default['station']['other_groups'] = {
-  'plex': {
-    'gid': 1200,
-    'members': [ 'maxwell' ]
-  },
-  'pfiles': {
-    'gid': 1984,
-    'members': [ ]
-  }
 }
 
 node.default['station']['etc_config'] = [
