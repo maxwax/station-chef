@@ -10,6 +10,22 @@ node.default['station']['user'] = {
   'mode_config_file': '0644'
 }
 
+node.default['station']['other_users'] = {
+  'pris': {
+    'group': 'pris',
+    'uid': '1983',
+    'gid': '1983',
+    'other_groups': [ 'pfiles' ],
+    'mode_executable_file': '0755',
+    'mode_config_dir': '0744',
+    'mode_config_file': '0644',
+    'personal_bin_scripts': [
+    ],
+    'personal_dot_files': [
+    ]
+  }
+}
+
 node.default['station']['user']['personal_bin_scripts'] = %w(
   bootstrap-maxlab
   chefpush
@@ -163,8 +179,8 @@ node.default['station']['other_groups'] = {
     'gid': 1200,
     'members': [ 'maxwell' ]
   },
-  'xcode': {
-    'gid': 1300,
+  'pfiles': {
+    'gid': 1984,
     'members': [ ]
   }
 }
@@ -332,6 +348,7 @@ node.default['station']['docker-engine'] = {
 }
 
 node.default['station']['docker-desktop'] = {
+  'short_package_name': 'docker-desktop',
   'package_name': 'docker-desktop-4.15.0-x86_64.rpm',
   'version': '4.15.0',
   'source_file': 'https://desktop.docker.com/linux/main/amd64/docker-desktop-4.15.0-x86_64.rpm?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64',
@@ -341,6 +358,7 @@ node.default['station']['docker-desktop'] = {
 }
 
 node.default['station']['vscode'] = {
+  'short_package_name': 'code',
   'package_name': 'code'
 }
 

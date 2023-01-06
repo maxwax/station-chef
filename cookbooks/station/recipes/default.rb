@@ -22,6 +22,12 @@ include_recipe 'station::firefox-markdown'
 # Install personal files for primary user
 include_recipe 'station::user'
 
+# Add additional groups to the system
+include_recipe 'station::other_groups'
+
+# Install personal files for primary user
+include_recipe 'station::other_users'
+
 # Install personal files for root user
 include_recipe 'station::root'
 
@@ -64,9 +70,6 @@ include_recipe 'station::etc_systemd'
 
 # Enable the fstrim time to TRIM SSD drives periodically
 include_recipe 'station::fstrim'
-
-# Add additional groups to the system
-include_recipe 'station::other_groups'
 
 # Add optional typefaces from a local maxlab typeface repo
 include_recipe 'station::typefaces'

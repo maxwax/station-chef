@@ -1,6 +1,11 @@
 
 # station CHANGELOG
 
+# 0.52.0
+
+* Added 'other_users' receipe to create optional users such as 'guest' on a workstation.
+* Shifting away from old 'xcode' backup software user to 'pfiles' group
+
 # 0.51.1
 
 * Updating coding.conf and position.conf monitor positions again because GNOME lost my monitor configs.
