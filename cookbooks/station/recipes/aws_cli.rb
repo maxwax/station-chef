@@ -28,6 +28,8 @@ end
 
 directory aws_cli_cfg['download_dir'] do
   action :create
+
+  not_if { ::File.exist?('/usr/local/bin/aws') }
 end
 
 # Download the remote file to a unique directory in /tmp
