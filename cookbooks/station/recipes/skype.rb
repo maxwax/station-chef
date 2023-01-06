@@ -12,7 +12,9 @@ remote_file "#{node['station']['skype']['repo_filename']}" do
 
   action :create
 
-  not_if { ::File.exist?("#{node['station']['skype']['repo_filename']}") }
+  not_if { node['packages'].key?('skypeforlinux') ||
+           ::File.exist?("#{node['station']['skype']['repo_filename']}")
+  }
 
 end
 

@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.53.1
+
+* Slight modifications to skype recipe to skip creating a repo if the package and repo are already installed.
+
 # 0.53.0
 
 * Slight modifications to docker_decktop recipe to skip steps if 'docker-desktop' the repo and package are already installed.
