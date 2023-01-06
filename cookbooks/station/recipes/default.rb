@@ -2,7 +2,7 @@
 # Recipe:: default
 # Cookbook:: station
 #
-# Copyright:: 2019, Maxwell Spangler, All Rights Reserved.
+# Copyright:: 2022, Maxwell Spangler, All Rights Reserved.
 
 # Enable rpm fusion by downloading remote rpms that configure repos
 include_recipe 'station::repo_packages'
@@ -16,9 +16,6 @@ include_recipe 'station::usr_local'
 # Install and configure GNOME desktop shortcuts
 include_recipe 'station::shortcuts'
 
-# Install mime file helping Firefox display markdown via an extension
-include_recipe 'station::firefox-markdown'
-
 # Install personal files for primary user
 include_recipe 'station::user'
 
@@ -28,8 +25,14 @@ include_recipe 'station::other_groups'
 # Install personal files for primary user
 include_recipe 'station::other_users'
 
+# Create standard NFS mounts for NAS shares
+include_recipe 'station::mount_points'
+
 # Install personal files for root user
 include_recipe 'station::root'
+
+# Install mime file helping Firefox display markdown via an extension
+include_recipe 'station::firefox-markdown'
 
 # Install Google Chrome
 include_recipe 'station::google-chrome'
@@ -59,8 +62,6 @@ include_recipe 'station::docker_desktop'
 # Enable SSH Server
 include_recipe 'station::sshd'
 
-# Create standard NFS mounts for NAS shares
-include_recipe 'station::mount_points'
 
 # Deploy system config files for my custom scripts
 include_recipe 'station::etc_config'

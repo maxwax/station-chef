@@ -1,5 +1,8 @@
-
 # station CHANGELOG
+
+# 0.54.1
+
+* Minor re-ordering of recipes run in default.rb master recipe.
 
 # 0.54.0
 
