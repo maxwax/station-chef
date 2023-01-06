@@ -301,23 +301,85 @@ node.default['station']['typefaces'] = {
 }
 
 node.default['station']['mount_points'] = {
-  '/net': %w(
-    av
-    auxdata
-    filerdata
-    centraldata
-    depotdata
-    depotroot
-    usb-aux
-    usb-filer
-    usb-depot
-    redfiles
-    terawd
-  ),
-  '/mnt': %w(
-    usb
-    secure
-  )
+  '/net': {
+    'user': 'maxwell',
+    'group': 'maxwell',
+    'mode': '0755',
+    'sub_dirs': {
+      'av': {
+        'user': 'maxwell',
+        'group': 'maxwell',
+        'mode': '0755',
+      },
+      'auxdata': {
+        'user': 'maxwell',
+        'group': 'maxwell',
+        'mode': '0755',
+      },
+      'filerdata': {
+        'user': 'maxwell',
+        'group': 'maxwell',
+        'mode': '0755',
+      },
+      'centraldata': {
+        'user': 'maxwell',
+        'group': 'maxwell',
+        'mode': '0755',
+      },
+      'depotdata': {
+        'user': 'maxwell',
+        'group': 'maxwell',
+        'mode': '0755',
+      },
+      'depotroot': {
+        'user': 'maxwell',
+        'group': 'maxwell',
+        'mode': '0755',
+      },
+      'usb-aux': {
+        'user': 'maxwell',
+        'group': 'maxwell',
+        'mode': '0755',
+      },
+      'usb-filer': {
+        'user': 'maxwell',
+        'group': 'maxwell',
+        'mode': '0755',
+      },
+      'usb-depot': {
+        'user': 'maxwell',
+        'group': 'maxwell',
+        'mode': '0755',
+      },
+      'redfiles': {
+        'user': 'maxwell',
+        'group': 'pfiles',
+        'mode': '0770',
+      },
+      'terawd': {
+        'user': 'maxwell',
+        'group': 'maxwell',
+        'mode': '0755',
+      }
+    }
+  },
+  '/mnt': {
+    'user': 'root',
+    'group': 'root',
+    'mode': '0755',
+    'sub_dirs': {
+      'usb': {
+        'user': 'maxwell',
+        'group': 'maxwell',
+        'mode': '0755',
+      },
+      'secure': {
+        'user': 'maxwell',
+        'group': 'maxwell',
+        'mode': '0755',
+      }
+    }
+  }
 }
 
 node.default['station']['virtualbox'] = {

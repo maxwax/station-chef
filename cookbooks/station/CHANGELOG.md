@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.54.0
+
+* Added user, group and mode settings to list of mount points for /net and /mnt then modified mount_points.rb receipe to create/modify directories with these settings.  This allows finger control over making mount points rather than just making them all as serving my personal user.
+
 # 0.53.2
 
 * Slight modifications to the vscode recipe to skip creating a repo and installing the package if already created and installed.
