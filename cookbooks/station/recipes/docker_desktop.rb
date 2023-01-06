@@ -6,6 +6,8 @@
 
 my = node['station']['user']
 
+short_package_name = node['station']['docker-desktop']['short_package_name']
+
 package node['station']['docker-desktop']['remove_conflict_packages'] do
   # package_name node['station']['docker-desktop']['remove_conflict_packages']
 
@@ -22,7 +24,10 @@ end
 package node['station']['docker-engine']['package_list'] do
   action :install
 
-  # not_if { node['packages'].key?('docker-desktop') }
+  # not_if { node['packages'].key?(node['station']['docker-desktop']['short_package_name']) }
+
+  not_if { node['packages'].key?(short_package_name) }
+
 end
 
 # Hack to get the new docker repo's cache updated so we can find docker pkgs
@@ -31,6 +36,7 @@ yum_repository 'docker-ce-stable' do
   gpgcheck true
   action :makecache
 
+  not_if { node['packages'].key?(short_package_name) }
 end
 
 docker_rpm_file = "/home/#{my['username']}/Downloads/#{node['station']['docker-desktop']['package_name']}"
@@ -40,15 +46,21 @@ remote_file 'docker-desktop-rpm' do
   source node['station']['docker-desktop']['source_file']
   action :create
 
-  not_if { node['packages'].key?('docker-desktop') && node['packages']['version'] == node['station']['docker-desktop']['version'] }
+  not_if { node['packages'].key?(short_package_name) &&
+   node['packages'][short_package_name]['version'] == node['station']['docker-desktop']['version'] }
+
+  # not_if { node['packages'].key?('docker-desktop') && node['packages']['version'] == node['station']['docker-desktop']['version'] }
 end
 
 package node['station']['docker-desktop']['package_name'] do
   source docker_rpm_file
   action :install
 
+  not_if { node['packages'].key?(short_package_name) &&
+  node['packages'][short_package_name]['version'] == node['station']['docker-desktop']['version'] }
+
   # Not if we have the package installed AND it matches our required version
-  not_if { node['packages'].key?('docker-desktop') && node['packages']['version'] == node['station']['docker-desktop']['version'] }
+  # not_if { node['packages'].key?('docker-desktop') && node['packages']['docker-desktop']['version'] == node['station']['docker-desktop']['version'] }
 end
 
 file 'docker-desktop-rpm-cleanup' do

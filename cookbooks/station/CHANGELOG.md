@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.53.0
+
+* Slight modifications to docker_decktop recipe to skip steps if 'docker-desktop' the repo and package are already installed.
+
 # 0.52.0
 
 * Added 'other_users' receipe to create optional users such as 'guest' on a workstation.
