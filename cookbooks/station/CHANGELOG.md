@@ -1,6 +1,10 @@
 
 # station CHANGELOG
 
+# 0.53.2
+
+* Slight modifications to the vscode recipe to skip creating a repo and installing the package if already created and installed.
+
 # 0.53.1
 
 * Slight modifications to skype recipe to skip creating a repo if the package and repo are already installed.

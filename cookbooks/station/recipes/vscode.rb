@@ -6,6 +6,8 @@
 
 my = node['station']['user']
 
+short_package_name = node['station']['vscode']['short_package_name']
+
 # WARNING: Order matters: Import the key IF NO REPO, THEN make the repo.
 
 key_file = "/home/#{my['username']}/Downloads/vscode-gpgkey"
@@ -23,7 +25,7 @@ end
 execute 'import-vscode-gpgkey-rpmkeys' do
   command "rpmkeys --import #{key_file}"
 
-  not_if { node['packages'].key?('microsoft') }
+  not_if { ::File.exist?('/etc/yum.repos.d/vscode.repo') }
 end
 
 # You must load keys with rpm --import and rpmkeys --import
@@ -31,7 +33,7 @@ end
 execute 'import-vscode-gpgkey-rpm' do
   command "rpm --import #{key_file}"
 
-  not_if { node['packages'].key?('microsoft') }
+  not_if { ::File.exist?('/etc/yum.repos.d/vscode.repo') }
 end
 
 yum_repository 'vscode' do
@@ -44,11 +46,11 @@ yum_repository 'vscode' do
 
   make_cache true
 
-  not_if { node['packages'].key?('vscode') }
+  not_if { ::File.exist?('/etc/yum.repos.d/vscode.repo') }
 end
 
 package node['station']['vscode']['package_name'] do
   action :install
 
-  not_if { node['packages'].key?('vscode') }
+  not_if { node['packages'].key?(short_package_name) }
 end
