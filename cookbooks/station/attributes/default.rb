@@ -17,7 +17,7 @@ node.default['station']['other_groups'] = {
   },
   'pfiles': {
     'gid': 1984,
-    'members': [ 'maxwell' ]
+    'members': [ ]
   }
 }
 

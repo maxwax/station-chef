@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.54.5
+
+* Undoing: * Ensure 'maxwell' user added to pfiles group when pfiles group created.
+
 # 0.54.4
 
 * Modify other_users so optional users are added as members of groups beyond the user's personal group.
