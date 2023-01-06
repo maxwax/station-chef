@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.54.6
+
+* Bug fix: When deploying docker, deploy the repo, update its cache, then install docker packages. Otherwise without the cache update it errors out with no package candidates available.
+
 # 0.54.5
 
 * Undoing: * Ensure 'maxwell' user added to pfiles group when pfiles group created.
