@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.54.3
+
+* In timemachine.rb don't create a directory for downloading the time machine script if timemachine is already installed. Makes things faster.
+
 # 0.54.2
 
 * In aws_cli.rb recipe, don't create a temporary directory to download the AWS CLI if it is already installed.  Makes things faster.

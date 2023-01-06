@@ -33,6 +33,11 @@ end
 
 directory timemachine_cfg['download_dir'] do
   action :create
+
+  not_if do
+    File.exist?('/usr/local/bin/timemachine') &&
+      File.readlines('/usr/local/bin/timemachine').grep(/MY_VERS=\"#{timemachine_cfg['version']}/).any?
+  end
 end
 
 # Download the remote file to a unique directory in /tmp
