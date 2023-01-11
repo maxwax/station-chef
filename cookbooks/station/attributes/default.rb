@@ -207,16 +207,16 @@ node.default['station']['usr_local'] = {
     'bin': {
       'coding': {
         'source': 'https://github.com/maxwax/coding/archive',
-        'filename': 'v1.3.0.tar.gz',
-        'version': '1.3.0',
+        'filename': 'v1.3.1.tar.gz',
+        'version': '1.3.1',
         'file_type': 'tgz',
         'install_script': 'install.sh',
         'condition_file': '/usr/local/bin/coding'
       },
       'position': {
         'source': 'https://github.com/maxwax/position/archive',
-        'filename': 'v1.3.0.tar.gz',
-        'version': '1.3.0',
+        'filename': 'v1.3.1.tar.gz',
+        'version': '1.3.1',
         'file_type': 'tgz',
         'install_script': 'install.sh',
         'condition_file': '/usr/local/bin/position'
