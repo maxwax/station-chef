@@ -436,8 +436,8 @@ node.default['station']['aws_cli_cfg'] = {
 }
 
 node.default['station']['timemachine_cfg'] = {
-  'version': '1.3.1',
-  'package_name': 'v1.3.1.tar.gz',
+  'version': '1.3.2',
+  'package_name': 'v1.3.2.tar.gz',
   'rpm_source': 'https://github.com/cytopia/linux-timemachine/archive/refs/tags',
   'download_dir': '/tmp/chef_timemachine_installer'
 }

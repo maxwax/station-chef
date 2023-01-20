@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.55.0
+
+* Deploy Linux timemachine version 1.3.2 from 1.3.1
+
 # 0.54.6
 
 * Bug fix: When deploying docker, deploy the repo, update its cache, then install docker packages. Otherwise without the cache update it errors out with no package candidates available.
