@@ -47,6 +47,8 @@ declare -A HASH_CFG_SOURCE
 declare -A HASH_CFG_MOUNT
 # The target directory where timemachine will store backup files
 declare -A HASH_CFG_TARGET
+# The number of days of history to keep for each directory, prune all older
+declare -A HASH_CFG_AGE
 
 # Using a specific line in the config file get a list of TM configurations
 function get_list_of_configs {
@@ -75,18 +77,19 @@ function read_config {
   fi
 # $1 is the name of a defined config in $HOME/.hot-tub-timemachine.conf
 
-  read CFG_NAME TM_TYPE TM_SOURCE TM_MOUNT TM_TARGET <<< $(egrep  "^$1" $CONFIG_FILE)
+  read CFG_NAME TM_TYPE TM_SOURCE TM_MOUNT TM_TARGET TM_AGE <<< $(egrep  "^$1" $CONFIG_FILE)
 
   READ_ERROR=$?
-  if [[ $READ_ERROR -gt 0 ]]
+  if [[ $READ_ERROR -eq 0 ]]
   then
-    echo "Error: Couldn't read config line for $1 via read_config()"
-    exit 1
-  else
     HASH_CFG_TYPE[$1]="$TM_TYPE"
     HASH_CFG_SOURCE[$1]="$TM_SOURCE"
     HASH_CFG_MOUNT[$1]="$TM_MOUNT"
     HASH_CFG_TARGET[$1]="$TM_TARGET"
+    HASH_CFG_AGE[$1]="$TM_AGE"
+  else
+    echo "Error: Couldn't read config line for $1 via read_config()"
+    exit 1
   fi
 }
 
@@ -104,10 +107,16 @@ function load_configs {
 
   if [[ $DEBUG == true ]]
   then
-    echo ${HASH_CFG_TYPE[*]}
-    echo ${HASH_CFG_SOURCE[*]}
-    echo ${HASH_CFG_MOUNT[*]}
-    echo ${HASH_CFG_TARGET[*]}
+    for EACH_CONFIG in ${CONFIGS_ARRAY[*]}
+    do
+      echo "CONFIG: $EACH_CONFIG"
+      echo ${HASH_CFG_TYPE[$EACH_CONFIG]}
+      echo ${HASH_CFG_SOURCE[$EACH_CONFIG]}
+      echo ${HASH_CFG_MOUNT[$EACH_CONFIG]}
+      echo ${HASH_CFG_TARGET[$EACH_CONFIG]}
+      echo ${HASH_CFG_AGE[$EACH_CONFIG]}
+      echo
+    done
   fi
 }
 
@@ -149,6 +158,49 @@ function dir_check {
   fi
 }
 
+function prune_backup_dir {
+
+  #
+  # BE VERY CAREFUL WITH THIS FUNCTION TO AVOID REMOVING WANTED DATA
+  # Read comments below and don't make changes unless you have carefully
+  # considered the dangers.
+  #
+
+  # Remove directories older than this many days
+  PRUNING_AGE="${1:-'_null'}"
+  if [[ $PRUNING_AGE == "_null" ]]
+  then
+    echo "prune_backup_dir() error: No age passed"
+  else
+    # Remove this directory
+    PRUNING_DIR="${2:-'_null'}"
+    if [[ $PRUNING_DIR == "_null" ]]
+    then
+      echo "prune_backup_dir() error: No directory name passed"
+    else
+
+      # Verify our pruning dir exists, a guard against bad data being passed to here
+      if [[ ! -d "$PRUNING_DIR" ]]
+      then
+        echo "prune_dir_backup() Cannot find directory $PRUNING_DIR to prune"
+      else
+        echo "====== PRUNING DIRECTORIES OLDER THAN ${PRUNING_AGE}"
+
+        # Safety parameters:
+        # find <dir> : Only examine this branch of our tree
+        # -maxdepth 0 : Only look at directories within that top level directory
+        # -type d : Only look at directories
+        # -name "20*" : Only remove directories starting with "20" as in 2023
+        # -mtime +NN : Only select directories modified older than NN days
+
+        find $PRUNING_DIR/* -maxdepth 0 -type d -name "20*" -mtime +${PRUNING_AGE} -print -exec rm -fr {} \;
+        echo "===================="
+      fi
+
+    fi
+  fi
+}
+
 # Loop through each config and call timemachine to perform a backup
 function backup_each_config {
   if [[ $DEBUG == true ]]
@@ -177,6 +229,9 @@ function backup_each_config {
       if [[ $DIR_CHECK_RESULTS == true ]]
       then
         /usr/local/bin/timemachine -v "${HASH_CFG_SOURCE[$EACH_CONFIG]}" "${HASH_CFG_TARGET[$EACH_CONFIG]}" --verbose
+
+        prune_backup_dir ${HASH_CFG_AGE[$EACH_CONFIG]} "${HASH_CFG_TARGET[$EACH_CONFIG]}"
+
       fi
     fi
   done

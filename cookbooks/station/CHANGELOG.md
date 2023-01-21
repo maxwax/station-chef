@@ -1,5 +1,10 @@
 # station CHANGELOG
 
+# 0.56.0
+
+* Modified hot-tub-timemachine script to prune directories after a specific age
+* Add AGE parameter to hot-tub-timemachine.conf config file to set number of days to keep for each directory
+
 # 0.55.0
 
 * Deploy Linux timemachine version 1.3.2 from 1.3.1
