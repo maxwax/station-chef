@@ -2,6 +2,8 @@
 
 Rough guide to go from fresh Fedora Linux install to working DevOps workstation for Maxwell
 
+** This is an outdated install guide from many years ago. Please ignore it.
+
 ## Requirements
 
 * Backup of working system on NFS or USB Hard Drive
