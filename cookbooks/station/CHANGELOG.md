@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.56.1
+
+* Minor adjustments to config in coding.conf
+
 # 0.56.0
 
 * Modified hot-tub-timemachine script to prune directories after a specific age
