@@ -18,6 +18,9 @@ fi
 # Prompt related
 . /usr/local/etc/shell-prompt-powerline
 
+# Go Lang related configuration settings
+. /home/maxwell/bin/shell-golang
+
 export DIR_GITPROJ="/home/maxwell/projects/github/maxwax"
 alias gitproj="cd $DIR_GITPROJ"
 
