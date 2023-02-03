@@ -1,0 +1,8 @@
+#!/bin/bash
+
+#
+# Configure things required for Go language development
+#
+
+export GOPATH=$HOME/projects/go
+export PATH=$PATH:$GOPATH/bin
