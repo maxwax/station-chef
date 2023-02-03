@@ -56,6 +56,7 @@ node.default['station']['user']['personal_bin_scripts'] = %w(
   wifi-inventory-location
   display-positions
   reposition-monitors
+  shell-golang
 )
 
 node.default['station']['user']['personal_dot_files'] = %w(
@@ -178,6 +179,11 @@ node.default['station']['shortcuts'] = {
     walltwo
     studywin
   )
+}
+
+node.default['station']['golang'] = {
+  'xgoroot': "/home/#{node['station']['user']['username']}/projects/go",
+  'gopath': "/home/#{node['station']['user']['username']}/go"
 }
 
 node.default['station']['firefox-markdown'] = {
