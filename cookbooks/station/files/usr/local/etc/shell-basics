@@ -17,3 +17,6 @@ set -o vi
 
 # Edit SSH file to adjust key changes
 alias known="vi ~/.ssh/known_hosts"
+
+# History but without optional Bash timestamps on each line
+alias historynotime="history | cut -d ' ' -f5-1000"
