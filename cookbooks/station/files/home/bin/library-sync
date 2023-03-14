@@ -4,5 +4,13 @@
 # Sync the /home/library directory on the toshi laptop with the primary
 # archive of it on the NFS mounted filer server
 
-rsync -avhi --progress /home/library/ /net/filerdata/library/
-rsync -avhi --progress /home/library/ /net/auxdata/library/
+TARGETS="/net/filerdata/library /net/auxdata/library"
+
+for EACH_TARGET in $TARGETS
+do
+  echo "Rsyncing to $EACH_TARGET"
+  if [[ -d "$EACH_TARGET" ]]
+  then
+    rsync -avhi --progress /home/library/ "$EACH_TARGET"
+  fi
+done
