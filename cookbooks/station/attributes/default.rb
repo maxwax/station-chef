@@ -279,8 +279,8 @@ node.default['station']['usr_local'] = {
       },
       'vital-backup': {
         'source': 'https://github.com/maxwax/vital-backup/archive',
-        'filename': 'v1.2.0.tar.gz',
-        'version': '1.2.0',
+        'filename': 'v1.3.0.tar.gz',
+        'version': '1.3.0',
         'file_type': 'tgz',
         'install_script': 'install.sh',
         'condition_file': '/usr/local/sbin/vital-backup'
