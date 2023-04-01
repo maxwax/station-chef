@@ -509,7 +509,6 @@ when 'fedora_34'
     'cdi-api': 'CDI API (updates-modular)',
     'darktable': 'Utility to organize and develop raw images (updates)',
     'dkms': 'Dynamic Kernel Module Support Framework (fedora)',
-    'easytag': 'Tag editor for MP3, Ogg, FLAC and other music files (fedora)',
     'ebook-tools-libs': 'Libraries for ebook-tools (fedora)',
     'ed': 'The GNU line editor (fedora)',
     'evolution': 'Mail and calendar client for GNOME (updates)',
