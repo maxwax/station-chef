@@ -1567,6 +1567,8 @@ when 'fedora_35'
         }
 
         node.default['station']['remove_packages'] = %w(
+            libavcodec-free
+            libswscale-free
             khmeros-base-fonts
             khmeros-fonts-common
             jomolhari-fonts
