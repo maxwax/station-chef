@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.56.2
+
+* Removing easytag from default installed packages. I don't use it anymore and I'm tired of having it pop up when I type 'east' as a terminal shortcut.
+
 # 0.56.1
 
 * Minor adjustments to config in coding.conf
