@@ -450,8 +450,8 @@ node.default['station']['timemachine_cfg'] = {
 
 node.default['station']['pycharm_cfg'] = {
   'note': 'waiting for a non-signed URL URL or yum repo to be available',
-  'version': '2022.3',
-  'package_name': 'pycharm-community-2022.3.tar.gz'
+  'version': '2023.1.2',
+  'package_name': 'pycharm-community-2023.1.2.tar.gz'
 }
 
 plat_vers = "#{node['platform']}_#{node['platform_version']}"
