@@ -317,6 +317,11 @@ node.default['station']['mount_points'] = {
         'group': 'maxwell',
         'mode': '0755',
       },
+      'avnew': {
+        'user': 'maxwell',
+        'group': 'maxwell',
+        'mode': '0755',
+      },
       'auxdata': {
         'user': 'maxwell',
         'group': 'maxwell',
