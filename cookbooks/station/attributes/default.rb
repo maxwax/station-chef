@@ -324,7 +324,7 @@ node.default['station']['mount_points'] = {
       },
       'auxdata': {
         'user': 'maxwell',
-        'group': 'maxwell',
+        'group': 'video',
         'mode': '0755',
       },
       'filerdata': {
@@ -1270,6 +1270,7 @@ when 'fedora_35'
         'mtr-gtk': 'GTK+ interface for MTR (fedora)',
         'mu-editor': 'User friendly python editor for Sweigert book',
         'nmap': 'Network exploration tool and security scanner (fedora)',
+        'ncdu': 'Curses UI interactive disk usage utility',
         'pass': 'A password manager using standard Unix tools (fedora)',
         'patch': 'Utility for modifying/upgrading files (fedora)',
         'pidgin': 'A Gtk+ based multiprotocol instant messaging client (fedora)',
@@ -1501,6 +1502,7 @@ when 'fedora_35'
           'mtr-gtk': 'GTK+ interface for MTR (fedora)',
           'mu-editor': 'User friendly python editor for Sweigert book',
           'nmap': 'Network exploration tool and security scanner (fedora)',
+          'ncdu': 'Curses UI interactive disk usage utility',
           'pass': 'A password manager using standard Unix tools (fedora)',
           'patch': 'Utility for modifying/upgrading files (fedora)',
           'pidgin': 'A Gtk+ based multiprotocol instant messaging client (fedora)',
