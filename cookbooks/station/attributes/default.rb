@@ -343,11 +343,6 @@ node.default['station']['mount_points'] = {
         'group': 'maxwell',
         'mode': '0755',
       },
-      'depotroot': {
-        'user': 'maxwell',
-        'group': 'maxwell',
-        'mode': '0755',
-      },
       'usb-aux': {
         'user': 'maxwell',
         'group': 'maxwell',
@@ -367,11 +362,6 @@ node.default['station']['mount_points'] = {
         'user': 'maxwell',
         'group': 'pfiles',
         'mode': '0770',
-      },
-      'terawd': {
-        'user': 'maxwell',
-        'group': 'maxwell',
-        'mode': '0755',
       }
     }
   },
