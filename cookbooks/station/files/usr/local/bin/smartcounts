@@ -1,0 +1,50 @@
+#!/bin/bash
+
+trap cleanup SIGHUP SIGINT SIGQUIT SIGABRT SIGTERM
+
+TMPFILE=/tmp/smartcounts.$$
+
+function cleanup {
+  if [[ -f $TMPFILE ]]
+  then
+    rm $TMPFILE
+  fi
+}
+
+function usage {
+  echo "smartcounts <device>"
+  echo
+  echo "Report SMART attributes reported by BackBlaze to predict drive failure."
+  echo
+  echo "Example: smartcounts /dev/sda"
+  echo
+}
+
+DEVICE=${1:-"_null"}
+if [[ $DEVICE == "_null" ]]
+then
+  echo "Error: You must specify a device to use such as /dev/sda"
+  usage
+  exit 1
+else
+
+  if [[ -b $DEVICE ]]
+  then
+    smartctl -a $DEVICE > $TMPFILE
+
+    grep "Model Family" $TMPFILE
+    grep "Device Model" $TMPFILE
+    grep "Serial Number" $TMPFILE
+    grep "User Capacity" $TMPFILE
+    echo
+
+    for ATTR in "  5" "187" "188" "197" "198"
+    do
+      egrep "^${ATTR}" $TMPFILE
+    done
+    echo
+  fi
+
+fi
+
+cleanup

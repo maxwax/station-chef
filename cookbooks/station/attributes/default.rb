@@ -199,7 +199,8 @@ node.default['station']['etc_config'] = [
 node.default['station']['usr_local'] = {
   'cookbook_scripts': {
     'bin': [
-      'hot-tub-timemachine'
+      'hot-tub-timemachine',
+      'smartcounts'
     ],
     'etc': %w(
       shell-basics
@@ -247,8 +248,8 @@ node.default['station']['usr_local'] = {
     'sbin': {
       'nas': {
         'source': 'https://github.com/maxwax/nas/archive',
-        'filename': 'v1.3.0.tar.gz',
-        'version': '1.3.0',
+        'filename': 'v1.4.0.tar.gz',
+        'version': '1.4.0',
         'file_type': 'tgz',
         'install_script': 'install.sh',
         'condition_file': '/usr/local/sbin/nas'
