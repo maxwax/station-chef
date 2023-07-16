@@ -11,6 +11,6 @@ do
   echo "Rsyncing to $EACH_TARGET"
   if [[ -d "$EACH_TARGET" ]]
   then
-    rsync -avhi --progress /home/library/ "$EACH_TARGET"
+    rsync -avhi --progress --delete /home/library/ "$EACH_TARGET"
   fi
 done
