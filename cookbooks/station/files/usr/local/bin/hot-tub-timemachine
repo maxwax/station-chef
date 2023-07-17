@@ -56,7 +56,7 @@ function get_list_of_configs {
   then
     echo "get_list_of_configs()"
   fi
-  TM_CONFIGS=$(egrep '^time_machine_configs:' $CONFIG_FILE | sed 's/time_machine_configs: //g')
+  TM_CONFIGS=$(grep -E '^time_machine_configs:' $CONFIG_FILE | sed 's/time_machine_configs: //g')
 
   TM_CONFIG_ERROR=$?
   if [[ $TM_CONFIG_ERROR -gt 0 ]]
@@ -77,7 +77,7 @@ function read_config {
   fi
 # $1 is the name of a defined config in $HOME/.hot-tub-timemachine.conf
 
-  read CFG_NAME TM_TYPE TM_SOURCE TM_MOUNT TM_TARGET TM_AGE <<< $(egrep  "^$1" $CONFIG_FILE)
+  read CFG_NAME TM_TYPE TM_SOURCE TM_MOUNT TM_TARGET TM_AGE <<< $(grep -E  "^$1" $CONFIG_FILE)
 
   READ_ERROR=$?
   if [[ $READ_ERROR -eq 0 ]]
@@ -154,7 +154,20 @@ function dir_check {
   then
     DIR_CHECK_RESULTS=true
   else
-    echo "Error: Cannot write to directory ${1}"
+    if [[ ! -d ${1} ]]
+    then
+      echo "Error: Directory does not exist: ${1}"
+      mkdir "${1}"
+      if [[ -d "${1}" ]] && [[ -w "${1}" ]]
+      then
+        echo "Directory now exists and is writeable"
+        DIR_CHECK_RESULTS=true
+      else
+        echo "Directory creation failed or can't be written to: ${1}"
+      fi
+    else
+      echo "Error: Directory exists, but cannot write to: ${1}"
+    fi
   fi
 }
 
@@ -273,40 +286,3 @@ load_configs
 
 # Loop over each config and call timemachine to perform a backup
 backup_each_config
-
-exit 0
-
-dir_check "/home/backups/linux-timemachine/home/maxwell"
-if [[ $DIR_CHECK_RESULTS == true ]]
-then
-
-echo
-set -x
-  #timemachine -v /home/maxwell /home/backups/linux-timemachine/home/maxwell
-  echo timemachine -v /home/maxwell "${LOCAL_DIR}" --verbose
-set +x
-fi
-
-mount_check $NAS_MOUNT
-if [[ $MOUNT_CHECK_RESULTS == true ]]
-then
-  dir_check "$NAS_DIR"
-  if [[ $DIR_CHECK_RESULTS == true ]]
-  then
-    set -x
-    eval ${TIMEMACHINE_BIN} -v /home/maxwell/ "${NAS_DIR}" --verbose
-    set +x
-  fi
-fi
-
-mount_check $USB_MOUNT
-if [[ $MOUNT_CHECK_RESULTS == true ]]
-then
-  dir_check "$USB_DIR"
-  if [[ $DIR_CHECK_RESULTS == true ]]
-  then
-    set -x
-    eval ${TIMEMACHINE_BIN} -v /home/maxwell/ "${USB_DIR}" --verbose
-    set +x
-  fi
-fi
