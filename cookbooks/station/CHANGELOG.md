@@ -1,5 +1,11 @@
 # station CHANGELOG
 
+# 0.56.3
+
+* Deploy position release v1.4.1
+* Updated window positions in position.conf
+* Updated window positions in coding.conf
+
 # 0.56.2
 
 * Removing easytag from default installed packages. I don't use it anymore and I'm tired of having it pop up when I type 'east' as a terminal shortcut.
