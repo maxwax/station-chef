@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.56.4
+
+* Deploy 'safe' v2.0.4
+
 # 0.56.3
 
 * Deploy position release v1.4.1
