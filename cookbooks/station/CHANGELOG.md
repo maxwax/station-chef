@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.56.5
+
+* Modify position of Keepass window via .position.conf update.
+
 # 0.56.4
 
 * Deploy 'safe' v2.0.4
