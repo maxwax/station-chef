@@ -248,8 +248,8 @@ node.default['station']['usr_local'] = {
     'sbin': {
       'nas': {
         'source': 'https://github.com/maxwax/nas/archive',
-        'filename': 'v1.4.0.tar.gz',
-        'version': '1.4.0',
+        'filename': 'v1.4.1.tar.gz',
+        'version': '1.4.1',
         'file_type': 'tgz',
         'install_script': 'install.sh',
         'condition_file': '/usr/local/sbin/nas'

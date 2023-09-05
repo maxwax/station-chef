@@ -1,5 +1,9 @@
 # station CHANGELOG
 
+# 0.56.6
+
+* Deploy nas 1.4.1 update
+
 # 0.56.5
 
 * Modify position of Keepass window via .position.conf update.
