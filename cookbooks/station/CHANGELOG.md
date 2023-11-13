@@ -2,6 +2,14 @@
 
 # Configured a position configuration for single-fhduplus: One 1920x1200 display
 
+# 0.56.8
+
+* Fix vital-backup.conf target for lex1tb target: Add /backups to root of directory path.
+
+# 0.57.7
+
+* ?
+
 # 0.56.6
 
 * Deploy nas 1.4.1 update
