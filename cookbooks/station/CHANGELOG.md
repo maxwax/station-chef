@@ -2,6 +2,11 @@
 
 # Configured a position configuration for single-fhduplus: One 1920x1200 display
 
+# 0.57.0
+
+* Adding support for Fedora 39
+* Fixing indentations on case in attributes/default.rb so all when..fedora_NN blocks are vertically aligned.
+
 # 0.56.8
 
 * Fix vital-backup.conf target for lex1tb target: Add /backups to root of directory path.
