@@ -1724,7 +1724,6 @@ case plat_vers
         'minizip': 'Minizip contrib in zlib with the latest bug fixes and advanced features (updates)',
         'mp3splt': 'A Free, command-line, AlbumWrap and mp3wrap file exctractor (rpmfusion-free)',
         'mplayer-common': 'MPlayer common files (rpmfusion-free)',
-        'mplayer-gui': 'GUI for MPlayer (rpmfusion-free)',
         'mplayer': 'Movie player playing most video formats and DVDs (rpmfusion-free)',
         'mtr-gtk': 'GTK+ interface for MTR (fedora)',
         'mu-editor': 'User friendly python editor for Sweigert book',
