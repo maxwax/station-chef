@@ -38,6 +38,10 @@ then
   exit 1
 fi
 
+# Chef 17.0.0, an old legacy version of Chef I'm stuck on requires this
+# starting in Fedora 39
+dnf install -y libxcrypt-compat
+
 # I'd like to automate this, but it needs a "Download <last stable version"
 # link on Chef's download page in order to do so.  Until then, take the user
 # to this page and have them select it manually

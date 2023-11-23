@@ -2,6 +2,10 @@
 
 # Configured a position configuration for single-fhduplus: One 1920x1200 display
 
+# 0.57.3
+
+* Install libxcrypt-compat to support running my old version of Chef 17 on Fedora 39.  I should really update the version of Chef but.. Chef is a mess these days with open source and commercial versions split.
+
 # 0.57.2
 
 * Remove 'exa' package not easily available in Fedora 39
