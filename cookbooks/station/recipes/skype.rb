@@ -6,16 +6,29 @@
 
 # my = node['station']['user']
 
-remote_file "#{node['station']['skype']['repo_filename']}" do
-  path "/etc/yum.repos.d/#{node['station']['skype']['repo_filename']}"
-  source "#{node['station']['skype']['repo_source']}/#{node['station']['skype']['repo_filename']}"
+# remote_file "#{node['station']['skype']['repo_filename']}" do
+#   path "/etc/yum.repos.d/#{node['station']['skype']['repo_filename']}"
+#   source "#{node['station']['skype']['repo_source']}/#{node['station']['skype']['repo_filename']}"
+#
+#   action :create
+#
+#   not_if { node['packages'].key?('skypeforlinux') ||
+#            ::File.exist?("#{node['station']['skype']['repo_filename']}")
+#   }
+#
+# end
 
-  action :create
+yum_repository 'skype' do
+  description 'Skype - Stable'
+  baseurl 'https://repo.skype.com/rpm/stable/'
+  enabled true
+  gpgcheck true
+  repo_gpgcheck true
+  gpgkey 'https://repo.skype.com/data/SKYPE-GPG-KEY'
 
-  not_if { node['packages'].key?('skypeforlinux') ||
-           ::File.exist?("#{node['station']['skype']['repo_filename']}")
-  }
+  make_cache true
 
+  not_if { node['packages'].key?('skypeforlinux') }
 end
 
 package 'skypeforlinux' do

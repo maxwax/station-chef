@@ -2,6 +2,10 @@
 
 # Configured a position configuration for single-fhduplus: One 1920x1200 display
 
+# 0.57.5
+
+* Use yum_repository to create a repo file for Skype. The remote_file we used to download from Skype is no longer available.
+
 # 0.57.4
 
 * Remove mplayer-gui from Fedora 39 packages. Should have been done in 0.57.2
