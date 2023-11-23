@@ -2,6 +2,11 @@
 
 # Configured a position configuration for single-fhduplus: One 1920x1200 display
 
+# 0.57.2
+
+* Remove 'exa' package not easily available in Fedora 39
+* Remove 'mplayer-gui' package not easily available in Fedora 39
+
 # 0.57.1
 
 * Bug fix: Download rpmfusion rpms for Fedora 39 but make sure you name the local file version _39_ not _38_.

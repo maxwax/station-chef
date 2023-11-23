@@ -1630,7 +1630,6 @@ case plat_vers
         'evolution-help': 'Help files for evolution (updates)',
         'evolution-langpacks': 'Translations for evolution (updates)',
         'evolution': 'Mail and calendar client for GNOME (updates)',
-        'exa': 'Enhanced ls command',
         'exfat-utils': 'Utilities for exFAT file system (rpmfusion-free)',
         'expat': 'An XML parser library (anaconda)',
         'expect': 'A program-script interaction and testing utility (fedora)',
