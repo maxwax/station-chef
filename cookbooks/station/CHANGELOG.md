@@ -2,6 +2,10 @@
 
 # Configured a position configuration for single-fhduplus: One 1920x1200 display
 
+# 0.57.1
+
+* Bug fix: Download rpmfusion rpms for Fedora 39 but make sure you name the local file version _39_ not _38_.
+
 # 0.57.0
 
 * Adding support for Fedora 39
