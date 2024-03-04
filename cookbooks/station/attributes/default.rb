@@ -214,8 +214,8 @@ node.default['station']['usr_local'] = {
     'bin': {
       'coding': {
         'source': 'https://github.com/maxwax/coding/archive',
-        'filename': 'v1.3.1.tar.gz',
-        'version': '1.3.1',
+        'filename': 'v1.3.3.tar.gz',
+        'version': '1.3.3',
         'file_type': 'tgz',
         'install_script': 'install.sh',
         'condition_file': '/usr/local/bin/coding'
@@ -1787,7 +1787,6 @@ case plat_vers
         'virt-top': 'Utility like top(1) for displaying virtualization stats (fedora)',
         'virt-viewer': 'Virtual Machine Viewer (fedora)',
         'virt-what': 'Detect if we are running in a virtual machine (fedora)',
-        'vlc-core': 'VLC media player core (rpmfusion-free-updates)',
         'vlc': 'The cross-platform open-source multimedia framework, player and server (rpmfusion-free-updates)',
         'wavemon': 'WIFI Signal Monitor',
         'wireshark-cli': 'Network traffic analyzer (updates)',
