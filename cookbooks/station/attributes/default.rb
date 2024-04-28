@@ -1596,13 +1596,13 @@ case plat_vers
         'rpmfusion': {
           'free': {
             'pkg_name': 'rpmfusion-free-release',
-            'path': 'rpmfusion-free-release-39.noarch.rpm',
-            'source': 'https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-39.noarch.rpm'
+            'path': 'rpmfusion-free-release-40.noarch.rpm',
+            'source': 'https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-40.noarch.rpm'
           },
           'nonfree': {
             'pkg_name': 'rpmfusion-nonfree-release',
-            'path': 'rpmfusion-nonfree-release-39.noarch.rpm',
-            'source': 'https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-39.noarch.rpm'
+            'path': 'rpmfusion-nonfree-release-40.noarch.rpm',
+            'source': 'https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-40.noarch.rpm'
           }
         }
       }
@@ -1639,8 +1639,8 @@ case plat_vers
         'f30-backgrounds-gnome': 'Fedora 30 default wallpaper for Gnome and Cinnamon (fedora)',
         'f33-backgrounds-base': 'Base images for Fedora 33 default background (updates)',
         'f33-backgrounds-gnome': 'Fedora 33 default wallpaper for Gnome and Cinnamon (updates)',
-        'f34-backgrounds-base': 'Base images for Fedora 33 default background (updates)',
-        'f34-backgrounds-gnome': 'Fedora 33 default wallpaper for Gnome and Cinnamon (updates)',
+        'f34-backgrounds-base': 'Base images for Fedora 34 default background (updates)',
+        'f34-backgrounds-gnome': 'Fedora 34 default wallpaper for Gnome and Cinnamon (updates)',
         'faac': 'Encoder and encoding library for MPEG2/4 AAC (rpmfusion-nonfree)',
         'faad2-libs': 'Shared libraries of the FAAD 2 AAC decoder (rpmfusion-free)',
         'fdupes': 'Duplicate file identifier for directory de-duplication',
@@ -1873,6 +1873,18 @@ case plat_vers
           'f33-backgrounds-gnome': 'Fedora 33 default wallpaper for Gnome and Cinnamon (updates)',
           'f34-backgrounds-base': 'Base images for Fedora 33 default background (updates)',
           'f34-backgrounds-gnome': 'Fedora 33 default wallpaper for Gnome and Cinnamon (updates)',
+          'f35-backgrounds-base': 'Base images for Fedora 35 default background (updates)',
+          'f35-backgrounds-gnome': 'Fedora 35 default wallpaper for Gnome and Cinnamon (updates)',
+          'f36-backgrounds-base': 'Base images for Fedora 36 default background (updates)',
+          'f36-backgrounds-gnome': 'Fedora 36 default wallpaper for Gnome and Cinnamon (updates)',
+          'f37-backgrounds-base': 'Base images for Fedora 37 default background (updates)',
+          'f37-backgrounds-gnome': 'Fedora 37 default wallpaper for Gnome and Cinnamon (updates)',
+          'f38-backgrounds-base': 'Base images for Fedora 38 default background (updates)',
+          'f38-backgrounds-gnome': 'Fedora 38 default wallpaper for Gnome and Cinnamon (updates)',
+          'f39-backgrounds-base': 'Base images for Fedora 39 default background (updates)',
+          'f39-backgrounds-gnome': 'Fedora 39 default wallpaper for Gnome and Cinnamon (updates)',
+          'f40-backgrounds-base': 'Base images for Fedora 40 default background (updates)',
+          'f40-backgrounds-gnome': 'Fedora 40 default wallpaper for Gnome and Cinnamon (updates)',
           'faac': 'Encoder and encoding library for MPEG2/4 AAC (rpmfusion-nonfree)',
           'faad2-libs': 'Shared libraries of the FAAD 2 AAC decoder (rpmfusion-free)',
           'fdupes': 'Duplicate file identifier for directory de-duplication',
@@ -2000,7 +2012,6 @@ case plat_vers
           'sysstat': 'Collection of performance monitoring tools for Linux (fedora)',
           'telepathy-glib': 'GLib bindings for Telepathy (fedora)',
           'telnet': 'Telnet client',
-          'terminator': 'Store and run multiple GNOME terminals in one window (fedora)',
           'thunar': 'Tree based file manager',
           'thunderbird': 'Mozilla Thunderbird mail/newsgroup client (updates)',
           'tigervnc-server': 'A TigerVNC server (updates)',
