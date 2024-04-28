@@ -171,13 +171,13 @@ node.default['station']['shortcuts'] = {
     far
     sideleft
     sideright
+    japan
+    pacific
+    california
     bastionprod
     bastionstaging
     debug
     away
-    wallone
-    walltwo
-    studywin
   )
 }
 
