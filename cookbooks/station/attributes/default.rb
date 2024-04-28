@@ -1596,13 +1596,13 @@ case plat_vers
         'rpmfusion': {
           'free': {
             'pkg_name': 'rpmfusion-free-release',
-            'path': 'rpmfusion-free-release-40.noarch.rpm',
-            'source': 'https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-40.noarch.rpm'
+            'path': 'rpmfusion-free-release-39.noarch.rpm',
+            'source': 'https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-39.noarch.rpm'
           },
           'nonfree': {
             'pkg_name': 'rpmfusion-nonfree-release',
-            'path': 'rpmfusion-nonfree-release-40.noarch.rpm',
-            'source': 'https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-40.noarch.rpm'
+            'path': 'rpmfusion-nonfree-release-39.noarch.rpm',
+            'source': 'https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-39.noarch.rpm'
           }
         }
       }
@@ -1828,13 +1828,13 @@ case plat_vers
           'rpmfusion': {
             'free': {
               'pkg_name': 'rpmfusion-free-release',
-              'path': 'rpmfusion-free-release-39.noarch.rpm',
-              'source': 'https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-39.noarch.rpm'
+              'path': 'rpmfusion-free-release-40.noarch.rpm',
+              'source': 'https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-40.noarch.rpm'
             },
             'nonfree': {
               'pkg_name': 'rpmfusion-nonfree-release',
-              'path': 'rpmfusion-nonfree-release-39.noarch.rpm',
-              'source': 'https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-39.noarch.rpm'
+              'path': 'rpmfusion-nonfree-release-40.noarch.rpm',
+              'source': 'https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-40.noarch.rpm'
             }
           }
         }
