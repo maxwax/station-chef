@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=California Shell
+Comment=gnome-terminal positioned in the right most position of the left landscape display [maxdesktop]
+Comment=Use the command line
+Keywords=california
+TryExec=gnome-terminal
+Exec=coding california
+Icon=org.gnome.Terminal
+Type=Application
+Categories=GNOME;GTK;System;TerminalEmulator;
+StartupNotify=true

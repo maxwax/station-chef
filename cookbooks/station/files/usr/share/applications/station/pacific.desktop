@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Pacific Shell
+Comment=gnome-terminal positioned in the middle position of the left landscape display [maxdesktop]
+Comment=Use the command line
+Keywords=pacific
+TryExec=gnome-terminal
+Exec=coding pacific
+Icon=org.gnome.Terminal
+Type=Application
+Categories=GNOME;GTK;System;TerminalEmulator;
+StartupNotify=true

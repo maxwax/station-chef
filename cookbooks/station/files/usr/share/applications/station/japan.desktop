@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Japan Shell
+Comment=gnome-terminal positioned in the left most position of the left landscape display [maxdesktop]
+Comment=Use the command line
+Keywords=japan
+TryExec=gnome-terminal
+Exec=coding japan
+Icon=org.gnome.Terminal
+Type=Application
+Categories=GNOME;GTK;System;TerminalEmulator;
+StartupNotify=true
