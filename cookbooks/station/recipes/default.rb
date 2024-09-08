@@ -41,7 +41,7 @@ include_recipe 'station::google-chrome'
 include_recipe 'station::virtualbox'
 
 # Install Atom editor
-include_recipe 'station::atom'
+#include_recipe 'station::atom'
 
 # Install Visual Studio Code Editor
 include_recipe 'station::vscode'
