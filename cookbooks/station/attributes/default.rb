@@ -1852,6 +1852,7 @@ case plat_vers
           'calibre': 'E-book converter and library manager (updates)',
           'catdoc': 'A program which converts Microsoft office files to plain text (fedora)',
           'cdi-api': 'CDI API (updates-modular)',
+          'cronie': 'Cron utilities',
           'darkplaces-quake': 'Classic first person shooter, I play once a year',
           'darktable': 'Utility to organize and develop raw images (updates)',
           'ddrescue': 'dd command that can read damaged media and recover data',

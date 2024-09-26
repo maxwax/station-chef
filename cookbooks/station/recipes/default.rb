@@ -50,7 +50,7 @@ include_recipe 'station::vscode'
 include_recipe 'station::zoom'
 
 # Install Skype
-include_recipe 'station::skype'
+#include_recipe 'station::skype'
 
 # Install a Gnome shortcut for PyCharm
 # Must be run after station:shortcuts to use /usr/share/applications/station
