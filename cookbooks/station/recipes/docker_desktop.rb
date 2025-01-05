@@ -17,7 +17,7 @@ package node['station']['docker-desktop']['remove_conflict_packages'] do
 end
 
 execute 'dnf-new-repo' do
-    command 'dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo'
+    command 'dnf-3 config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo'
 
   not_if { ::File.exist?('/etc/yum.repos.d/docker-ce.repo') }
 end
