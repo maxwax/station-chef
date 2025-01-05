@@ -407,6 +407,7 @@ node.default['station']['docker-engine'] = {
     'docker-ce',
     'docker-ce-cli',
     'containerd.io',
+    'docker-buildx-plugin',
     'docker-compose-plugin'
   ]
 }
@@ -2089,7 +2090,6 @@ case plat_vers
           'atari++': 'Unix based emulator of the Atari eight bit computers (fedora)',
           'atop': 'Better version of top',
           'autodownloader': 'GUI-tool to automate the download of certain files (updates)',
-          'apostrophe': 'Apostophe markdown editor with ascii text and WYSIWYG display',
           'bat': 'bat is an enhanced cat',
           'binutils': 'for VirtualBox-6.1 kernel modules',
           'bpytop': 'An enhanced top command, very modern.',
@@ -2262,8 +2262,6 @@ case plat_vers
           'thunar': 'Tree based file manager',
           'thunderbird': 'Mozilla Thunderbird mail/newsgroup client (updates)',
           'tigervnc-server': 'A TigerVNC server (updates)',
-          'ufraw-common': 'Common files needed by UFRaw (fedora)',
-          'ufraw-gimp': 'GIMP plugin to retrieve raw image data from digital cameras (fedora)',
           'unetbootin': 'Create bootable Live USB drives for a variety of Linux distributions (fedora)',
           'unrar': 'Utility for extracting, testing and viewing RAR archives (rpmfusion-nonfree-updates)',
           'usbview': 'USB topology and device viewer (fedora)',
@@ -2285,8 +2283,8 @@ case plat_vers
           'wodim': 'A command line CD/DVD recording program (fedora)',
           'xdpyinfo': 'X Display Utilities',
           'xrandr': 'X display utility',
-          'xsane-gimp': 'Scanner frontend for GIMP',
           'xsane': 'Scanner utility',
+          'xsane-gimp': 'xsane to Gimp integration',
           'xwininfo': 'Xwindows window information utility'
         }
 
