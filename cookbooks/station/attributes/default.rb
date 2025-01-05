@@ -2284,6 +2284,7 @@ case plat_vers
           'xdpyinfo': 'X Display Utilities',
           'xrandr': 'X display utility',
           'xsane': 'Scanner utility',
+          'xsane-gimp': 'xsane to Gimp integration',
           'xwininfo': 'Xwindows window information utility'
         }
 
