@@ -6,6 +6,8 @@ Fedora releases every six months and being able to configure 90% of more of my p
 
 In the near future this Chef based system will be replaced by an Ansible solution since that seems to be where the world is headed.
 
+Update 2025-0105: Updated to support Fedora 41. Previous versions are not supporte and will be removed soon.
+
 ## System Focused Actions
 
 Station performs the following _major_ actions in addition to a variety of smaller items:
