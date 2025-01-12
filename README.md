@@ -2,13 +2,20 @@
 
 Station is a Chef configuration management cookbook to provision my personal Linux workstation running Fedora Linux.
 
-Fedora releases every six months and being able to configure 90% of more of my personal workstation via a script is incredibly useful and productive.
+I developed this in 2020 as a way of learning Chef and automating the configuration of my workstation.
 
-In the near future this Chef based system will be replaced by an Ansible solution since that seems to be where the world is headed.
+I use Fedora Linux which releases every six months and I prefer to do a fresh install instead of an in-place upgrade.
 
-Update 2025-0105: Updated to support Fedora 41. Previous versions are not supporte and will be removed soon.
 
+Being able to quickly deploy and configure a fresh Fedora Linux installation and get 90% of my workstation up and running quickly is incredibly rewarding.
+
+This is also **incredibly** useful for switching from an old laptop to another, or grabbing a spare laptop and getting it configured with all the tools I need to make it useful and comfortable.
+
+Note: I'll probably be moving this to Ansible in the future as I use Ansible professionally and no longer work with Chef.
+
+## Features
 ## System Focused Actions
+
 
 Station performs the following _major_ actions in addition to a variety of smaller items:
 
@@ -23,18 +30,11 @@ Station performs the following _major_ actions in addition to a variety of small
 
 * Installs [Google Chrome](https://www.google.com/chrome/)
 
-* Installs [Atom](https://atom.io/) text editor for Linux
-** This will be removed soon due to Atom being deprecated **
-
 * Installs [Microsoft VS Code Editor](https://code.visualstudio.com/docs/setup/linux)]
 
 * Installs [VirtualBox](https://www.virtualbox.org/wiki/Linux_Downloads) hypervisor for Linux
 
 * Installs [Zoom](https://zoom.us/download?os=linux)
-
-* Installs [Skype](https://repo.skype.com/rpm/stable/).
-
-* Installs [WebEx](https://help.webex.com/en-us/article/9vstcdb/Webex-App-for-Linux).
 
 * Enable [sshd](https://www.ssh.com/ssh) for inbound network access
 
@@ -50,7 +50,7 @@ Station performs the following _major_ actions in addition to a variety of small
 
 In addition to these, this page documents manual steps that are required to customize a new Linux installation to my personal needs.  These steps are easier to perform by hand than invest significant time to automate.
 
-## User Focused Actions
+### User Focused Actions
 
 Station performs the following changes specific to my personal user, 'maxwell':
 
@@ -70,107 +70,129 @@ Note: Many GNOME GUI configuration changes will take place simply by restoring m
 
 This is a high level summary of my process for moving to a new install of Fedora Linux:
 
-1. First, perform multiple backups of the old system to multiple forms of encrypted storage both on-line (NAS) and off-line (USB hard drives).
-1. Install Fedora Linux from USB Installer image.
-2. Boot the newly installed Linux system and complete the initial steps of making a new user manually.
+1. Make several backups to encrypted media as a pre-caution.
+2. Install Fedora Linux as a new installation using USB media.
+3. Boot new Fedora Linux installation.
+4. Perform minimal manual initial configuration steps.
+5. Download Station by cloning this github repo:
 
-3. Download Station by cloning this github repo:
 ```
 git clone github.com/maxwax/station
 ```
 
-4. Execute the bootstrap.sh script as root/sudo in order to download, install, configure and run Chef to configure this workstation.
+6. Execute the bootstrap script.  This will download a legacy copy of Chef, install it, then run the Chef `station` cookbook.
 ```
 cd station
 sudo ./bootstrap.sh
 ```
 
-5. Manually restore files from backups to the new system.  First, put them in a temporary place, then swap out /home/maxwell with the restored /home/home.old/maxwell.
+6. Restore files from backup.
 
-6. Go through the detailed checklist below to perform fine-tuning of a new Fedora install.
+7. Go through checklist steps below.
+
+Note: Fedora is a leading edge Linux distribution and new versions may introduce significant changes which break things and challenge expectations.  When using `station` with a new version, some effort is usually required to 'port' it and adjust to new changes.  Once ported, it can be re-used comfortably.
 
 ## Detailed Step by Step Guide
 
-### Overview
-
-1. If moving to a new release of Fedora Linux, install the release in a virtual machine and attempt to run this cookbook. Adjust to accommodate things like base packages that have been removed or renamed and push changes to github.
-1. Make multiple backups of the existing Fedora installation including all major directories not just /home
-1. Install Fedora from USB installer
-1. Run dnf to update all system packages
-1. Reboot into the updated system
-1. Execute this cookbook to deploy and configure the environment
-1. Restore the old home directory
-1. Reboot one final time to test a clean boot and clean login
-1. Debug the surprise problems that may present themselves.
-1. Manual Application Installs
-1. Manual Configuration Tasks
-1. Work-Rounds Accommodations
-1. QA Checklist
-
 ### Step 1 - Enable support for a new version of Fedora
 
-Complete the following actions to enable cookbook support for a new version of Fedora:
+When using this cookbook with a new version of Fedora, use a spare laptop or a VM 'port' this cookbook to the new version.  Most things will work, but minor effort is required to adapt to things like renamed or removed packages, features that require new configurations, etc.
 
-- [ ] Update cookbooks/station/attributes/default.rb case statement to replace the currently supported Fedora version identifier with a new version identifier. (ex: 'fedora_32' -> 'fedora_33')
+- [ ] Update the case statement in `cookbooks/station/attributes/default.rb` to introduce a new version of Fedora.  Copy & paste the existing version's section and update the version id. ex: `fedora_40` is updated with `fedora_41`.
 
-- [ ] Remove any previously defined packages that are not available for the new version of Fedora
+- [ ] Perform a fresh installation of the new Fedora version.
 
-- [ ] Add any packages manually installed to the current Fedora installation that were not included in the cookbook yet.
+- [ ] Run this cookbook and see what breaks.
 
-- [ ] Update the README.md docs with any new accommodations for the new version of Fedora
+Common fixes encountered include:
 
-- [ ] Adjust any unexpected issues with the script caused by changes in behavior of the new Fedora release.  Do this on the first attempt to use this script.
+- [ ] Remove desired packages which are no longer in the repos.
+
+- [ ] Adapt to packages that have been renamed in order to deploy them with new names.
+
+- [ ] If there are new packges to be added, add them manually to test then add them to the cookbook.
+
+- [ ] Update the README.md documentation.  Remove behavior now obsolete and add info about behaviors to accomodate the new version.
 
 - [ ] Push updates to github
 
-### Step 2 - Backup existing Fedora Installation
+### Step 2 - Backup the existing Fedora Installation
 
-1. Perform multiple backups to multiple, encrypted on-line and off-line storage media.
+1. Create multiple multiple backups of the existing system to several forms of encrypted media.
 
-      ```bash
- cp -prv /boot /etc /home /opt /root /usr /var /net/filerdata/backups/$(hostname)/$(date +%Y.%m%d)
+    I often do this to NFS server mounts and USB storage:
+
+    ```bash
+    sudo cp -prv /boot /etc /home /opt /root /usr /var /net/filerdata/backups/$(hostname)/$(date +%Y.%m%d)
     ```
 
 ### Step 3 - Install Fedora Linux
 
-1. Use a Fedora Workstation Live USB Installer to boot the computer and perform a base install of Fedora Linux.
+1. Perform a fresh install of Fedora Linux on the existing system by reformatting existing filesystems.
 
-2. If you are re-using existing filesystem partitions, make sure to check each one other than /boot/efi as 'Reformat' to clear them out instead of re-using them.
+    Danger: You will lose your data.
+
+    Optional: Reformat the system partitions and leave the `/home` filesystem in place.
+
 3. Reboot into the new Fedora Linux installation
+
 4. Connect to the WIFI network (optional)
+
 5. Create a primary user (this will be system admin / sudo user)
-7. Login, start a shell
+
+6. Login, start a shell
 
 ### Step 4 - Update all system packages to current releases.
 
+On the clean, fresh install update all the existing packages.
+
 1. Update all packages - There are always updates.
+
     ```bash
     dnf -y update
     ```
 
 ### Step 5 - Download the Station Chef cookbook from github using ``git clone``
 
-1. Clone the station github repo to $ HOME/Download.
+1. Change to the `Downloads` directory.
+
+    ```
+    cd Downloads
+    ```
+
+2. Clone the station github repo to `$HOME/Downloads`.
+
   ```
   git clone github.com/maxwax/station
   ```
-2. Bootstrap the node with the bootstrap.sh script
+
+3. Change into the `station` directory
+
   ```
   cd station
+  ```
+
+2. Bootstrap the node with the bootstrap.sh script
+
+  ```
   sudo ./bootstrap.sh
   ```
 
+Note: When you run this script, and Chef using `sudo` in this directory, Chef will create some directories and files owned by root.  To delete them later, be prepared to use `sudo rm` to do so.  This is expected.
+
 #### Bootstrap.sh Documentation
 
-bootstrap.sh performs the following automated tasks:
+The `bootstrap.sh` performs the following automated tasks:
 
-1. Download a staged Chef workstation binary from maxwellspangler.com to /tmp.
-1. Install the chef-workstation rpm file.
-1. Perform a first run of chef-client -z to create a Chef *node* object for this workstation.
-1. Modify the new Chef node to be owned by 'maxwell'
-1. Modify the new Chef node environment to 'maxlab'
-1. Append 'recipe[station]' to the new Chef node
-1. Now perform a chef-client run that will execute the recipes configured in the 'station' cookbook to provision the workstation.
+1. Download a staged, legacy[1] Chef workstation packages from maxwellspangler.com to `/tmp`.
+2. Install the chef-workstation rpm file.
+3. Perform a first run of chef-client -z to create a Chef *node* object for this workstation.
+4. Modify the new Chef node to be owned by 'maxwell'
+5. Modify the new Chef node environment to 'maxlab'
+6. Append 'recipe[station]' to the new Chef node
+7. Now perform a `chef-client` run that will execute the recipes configured in the 'station' cookbook to provision the workstation.
+
+[1] This is a convenience for me and to protect against Chef removing this binary from public access.  It may not work for you in the future.
 
 ### Step 6 - Reboot into updated Fedora Linux
 
@@ -182,26 +204,37 @@ All packages should now be up to date and most packages that can be automaticall
 
 * Skip this step if you're running this on a spare computer or testing VM.
 
-1. From backups made prior to installation, restore /home/maxwell to `/home/maxwell/home.old/maxwell`.
+1. Copy key directories like `/etc` and `/home` from the backups of the old version to a staging directory like `/home/oldfedora`.
 
-2. Restore other directories like /home/library
+    This allows files to be inspected and selectively restored when possible.
 
-3. Ideally, log out of 'maxwell' and into another user or root so that your logged in user 'maxwell' is not actively using any files in /home/maxwell.
+2. Verify that the primary `maxwell` user's user-id and group-id numbers have not changed.
 
-4. Move the /home/maxwell directory created by this new installation to a temporary location
+3. Log out of the GUI, switch a virtual console with ALT-F2 and login as the primary user, `maxwell`.
+
+    This is done so we can swap out fresh installation files in `/home/maxwell` with restored versions copied from a staging area.  I don't want active running programs to have their config files changed in flight.
+
+4. Move the `/home/maxwell` directory to a temp location
+
     ```bash
     mv /home/maxwell /home/maxwell.fedora.new
     ```
 
-5. Move the restored /home/home.old/maxwell user directory to /home/maxwell for active use.
+5. Restore the old version's home directory into its right place.
+
     ```bash
-    mv /home/home.old/maxwell /home/maxwell
+    mv /home/oldlinux/maxwell /home/maxwell
     ```
-6. Now login on the GUI as 'maxwell' to continue normal operation
+
+6. Use `ALT-F1` to return to the GUI login and login as the primary user, `maxwell`.
+
+    If things go well, you'll now be logged in on a new version of GNOME but with existing user files including personal config files.
 
 ### Step 8 - Configure X.org instead of Wayland
 
-Wayland prevents gnome-terminal from using its --geometry parameter to launch terminal windows in specific locations with specific sizes so for this reason I switch back to the legacy X.org X11 window system.
+In years past, I would switch from using the Wayland GUI display system to the trusted X11.  From 2025 and forward, I'm going to try to move forward as Wayland is the future of GUI on Fedora and Red Hat Linux.
+
+Skip this:
 
 1. Modify `/etc/gdm/custom.conf` to look like this:
 
@@ -213,16 +246,19 @@ DefaultSession=gnome-xorg.desktop
 
 Upon next boot you *should* be in X11 instead of Wayland.
 
-### Step 9 - For HP Elitebook, configure kernel parameter for ACPI display backlighting
+### Step 9 - Apply hardware specific accommodations.
 
-** This should now be done automatically via a Chef recipe, so just confirm it is in place.
+Some of my hardware require custom kernel parameters to work around problems.
 
-1. Add 'acpi_backlight' to /etc/default/grub
+An example is the HP Elitebook 840 G8 which *might* work better with this display work around.
+
+1. Add 'acpi_backlight' to kernel parameters defined in `/etc/default/grub`.
+
 2. Deploy a new grub.cfg file with the new kernel parameter
 
-```
-grub2-mkconfig -o /boot/grub2/grub.cfg
-```
+    ```
+    grub2-mkconfig -o /boot/grub2/grub.cfg
+    ```
 
 ### Step 10 - Final Reboot
 
@@ -230,215 +266,284 @@ With the provisioning complete, the majority of major software deployments and c
 
 Now is a good time to reboot the system and login.
 
-### Step 11 - Debug the Surprises
+1. Use the GUI to safely reboot the system.
 
-Along the way, look for problems, errors and obvious things that are broken. Debug them and resolve them before moving on.
+### Step 11 - Manual Application Installs
 
-### Step 12 - Manual Application Installs
+Automating the downloading and installation of many software programs is easy if their publisher provides rpm repositories or is consistent with how they are published.
 
-At this point the system is stable, so we can manual install some applications whose installation is difficult to reliably automate.
+For those applications that aren't in rpm format, aren't published via repos, or that can't reliably be downloaded or installed, list them here and install them manually.
 
-These applications are installed manually due to the obstacles their providers make in quickly and easily automating installations without fixed download URLs or yum repositories.
+1. Install the [VirtualBox Extension Pack](https://www.virtualbox.org/wiki/Downloads) extension pack. Virtualbox is deployed by `station` but not the extension pack.
 
-* Install the most recent version of [Slack](https://slack.com/downloads/instructions/fedora)
-** This now has a Electron conflict with draw.io, so I use draw.io locally and Slack via a web page.
+2. Install the [Slack](https://slack.com/downloads/instructions/fedora) desktop app with a manual rpm install.
 
-* Install [VirtualBox Extension Pack](https://www.virtualbox.org/wiki/Downloads). This appears to require a manual process.
+3. Install [draw.io](https://github.com/jgraph/drawio-desktop/releases) desktop app with a manual rpm install.
 
-* Install most recent [draw.io rpm for Linux](https://github.com/jgraph/drawio-desktop/releases)
+4. Install [PyCharm the Python IDE](https://www.jetbrains.com/pycharm/download/download-thanks.html?platform=linux&code=PCC) by downloading the `.tgz` file and deploying it in `/opt`.
 
-* Install PyCharm - Python IDE.  [pycharm download page](https://www.jetbrains.com/pycharm/download/download-thanks.html?platform=linux&code=PCC)
+### Step 12 - Manual Configuration Tasks
 
-### Step 14 - Manual Configuration Tasks
+This a collection of quick manual steps which I've left out of `station` so far.
 
-This is an opportunity to perform any manual steps that have not been automated.
+#### Hostname
 
-* Consider setting a static hostname (if not done earlier)
-      ```bash
-      sudo hostnamectl set-hostname mynode.maxlab
-      ```
+* Set a static hostname, otherwise the hostname is set by DHCP.
+
+    ```bash
+    sudo hostnamectl set-hostname mynode.maxlab
+    ```
+
+#### Date, Time and Timezone
 
 * Verify the timezone in use. Make sure its correct
-```timedatectl
-timedatectl
-               Local time: Thu 2020-01-09 22:44:18 MST
-           Universal time: Fri 2020-01-10 05:44:18 UTC
-                 RTC time: Fri 2020-01-10 05:44:18
-                Time zone: America/Denver (MST, -0700)
-System clock synchronized: yes
-              NTP service: active
-          RTC in local TZ: no
+
+    ```timedatectl
+    timedatectl
+                   Local time: Thu 2020-01-09 22:44:18 MST
+               Universal time: Fri 2020-01-10 05:44:18 UTC
+                     RTC time: Fri 2020-01-10 05:44:18
+                    Time zone: America/Denver (MST, -0700)
+    System clock synchronized: yes
+                  NTP service: active
+              RTC in local TZ: no
+    ```
+
+#### Realtime clock
+
+* Ensure the RTC clock is in UTC with 
+
+    You will see warnings from `timedatectl` above if this is required.
+
+    ```bash
+    timedatectl set-local-rtc 0
+    ```
+
+### Step 13 - Restore WIFI connections
+
+Restore `.nmconnection` files from the old system's staging files to `/etc/NetworkManager/system-connections`.
+
+This allows you to avoid manually entering known WIFI access point WPA passwords.
+
+```bash
+sudo /home/oldlinux/etc/NetworkManager/system-connections/* /etc/NetworkManager/system-connections
 ```
+
+### Step 14 - Control Panel configurations
+
+These are configuration settings very easily set via the GUI control panel.
+
+I could figure out how to automate setting them, but since GUI environments like Gnome are rapidly changing, I've felt comfortable making them manually so I know what has changed and what is new.
+
+#### WIFI
+
+* Ensure WIFI is working with DHCP setup
+
+    * If in my home environment, make sure the DHCP server recognizes this hardware's MAC address and gives a static IP associated with a DNS name.
+
+#### Network
+
+* Configure the initial default wired network connection as needed
+
+* If in a home environment test it and ensure the DHCP server is providing a static IP by recognizing this hardware's MAC address.
+
+#### Bluetooth
+
+#### Displays
+
+* Check that the connected monitor is connecting in the native display resolution.
+
+    * This hasn't been a problem for a long time, but..
+
+* Enable the Night Light feature to reduce blue light automatically in the evening
+
+#### Sound
+
+* Test the output devices:
+
+    * Test the laptop speakers
+
+    * Test the HDMI/DisplayPort monitor speakers
+
+    * Test the headphone (Thunderbolt Dock with Powered Speakers)
+
+* Test the Input by clapping
+
+* Change the Alert Sound to `Swing`
+
+#### Power
+
+* If a laptop, note that the laptop battery is reporting power
+
+* If wireless bluetooth devices are connected, check that they report power
+
+* Power Mode: Balanced
+
+* Power Saving: Screen Blank: 5 minutes
+
+* Power Saving: Automatic Power Saver: Disabled
+
+* Power Saving: Automatic Suspend: Disabled
+
+* General: Power Button Behavior: Nothing
+
+* General: Show Battery Percentage: Enabled
+
+#### Multitasking
+
+* Hot Corner: Enabled
+
+* Active Screen Edges: Enabled
+
+* Workspaces: Fixed Number of Workspaces: 6
+
+* Multi-Monitor: Workspaces on all Displays
+
+* App Switching: Include Apps from App Workspaces (?)
+
+#### Appearance
+
+* Set a custom background
+
+#### Apps
+
+* No customizations
+
+#### Notifications
+
+* Lock Screen Notifications: Enabled
+
+#### Search
+
+* Leave most enabled
+
+* Disable Boxes, Calculator, Clocks, Weather, etc.
+
+#### Online Accounts
+
+* Enable Google Account via OATH tokens so I can use Google Drive and Gmail within Evolution
+
+#### Sharing
+
+* Verify system hostname is consistent and right
+
+* Fiel Sharing: Disabled
+
+* Media Sharing: Disabled
+
+#### Mouse and Touchpad
+
+Scroll Direction: Natural
+
+#### Keyboard
+
+* System: Show the Overview: F3 (Like MacOS)
+
+* Lower windows below other windows: Right Menu Key (Windows keyboards)
+
+#### Color
+
+* No customizations
+
+#### Printing
+
+* Setup a local printer if there is one
+
+#### Accessibility
+
+#### Privacy & Security
+
+#### System
+
+Date & Time: Automatic Date & Time
+Date & Time: Automatic Time Zone
+Date & Time: Time Format: AM/PM
+Date & Time: Week Day
+Date & Time: Date
+
+Users: Set Photo for primary user login
+
+Users: Enable fingerprint login
+
+Users: Create guest and other users as needed
+
+Remote Desktop: Desktop Sharing: Disabled
+
+Secure Shell: Enabled
 
 ### Step 15 - Gnome Tweak Tool Configurations
 
-These settings should already be in place, but if using Station to setup a fresh Fedora installation where config files are not being restored, this is a guide to configure settings:
+If the user's previous home directory was restored, these settings should already be configured.
 
-* General
-  * Suspend lid on laptop close - disabled
-* Keyboard & Mouse
-  * Mouse Click Emulation: Area (to use touchpad areas, not 2-finger gestures)
-* Top Bar
-  * Show Weekday - enabled
-  * Show Date - enabled
-  * Show Battery Percentage - enabled
+This is my list to track what is important to me:
+
+* Fonts
+    * Default fonts: `Cantarell`, Monospace text: `Source Code Pro`
+* Appearance:
+    * Background/default image: Set to a past nice blue Fedora background.
+* Mouse & Touchpad:
+    * Touchpad Accelleration: Enabled
+    * Scrolling Method: Default
+* Keyboard
+    * Nothing special
 * Windows
-  * Attach Model Dialogs - enabled
-  * Edge Tiling - enabled
-  * Window Focus - Focus on Hover (Mousefocus)
-* Window Titlebars
-  * Double Click Titlebar Action - Toggle Maximize Vertically
-  * Show Minimize - enabled
-  * Show Maximize - enabled
-* Workspaces
-  * Static Workspaces - enabled
-  * Number of Workspaces - 5
-  * Display Handling - Workspaces Span Displays
+    * Double-Click: Toggle Maximize
+    * Middle-Click: Toggle Maximize Vertically
+    * Maximize (window feature): Enable
+    * Minimize (window feature): Enable
+    * Placement: Right
+    * Attach Modal Dialogs: Enable
+    * Window Focus: Focus on Hover (Mousefocus)
+* Startup Applications
+    * None
 
 ### Step 16 - Gnome Shell Extensions
 
-These extensions modify the Gnome GUI environment in ways that make it significantly more comfortable so install them now:
+Extensions extend or configure the GNOME Gui environment via Javascript plugins.
 
-Use Firefox to install these:
+Use the Gnome `Extensions` GUI app or visit [extensions.gnome.org](https://extensions.gnome.org/) and install the following extensions:
 
-These are in addition to the extensions installed by default in Fedora or by the Chef provisioning script.
+* Install the **Firefox Gnome-Shell-Extension** using the banner at the top of the Gnome Shell Extensions website.
 
-* Visit [extensions.gnome.org](https://extensions.gnome.org/) and install the following extensions:
+* [Freon by UshakovVasili](https://extensions.gnome.org/extension/841/freon/) - Gnome temperature sensors applet
 
-  * Install the **Firefox Gnome-Shell-Extension** using the banner at the top of the Gnome Shell Extensions website.
+* [gTile](https://extensions.gnome.org/extension/28/gtile/) - Window tiling, sizing and positioning
+  * Customize this extension with details
+  * Show Icon - disabled
+  * Grid Sizes - Customize
+  * Resize Presets - See screenshot elsewhere
+  * Margins - 0 for all
 
-  * [Freon by UshakovVasili](https://extensions.gnome.org/extension/841/freon/) - Gnome temperature sensors applet
+* [Launch New Instance](https://extensions.gnome.org/extension/600/launch-new-instance/) - Always launch a new instance even if an application is already running
 
-  * [gTile](https://extensions.gnome.org/extension/28/gtile/) - Window tiling, sizing and positioning
-    * Customize this extension with details
-    * Show Icon - disabled
-    * Grid Sizes - Customize
-    * Resize Presets - See screenshot elsewhere
-    * Margins - 0 for all
+* [OpenWeather](https://extensions.gnome.org/extension/750/openweather/) - Weather conditions applet for Gnome title bar
 
-  * [Launch New Instance](https://extensions.gnome.org/extension/600/launch-new-instance/) - Always launch a new instance even if an application is already running
+    * Configured via rpm package now
 
-  * [OpenWeather](https://extensions.gnome.org/extension/750/openweather/) - Weather conditions applet for Gnome title bar
-    * Customize this extension with details
-    * Set location - Denver, CO
+    * Click on Date/Time on top bar to configure locations
 
-  * [Recent Items by bananenfisch](https://extensions.gnome.org/extension/72/recent-items/) - Track recently opened files and add drop down applet to make re-opening them very easy
+* [Media Controls](https://extensions.gnome.org/extension/4470/media-controls/) Controls AV media on the panel.
 
-  * [Sound Input & Output Chooser by kgshank](https://extensions.gnome.org/extension/906/sound-output-device-chooser/) - Select active speakers and microphone. Very useful after docking/undocking laptops from desk to roaming.
-    * Waiting for update for Fedora 35 compatability
+* [Panel World Clock](https://extensions.gnome.org/extension/72/recent-items/) - Track recently opened files and add drop down applet to make re-opening them very easy
 
-  * [Tweaks in System Menu](https://extensions.gnome.org/extension/1653/tweaks-in-system-menu/) - Customization to put Gnome Tweaks Tool launch icon in system menu near control panel icon for natural accessibility.
-  * Waiting for update for Fedora 35 compatability
+* [Recent Items by bananenfisch](https://extensions.gnome.org/extension/72/recent-items/) - Track recently opened files and add drop down applet to make re-opening them very easy
 
-  * [No Overview at Startup](https://extensions.gnome.org/extension/4099/no-overview/)
+    * Go to the Recent Items home page, download the most recent and install per instructions.
 
-### Step 17 - Control Panel configurations
+* [No Overview at Startup](https://extensions.gnome.org/extension/4099/no-overview/)
 
-* Configure Top Bar Clock with World Clock Eastern and UTC Time zones.
-
-* Configure OpenWeather app for Denver weather, remove Tuvalu
-
-* Configure WIFI: You may need to reconfigure access to known access points
-
-* Configure Bluetooth: Disable if not using it for anything
-
-* Configure Multitasking: Fixed Number of Workspaces: 6
-* Configure Multitasking: Multi-Monitor: Workspaces on all displays
-* Configure Multitasking: Application Switching: Include applications from the current workspace
-
-* Configure Power: to not 'Automatic Suspend' after idle use
-* Configure Power: to show battery Percentage
-* Configure Power: Power Button Behavior does 'Nothing'
-
-* Configure Keyboard Shortcuts: 'Lower window below other windows' via 'Menu' (key)
-
-* Configure Printers: Re-configure any known printers as needed
-
-* Configure Default Apps: Set Mail to 'Evolution'
-
-* Configure Date & Time: Enable both 'Automati Date & Time' and 'Automatic Time Zone'
-* Configure Date & Time: Time format 24-hour
-
-### Step 18 - Solarize gnome-shell and vim
+### Step 17 - Solarize gnome-shell and vim
 
 Apply a low contrast color palette to gnome-shell windows using [this guide on if-not-true-then-false.com](https://www.if-not-true-then-false.com/2012/solarized-linux/#solarized-gnome-terminal
 
 Apply the same to vim using [this guide](https://www.if-not-true-then-false.com/2012/solarized-linux/#solarized-vim)
 
-### Step 19 - Work Around Accommodations
+### Step 18 - Work Around Accommodations
 
 Record any known work arounds to issues here so they can be easily performed on a new deployment.
 
-### Step 20 - VirtualBox Patching
+### Step 19 - QA Checklist
 
-Sometimes the vagrant deployed by Fedora doesn't support the latest release of VirtualBox used with Chef and Test Kitchen for ad-hoc testing in virtual machines.
+Take the system for a drive and see if anything feels broken.
 
-Follow (https://blogs.oracle.com/scoter/post/getting-vagrant-23-working-with-oracle-vm-virtualbox-70-beta#This Oracle Blog post) or a similar one to modify a variety of vagrant files to treat VirtualBox N+1 as Virtual Box N.
-
-### Step 21 - QA Checklist
-
-Verify the items on this checklist immediately after installation of Fedora in order to identify and resolve problems now and not 5 minutes before a collaboration with others where you need them.  This list is expected to grow.
-
-Hardware
-- [ ] Display uses native resolution and looks good in X
-- [ ] Sound works through headphones jack
-- [ ] Sound works through laptop speakers
-- [ ] Sound works through USB dock speakers
-- [ ] USB keyboard, mice and trackpads work
-- [ ] Laptop screen can be closed and doesn't cause the laptop to sleep
-- [ ] Wireless network connectivity works
-- [ ] Wired network connectivity works
-- [ ] Laptop continues showing power from AC, power from battery
-
-Gnome UI
-- [ ] Top bar has day name, date and time in 24 hour format
-- [ ] Top bar has UTC time
-- [ ] Openweather knows Denver location
-- [ ] Recent files drop down shows recent files
-- [ ] Mousefocus switches windows
-- [ ] Right menu key lowers windows
-
-Network
-- [ ] Hostname is set to host.domain
-- [ ] DNS works on local home lab network to resolve other nodes
-- [ ] SSH allows incoming connections
-
-Virtualization
-- [ ] VirtualBox is installed, Extension pack installed
-
-Shell
-- [ ] Terminals come up using Solarized low contrast color scheme
-- [ ] Terminals use bash and powerline prompt with custom config file
-- [ ] vim keys work with Shell history in bash (set -o vi)
-
-Applications
-- [ ] Firefox is installed and sync'd with my account
-- [ ] Evolution mail gets to IMAP accounts
-- [ ] KeepassXC can load a password safe
-- [ ] Draw.io allows diagramming
-- [ ] LibreOffice installed and working
-- [ ] Atom editor works
-- [ ] You can get to Google Drive from the Nautilus File Manager
-- [ ] Firefox is logged in and syncing bookmarks
-- [ ] Chrome works
-- [ ] Slack runs and is signed in
-- [ ] Zoom runs, is signed in, can use microphone and webcams
-
-CLI Tools
-- [ ] The 'safe' command can open a LUKS safe file
-- [ ] You can ssh to an AWS Bastion node for tunneling
-- [ ] You can ssh through an AWS Bastion node for a private tunnel
-- [ ] AWS CLI can list s3 buckets (simple example)
-
-Editors
-- [ ] Atom launches and can edit code
-- [ ] VS Code launches and can edit code
-- [ ] Pycharm launches and can edit and run Python code
-
-Containers
-- [ ] Docker Desktop GUI app launches and can find running docker engine daemon
-- [ ] Docker can launch containers from command line
-
-### Step 22 - New, Experimental: Security review with Lynis
-
-* Download and run the latest version of Lynis and review the security posture for vulnerabilities.
+Instead of a formal checklist (which I always ignored), actual use of the system is the best way to find things.
