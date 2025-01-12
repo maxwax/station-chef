@@ -6,6 +6,7 @@ I developed this in 2020 as a way of learning Chef and automating the configurat
 
 I use Fedora Linux which releases every six months and I prefer to do a fresh install instead of an in-place upgrade.
 
+
 Being able to quickly deploy and configure a fresh Fedora Linux installation and get 90% of my workstation up and running quickly is incredibly rewarding.
 
 This is also **incredibly** useful for switching from an old laptop to another, or grabbing a spare laptop and getting it configured with all the tools I need to make it useful and comfortable.
@@ -13,6 +14,8 @@ This is also **incredibly** useful for switching from an old laptop to another, 
 Note: I'll probably be moving this to Ansible in the future as I use Ansible professionally and no longer work with Chef.
 
 ## Features
+## System Focused Actions
+
 
 Station performs the following _major_ actions in addition to a variety of smaller items:
 
