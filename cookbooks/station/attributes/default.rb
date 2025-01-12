@@ -2160,6 +2160,7 @@ case plat_vers
           'gnome-shell-extension-freon': 'GNOME Shell extension to display system temperature, voltage, and fan speed (fedora)',
           'gnome-shell-extension-launch-new-instance': 'Always launch a new application instance for GNOME Shell (updates)',
           'gnome-shell-extension-openweather': 'Display weather information from many locations in the world (fedora)',
+          'gnome-tweaks': "Gnome Tweaks GUI tool to adjust Gnome behaviors",
           'gnupg2': 'Utility for secure communication and data storage (updates)',
           'golang-bin': 'Golang core compiler tools (updates)',
           'golang-src': 'Golang compiler source tree (updates)',
