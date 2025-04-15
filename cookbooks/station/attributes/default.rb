@@ -1089,7 +1089,6 @@ case plat_vers
           'mencoder': 'MPlayer movie encoder (rpmfusion-free)',
           'minicom': 'A text-based modem control and terminal emulation program (fedora)',
           'minizip': 'Minizip contrib in zlib with the latest bug fixes and advanced features (updates)',
-          'mp3splt': 'A Free, command-line, AlbumWrap and mp3wrap file exctractor (rpmfusion-free)',
           'mplayer-common': 'MPlayer common files (rpmfusion-free)',
           'mplayer': 'Movie player playing most video formats and DVDs (rpmfusion-free)',
           'mtr-gtk': 'GTK+ interface for MTR (fedora)',
