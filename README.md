@@ -1,4 +1,4 @@
-# station
+# station-chef
 
 Station is a Chef configuration management cookbook to provision my personal Linux workstation running Fedora Linux.
 
@@ -6,9 +6,13 @@ This cookbook was developed in 2020 as a way to level up my Chef skills.
 
 As a Fedora user who traditionally performs a fresh install with every new release of Fedora Linux, this script has been very helpful in minimizing the time and effort required to re-configure my environment with all things that make it feel like *my* workstation.
 
-Note: I'll probably be moving this to Ansible in the future as I use Ansible professionally and no longer work with Chef.
+January 2026: I'm migrating from Chef to Ansible, so `station` is now `station-chef` and Fedora 43 will be the last version of Linux supported by chef-station.  This repo will remain as an archive of my Chef work, but don't expect it support for it.
 
 ## Features
+
+Support for Fedora 42 and 43.
+
+Past support existed for Fedora 40 and 41. While still present, no one should be using these unsupported Fedora versions anymore.
 
 ### System Focused Actions
 
@@ -17,7 +21,7 @@ Station performs the following _major_ actions in addition to a variety of small
 * Installs the [rpmfusion](https://rpmfusion.org/) (free and non-free) Linux package repositories that provide Linux packages not included in the base Fedora Linux distribution.
 
 * Installs a select set of Linux packages from the base Fedora and rpmfusion repos in order to meet my personal requirements. See the Chef code for [node.default['station']['install_packages']
- ](https://github.com/maxwax/station/blob/master/cookbooks/station/attributes/default.rb) within the file cookbooks/station/attributes/defaults.rb for details.
+ ](https://github.com/maxwax/station-chef/blob/master/cookbooks/station/attributes/default.rb) within the file cookbooks/station/attributes/defaults.rb for details.
 
 * Remove any packages installed by default that are unwanted (These are usually foreign typeface packages that I don't need.)
 
@@ -72,12 +76,12 @@ This is a high level summary of my process for moving to a new install of Fedora
 5. Download Station by cloning this github repo:
 
 ```
-git clone github.com/maxwax/station
+git clone github.com/maxwax/station-chef
 ```
 
 6. Execute the bootstrap script.  This will download a legacy copy of Chef, install it, then run the Chef `station` cookbook.
 ```
-cd station
+cd station-chef
 sudo ./bootstrap.sh
 ```
 
@@ -85,7 +89,7 @@ sudo ./bootstrap.sh
 
 7. Go through checklist steps below.
 
-Note: Fedora is a leading edge Linux distribution and new versions may introduce significant changes which break things and challenge expectations.  When using `station` with a new version, some effort is usually required to 'port' it and adjust to new changes.  Once ported, it can be re-used comfortably.
+Note: Fedora is a leading edge Linux distribution and new versions may introduce significant changes which break things and challenge expectations.  When using `station-chef` with a new version, some effort is usually required to 'port' it and adjust to new changes.  Once ported, it can be re-used comfortably.
 
 ## Detailed Step by Step Guide
 
@@ -155,16 +159,16 @@ On the clean, fresh install update all the existing packages.
     cd Downloads
     ```
 
-2. Clone the station github repo to `$HOME/Downloads`.
+2. Clone the station-chef github repo to `$HOME/Downloads`.
 
   ```
-  git clone github.com/maxwax/station
+  git clone github.com/maxwax/station-chef
   ```
 
-3. Change into the `station` directory
+3. Change into the `station-chef` directory
 
   ```
-  cd station
+  cd station-chef
   ```
 
 2. Bootstrap the node with the bootstrap.sh script
@@ -269,7 +273,7 @@ Automating the downloading and installation of many software programs is easy if
 
 For those applications that aren't in rpm format, aren't published via repos, or that can't reliably be downloaded or installed, list them here and install them manually.
 
-1. Install the [VirtualBox Extension Pack](https://www.virtualbox.org/wiki/Downloads) extension pack. Virtualbox is deployed by `station` but not the extension pack.
+1. Install the [VirtualBox Extension Pack](https://www.virtualbox.org/wiki/Downloads) extension pack. Virtualbox is deployed by `station-chef` but not the extension pack.
 
 2. Install the [Slack](https://slack.com/downloads/instructions/fedora) desktop app with a manual rpm install.
 
@@ -279,7 +283,7 @@ For those applications that aren't in rpm format, aren't published via repos, or
 
 ### Step 12 - Manual Configuration Tasks
 
-This a collection of quick manual steps which I've left out of `station` so far.
+This a collection of quick manual steps which I've left out of `station-chef` so far.
 
 #### Hostname
 
