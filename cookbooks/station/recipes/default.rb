@@ -69,7 +69,8 @@ include_recipe 'station::etc_systemd'
 include_recipe 'station::fstrim'
 
 # Add optional typefaces from a local maxlab typeface repo
-include_recipe 'station::typefaces'
+# 2026-0111 disable, SSL issues from chef client to maxwellspangler.com
+#include_recipe 'station::typefaces'
 
 # Install and configure powerline
 include_recipe 'station::powerline'
