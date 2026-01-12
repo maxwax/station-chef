@@ -231,6 +231,8 @@ All packages should now be up to date and most packages that can be automaticall
 
 ### Step 8 - Configure X.org instead of Wayland
 
+** Update: I skip this step and use Wayland now.**
+
 In years past, I would switch from using the Wayland GUI display system to the trusted X11.  From 2025 and forward, I'm going to try to move forward as Wayland is the future of GUI on Fedora and Red Hat Linux.
 
 Skip this:
