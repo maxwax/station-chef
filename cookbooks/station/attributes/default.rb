@@ -1582,7 +1582,6 @@ case plat_vers
           'mplayer-common': 'MPlayer common files (rpmfusion-free)',
           'mplayer': 'Movie player playing most video formats and DVDs (rpmfusion-free)',
           'mtr-gtk': 'GTK+ interface for MTR (fedora)',
-          'mu-editor': 'User friendly python editor for Sweigert book',
           'nmap': 'Network exploration tool and security scanner (fedora)',
           'nautilus': 'Nautilus Filer Manager',
           'ncdu': 'Curses UI interactive disk usage utility',
